@@ -2,12 +2,6 @@ package com.galaxy.airviewdictionary.ui.screen.main
 
 import android.app.Activity
 import android.content.Context
-import com.google.android.ump.ConsentDebugSettings
-import com.google.android.ump.ConsentForm.OnConsentFormDismissedListener
-import com.google.android.ump.ConsentInformation
-import com.google.android.ump.ConsentRequestParameters
-import com.google.android.ump.FormError
-import com.google.android.ump.UserMessagingPlatform
 
 /**
  * The Google Mobile Ads SDK provides the User Messaging Platform (Google's IAB Certified consent
@@ -15,8 +9,11 @@ import com.google.android.ump.UserMessagingPlatform
  * This is an example and you can choose another consent management platform to capture consent.
  */
 class GoogleMobileAdsConsentManager private constructor(context: Context) {
-  private val consentInformation: ConsentInformation =
-    UserMessagingPlatform.getConsentInformation(context)
+  data class FormError(val errorCode: Int = 0, val message: String = "")
+
+  fun interface OnConsentFormDismissedListener {
+    fun onConsentFormDismissed(error: FormError?)
+  }
 
   /** Interface definition for a callback to be invoked when consent gathering is complete. */
   fun interface OnConsentGatheringCompleteListener {
@@ -25,13 +22,11 @@ class GoogleMobileAdsConsentManager private constructor(context: Context) {
 
   /** Helper variable to determine if the app can request ads. */
   val canRequestAds: Boolean
-    get() = consentInformation.canRequestAds()
+    get() = false
 
   /** Helper variable to determine if the privacy options form is required. */
   val isPrivacyOptionsRequired: Boolean
-    get() =
-      consentInformation.privacyOptionsRequirementStatus ==
-        ConsentInformation.PrivacyOptionsRequirementStatus.REQUIRED
+    get() = false
 
   /**
    * Helper method to call the UMP SDK methods to request consent information and load/show a
@@ -41,29 +36,7 @@ class GoogleMobileAdsConsentManager private constructor(context: Context) {
     activity: Activity,
     onConsentGatheringCompleteListener: OnConsentGatheringCompleteListener,
   ) {
-    // For testing purposes, you can force a DebugGeography of EEA or NOT_EEA.
-    val debugSettings =
-      ConsentDebugSettings.Builder(activity)
-//        .setDebugGeography(ConsentDebugSettings.DebugGeography.DEBUG_GEOGRAPHY_EEA)
-//        .addTestDeviceHashedId(MainActivity.TEST_DEVICE_HASHED_ID)
-        .build()
-
-    val params = ConsentRequestParameters.Builder().setConsentDebugSettings(debugSettings).build()
-
-    // Requesting an update to consent information should be called on every app launch.
-    consentInformation.requestConsentInfoUpdate(
-      activity,
-      params,
-      {
-        UserMessagingPlatform.loadAndShowConsentFormIfRequired(activity) { formError ->
-          // Consent has been gathered.
-          onConsentGatheringCompleteListener.consentGatheringComplete(formError)
-        }
-      },
-      { requestConsentError ->
-        onConsentGatheringCompleteListener.consentGatheringComplete(requestConsentError)
-      },
-    )
+    onConsentGatheringCompleteListener.consentGatheringComplete(null)
   }
 
   /** Helper method to call the UMP SDK method to show the privacy options form. */
@@ -71,7 +44,7 @@ class GoogleMobileAdsConsentManager private constructor(context: Context) {
     activity: Activity,
     onConsentFormDismissedListener: OnConsentFormDismissedListener,
   ) {
-    UserMessagingPlatform.showPrivacyOptionsForm(activity, onConsentFormDismissedListener)
+    onConsentFormDismissedListener.onConsentFormDismissed(null)
   }
 
   companion object {

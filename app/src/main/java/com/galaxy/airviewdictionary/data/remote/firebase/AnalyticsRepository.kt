@@ -5,13 +5,9 @@ import com.galaxy.airviewdictionary.BuildConfig
 import com.galaxy.airviewdictionary.data.remote.ai.CorrectionKitType
 import com.galaxy.airviewdictionary.data.local.vision.TextDetectMode
 import com.galaxy.airviewdictionary.data.remote.translation.Transaction
-import com.google.firebase.analytics.FirebaseAnalytics
-import com.google.firebase.analytics.ktx.analytics
-import com.google.firebase.analytics.logEvent
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import javax.inject.Singleton
-import kotlin.math.roundToInt
 
 
 object Event {
@@ -52,26 +48,12 @@ object Param {
 @Singleton
 class AnalyticsRepository @Inject constructor(@ApplicationContext val context: Context) {
 
-    private val TAG = javaClass.simpleName
-
-    private val firebaseAnalytics: FirebaseAnalytics = com.google.firebase.ktx.Firebase.analytics
-
     fun secureReport(eventDetail: String) {
         if (BuildConfig.DEBUG) return
-
-        firebaseAnalytics.logEvent(Event.SECURE) {
-            param(Param.SECURE_DETAIL, eventDetail)
-        }
-        FireDatabase.secureReport(eventDetail)
     }
 
     fun screenViewReport(className: String) {
         if (BuildConfig.DEBUG) return
-
-        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW) {
-            param(FirebaseAnalytics.Param.SCREEN_CLASS, className)
-        }
-        FireDatabase.screenViewReport(className)
     }
 
     fun settingsReport(
@@ -88,32 +70,6 @@ class AnalyticsRepository @Inject constructor(@ApplicationContext val context: C
         TTSRate: String,
     ) {
         if (BuildConfig.DEBUG) return
-//        Timber.tag(TAG).i("$dockDelay $haptic $menuTransparency $menuComposition $transTransparency $closeDelay $autoTTS $TTSVoice $TTSRate")
-        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM) {
-            param(Param.DOCKING_DELAY, dockDelay)
-            param(Param.DRAG_HANDLE_HAPTIC, haptic)
-            param(Param.MENU_BAR_TRANSPARENCY, menuTransparency)
-            param(Param.MENU_BAR_COMPOSITION, menuComposition)
-            param(Param.TRANSLATION_TRANSPARENCY, transTransparency)
-            param(Param.TRANSLATION_CLOSE_DELAY, closeDelay)
-            param(Param.REPLY_TRANSPARENCY, replyTransparency)
-            param(Param.CORRECTION_KIT_TYPE, correctionKit)
-            param(Param.AUTOMATIC_TRANSLATION_PLAYBACK, autoTTS)
-            param(Param.TTS_VOICE, TTSVoice)
-            param(Param.TTS_SPEECH_RATE, TTSRate)
-        }
-        FireDatabase.settingsReport(
-            dockDelay,
-            haptic,
-            menuTransparency,
-            menuComposition,
-            transTransparency,
-            closeDelay,
-            replyTransparency,
-            correctionKit,
-            autoTTS,
-            TTSRate
-        )
     }
 
     fun translationReport(
@@ -122,49 +78,18 @@ class AnalyticsRepository @Inject constructor(@ApplicationContext val context: C
         correctionKitType: CorrectionKitType?
     ) {
         if (BuildConfig.DEBUG) return
-
-        firebaseAnalytics.logEvent(Event.TRANSLATE) {
-            param(Param.SOURCE_LANGUAGE_CODE, transaction.sourceLanguageCode ?: "unknown")
-            param(Param.TARGET_LANGUAGE_CODE, transaction.targetLanguageCode ?: "unknown")
-            param(Param.TRANSLATION_KIT_TYPE, transaction.translationKitType?.name ?: "unknown")
-            param(Param.TEXT_DETECT_MODE, textDetectMode?.name ?: "unknown")
-            param(Param.DETECTED_LANGUAGE_CODE, transaction.detectedLanguageCode ?: "unknown")
-            param(Param.CORRECTION_KIT_TYPE, correctionKitType?.name ?: "none")
-        }
-        FireDatabase.translationReport(
-            transaction,
-            textDetectMode,
-            correctionKitType
-        )
     }
 
     fun replyReport(transaction: Transaction) {
         if (BuildConfig.DEBUG) return
-
-        firebaseAnalytics.logEvent(Event.TRANSLATE) {
-            param(Param.SOURCE_LANGUAGE_CODE, transaction.sourceLanguageCode ?: "unknown")
-            param(Param.TARGET_LANGUAGE_CODE, transaction.targetLanguageCode ?: "unknown")
-            param(Param.TRANSLATION_KIT_TYPE, transaction.translationKitType?.name ?: "unknown")
-        }
-        FireDatabase.replyReport(transaction)
     }
 
     fun hoursTakenReport(trialCount: Int, hour: Int) {
         if (BuildConfig.DEBUG) return
-
-        firebaseAnalytics.logEvent(Event.TIME_TAKEN) {
-            param("${Param.HOURS_TAKEN}$trialCount", hour.toLong())
-        }
-        FireDatabase.hoursTakenReport(trialCount, hour)
     }
 
     fun daysTakenReport(trialCount: Int, day: Int) {
         if (BuildConfig.DEBUG) return
-
-        firebaseAnalytics.logEvent(Event.TIME_TAKEN) {
-            param("${Param.DAYS_TAKEN}$trialCount", day.toLong())
-        }
-        FireDatabase.daysTakenReport(trialCount, day)
     }
 
 }

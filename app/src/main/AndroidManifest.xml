@@ -121,31 +121,6 @@
             android:name="com.google.mlkit.vision.DEPENDENCIES"
             android:value="service" />
 
-        <meta-data
-            android:name="google_analytics_default_allow_analytics_storage"
-            android:value="true" />
-        <meta-data
-            android:name="google_analytics_default_allow_ad_storage"
-            android:value="true" />
-        <meta-data
-            android:name="google_analytics_default_allow_ad_user_data"
-            android:value="true" />
-        <meta-data
-            android:name="google_analytics_default_allow_ad_personalization_signals"
-            android:value="true" />
-
-<!--        <meta-data-->
-<!--            android:name="com.google.android.gms.ads.APPLICATION_ID"-->
-<!--            android:value="ca-app-pub-xxxxxxxxxxxxxxxx~xxxxxxxxxx"/>-->
-
-<!--        <meta-data-->
-<!--            android:name="com.google.android.gms.ads.APPLICATION_ID"-->
-<!--            android:value="" />--> <!-- TODO: Set your AdMob App ID -->
-
-        <meta-data
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="${ADMOB_APP_ID}" />
-
     </application>
 
 </manifest>

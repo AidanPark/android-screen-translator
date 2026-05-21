@@ -1,18 +1,10 @@
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.google.services)
-    alias(libs.plugins.google.firebase.crashlytics)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.kapt)
     alias(libs.plugins.hilt)
     alias(libs.plugins.compose.compiler)
-}
-
-val admobAppId = if (gradle.startParameter.taskNames.any { it.contains("Debug") }) {
-    "" // TODO: Set your AdMob App ID for debug
-} else {
-    "ca-app-pub-xxxxxxxxxxxxxxxx~xxxxxxxxxx"
 }
 
 android {
@@ -25,7 +17,6 @@ android {
         targetSdk = 35
         versionCode = 20402
         versionName = "2.4.2"
-        manifestPlaceholders["ADMOB_APP_ID"] = admobAppId
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     bundle {
@@ -54,9 +45,6 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            firebaseCrashlytics {
-                mappingFileUploadEnabled = true
-            }
             signingConfig = signingConfigs.getByName("release")
         }
     }
@@ -90,8 +78,6 @@ android {
 
 dependencies {
     implementation(libs.billingclient)
-    implementation(libs.admob)
-    implementation(libs.integrity)
     implementation(libs.app.review)
 //    implementation(libs.app.update)
 
@@ -127,7 +113,6 @@ dependencies {
 
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
-    implementation(libs.kotlinx.coroutines.play.services)
 
     // screen spec
     implementation(libs.androidx.window)
@@ -151,16 +136,6 @@ dependencies {
 
     implementation(libs.google.mlkit.translate)
     implementation(libs.deepl.api)
-
-    // firebase
-    implementation(platform(libs.firebase.bom))
-    implementation(libs.firebase.analytics)
-    implementation(libs.firebase.auth)
-    implementation(libs.firebase.appcheck)
-    implementation(libs.firebase.appcheck.playintegrity)
-    implementation(libs.firebase.crashlytics)
-    implementation(libs.firebase.config)
-    implementation(libs.firebase.database)
 
     implementation(libs.gson)
     implementation(libs.kotlinx.serialization.json)

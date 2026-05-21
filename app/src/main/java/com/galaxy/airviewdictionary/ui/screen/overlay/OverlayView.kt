@@ -17,8 +17,6 @@ import androidx.lifecycle.setViewTreeLifecycleOwner
 import androidx.savedstate.setViewTreeSavedStateRegistryOwner
 import com.galaxy.airviewdictionary.core.OverlayService
 import com.galaxy.airviewdictionary.core.OverlayServiceEventListener
-import com.google.firebase.analytics.FirebaseAnalytics
-import com.google.firebase.analytics.logEvent
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -138,11 +136,6 @@ abstract class OverlayView : OverlayServiceEventListener {
         }
 
         isRunning.set(true)
-
-        FirebaseAnalytics.getInstance(applicationContext)
-            .logEvent(FirebaseAnalytics.Event.SCREEN_VIEW) {
-                param(FirebaseAnalytics.Param.SCREEN_CLASS, TAG)
-            }
     }
 
     open suspend fun cast(

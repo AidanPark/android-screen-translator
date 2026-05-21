@@ -3,7 +3,6 @@ package com.galaxy.airviewdictionary.data.remote.translation
 import com.galaxy.airviewdictionary.data.AVDRepository
 import com.galaxy.airviewdictionary.data.remote.translation.azure.AzureKit
 import com.galaxy.airviewdictionary.data.remote.translation.deepl.DeepLKit
-import com.galaxy.airviewdictionary.data.remote.translation.goolge.GoogleMlKit
 import com.galaxy.airviewdictionary.data.remote.translation.goolge.GoogleWebKit
 import com.galaxy.airviewdictionary.data.remote.translation.papago.PapagoKit
 import com.galaxy.airviewdictionary.data.remote.translation.Language
@@ -166,27 +165,6 @@ class TranslationRepository @Inject constructor(
         correctedText: String? = null,
     ): TranslationResponse {
         val translationKit: TranslationKit = getTranslationKit(translationKitType)
-        if (translationKit is GoogleMlKit) {
-//            if (googleMlKit.available(sourceLanguageCode, targetLanguageCode)) {
-//                return googleMlKit.request(
-//                    sourceLanguageCode,
-//                    targetLanguageCode,
-//                    correctedText ?: sourceText
-//                )
-//            }
-
-//            coroutineScope {
-//                launch { googleMlKit.downloadLanguage(sourceLanguageCode) }
-//                launch { googleMlKit.downloadLanguage(targetLanguageCode) }
-//            }
-
-            return googleWebKit.request(
-                sourceLanguageCode,
-                targetLanguageCode,
-                correctedText ?: sourceText
-            )
-        }
-
         return translationKit.request(
             sourceLanguageCode,
             targetLanguageCode,

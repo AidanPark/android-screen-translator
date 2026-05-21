@@ -1,15 +1,11 @@
 [versions]
 androidGradlePlugin = "8.9.3"
-googleServices = "4.4.3"
-firebaseCrashlytics = "3.0.4"
 kotlin = "2.1.20"
 hilt = "2.56.2"
 composeBom = "2025.07.00"
 composeCompiler = "1.5.4"
 
 billingclient = "8.0.0"
-admob = "24.4.0"
-integrity = "1.4.0"
 review = "2.0.2"
 
 appcompat = "1.7.1"
@@ -31,13 +27,10 @@ window = "1.4.0"
 material = "1.12.0"
 
 mlkitTextRecognition = "16.0.1"
-#mlkitGmsTextRecognition = "19.0.1"
 mlkitLanguageId = "17.0.6"
 
 mlkitTranslation = "17.0.3"
 deepl = "1.7.0"
-
-firebaseBom = "33.16.0"
 
 gson = "2.11.0"
 kotlinxSerializationJson = "1.7.3"
@@ -57,8 +50,6 @@ monitor = "1.7.2"
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
-google-services = { id = "com.google.gms.google-services", version.ref = "googleServices" }
-google-firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "firebaseCrashlytics" }
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
@@ -69,8 +60,6 @@ compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "
 
 [libraries]
 billingclient = { group = "com.android.billingclient", name = "billing-ktx", version.ref = "billingclient" }
-admob = { group = "com.google.android.gms", name = "play-services-ads", version.ref = "admob" }
-integrity = { group = "com.google.android.play", name = "integrity", version.ref = "integrity" }
 app-review = { group = "com.google.android.play", name = "review-ktx", version.ref = "review" }
 #app-update = { group = "com.google.android.play", name = "app-update-ktx", version.ref = "appUpdate" }
 
@@ -102,7 +91,6 @@ androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-com
 
 kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
 kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
-kotlinx-coroutines-play-services = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services", version.ref = "kotlinxCoroutines" }
 
 androidx-window = { group = "androidx.window", name = "window", version.ref = "window" }
 
@@ -110,29 +98,14 @@ material = { group = "com.google.android.material", name = "material", version.r
 material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended" } # composeBom
 
 google-mlkit-text-recognition = { module = "com.google.mlkit:text-recognition", version.ref = "mlkitTextRecognition" }
-#google-gms-mlkit-text-recognition = { module = "com.google.android.gms:play-services-mlkit-text-recognition", version.ref = "mlkitGmsTextRecognition" }
 google-mlkit-text-recognition-chinese = { module = "com.google.mlkit:text-recognition-chinese", version.ref = "mlkitTextRecognition" }
-#google-gms-mlkit-text-recognition-chinese = { module = "com.google.android.gms:play-services-mlkit-text-recognition-chinese", version.ref = "mlkitTextRecognition" }
 google-mlkit-text-recognition-devanagari = { module = "com.google.mlkit:text-recognition-devanagari", version.ref = "mlkitTextRecognition" }
-#google-gms-mlkit-text-recognition-devanagari = { module = "com.google.android.gms:play-services-mlkit-text-recognition-devanagari", version.ref = "mlkitTextRecognition" }
 google-mlkit-text-recognition-japanese = { module = "com.google.mlkit:text-recognition-japanese", version.ref = "mlkitTextRecognition" }
-#google-gms-mlkit-text-recognition-japanese = { module = "com.google.android.gms:play-services-mlkit-text-recognition-japanese", version.ref = "mlkitTextRecognition" }
 google-mlkit-text-recognition-korean = { module = "com.google.mlkit:text-recognition-korean", version.ref = "mlkitTextRecognition" }
-#google-gms-mlkit-text-recognition-korean = { module = "com.google.android.gms:play-services-mlkit-text-recognition-korean", version.ref = "mlkitTextRecognition" }
 google-mlkit-language-id = { module = "com.google.mlkit:language-id", version.ref = "mlkitLanguageId" }
-#google-gms-mlkit-language-id = { module = "com.google.android.gms:play-services-mlkit-language-id", version.ref = "mlkitLanguageId" }
 
 google-mlkit-translate = { module = "com.google.mlkit:translate", version.ref = "mlkitTranslation" }
 deepl-api = { group = "com.deepl.api", name = "deepl-java", version.ref = "deepl" }
-
-firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
-firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics" }
-firebase-auth = { group = "com.google.firebase", name = "firebase-auth" }
-firebase-appcheck = { group = "com.google.firebase", name = "firebase-appcheck" }
-firebase-appcheck-playintegrity = { group = "com.google.firebase", name = "firebase-appcheck-playintegrity" }
-firebase-crashlytics = { group = "com.google.firebase", name = "firebase-crashlytics" }
-firebase-config = { group = "com.google.firebase", name = "firebase-config" }
-firebase-database = { group = "com.google.firebase", name = "firebase-database" }
 
 gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }

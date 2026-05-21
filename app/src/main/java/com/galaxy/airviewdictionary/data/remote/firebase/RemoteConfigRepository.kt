@@ -1,28 +1,20 @@
 package com.galaxy.airviewdictionary.data.remote.firebase
 
-import android.content.Context
-import com.galaxy.airviewdictionary.R
-import com.google.firebase.Firebase
-import com.google.firebase.remoteconfig.ConfigUpdate
-import com.google.firebase.remoteconfig.ConfigUpdateListener
-import com.google.firebase.remoteconfig.FirebaseRemoteConfig
-import com.google.firebase.remoteconfig.FirebaseRemoteConfigException
-import com.google.firebase.remoteconfig.FirebaseRemoteConfigValue
-import com.google.firebase.remoteconfig.get
-import com.google.firebase.remoteconfig.remoteConfig
-import com.google.firebase.remoteconfig.remoteConfigSettings
-import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import timber.log.Timber
 import javax.inject.Inject
 import javax.inject.Singleton
 
 
-@Singleton
-class RemoteConfigRepository @Inject constructor(@ApplicationContext val context: Context) {
+data class RemoteConfigValue(private val rawValue: String) {
+    fun asString(): String = rawValue
 
-    private val TAG = javaClass.simpleName
+    fun asLong(): Long = rawValue.toLongOrNull() ?: 0L
+}
+
+
+@Singleton
+class RemoteConfigRepository @Inject constructor() {
 
     companion object PreferencesKeys {
         const val SERVICE_AVAILABLE_KEY = "service_available"
@@ -38,63 +30,9 @@ class RemoteConfigRepository @Inject constructor(@ApplicationContext val context
         const val AD_UNIT_ID = "ad_unit_id"
     }
 
-    private val remoteConfig: FirebaseRemoteConfig = Firebase.remoteConfig
+    private val _remoteConfigFlow = MutableStateFlow<Map<String, RemoteConfigValue>>(emptyMap())
 
-    private val _remoteConfigFlow = MutableStateFlow<Map<String, FirebaseRemoteConfigValue>>(emptyMap())
-
-    val remoteConfigFlow: StateFlow<Map<String, FirebaseRemoteConfigValue>> get() = _remoteConfigFlow
-
-    private fun retrieveConfig() {
-        Timber.tag(TAG).d("SERVICE_AVAILABLE_KEY ${remoteConfig[SERVICE_AVAILABLE_KEY].asString()}")
-        Timber.tag(TAG).d("LATEST_VERSION_CODE_KEY ${remoteConfig[LATEST_VERSION_CODE_KEY].asString()}")
-        Timber.tag(TAG).d("FORCE_UPDATE_VERSION_CODE_KEY ${remoteConfig[FORCE_UPDATE_VERSION_CODE_KEY].asString()}")
-        Timber.tag(TAG).d("API_KEY_VERSION_AZURE ${remoteConfig[API_KEY_VERSION_AZURE].asString()}")
-        Timber.tag(TAG).d("API_KEY_VERSION_DEEPL ${remoteConfig[API_KEY_VERSION_DEEPL].asString()}")
-        Timber.tag(TAG).d("API_KEY_VERSION_PAPAGO ${remoteConfig[API_KEY_VERSION_PAPAGO].asString()}")
-        Timber.tag(TAG).d("API_KEY_VERSION_YANDEX ${remoteConfig[API_KEY_VERSION_YANDEX].asString()}")
-        Timber.tag(TAG).d("API_KEY_VERSION_CHATGPT ${remoteConfig[API_KEY_VERSION_CHATGPT].asString()}")
-        Timber.tag(TAG).d("TRIAL_TIME_LIMIT_MINUTE ${remoteConfig[TRIAL_TIME_LIMIT_MINUTE].asString()}")
-        Timber.tag(TAG).d("FIXED_AREA_VIEW_CAMPAIGN_PERIOD_MINUTE ${remoteConfig[FIXED_AREA_VIEW_CAMPAIGN_PERIOD_MINUTE].asString()}")
-        Timber.tag(TAG).d("AD_UNIT_ID ${remoteConfig[AD_UNIT_ID].asString()}")
-        _remoteConfigFlow.value = remoteConfig.all
-    }
-
-    init {
-        remoteConfig.setConfigSettingsAsync(remoteConfigSettings {
-            minimumFetchIntervalInSeconds = 60 * 60 * 24
-        })
-
-        remoteConfig.setDefaultsAsync(R.xml.remote_config_defaults)
-
-        // [START fetch_config_with_callback]
-        remoteConfig.fetchAndActivate()
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    val updated = task.result
-                    Timber.tag(TAG).d("Config params updated: $updated")
-                    retrieveConfig()
-                } else {
-                    Timber.tag(TAG).d("Fetch failed")
-                }
-            }
-        // [END fetch_config_with_callback]
-
-        // [START add_config_update_listener]
-        remoteConfig.addOnConfigUpdateListener(object : ConfigUpdateListener {
-            override fun onUpdate(configUpdate: ConfigUpdate) {
-                Timber.tag(TAG).i(TAG, "Updated keys: %s", configUpdate.updatedKeys)
-
-                remoteConfig.activate().addOnCompleteListener {
-                    Timber.tag(TAG).i("------------------- onUpdate ------------------")
-                    retrieveConfig()
-                }
-            }
-
-            override fun onError(error: FirebaseRemoteConfigException) {
-                Timber.tag(TAG).w("Config update error with code: %s", error.code)
-            }
-        })
-    }
+    val remoteConfigFlow: StateFlow<Map<String, RemoteConfigValue>> get() = _remoteConfigFlow
 }
 
 

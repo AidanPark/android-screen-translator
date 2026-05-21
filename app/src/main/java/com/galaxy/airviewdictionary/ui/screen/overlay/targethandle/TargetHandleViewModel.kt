@@ -382,7 +382,6 @@ class TargetHandleViewModel(
 
     private val serviceOperationInfoFlow: Flow<RemoteConfig> =
         remoteConfigRepository.remoteConfigFlow
-            .filterNotNull()
             .map { remoteConfig ->
                 Timber.tag(TAG).i("remoteConfig: $remoteConfig")
 
