@@ -5,12 +5,12 @@ import android.annotation.SuppressLint
 import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
+import androidx.core.net.toUri
 import android.content.res.Configuration
 import android.graphics.Point
 import android.os.Build
 import android.os.Bundle
-import android.os.StrictMode
-import android.os.StrictMode.ThreadPolicy
+import android.widget.Toast
 import android.view.WindowInsets
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.compose.setContent
@@ -54,6 +54,7 @@ import androidx.compose.material.icons.filled.PowerSettingsNew
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material.icons.filled.VoiceChat
+import androidx.compose.material.icons.outlined.Api
 import androidx.compose.material.icons.outlined.CardGiftcard
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.Movie
@@ -63,10 +64,15 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
+import androidx.compose.material3.RadioButton
+import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
@@ -82,6 +88,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
@@ -104,25 +111,28 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.window.Dialog
 import androidx.core.graphics.toColorInt
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.lifecycleScope
-import com.android.billingclient.api.Purchase
 import com.galaxy.airviewdictionary.BuildConfig
 import com.galaxy.airviewdictionary.R
 import com.galaxy.airviewdictionary.data.local.capture.CaptureRepository
 import com.galaxy.airviewdictionary.data.local.screen.ScreenInfoHolder
 import com.galaxy.airviewdictionary.data.local.secure.TrialLimitInfo
+import com.galaxy.airviewdictionary.data.local.preference.PreferenceRepository
+import com.galaxy.airviewdictionary.data.local.tts.TTSReadTarget
 import com.galaxy.airviewdictionary.data.local.vision.TextDetectMode
-import com.galaxy.airviewdictionary.data.remote.ai.CorrectionKitType
-import com.galaxy.airviewdictionary.data.remote.firebase.RemoteConfigRepository
 import com.galaxy.airviewdictionary.data.remote.translation.TranslationKitType
+import com.galaxy.airviewdictionary.data.remote.translation.deepl.DeepLKit
+import com.galaxy.airviewdictionary.data.remote.translation.openai.OpenAiKit
 import com.galaxy.airviewdictionary.extensions.finishService
 import com.galaxy.airviewdictionary.extensions.gotoStore
 import com.galaxy.airviewdictionary.extensions.toPx
@@ -143,25 +153,13 @@ import com.galaxy.airviewdictionary.ui.screen.overlay.targethandle.TargetHandleV
 import com.galaxy.airviewdictionary.ui.screen.overlay.voicelist.VoiceListView
 import com.galaxy.airviewdictionary.ui.screen.permissions.ScreenCapturePermissionRequesterActivity
 import com.galaxy.airviewdictionary.ui.theme.ScreenTranslatorTheme
-import com.google.android.gms.ads.AdError
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.FullScreenContentCallback
-import com.google.android.gms.ads.LoadAdError
-import com.google.android.gms.ads.MobileAds
-import com.google.android.gms.ads.OnUserEarnedRewardListener
-import com.google.android.gms.ads.RequestConfiguration
-import com.google.android.gms.ads.rewarded.RewardedAd
-import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
 import com.google.android.play.core.review.ReviewException
 import com.google.android.play.core.review.ReviewManager
 import com.google.android.play.core.review.ReviewManagerFactory
 import com.google.android.play.core.review.testing.FakeReviewManager
 import com.google.firebase.Firebase
 import com.google.firebase.analytics.analytics
-import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.first
@@ -170,7 +168,6 @@ import kotlinx.coroutines.launch
 import timber.log.Timber
 import java.math.BigDecimal
 import java.math.RoundingMode
-import java.util.concurrent.atomic.AtomicBoolean
 import kotlin.math.ceil
 import kotlin.math.round
 import kotlin.math.roundToInt
@@ -181,9 +178,8 @@ class SettingsActivity : AVDActivity() {
 
     companion object {
 
-        const val EXTRA_PURCHASE = "EXTRA_PURCHASE"
-
-        const val EXTRA_PURCHASE_INDUCEMENT = "EXTRA_PURCHASE_INDUCEMENT"
+        // 공개 가능한 소스가 게시되는 퍼블릭 저장소
+        private const val GITHUB_REPO_URL = "https://github.com/AidanPark/android-screen-translator"
 
         fun start(context: Context) {
             val intent = Intent(context, SettingsActivity::class.java)
@@ -191,25 +187,9 @@ class SettingsActivity : AVDActivity() {
             context.startActivity(intent)
         }
 
-        fun purchaseInduce(context: Context) {
-            val intent = Intent(context, SettingsActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            intent.putExtra(EXTRA_PURCHASE_INDUCEMENT, true)
-            context.startActivity(intent)
-        }
-
-        fun purchase(context: Context) {
-            val intent = Intent(context, SettingsActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            intent.putExtra(EXTRA_PURCHASE, true)
-            context.startActivity(intent)
-        }
-
         val liveStateFlow = MutableStateFlow(false)
 
         val menuBarViewSettlePositionFlow = MutableStateFlow<Point?>(null)
-
-        val premiumViewVisibleStateFlow = MutableStateFlow(false)
     }
 
     private val viewModel: SettingsViewModel by viewModels()
@@ -220,11 +200,6 @@ class SettingsActivity : AVDActivity() {
 
 //    private val snackMessageFlow = MutableStateFlow("")
 
-    private val isMobileAdsInitializeCalled = AtomicBoolean(false)
-    private lateinit var googleMobileAdsConsentManager: GoogleMobileAdsConsentManager
-    private var isRewardedAdLoading = false
-    private var rewardedAd: RewardedAd? = null
-
     @OptIn(ExperimentalSharedTransitionApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
@@ -232,12 +207,7 @@ class SettingsActivity : AVDActivity() {
 
         ScreenInfoHolder.collectAndStoreScreenInfo(this)
 
-        initGoogleMobileAdsConsentManager()
-
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
-            val policy = ThreadPolicy.Builder().permitAll().build()
-            StrictMode.setThreadPolicy(policy)
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
             val isDarkMode = (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
             val colorWhite = "#FFf2f1f4".toColorInt()
             val colorBlack = "#FF010102".toColorInt()
@@ -251,37 +221,15 @@ class SettingsActivity : AVDActivity() {
             WindowCompat.getInsetsController(window, window.decorView).isAppearanceLightNavigationBars = !isDarkMode
         }
 
-        val purchaseInducement = intent.getBooleanExtra(EXTRA_PURCHASE_INDUCEMENT, false)
-        premiumViewVisibleStateFlow.value = purchaseInducement
-
         setContent {
             ScreenTranslatorTheme {
                 Surface(modifier = Modifier.fillMaxSize()) {
                     val lifecycleOwner = LocalLifecycleOwner.current
 
-                    val premiumViewVisible by premiumViewVisibleStateFlow.collectAsStateWithLifecycle(
-                        lifecycle = lifecycleOwner.lifecycle,
-                        initialValue = false
-                    )
-
                     val isDarkMode = isSystemInDarkTheme()
                     val backgroundColor = if (isDarkMode) Color(0xFF010102) else Color(0xFFf2f1f4)
 
                     val snackBarHostState = remember { SnackbarHostState() }
-
-                    LaunchedEffect(viewModel.billingRepository.purchaseStateMessageFlow) {
-                        viewModel.billingRepository.purchaseStateMessageFlow.collect { message ->
-                            if (message.isNotEmpty()) {
-                                lifecycleScope.launch {
-                                    snackBarHostState.showSnackbar(
-                                        message = message,
-                                        duration = SnackbarDuration.Long,
-//                                        actionLabel = "snackbar"
-                                    )
-                                }
-                            }
-                        }
-                    }
 
 //                    LaunchedEffect(snackMessageFlow) {
 //                        snackMessageFlow.collect { message ->
@@ -310,31 +258,9 @@ class SettingsActivity : AVDActivity() {
                                 .background(backgroundColor)
                                 .padding(paddingValues)
                         ) {
-                            SharedTransitionLayout {
-                                AnimatedContent(
-                                    targetState = premiumViewVisible,
-                                    label = "menu_premium_transition",
-                                ) { showPremium ->
-                                    if (showPremium) {
-                                        PremiumView(
-                                            onBack = {
-                                                premiumViewVisibleStateFlow.value = false
-                                            },
-                                            animatedVisibilityScope = this@AnimatedContent,
-                                            sharedTransitionScope = this@SharedTransitionLayout
-                                        )
-                                    } else {
-                                        Settings(
-                                            onShowPremium = {
-                                                premiumViewVisibleStateFlow.value = true
-                                            },
-                                            animatedVisibilityScope = this@AnimatedContent,
-                                            sharedTransitionScope = this@SharedTransitionLayout,
-                                            paddingValues = paddingValues
-                                        )
-                                    }
-                                }
-                            }
+                            Settings(
+                                paddingValues = paddingValues
+                            )
                         }
                     }
 
@@ -369,8 +295,8 @@ class SettingsActivity : AVDActivity() {
         super.onWindowFocusChanged(hasFocus)
         if (hasFocus && Build.VERSION.SDK_INT < Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
             val isDarkMode = (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
-            val colorWhite = android.graphics.Color.parseColor("#FFf2f1f4")
-            val colorBlack = android.graphics.Color.parseColor("#FF010102")
+            val colorWhite = "#FFf2f1f4".toColorInt()
+            val colorBlack = "#FF010102".toColorInt()
             window.statusBarColor = if (isDarkMode) colorBlack else colorWhite
             window.navigationBarColor = if (isDarkMode) colorBlack else colorWhite
         }
@@ -378,11 +304,6 @@ class SettingsActivity : AVDActivity() {
 
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
-        premiumViewVisibleStateFlow.value = intent?.getBooleanExtra(EXTRA_PURCHASE_INDUCEMENT, false) == true
-
-        if (intent?.getBooleanExtra(EXTRA_PURCHASE, false) == true) {
-            viewModel.launchBillingFlow(this)
-        }
     }
 
     override fun onResume() {
@@ -421,8 +342,6 @@ class SettingsActivity : AVDActivity() {
                 }
             }
         }
-
-        loadRewardedAd()
     }
 
     override fun onPause() {
@@ -432,7 +351,6 @@ class SettingsActivity : AVDActivity() {
         VoiceListView.INSTANCE.clear()
         HelpTextDetectModeView.INSTANCE.clear()
         HelpTranslationKitView.INSTANCE.clear()
-        premiumViewVisibleStateFlow.value = false
         liveStateFlow.value = false
         super.onPause()
     }
@@ -457,173 +375,6 @@ class SettingsActivity : AVDActivity() {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     //                                                                                            //
-    //                                            Admob                                           //
-    //                                                                                            //
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-
-    private fun initGoogleMobileAdsConsentManager() {
-        Timber.tag(TAG).i("Admob initGoogleMobileAdsConsentManager Google Mobile Ads SDK Version: ${MobileAds.getVersion()}")
-        googleMobileAdsConsentManager = GoogleMobileAdsConsentManager.getInstance(this)
-        googleMobileAdsConsentManager.gatherConsent(this) { error ->
-            if (error != null) {
-                // Consent not obtained in current session.
-                Timber.tag(TAG).d("${error.errorCode}: ${error.message}")
-            }
-
-            if (googleMobileAdsConsentManager.canRequestAds) {
-                initializeMobileAdsSdk()
-            }
-
-            if (googleMobileAdsConsentManager.isPrivacyOptionsRequired) {
-                // Regenerate the options menu to include a privacy setting.
-                invalidateOptionsMenu()
-            }
-        }
-
-        // This sample attempts to load ads using consent obtained in the previous session.
-        if (googleMobileAdsConsentManager.canRequestAds) {
-            initializeMobileAdsSdk()
-        }
-    }
-
-    private fun initializeMobileAdsSdk() {
-        Timber.tag(TAG).i("Admob initializeMobileAdsSdk isMobileAdsInitializeCalled: ${isMobileAdsInitializeCalled.get()}")
-        if (isMobileAdsInitializeCalled.getAndSet(true)) {
-            return
-        }
-
-        // Set your test devices.
-        if (BuildConfig.DEBUG) {
-            MobileAds.setRequestConfiguration(
-                RequestConfiguration.Builder().setTestDeviceIds(listOf("BA6732E32C6CA0D01FB929ECC2FDA19F")).build()
-            )
-        }
-
-        CoroutineScope(Dispatchers.IO).launch {
-            // Initialize the Google Mobile Ads SDK on a background thread.
-            MobileAds.initialize(this@SettingsActivity) {}
-            runOnUiThread {
-                // Load an ad on the main thread.
-                loadRewardedAd()
-            }
-        }
-    }
-
-    private fun loadRewardedAd() {
-        Timber.tag(TAG).i("Admob loadRewardedAd googleMobileAdsConsentManager.canRequestAds: ${googleMobileAdsConsentManager.canRequestAds}")
-        if (!googleMobileAdsConsentManager.canRequestAds) {
-            return
-        }
-
-        val adUnitId =
-            if (BuildConfig.DEBUG) {
-                "" // TODO: Set your AdMob test ad unit ID
-            } else {
-                FirebaseRemoteConfig.getInstance().getString(RemoteConfigRepository.AD_UNIT_ID)
-            }
-        Timber.tag(TAG).i("rewardedAd $rewardedAd isRewardedAdLoading $isRewardedAdLoading adUnitId $adUnitId")
-        if (rewardedAd == null) {
-            if (!isRewardedAdLoading) {
-                isRewardedAdLoading = true
-                var adRequest = AdRequest.Builder().build()
-
-                RewardedAd.load(
-                    this,
-                    adUnitId,
-                    adRequest,
-                    object : RewardedAdLoadCallback() {
-                        override fun onAdFailedToLoad(adError: LoadAdError) {
-                            Timber.tag(TAG).d(adError.message)
-                            rewardedAd = null
-                            isRewardedAdLoading = false
-                        }
-
-                        override fun onAdLoaded(ad: RewardedAd) {
-                            Timber.tag(TAG).d("Ad was loaded.")
-                            rewardedAd = ad
-                            isRewardedAdLoading = false
-                            loadRewardedAd()
-                        }
-                    },
-                )
-            }
-        } else {
-            val purchaseInducement = intent.getBooleanExtra(EXTRA_PURCHASE_INDUCEMENT, false)
-            Timber.tag(TAG).d("Admob purchaseInducement $purchaseInducement")
-            if (purchaseInducement) {
-                CoroutineScope(Dispatchers.Main).launch {
-                    DialogView.INSTANCE.cast(
-                        applicationContext = applicationContext,
-                        icon = Icons.Outlined.Movie,
-                        dialogTitle = getString(R.string.message_free_trial_ends),
-                        dialogText = getString(R.string.message_free_trial_ends_detail),
-                        onConfirm = {
-                            intent.removeExtra(EXTRA_PURCHASE_INDUCEMENT)
-                            showRewardedVideo()
-                        },
-                        onDismiss = {
-                            DialogView.INSTANCE.clear()
-                        }
-                    )
-                }
-            }
-        }
-    }
-
-    private fun showRewardedVideo() {
-        Timber.tag(TAG).d("Admob showRewardedVideo rewardedAd $rewardedAd")
-        rewardedAd?.fullScreenContentCallback =
-            object : FullScreenContentCallback() {
-                override fun onAdDismissedFullScreenContent() {
-                    Timber.tag(TAG).d("Ad was dismissed.")
-                    // Don't forget to set the ad reference to null so you don't show the ad a second time.
-                    rewardedAd = null
-                    if (googleMobileAdsConsentManager.canRequestAds) {
-                        loadRewardedAd()
-                    }
-                }
-
-                override fun onAdFailedToShowFullScreenContent(adError: AdError) {
-                    Timber.tag(TAG).d("Ad failed to show.")
-                    // Don't forget to set the ad reference to null so you don't show the ad a second time.
-                    rewardedAd = null
-                }
-
-                override fun onAdShowedFullScreenContent() {
-                    Timber.tag(TAG).d("Ad showed fullscreen content.")
-                    // Called when ad is dismissed.
-                }
-            }
-
-        rewardedAd?.show(
-            this,
-            OnUserEarnedRewardListener { rewardItem ->
-                // Handle the reward.
-                val rewardAmount = rewardItem.amount
-                val rewardType = rewardItem.type
-                TrialLimitInfo.addTrialTime(applicationContext, rewardItem.amount)
-                Timber.tag(TAG).i("User earned the reward. $rewardAmount $rewardType")
-
-                val title = getString(R.string.message_ad_reward, rewardItem.amount)
-                val message = getString(R.string.message_ad_reward_detail, rewardItem.amount)
-
-                CoroutineScope(Dispatchers.Main).launch {
-                    DialogView.INSTANCE.cast(
-                        applicationContext = applicationContext,
-                        icon = Icons.Outlined.CardGiftcard,
-                        dialogTitle = title,
-                        dialogText = message,
-                        onConfirm = {
-                            finish()
-                        }
-                    )
-                }
-            },
-        )
-    }
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    //                                                                                            //
     //                                          Composable                                        //
     //                                                                                            //
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -631,9 +382,6 @@ class SettingsActivity : AVDActivity() {
     @OptIn(ExperimentalSharedTransitionApi::class)
     @Composable
     fun Settings(
-        onShowPremium: () -> Unit,
-        sharedTransitionScope: SharedTransitionScope,
-        animatedVisibilityScope: AnimatedVisibilityScope,
         paddingValues: PaddingValues,
     ) {
         val context = LocalContext.current
@@ -674,6 +422,9 @@ class SettingsActivity : AVDActivity() {
         val buttonColor = if (isDarkMode) Color(0xFFfafafa) else Color(0xFF171717)
 
         // Pointer docking delay
+        // 삼성 기기는 세로 중앙 가장자리의 '엣지 패널'과 도킹이 충돌하므로 도킹을 제공하지 않는다.
+        // 이 경우 도킹 지연시간 메뉴 자체를 숨긴다. (도킹 동작은 TargetHandleView 에서 비활성화)
+        val isSamsungDevice = Build.MANUFACTURER.equals("samsung", ignoreCase = true)
         val dockingDelayTextOffset = remember { mutableStateOf(Point(0, 0)) }
         val dockingDelaySubtextOffset = remember { mutableStateOf(Point(0, 0)) }
         val dockingDelay by viewModel.preferenceRepository.dockingDelayFlow.collectAsStateWithLifecycle(
@@ -734,21 +485,16 @@ class SettingsActivity : AVDActivity() {
             initialValue = 1.0f
         )
 
-        // AI text correction
-        val useCorrectionKit by viewModel.preferenceRepository.useCorrectionKitFlow.collectAsStateWithLifecycle(
-            lifecycle = lifecycleOwner.lifecycle,
-            initialValue = false
-        )
-
-        val correctionKit by viewModel.preferenceRepository.correctionKitTypeFlow.collectAsStateWithLifecycle(
-            lifecycle = lifecycleOwner.lifecycle,
-            initialValue = CorrectionKitType.CHAT_GPT
-        )
-
         // Automatic translation playback
         val automaticTranslationPlayback by viewModel.preferenceRepository.automaticTranslationPlaybackFlow.collectAsStateWithLifecycle(
             lifecycle = lifecycleOwner.lifecycle,
             initialValue = false
+        )
+
+        // TTS read target
+        val ttsReadTarget by viewModel.preferenceRepository.ttsReadTargetFlow.collectAsStateWithLifecycle(
+            lifecycle = lifecycleOwner.lifecycle,
+            initialValue = TTSReadTarget.SOURCE
         )
 
         // TTS Speech rate
@@ -787,12 +533,7 @@ class SettingsActivity : AVDActivity() {
         // target language
         val targetLanguageCode by viewModel.preferenceRepository.targetLanguageCodeFlow.collectAsStateWithLifecycle(
             lifecycle = lifecycleOwner.lifecycle,
-            initialValue = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                context.resources.configuration.locales.get(0).language
-            } else {
-                @Suppress("DEPRECATION")
-                context.resources.configuration.locale.language
-            }
+            initialValue = context.resources.configuration.locales.get(0).language
         )
         val targetLanguage = viewModel.translationRepository.getSupportedTargetLanguage(targetLanguageCode)
 
@@ -810,29 +551,12 @@ class SettingsActivity : AVDActivity() {
             return "${round(second / 1000.0 * 10) / 10} sec"
         }
 
-        val onPremiumTreeTrialTextResource = remember { mutableIntStateOf(R.string.settings_menu_on_premium_free_trial) }
-
         val remoteConfig by viewModel.remoteConfigRepository.remoteConfigFlow.collectAsStateWithLifecycle(
             lifecycle = lifecycleOwner.lifecycle,
             initialValue = 0
         )
         LaunchedEffect(remoteConfig) {
             Timber.tag(TAG).d("trialRemainMinutes ${TrialLimitInfo.trialRemainMinutes(applicationContext)} ")
-        }
-
-        val purchaseState: Int by viewModel.billingRepository.purchaseStateFlow.collectAsStateWithLifecycle(
-            lifecycle = lifecycleOwner.lifecycle,
-            initialValue = Purchase.PurchaseState.UNSPECIFIED_STATE
-        )
-
-        LaunchedEffect(purchaseState) {
-            if (purchaseState == Purchase.PurchaseState.PURCHASED) {
-                onPremiumTreeTrialTextResource.intValue = R.string.settings_menu_your_premium_benefits
-            } else if (purchaseState == Purchase.PurchaseState.PENDING) {
-                onPremiumTreeTrialTextResource.intValue = R.string.settings_menu_your_premium_benefits_peding
-            } else {
-                onPremiumTreeTrialTextResource.intValue = R.string.settings_menu_on_premium_free_trial
-            }
         }
 
         AutoRefreshEveryMinute {
@@ -893,7 +617,6 @@ class SettingsActivity : AVDActivity() {
                                 transTransparency = (translationTransparency * 100).roundToInt().toString(),
                                 closeDelay = translationCloseDelay.toString(),
                                 replyTransparency = (replyTransparency * 100).roundToInt().toString(),
-                                correctionKit = if (useCorrectionKit) correctionKit.name else "none",
                                 autoTTS = automaticTranslationPlayback.toString(),
                                 TTSVoice = ttsCurrentVoice?.name ?: "unknown",
                                 TTSRate = BigDecimal(ttsSpeechRate.toDouble()).setScale(1, RoundingMode.HALF_UP).toString(),
@@ -980,6 +703,7 @@ class SettingsActivity : AVDActivity() {
                                 isRtl = isRtl,
                             )
 
+                            if (!isSamsungDevice) {
                             MenuItem(
                                 menuItemPosition = MenuItemPosition.Top,
                                 onClick = {
@@ -1054,9 +778,10 @@ class SettingsActivity : AVDActivity() {
                                     }
                                 }
                             }
+                            } // if (!isSamsungDevice) — 삼성에서는 도킹 지연시간 메뉴 숨김
 
                             MenuItem(
-                                menuItemPosition = MenuItemPosition.Bottom,
+                                menuItemPosition = if (isSamsungDevice) MenuItemPosition.Single else MenuItemPosition.Bottom,
                                 onClick = {
                                     if (!dragHandleHaptic) {
                                         context.vibrate()
@@ -1343,47 +1068,52 @@ class SettingsActivity : AVDActivity() {
                             )
 
                             MenuCategory(
-                                painter = painterResource(id = R.drawable.ic_ai),
-                                categoryName = getString(R.string.settings_menu_cat_ai),
-                                iconSize = 25.dp,
+                                icon = Icons.Outlined.Api,
+                                categoryName = getString(R.string.settings_menu_cat_api_key),
                                 isRtl = isRtl,
                             )
 
-                            MenuItem(
-                                menuItemPosition = MenuItemPosition.Single,
+                            var showDeepLApiKeyDialog by remember { mutableStateOf(false) }
+                            var deepLKeyActivated by remember { mutableStateOf(DeepLKit.getStoredApiKey(context) != null) }
+                            var showOpenAiApiKeyDialog by remember { mutableStateOf(false) }
+                            var openAiKeyActivated by remember { mutableStateOf(OpenAiKit.getStoredApiKey(context) != null) }
+
+                            MenuTextItem(
+                                menuItemPosition = MenuItemPosition.Top,
+                                text = getString(R.string.settings_menu_deepl_api_key),
+                                paddingValues = paddingValues,
+                                subText = if (deepLKeyActivated) getString(R.string.deepl_key_active) else null,
                                 onClick = {
-                                    viewModel.updateUseCorrectionKit(!useCorrectionKit)
+                                    showDeepLApiKeyDialog = true
                                 }
-                            ) {
-                                Row(
-                                    modifier = Modifier.fillMaxWidth(),
-                                    verticalAlignment = Alignment.CenterVertically,
-                                    horizontalArrangement = Arrangement.SpaceBetween
-                                ) {
-                                    MenuText(
-                                        text = "ChatGPT",
-                                    )
-                                    Switch(
-                                        checked = useCorrectionKit,
-                                        onCheckedChange = { value ->
-                                            viewModel.updateUseCorrectionKit(value)
-                                        },
-                                        colors = SwitchDefaults.colors(
-                                            checkedThumbColor = switchThumbColor,
-                                            checkedTrackColor = switchTrackColor
-                                        ),
-                                        modifier = Modifier
-                                            .scale(switchScale)
-                                            .align(Alignment.CenterVertically)
-                                            .semantics {
-                                                contentDescription = if (useCorrectionKit) {
-                                                    "ChatGPT text correction on"
-                                                } else {
-                                                    "ChatGPT text correction off"
-                                                }
-                                            },
-                                    )
+                            )
+
+                            MenuTextItem(
+                                menuItemPosition = MenuItemPosition.Bottom,
+                                text = getString(R.string.settings_menu_openai_api_key),
+                                paddingValues = paddingValues,
+                                subText = if (openAiKeyActivated) getString(R.string.deepl_key_active) else null,
+                                onClick = {
+                                    showOpenAiApiKeyDialog = true
                                 }
+                            )
+
+                            if (showDeepLApiKeyDialog) {
+                                DeepLApiKeyDialog(
+                                    onDismissRequest = {
+                                        showDeepLApiKeyDialog = false
+                                        deepLKeyActivated = DeepLKit.getStoredApiKey(context) != null
+                                    }
+                                )
+                            }
+
+                            if (showOpenAiApiKeyDialog) {
+                                OpenAiApiKeyDialog(
+                                    onDismissRequest = {
+                                        showOpenAiApiKeyDialog = false
+                                        openAiKeyActivated = OpenAiKit.getStoredApiKey(context) != null
+                                    }
+                                )
                             }
 
                             MenuCategory(
@@ -1476,43 +1206,6 @@ class SettingsActivity : AVDActivity() {
                                 }
                             )
 
-                            MenuItem(
-                                menuItemPosition = MenuItemPosition.Middle,
-                                onClick = {
-                                    viewModel.updateAutomaticTranslationPlayback(!automaticTranslationPlayback)
-                                }
-                            ) {
-                                Row(
-                                    modifier = Modifier.fillMaxWidth(),
-                                    verticalAlignment = Alignment.CenterVertically,
-                                    horizontalArrangement = Arrangement.SpaceBetween
-                                ) {
-                                    MenuText(
-                                        text = getString(R.string.settings_menu_automated_read_aloud),
-                                    )
-                                    Switch(
-                                        checked = automaticTranslationPlayback,
-                                        onCheckedChange = { value ->
-                                            viewModel.updateAutomaticTranslationPlayback(value)
-                                        },
-                                        colors = SwitchDefaults.colors(
-                                            checkedThumbColor = switchThumbColor,
-                                            checkedTrackColor = switchTrackColor
-                                        ),
-                                        modifier = Modifier
-                                            .scale(switchScale)
-                                            .align(Alignment.CenterVertically)
-                                            .semantics {
-                                                contentDescription = if (automaticTranslationPlayback) {
-                                                    "Automated read aloud on"
-                                                } else {
-                                                    "Automated read aloud off"
-                                                }
-                                            },
-                                    )
-                                }
-                            }
-
                             MenuTextItem(
                                 menuItemPosition = MenuItemPosition.Bottom,
                                 text = getString(R.string.settings_menu_reply_transparency),
@@ -1552,9 +1245,93 @@ class SettingsActivity : AVDActivity() {
                                     isRtl = isRtl,
                                 )
 
+                                // 읽기 대상 (소스/타겟)
+                                MenuItem(
+                                    menuItemPosition = MenuItemPosition.Top,
+                                ) {
+                                    Row(
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .padding(end = 6.dp),
+                                        verticalAlignment = Alignment.CenterVertically,
+                                        horizontalArrangement = Arrangement.SpaceBetween
+                                    ) {
+                                        MenuText(
+                                            text = getString(R.string.settings_menu_tts_read_target),
+                                        )
+                                        Row(
+                                            modifier = Modifier
+                                                .clip(RoundedCornerShape(17.dp))
+                                                .background(if (isDarkMode) Color(0xFF2b2b2b) else Color(0xFFe8e8e8))
+                                                .padding(3.dp)
+                                        ) {
+                                            TTSReadTarget.entries.forEach { readTarget ->
+                                                val selected = ttsReadTarget == readTarget
+                                                val label = when (readTarget) {
+                                                    TTSReadTarget.SOURCE -> getString(R.string.settings_tts_read_target_source)
+                                                    TTSReadTarget.TARGET -> getString(R.string.settings_tts_read_target_target)
+                                                }
+                                                Text(
+                                                    text = label,
+                                                    color = if (selected) switchThumbColor else Color(0xFF848487),
+                                                    style = MaterialTheme.typography.bodyMedium.copy(fontSize = fontDimensionResource(R.dimen.settings_menu_subtext_size)),
+                                                    modifier = Modifier
+                                                        .clip(RoundedCornerShape(14.dp))
+                                                        .background(if (selected) switchTrackColor else Color.Transparent)
+                                                        .clickable {
+                                                            viewModel.updateTtsReadTarget(readTarget)
+                                                        }
+                                                        .padding(horizontal = 12.dp, vertical = 5.dp)
+                                                        .semantics {
+                                                            contentDescription = "TTS read target ${readTarget.name}"
+                                                        },
+                                                )
+                                            }
+                                        }
+                                    }
+                                }
+
+                                // 번역 자동 읽기 (읽기 대상에 따라 소스/타겟 텍스트를 자동 재생)
+                                MenuItem(
+                                    menuItemPosition = MenuItemPosition.Middle,
+                                    onClick = {
+                                        viewModel.updateAutomaticTranslationPlayback(!automaticTranslationPlayback)
+                                    }
+                                ) {
+                                    Row(
+                                        modifier = Modifier.fillMaxWidth(),
+                                        verticalAlignment = Alignment.CenterVertically,
+                                        horizontalArrangement = Arrangement.SpaceBetween
+                                    ) {
+                                        MenuText(
+                                            text = getString(R.string.settings_menu_automated_read_aloud),
+                                        )
+                                        Switch(
+                                            checked = automaticTranslationPlayback,
+                                            onCheckedChange = { value ->
+                                                viewModel.updateAutomaticTranslationPlayback(value)
+                                            },
+                                            colors = SwitchDefaults.colors(
+                                                checkedThumbColor = switchThumbColor,
+                                                checkedTrackColor = switchTrackColor
+                                            ),
+                                            modifier = Modifier
+                                                .scale(switchScale)
+                                                .align(Alignment.CenterVertically)
+                                                .semantics {
+                                                    contentDescription = if (automaticTranslationPlayback) {
+                                                        "Automated read aloud on"
+                                                    } else {
+                                                        "Automated read aloud off"
+                                                    }
+                                                },
+                                        )
+                                    }
+                                }
+
                                 if (ttsAvailableVoices.isNotEmpty()) {
                                     MenuTextItem(
-                                        menuItemPosition = MenuItemPosition.Top,
+                                        menuItemPosition = MenuItemPosition.Middle,
                                         text = getString(R.string.settings_menu_tts_voices),
                                         paddingValues = paddingValues,
                                         subText = ttsCurrentVoice?.name,
@@ -1567,7 +1344,7 @@ class SettingsActivity : AVDActivity() {
                                 }
 
                                 MenuItem(
-                                    menuItemPosition = if (ttsAvailableVoices.isEmpty()) MenuItemPosition.Single else MenuItemPosition.Bottom,
+                                    menuItemPosition = MenuItemPosition.Bottom,
                                     onClick = {
                                         coroutineScope.launch {
                                             settingFloatFlow.value = ttsSpeechRate
@@ -1645,49 +1422,8 @@ class SettingsActivity : AVDActivity() {
                                 isRtl = isRtl,
                             )
 
-                            with(sharedTransitionScope) {
-                                MenuItem(
-                                    menuItemPosition = MenuItemPosition.Top,
-                                    onClick = {
-                                        onShowPremium()
-                                        viewModel.analyticsRepository.screenViewReport("Premium")
-                                    },
-                                ) {
-                                    Row(
-                                        modifier = Modifier
-                                            .fillMaxWidth()
-                                            .heightIn(min = 50.dp)
-                                            .padding(end = 6.dp),
-                                        verticalAlignment = Alignment.CenterVertically,
-                                        horizontalArrangement = Arrangement.SpaceBetween
-                                    ) {
-                                        Column {
-                                            MenuText(
-                                                text = stringResource(id = onPremiumTreeTrialTextResource.intValue),
-                                                modifier = Modifier
-                                                    .sharedElement(
-                                                        rememberSharedContentState(key = "menu_premium"),
-                                                        animatedVisibilityScope = animatedVisibilityScope
-                                                    )
-                                            )
-                                            MenuSubText(
-                                                text = context.getString(R.string.settings_menu_premium_free_trial_remain, TrialLimitInfo.trialRemainMinutes(context)),
-                                                paddingValues = paddingValues
-                                            )
-                                        }
-
-                                        Image(
-                                            painter = painterResource(id = R.drawable.image_premium_gray),
-                                            contentDescription = "image_premium",
-                                            colorFilter = ColorFilter.tint(Color(0xFF848487)),
-                                            modifier = Modifier.size(28.dp)
-                                        )
-                                    }
-                                }
-                            }
-
                             MenuItem(
-                                menuItemPosition = MenuItemPosition.Bottom,
+                                menuItemPosition = MenuItemPosition.Top,
                                 onClick = {
                                     context.gotoStore(
                                         newTask = false,
@@ -1732,6 +1468,27 @@ class SettingsActivity : AVDActivity() {
                                             paddingValues = paddingValues
                                         )
                                     }
+                                }
+                            }
+
+                            MenuItem(
+                                menuItemPosition = MenuItemPosition.Bottom,
+                                onClick = {
+                                    val githubIntent = Intent(Intent.ACTION_VIEW, GITHUB_REPO_URL.toUri())
+                                    context.startActivity(githubIntent)
+                                    viewModel.analyticsRepository.screenViewReport("GitHub")
+                                },
+                            ) {
+                                Row(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .heightIn(min = 50.dp)
+                                        .padding(end = 6.dp),
+                                    verticalAlignment = Alignment.CenterVertically,
+                                ) {
+                                    MenuText(
+                                        text = getString(R.string.settings_menu_github),
+                                    )
                                 }
                             }
 
@@ -1893,6 +1650,441 @@ class SettingsActivity : AVDActivity() {
                         paddingValues = paddingValues,
                         onSubtextPositioned = onSubtextPositioned
                     )
+                }
+            }
+        }
+    }
+
+    /**
+     * DeepL API 키 입력 팝업.
+     * 언어 선택 팝업과 같은 카드 스타일로, 로고/안내/계정 링크와 키 입력·저장을 제공한다.
+     */
+    @Composable
+    fun DeepLApiKeyDialog(
+        onDismissRequest: () -> Unit,
+    ) {
+        val context = LocalContext.current
+        val isDarkMode = isSystemInDarkTheme()
+        val backgroundColor = if (isDarkMode) Color(0xFF1F1F1F) else Color(0xFFFEFEFE)
+        val titleColor = if (isDarkMode) Color(0xFFFFFFFF) else Color(0xFF000000)
+        val contentColor = if (isDarkMode) Color(0xFFFDFDFD) else Color(0xFF232323)
+        val linkColor = if (isDarkMode) Color(0xFF6A91B2) else Color(0xFF446987)
+
+        var apiKeyInput by remember { mutableStateOf(DeepLKit.getStoredApiKey(context) ?: "") }
+        var isValidating by remember { mutableStateOf(false) }
+        var showInvalidKeyError by remember { mutableStateOf(false) }
+        val coroutineScope = rememberCoroutineScope()
+
+        /**
+         * 저장 처리.
+         * - 빈 값: 검증 없이 키 삭제(비활성화). 선택된 엔진이 DeepL 이면 Google 로 되돌린다.
+         * - 값 있음: 사용량 조회로 검증. 무효 키는 저장하지 않고 오류 표시,
+         *   네트워크 오류는 키 문제로 볼 수 없으므로 저장하고 안내만 한다.
+         */
+        fun saveApiKey() {
+            val trimmedKey = apiKeyInput.trim()
+            if (trimmedKey.isEmpty()) {
+                DeepLKit.storeApiKey(context, "")
+                coroutineScope.launch {
+                    if (viewModel.preferenceRepository.translationKitTypeFlow.first() == TranslationKitType.DEEPL) {
+                        viewModel.preferenceRepository.update(PreferenceRepository.TRANSLATION_KIT_TYPE, TranslationKitType.GOOGLE.name)
+                    }
+                }
+                onDismissRequest()
+                return
+            }
+
+            isValidating = true
+            showInvalidKeyError = false
+            coroutineScope.launch {
+                when (DeepLKit.validateApiKey(trimmedKey)) {
+                    DeepLKit.KeyValidationResult.VALID -> {
+                        DeepLKit.storeApiKey(context, trimmedKey)
+                        onDismissRequest()
+                    }
+
+                    DeepLKit.KeyValidationResult.INVALID -> {
+                        isValidating = false
+                        showInvalidKeyError = true
+                    }
+
+                    DeepLKit.KeyValidationResult.NETWORK_ERROR -> {
+                        DeepLKit.storeApiKey(context, trimmedKey)
+                        Toast.makeText(context, getString(R.string.deepl_key_network_error), Toast.LENGTH_LONG).show()
+                        onDismissRequest()
+                    }
+                }
+            }
+        }
+
+        @Composable
+        fun LinkText(text: String, url: String) {
+            Text(
+                text = text,
+                color = linkColor,
+                textDecoration = TextDecoration.Underline,
+                style = MaterialTheme.typography.bodySmall.copy(fontSize = 13.sp),
+                modifier = Modifier
+                    .clickable {
+                        context.startActivity(Intent(Intent.ACTION_VIEW, url.toUri()))
+                    }
+                    .padding(vertical = 6.dp),
+            )
+        }
+
+        Dialog(onDismissRequest = onDismissRequest) {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(
+                        color = backgroundColor,
+                        shape = RoundedCornerShape(24.dp)
+                    )
+                    .padding(horizontal = 24.dp, vertical = 22.dp)
+            ) {
+                // 로고 + 타이틀
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Image(
+                        painter = painterResource(id = R.drawable.ci_deepl),
+                        contentDescription = "DeepL logo",
+                        modifier = Modifier.size(26.dp),
+                    )
+                    Spacer(modifier = Modifier.width(10.dp))
+                    Text(
+                        text = TranslationKitType.DEEPL.text,
+                        color = titleColor,
+                        style = MaterialTheme.typography.titleLarge.copy(fontSize = 16.sp, fontWeight = FontWeight.Bold),
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(18.dp))
+
+                Text(
+                    text = getString(R.string.deepl_key_guide),
+                    color = contentColor,
+                    style = MaterialTheme.typography.bodySmall.copy(fontSize = 13.sp),
+                )
+
+                Spacer(modifier = Modifier.height(8.dp))
+
+                Text(
+                    text = getString(R.string.deepl_key_signup_guide),
+                    color = contentColor,
+                    style = MaterialTheme.typography.bodySmall.copy(fontSize = 13.sp),
+                )
+
+                Spacer(modifier = Modifier.height(10.dp))
+
+                LinkText(
+                    text = getString(R.string.deepl_key_link_subscription),
+                    url = DeepLKit.URL_SUBSCRIPTION,
+                )
+                LinkText(
+                    text = getString(R.string.deepl_key_link_keys),
+                    url = DeepLKit.URL_API_KEYS,
+                )
+
+                Spacer(modifier = Modifier.height(14.dp))
+
+                OutlinedTextField(
+                    value = apiKeyInput,
+                    onValueChange = {
+                        apiKeyInput = it
+                        showInvalidKeyError = false
+                    },
+                    label = { Text(text = "API Key") },
+                    singleLine = true,
+                    enabled = !isValidating,
+                    isError = showInvalidKeyError,
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = OutlinedTextFieldDefaults.colors(
+                        focusedTextColor = contentColor,
+                        unfocusedTextColor = contentColor,
+                        focusedBorderColor = linkColor,
+                        focusedLabelColor = linkColor,
+                        cursorColor = linkColor,
+                    ),
+                )
+
+                if (showInvalidKeyError) {
+                    Spacer(modifier = Modifier.height(6.dp))
+                    Text(
+                        text = getString(R.string.deepl_key_invalid),
+                        color = Color(0xFFB3261E),
+                        style = MaterialTheme.typography.bodySmall.copy(fontSize = 13.sp),
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(10.dp))
+
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.End,
+                ) {
+                    TextButton(
+                        onClick = onDismissRequest,
+                        enabled = !isValidating,
+                    ) {
+                        Text(
+                            text = stringResource(id = android.R.string.cancel),
+                            color = contentColor,
+                            fontSize = 15.sp,
+                        )
+                    }
+                    TextButton(
+                        onClick = { saveApiKey() },
+                        enabled = !isValidating,
+                    ) {
+                        Text(
+                            text = if (isValidating) getString(R.string.deepl_key_validating) else getString(R.string.label_save),
+                            color = linkColor,
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 15.sp,
+                        )
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * OpenAI API 키 입력 + 번역 모델 선택 팝업. DeepL 다이얼로그와 같은 카드 스타일.
+     * 모델 후보는 Remote Config([RemoteConfigRepository.OPENAI_TRANSLATE_MODELS])에서 온다.
+     */
+    @Composable
+    fun OpenAiApiKeyDialog(
+        onDismissRequest: () -> Unit,
+    ) {
+        val context = LocalContext.current
+        val isDarkMode = isSystemInDarkTheme()
+        val backgroundColor = if (isDarkMode) Color(0xFF1F1F1F) else Color(0xFFFEFEFE)
+        val titleColor = if (isDarkMode) Color(0xFFFFFFFF) else Color(0xFF000000)
+        val contentColor = if (isDarkMode) Color(0xFFFDFDFD) else Color(0xFF232323)
+        val linkColor = if (isDarkMode) Color(0xFF6A91B2) else Color(0xFF446987)
+
+        var apiKeyInput by remember { mutableStateOf(OpenAiKit.getStoredApiKey(context) ?: "") }
+        var isValidating by remember { mutableStateOf(false) }
+        var showInvalidKeyError by remember { mutableStateOf(false) }
+        val coroutineScope = rememberCoroutineScope()
+
+        // 번역 모델 후보(Remote Config)와 현재 선택값
+        val models = remember { viewModel.remoteConfigRepository.getOpenAiTranslateModels() }
+        var selectedModel by remember { mutableStateOf<String?>(null) }
+        LaunchedEffect(Unit) {
+            // 저장된 모델이 현재 후보 목록에 없으면(원격에서 목록 변경) 첫 번째를 기본 선택으로 둔다.
+            val saved = viewModel.preferenceRepository.openAiModelFlow.first()
+            selectedModel = saved?.takeIf { it in models } ?: models.firstOrNull()
+        }
+
+        fun persistModel() {
+            selectedModel?.let { model ->
+                coroutineScope.launch {
+                    viewModel.preferenceRepository.update(PreferenceRepository.OPENAI_MODEL, model)
+                }
+            }
+        }
+
+        /**
+         * 저장 처리.
+         * - 빈 값: 검증 없이 키 삭제(비활성화). 선택된 엔진이 OpenAI 면 Google 로 되돌린다.
+         * - 값 있음: 모델 조회로 검증. 무효 키는 저장하지 않고 오류 표시,
+         *   네트워크 오류는 키 문제로 볼 수 없으므로 저장하고 안내만 한다.
+         * 모델 선택은 키 유효성과 무관하게 항상 저장한다.
+         */
+        fun saveApiKey() {
+            persistModel()
+            val trimmedKey = apiKeyInput.trim()
+            if (trimmedKey.isEmpty()) {
+                OpenAiKit.storeApiKey(context, "")
+                coroutineScope.launch {
+                    if (viewModel.preferenceRepository.translationKitTypeFlow.first() == TranslationKitType.OPENAI) {
+                        viewModel.preferenceRepository.update(PreferenceRepository.TRANSLATION_KIT_TYPE, TranslationKitType.GOOGLE.name)
+                    }
+                }
+                onDismissRequest()
+                return
+            }
+
+            isValidating = true
+            showInvalidKeyError = false
+            coroutineScope.launch {
+                when (OpenAiKit.validateApiKey(trimmedKey)) {
+                    OpenAiKit.KeyValidationResult.VALID -> {
+                        OpenAiKit.storeApiKey(context, trimmedKey)
+                        onDismissRequest()
+                    }
+
+                    OpenAiKit.KeyValidationResult.INVALID -> {
+                        isValidating = false
+                        showInvalidKeyError = true
+                    }
+
+                    OpenAiKit.KeyValidationResult.NETWORK_ERROR -> {
+                        OpenAiKit.storeApiKey(context, trimmedKey)
+                        Toast.makeText(context, getString(R.string.deepl_key_network_error), Toast.LENGTH_LONG).show()
+                        onDismissRequest()
+                    }
+                }
+            }
+        }
+
+        @Composable
+        fun LinkText(text: String, url: String) {
+            Text(
+                text = text,
+                color = linkColor,
+                textDecoration = TextDecoration.Underline,
+                style = MaterialTheme.typography.bodySmall.copy(fontSize = 13.sp),
+                modifier = Modifier
+                    .clickable {
+                        context.startActivity(Intent(Intent.ACTION_VIEW, url.toUri()))
+                    }
+                    .padding(vertical = 6.dp),
+            )
+        }
+
+        Dialog(onDismissRequest = onDismissRequest) {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(
+                        color = backgroundColor,
+                        shape = RoundedCornerShape(24.dp)
+                    )
+                    .padding(horizontal = 24.dp, vertical = 22.dp)
+            ) {
+                // 로고 + 타이틀
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Image(
+                        painter = painterResource(id = R.drawable.ci_openai),
+                        contentDescription = "OpenAI logo",
+                        modifier = Modifier.size(26.dp),
+                    )
+                    Spacer(modifier = Modifier.width(10.dp))
+                    Text(
+                        text = TranslationKitType.OPENAI.text,
+                        color = titleColor,
+                        style = MaterialTheme.typography.titleLarge.copy(fontSize = 16.sp, fontWeight = FontWeight.Bold),
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(18.dp))
+
+                Text(
+                    text = getString(R.string.openai_key_guide),
+                    color = contentColor,
+                    style = MaterialTheme.typography.bodySmall.copy(fontSize = 13.sp),
+                )
+
+                Spacer(modifier = Modifier.height(8.dp))
+
+                Text(
+                    text = getString(R.string.openai_key_signup_guide),
+                    color = contentColor,
+                    style = MaterialTheme.typography.bodySmall.copy(fontSize = 13.sp),
+                )
+
+                Spacer(modifier = Modifier.height(10.dp))
+
+                LinkText(
+                    text = getString(R.string.openai_key_link_keys),
+                    url = OpenAiKit.URL_API_KEYS,
+                )
+                LinkText(
+                    text = getString(R.string.openai_key_link_billing),
+                    url = OpenAiKit.URL_BILLING,
+                )
+
+                Spacer(modifier = Modifier.height(14.dp))
+
+                OutlinedTextField(
+                    value = apiKeyInput,
+                    onValueChange = {
+                        apiKeyInput = it
+                        showInvalidKeyError = false
+                    },
+                    label = { Text(text = "API Key") },
+                    singleLine = true,
+                    enabled = !isValidating,
+                    isError = showInvalidKeyError,
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = OutlinedTextFieldDefaults.colors(
+                        focusedTextColor = contentColor,
+                        unfocusedTextColor = contentColor,
+                        focusedBorderColor = linkColor,
+                        focusedLabelColor = linkColor,
+                        cursorColor = linkColor,
+                    ),
+                )
+
+                if (showInvalidKeyError) {
+                    Spacer(modifier = Modifier.height(6.dp))
+                    Text(
+                        text = getString(R.string.deepl_key_invalid),
+                        color = Color(0xFFB3261E),
+                        style = MaterialTheme.typography.bodySmall.copy(fontSize = 13.sp),
+                    )
+                }
+
+                // 번역 모델 선택
+                if (models.isNotEmpty()) {
+                    Spacer(modifier = Modifier.height(16.dp))
+                    Text(
+                        text = getString(R.string.openai_model_label),
+                        color = titleColor,
+                        style = MaterialTheme.typography.titleMedium.copy(fontSize = 14.sp, fontWeight = FontWeight.Bold),
+                    )
+                    Spacer(modifier = Modifier.height(4.dp))
+                    models.forEach { model ->
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clickable(enabled = !isValidating) { selectedModel = model }
+                                .padding(vertical = 2.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                        ) {
+                            RadioButton(
+                                selected = selectedModel == model,
+                                onClick = { selectedModel = model },
+                                enabled = !isValidating,
+                                colors = RadioButtonDefaults.colors(selectedColor = linkColor),
+                            )
+                            Text(
+                                text = model,
+                                color = contentColor,
+                                style = MaterialTheme.typography.bodyMedium.copy(fontSize = 14.sp),
+                            )
+                        }
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(10.dp))
+
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.End,
+                ) {
+                    TextButton(
+                        onClick = onDismissRequest,
+                        enabled = !isValidating,
+                    ) {
+                        Text(
+                            text = stringResource(id = android.R.string.cancel),
+                            color = contentColor,
+                            fontSize = 15.sp,
+                        )
+                    }
+                    TextButton(
+                        onClick = { saveApiKey() },
+                        enabled = !isValidating,
+                    ) {
+                        Text(
+                            text = if (isValidating) getString(R.string.deepl_key_validating) else getString(R.string.label_save),
+                            color = linkColor,
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 15.sp,
+                        )
+                    }
                 }
             }
         }

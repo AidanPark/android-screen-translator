@@ -5,10 +5,13 @@ import android.speech.tts.TextToSpeech
 import android.speech.tts.UtteranceProgressListener
 import android.speech.tts.Voice
 import com.galaxy.airviewdictionary.data.AVDRepository
+import com.galaxy.airviewdictionary.data.local.preference.PreferenceRepository
+import com.galaxy.airviewdictionary.extensions.voiceNameMatchesLanguage
 import com.galaxy.airviewdictionary.ui.screen.overlay.translation.TTSStatus
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.first
 import timber.log.Timber
 import java.util.Locale
@@ -17,7 +20,10 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class TTSRepository @Inject constructor(@ApplicationContext val context: Context) : AVDRepository() {
+class TTSRepository @Inject constructor(
+    @ApplicationContext val context: Context,
+    private val preferenceRepository: PreferenceRepository,
+) : AVDRepository() {
 
     private var tts: TextToSpeech? = null
     private var ttsForText: TextToSpeech? = null
@@ -106,6 +112,42 @@ class TTSRepository @Inject constructor(@ApplicationContext val context: Context
         }
     }
 
+    /**
+     * TTS 활성 목소리를 읽기 대상(소스/타겟) 언어 설정에 연동한다.
+     *
+     * - 읽기 대상이 소스: 소스 언어를 따른다.
+     *   소스가 auto 면 시스템 로케일 언어를 기준으로 한다 (번역 시 감지 언어의 목소리로 교체됨)
+     * - 읽기 대상이 타겟: 타겟 언어를 따른다
+     * - 해당 언어의 목소리가 기기에 없으면: 직전 목소리를 유지한다
+     */
+    private fun collectReadTargetLanguageVoice() {
+        launchInAVDCoroutineScope {
+            combine(
+                preferenceRepository.ttsReadTargetFlow,
+                preferenceRepository.sourceLanguageCodeFlow,
+                preferenceRepository.targetLanguageCodeFlow,
+                preferenceRepository.ttsOrderedVoiceNamesFlow,
+                availableVoicesFlow,
+            ) { readTarget, sourceLanguageCode, targetLanguageCode, orderedVoiceNames, availableVoices ->
+                if (availableVoices.isEmpty()) return@combine null // TTS 초기화 전
+
+                val languageCode = when (readTarget) {
+                    TTSReadTarget.SOURCE -> if (sourceLanguageCode == "auto") getCurrentLocale().language else sourceLanguageCode
+                    TTSReadTarget.TARGET -> targetLanguageCode
+                }
+                val preferredVoiceName = orderedVoiceNames.firstOrNull { voiceName ->
+                    voiceNameMatchesLanguage(voiceName, languageCode)
+                } ?: availableVoices.map { it.name }.firstOrNull { voiceName ->
+                    voiceNameMatchesLanguage(voiceName, languageCode)
+                }
+                Timber.tag(TAG).i("collectReadTargetLanguageVoice $readTarget -> $languageCode preferred $preferredVoiceName")
+                preferredVoiceName
+            }.collect { preferredVoiceName ->
+                preferredVoiceName?.let { setVoice(it) }
+            }
+        }
+    }
+
     fun stopTTS() {
         Timber.tag(TAG).i("------------ stopTTS --------------")
         tts?.stop()
@@ -155,6 +197,36 @@ class TTSRepository @Inject constructor(@ApplicationContext val context: Context
         tts?.speak(text, TextToSpeech.QUEUE_FLUSH, null, utteranceId)
     }
 
+    /**
+     * 지정한 언어에 맞는 목소리를 확정한 뒤 재생한다.
+     * (읽기 대상이 소스이고 소스 언어가 auto 인 경우, 번역 시 감지된 언어의 목소리로 읽기 위함.
+     * 목소리 전환 flow 와 재생 사이의 경쟁을 피하기 위해 같은 코루틴에서 순서를 보장한다)
+     *
+     * - 현재 목소리가 이미 해당 언어면: 유지 (사용자가 고른 목소리 존중)
+     * - 아니면: 우선순위 목록에서 찾고, 없으면 기기 목소리 전체에서 찾는다
+     * - 해당 언어의 목소리가 없으면: 현재 목소리로 재생한다
+     */
+    fun playTTSForLanguage(text: String, languageCode: String?, speechRate: Float? = 1.0f) {
+        launchInAVDCoroutineScope {
+            if (languageCode != null) {
+                val currentVoice = tts?.voice
+                if (currentVoice == null || !voiceNameMatchesLanguage(currentVoice.name, languageCode)) {
+                    val availableVoices = availableVoicesFlow.first()
+                    val orderedVoiceNames = preferenceRepository.ttsOrderedVoiceNamesFlow.first()
+                    val matchingVoiceName = orderedVoiceNames.firstOrNull { voiceNameMatchesLanguage(it, languageCode) }
+                        ?: availableVoices.map { it.name }.firstOrNull { voiceNameMatchesLanguage(it, languageCode) }
+                    val matchingVoice = matchingVoiceName?.let { name -> availableVoices.firstOrNull { it.name == name } }
+                    Timber.tag(TAG).i("playTTSForLanguage $languageCode -> $matchingVoiceName")
+                    matchingVoice?.let {
+                        tts?.setVoice(it)
+                        currentVoiceFlow.value = it
+                    }
+                }
+            }
+            playTTS(text, speechRate)
+        }
+    }
+
     fun playTestTTS(text: String, speechRate: Float? = 1.0f, voice: Voice? = null) {
         Timber.tag(TAG).i("playTestTTS Starting TTS playback for text: $text")
         val utteranceId = UUID.randomUUID().toString()
@@ -172,5 +244,6 @@ class TTSRepository @Inject constructor(@ApplicationContext val context: Context
     init {
         initTTS(getCurrentLocale())
         initTTSForText()
+        collectReadTargetLanguageVoice()
     }
 }

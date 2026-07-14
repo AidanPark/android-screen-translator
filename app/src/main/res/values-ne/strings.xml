@@ -8,14 +8,10 @@
     <!-- Overlay Permission -->
     <string name="message_permission_overlay">आवश्यक अनुमतिः\nअन्य एपहरूमाथि प्रदर्शन</string>
     <string name="message_permission_overlay_detail">स्क्रिन अनुवादक सुरु गर्न, तपाईंले अन्य एपहरूमाथि प्रदर्शनको अनुमति दिनुपर्छ।</string>
-    <string name="message_permission_overlay_denied">ओभरले अनुमति अस्वीकृत</string>
-    <string name="message_permission_overlay_denied_detail">ओभरले अनुमति दिइएन।\nएप बन्द गरिन्छ।</string>
 
     <!-- MediaProjection token -->
     <string name="message_media_projection">आवश्यक अनुमतिः\nस्क्रिन रेकर्डिङ</string>
     <string name="message_media_projection_detail">स्क्रिन अनुवादक सुरु गर्न, तपाईंले स्क्रिन रेकर्डिङको अनुमति दिनुपर्छ।\n\nस्क्रिनमा देखिएको जानकारी केवल अनुवादको लागि प्रयोग गरिन्छ र अन्यत्र पठाइँदैन वा भण्डारण गरिँदैन।</string>
-    <string name="message_media_projection_denied">स्क्रिन रेकर्डिङ अनुमति अस्वीकृत</string>
-    <string name="message_media_projection_denied_detail">स्क्रिन रेकर्डिङ अनुमति दिइएन।\nएप बन्द गरिन्छ।</string>
 
     <!-- Foreground Service -->
     <string name="notification_foreground_service">अनुवादको लागि स्क्रिन क्याप्चर सुविधा प्रयोग भइरहेको छ।</string>
@@ -23,7 +19,6 @@
     <string name="message_start_foreground_service">एपले स्क्रिन सामग्री क्याप्चर र अनुवाद गर्न अग्रभूमि सेवा सुरु गर्छ।\n\nक्याप्चर गरिएका छविहरू सुरक्षित गरिँदैनन् वा बाह्य रूपमा पठाइँदैनन्।</string>
     <string name="label_confirm_start_foreground_service">सुरु गर्नुहोस्</string>
     <string name="label_dismiss_start_foreground_service">समाप्त गर्नुहोस्</string>
-    <string name="snack_message_start_foreground_service">एपले स्क्रिन सामग्री क्याप्चर र अनुवाद गर्न अग्रभूमि सेवा सुरु गर्छ।</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">समाप्त गर्नुहोस्</string>
@@ -36,18 +31,6 @@
     <string name="title_voice_list_view">उपलब्ध आवाजहरू</string>
 
     <!-- Dialog -->
-    <string name="message_authentication_error">प्रमाणीकरण त्रुटि</string>
-    <string name="message_authentication_error_detail">प्रमाणीकरण सर्भर प्रतिक्रिया दिँदैन।\nकृपया पछि प्रयास गर्नुहोस्।</string>
-    <string name="message_untrusted_environment">अविश्वसनीय वातावरण</string>
-    <string name="message_untrusted_environment_detail">तपाईंको एपले Google Play को अखण्डता परीक्षण पास गरेन।</string>
-    <string name="message_unknown_device">अज्ञात उपकरण</string>
-    <string name="message_unknown_device_detail">यो उपकरण समर्थित छैन।</string>
-    <string name="message_authentication_required">प्रमाणीकरण आवश्यक</string>
-    <string name="message_authentication_required_detail">तपाईं Google सँग लग इन हुनुपर्छ।</string>
-    <string name="message_playstore_update_required">Play Store अपडेट आवश्यक</string>
-    <string name="message_playstore_update_required_detail">Play Store को सेवा बाँध्न असफल भयो।\nयो पुरानो संस्करणको कारण हुन सक्छ।</string>
-    <string name="message_unknown_source">Play बाट यो एप प्राप्त गर्नुहोस्</string>
-    <string name="message_unknown_source_detail">उत्कृष्ट एप प्रयोग जारी राख्न, कृपया Google Play बाट प्राप्त गर्नुहोस्।</string>
     <string name="message_force_update">अपडेट आवश्यक</string>
     <string name="message_force_update_detail">यो संस्करण अब समर्थित छैन।\nस्टोरमा जानुहोस्।</string>
     <string name="message_service_unavailable">सेवा उपलब्ध छैन</string>
@@ -56,61 +39,57 @@
     <string name="message_network_unavailable_detail">नेटवर्क उपलब्ध छैन।\nकृपया जाँच गर्नुहोस् र पुन: प्रयास गर्नुहोस्।</string>
     <string name="message_translate_fixedarea_warn">ब्याट्री चेतावनी</string>
     <string name="message_translate_fixedarea_warn_detail">ब्याट्री छिटो सकिन सक्छ।</string>
-    <string name="message_translate_fixedarea_promotion">उत्पादन खरिद जानकारी</string>
-    <string name="message_translate_fixedarea_promotion_detail">हाम्रो प्रिमियम सुविधाहरूको बारेमा मैत्रीपूर्ण सम्झना प्रत्येक %1$s मिनेटमा देखापर्नेछ।</string>
-    <string name="message_free_trial_ends">तपाईंको निःशुल्क परीक्षण समाप्त भयो।</string>
-    <string name="message_free_trial_ends_detail">निःशुल्क परीक्षण समय बढाउन विज्ञापन हेर्न चाहनुहुन्छ?</string>
-    <string name="message_ad_reward">तपाईंले थप %1$d मिनेटको निःशुल्क परीक्षण प्राप्त गर्नुभएको छ!</string>
-    <string name="message_ad_reward_detail">अबका %1$d मिनेटसम्म सबै प्रिमियम सुविधाहरू निःशुल्क प्रयोग गर्नुहोस्।</string>
+    <string name="ad_gate_loading">विज्ञापन तयार हुँदैछ…</string>
+    <string name="ad_gate_reward_notice">विज्ञापन अन्त्यसम्म हेर्नुहोस् र एप बन्द नगरेसम्म विज्ञापनविना प्रयोग गर्नुहोस्।</string>
 
     <!-- SettingsActivity -->
     <string name="settings_title">सेटिङ</string>
     <string name="settings_menu_cat_pointer">सूचक</string>
     <string name="settings_menu_pointer_docking_delay">डक ढिलाइ</string>
-    <string name="settings_menu_haptic_feedback_to_detection">पत्ता लाग्दा भाइब्रे</string>
+    <string name="settings_menu_haptic_feedback_to_detection">पत्ता लाग्दा ह्याप्टिक</string>
     <string name="settings_menu_cat_menubar">मेनु बार</string>
     <string name="settings_menu_menubar_transparency">मेनु पारदर्शिता</string>
     <string name="settings_menu_menubar_composition">मेनु कार्यहरू</string>
-    <string name="settings_menu_cat_ai">AI सुधार</string>
     <string name="settings_menu_cat_translation">अनुवाद</string>
     <string name="settings_menu_translation_transparency">अनुवाद पारदर्शिता</string>
     <string name="settings_menu_translation_close_delay">बन्द ढिलाइ</string>
-    <string name="settings_menu_automated_read_aloud">स्वचालित पढाइ</string>
+    <string name="settings_menu_automated_read_aloud">अनुवादको स्वचालित पढाइ</string>
     <string name="settings_menu_reply_transparency">उत्तर पारदर्शिता</string>
     <string name="settings_menu_cat_tts">पाठ स्वर</string>
+    <string name="settings_menu_tts_read_target">पढ्ने लक्ष्य</string>
+    <string name="settings_tts_read_target_source">मूल</string>
+    <string name="settings_tts_read_target_target">अनुवाद</string>
     <string name="settings_menu_tts_voices">TTS स्वरहरू</string>
     <string name="settings_menu_tts_rate">TTS गति</string>
     <string name="settings_menu_cat_about">बारेमा</string>
-    <string name="settings_menu_on_premium_free_trial">Premium परीक्षण सक्रिय छ</string>
-    <string name="settings_menu_premium_free_trial_remain">%1$d मिनेट बाँकी</string>
-    <string name="settings_menu_your_premium_benefits">तपाईंका सुविधाहरू</string>
-    <string name="settings_menu_your_premium_benefits_peding">सुविधा (पर्खँदै)</string>
     <string name="settings_menu_app_version">एप संस्करण</string>
     <string name="settings_menu_app_version_latest">(नविनतम)</string>
 
     <!-- HelpTextDetectModeView, HelpTranslationKitView -->
-    <string name="help_text_no_limit">प्रीमियममा सबै असीमित</string>
     <string name="help_text_no_limit_free">न त परिमाणको सीमा, न त अवधिको</string>
-    <string name="help_text_no_limit_title">असीमित रूपमा उपयोग गर्नुहोस्</string>
-    <string name="help_text_no_limit_free_title">प्रतिबन्धबिना निःशुल्क</string>
-    <string name="help_text_get_premium">प्रीमियम प्राप्त गर्नुहोस्</string>
+    <string name="help_text_deepl_own_key">तपाईंको व्यक्तिगत DeepL API कुञ्जी प्रयोग गर्दछ</string>
+    <string name="deepl_key_guide">DeepL अनुवाद प्रयोग गर्न तपाईंको DeepL API कुञ्जी प्रविष्ट गर्नुहोस्।</string>
+    <string name="deepl_key_signup_guide">DeepL मा साइन अप गर्नुहोस् र तपाईं निःशुल्क योजनाको सदस्यता लिन सक्नुहुन्छ।</string>
+    <string name="deepl_key_link_subscription">निःशुल्क योजनाको सदस्यता लिनुहोस्</string>
+    <string name="deepl_key_link_keys">तपाईंको API कुञ्जी जाँच्नुहोस्</string>
+    <string name="deepl_key_active">सक्रिय गरियो</string>
+    <string name="label_save">सुरक्षित गर्नुहोस्</string>
+    <string name="deepl_key_invalid">API कुञ्जी मान्य छैन।</string>
+    <string name="deepl_key_validating">प्रमाणित गर्दै…</string>
+    <string name="deepl_key_network_error">नेटवर्क त्रुटिका कारण कुञ्जी प्रमाणित गर्न सकिएन। कुञ्जी सुरक्षित गरियो।</string>
 
     <!-- PremiumView -->
-    <string name="premium_view_get_premium">प्रीमियम प्राप्त गर्नुहोस्</string>
-    <string name="premium_view_get_premium_purchased">तपाईंको प्रीमियम लाभ</string>
-    <string name="premium_view_get_premium_pending">तपाईंको प्रीमियम लाभ (पर्खिरहेको)</string>
-    <string name="premium_view_get_premium_not_available">प्रीमियम प्राप्त गर्नुहोस् (हाल उपलब्ध छैन)</string>
-    <string name="premium_view_price_format">%1$s/महिना • VAT सहित\n• जुनसुकै बेला रद्द गर्न सकिन्छ</string>
-    <string name="premium_view_title">सबै सुविधाहरू,\nरुकावटबिना।</string>
-    <string name="premium_view_message">न त परिमाण सीमा, न त अवधि सीमा।\nप्रीमियममा सबै असीमित</string>
-    <string name="premium_view_description_azure">विश्वका अधिकांश भाषाहरू शुद्ध रूपमा अनुवाद गर्छ।</string>
-    <string name="premium_view_description_deepl">गहिरो अर्थ समेट्ने परिष्कृत अनुवाद प्रदान गर्दछौं।</string>
-    <string name="premium_view_description_papago">Papago ले न्यूरल मेशिन अनुवाद प्रयोग गरेर बहुभाषिक अनुवाद गर्छ।</string>
-    <string name="premium_view_description_google">सबैभन्दा छिटो अनुवाद। अनन्त रूपमा निःशुल्क।</string>
-    <string name="premium_view_description_sentence_detection">आङुलीले लाइनहरू अनुवाद गर्नुहोस्।</string>
+    <string name="premium_view_description_sentence_detection">वाक्यहरू स्वतः चयन हुन्छन्।</string>
     <string name="premium_view_description_paragraph_detection">अनुच्छेदहरू स्वचालित रूपमा चिनिन्छन्।</string>
     <string name="premium_view_description_select_detection">तपाईं चाहेको दायरा पनि चयन गर्न सक्नुहुन्छ।</string>
-    <string name="premium_view_description_word_detection">शब्दअनुसार अनुवाद सधैँ निःशुल्क र असीमित।</string>
+    <string name="premium_view_description_word_detection">कुनै शब्दमा इसारा गर्नुहोस्, त्यो तुरुन्तै अनुवाद हुन्छ।</string>
     <string name="premium_view_description_fixed_area_detection">तपाईंले चलचित्रका सबटाइटलहरू जस्ता स्थिर क्षेत्रहरू निरन्तर अनुवाद गर्न सक्नुहुन्छ।</string>
-    <string name="premium_view_unsubscribe">सदस्यता रद्द गर्नुहोस्</string>
+  <string name="say_here">म यहाँ छु!</string>
+  <string name="hint_settings_reopen">सेटिङ फेरि खोल्न ह्यान्डलमा डबल ट्याप गर्नुहोस्</string>
+  <string name="openai_key_guide">OpenAI मोडेलहरूसँग अनुवाद गर्न आफ्नो OpenAI API कुञ्जी प्रविष्ट गर्नुहोस्।</string>
+  <string name="openai_key_signup_guide">OpenAI ड्यासबोर्डमा कुञ्जी सिर्जना गर्नुहोस्। प्रयोगको शुल्क तपाईंको OpenAI खातामा लाग्छ।</string>
+  <string name="openai_key_link_keys">आफ्नो API कुञ्जी प्राप्त गर्नुहोस्</string>
+  <string name="openai_key_link_billing">बिलिङ र प्रयोग</string>
+  <string name="openai_model_label">मोडेल</string>
+  <string name="help_text_openai_own_key">तपाईंको व्यक्तिगत OpenAI API कुञ्जी प्रयोग गर्दछ</string>
 </resources>

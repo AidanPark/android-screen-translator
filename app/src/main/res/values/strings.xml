@@ -8,14 +8,10 @@
     <!-- Overlay Permission -->
     <string name="message_permission_overlay">Required permission :\nDisplay over other apps</string>
     <string name="message_permission_overlay_detail">To launch Screen Translator, you need to grant permission to display on top of other apps.</string>
-    <string name="message_permission_overlay_denied">Overlay permission denied</string>
-    <string name="message_permission_overlay_denied_detail">The overlay permission is not granted.\nExit the app.</string>
 
     <!-- MediaProjection token 요청 -->
     <string name="message_media_projection">Required permission :\nScreen Recording</string>
     <string name="message_media_projection_detail">To launch Screen Translator, you need to grant permission to screen recording.\n\nThe information on the screen is for translation purposes only and will not be transferred or stored elsewhere.</string>
-    <string name="message_media_projection_denied">Screen Recording permission denied</string>
-    <string name="message_media_projection_denied_detail">The Screen Recording permission is not granted.\nExit the app.</string>
 
     <!-- Foreground Service 시작 알림 -->
     <string name="notification_foreground_service">The screen capture function is being used for translation work.</string>
@@ -23,7 +19,6 @@
     <string name="message_start_foreground_service">The app starts a Foreground Service to capture and translate screen content.\n\nCaptured images are not saved or transmitted externally.</string>
     <string name="label_confirm_start_foreground_service">Start</string>
     <string name="label_dismiss_start_foreground_service">Finish</string>
-    <string name="snack_message_start_foreground_service">The app starts a Foreground Service to capture and translate screen content.</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">Finish</string>
@@ -36,18 +31,6 @@
     <string name="title_voice_list_view">Available voices</string>
 
     <!-- Dialog -->
-    <string name="message_authentication_error">Authentication error</string>
-    <string name="message_authentication_error_detail">Authentication server is not responding.\nPlease try again later.</string>
-    <string name="message_untrusted_environment">Untrusted environment</string>
-    <string name="message_untrusted_environment_detail">It looks like your app didn\'t pass the Google Play integrity check.</string>
-    <string name="message_unknown_device">Unknown device</string>
-    <string name="message_unknown_device_detail">This device is not supported.</string>
-    <string name="message_authentication_required">Authentication required</string>
-    <string name="message_authentication_required_detail">You must be logged in with Google.</string>
-    <string name="message_playstore_update_required">Play Store Update required</string>
-    <string name="message_playstore_update_required_detail">Binding to the service in the Play Store has failed.\nThis can be due to having an old Play Store version installed on the device.</string>
-    <string name="message_unknown_source">Get this app from Play</string>
-    <string name="message_unknown_source_detail">To continue using great app, get it on Google Play.</string>
     <string name="message_force_update">Update needed</string>
     <string name="message_force_update_detail">This version is no longer supported.\nGo to Store.</string>
     <string name="message_service_unavailable">Service unavailable</string>
@@ -56,12 +39,10 @@
     <string name="message_network_unavailable_detail">Network unavailable.\nPlease check and try again.</string>
     <string name="message_translate_fixedarea_warn">Battery caution</string>
     <string name="message_translate_fixedarea_warn_detail">The battery may drain quickly.</string>
-    <string name="message_translate_fixedarea_promotion">Product purchase information</string>
-    <string name="message_translate_fixedarea_promotion_detail">A friendly reminder about our premium features will pop up every %1$s minutes.</string>
-    <string name="message_free_trial_ends">Your free trial has ended.</string>
-    <string name="message_free_trial_ends_detail">Would you like to watch an ad to extend your free trial time?</string>
-    <string name="message_ad_reward">You have received %1$d more minutes of free trial!</string>
-    <string name="message_ad_reward_detail">Enjoy all premium features free for the next %1$d minutes.</string>
+    <string name="hint_settings_reopen">Double-tap the handle to open settings again</string>
+    <string name="say_here">I\'m here!</string>
+    <string name="ad_gate_loading">Preparing an ad…</string>
+    <string name="ad_gate_reward_notice">Watch the ad to the end to use the app ad-free until you close it.</string>
 
     <!-- SettingsActivity -->
     <string name="settings_title">Settings</string>
@@ -71,46 +52,49 @@
     <string name="settings_menu_cat_menubar">Menu Bar</string>
     <string name="settings_menu_menubar_transparency">Menu Bar Transparency</string>
     <string name="settings_menu_menubar_composition">Menu Functions</string>
-    <string name="settings_menu_cat_ai">AI-based Text Correction</string>
+    <string name="settings_menu_cat_api_key" translatable="false">API Key</string>
+    <string name="settings_menu_deepl_api_key" translatable="false">DeepL</string>
+    <string name="deepl_key_guide">Enter your DeepL API key to use DeepL translation.</string>
+    <string name="deepl_key_signup_guide">Sign up for DeepL and you can subscribe to the free plan.</string>
+    <string name="deepl_key_link_subscription">Subscribe to the free plan</string>
+    <string name="deepl_key_link_keys">Check your API key</string>
+    <string name="deepl_key_active">Activated</string>
+    <string name="deepl_key_invalid">The API key is not valid.</string>
+    <string name="deepl_key_validating">Validating\u2026</string>
+    <string name="deepl_key_network_error">Could not verify the key due to a network error. The key was saved.</string>
+    <string name="settings_menu_openai_api_key" translatable="false">OpenAI</string>
+    <string name="openai_key_guide">Enter your OpenAI API key to translate with OpenAI models.</string>
+    <string name="openai_key_signup_guide">Create a key in the OpenAI dashboard. Usage is billed to your OpenAI account.</string>
+    <string name="openai_key_link_keys">Get your API key</string>
+    <string name="openai_key_link_billing">Billing and usage</string>
+    <string name="openai_model_label">Model</string>
+    <string name="label_save">Save</string>
     <string name="settings_menu_cat_translation">Translation</string>
     <string name="settings_menu_translation_transparency">Translation Transparency</string>
     <string name="settings_menu_translation_close_delay">Translation Close Delay</string>
-    <string name="settings_menu_automated_read_aloud">Auto Read Aloud</string>
+    <string name="settings_menu_automated_read_aloud">Auto Read Translation Aloud</string>
     <string name="settings_menu_reply_transparency">Reply Window Transparency</string>
     <string name="settings_menu_cat_tts">Text-to-Speech</string>
+    <string name="settings_menu_tts_read_target">Read Aloud Target</string>
+    <string name="settings_tts_read_target_source">Source</string>
+    <string name="settings_tts_read_target_target">Target</string>
     <string name="settings_menu_tts_voices">TTS Voice</string>
     <string name="settings_menu_tts_rate">TTS Speed</string>
     <string name="settings_menu_cat_about">About</string>
-    <string name="settings_menu_on_premium_free_trial">Currently on Premium free trial</string>
-    <string name="settings_menu_premium_free_trial_remain">%1$d minutes left</string>
-    <string name="settings_menu_your_premium_benefits">Your Premium Benefits</string>
-    <string name="settings_menu_your_premium_benefits_peding">Your Premium Benefits</string>
     <string name="settings_menu_app_version">App Version</string>
     <string name="settings_menu_app_version_latest">(Latest)</string>
+    <!-- 고유명사라 번역 불필요. 기본 리소스만 정의하고 전체 로케일이 폴백으로 사용한다. -->
+    <string name="settings_menu_github" translatable="false">GitHub</string>
 
     <!-- HelpTextDetectModeView, HelpTranslationKitView -->
-    <string name="help_text_no_limit">Everything is unlimited at the premium</string>
     <string name="help_text_no_limit_free">No quantity limit, no period limit</string>
-    <string name="help_text_no_limit_title">Enjoy it without limit</string>
-    <string name="help_text_no_limit_free_title">Free without restriction</string>
-    <string name="help_text_get_premium">Get Premium</string>
+    <string name="help_text_deepl_own_key">Uses your personal DeepL API key</string>
+    <string name="help_text_openai_own_key">Uses your personal OpenAI API key</string>
 
     <!-- PremiumView -->
-    <string name="premium_view_get_premium">Get Premium</string>
-    <string name="premium_view_get_premium_purchased">Your Premium Benefits</string>
-    <string name="premium_view_get_premium_pending">Your Premium Benefits(Pending)</string>
-    <string name="premium_view_get_premium_not_available">Get Premium (Current not available)</string>
-    <string name="premium_view_price_format">%1$s/month • Includes VAT\n• Cancel anytime</string>
-    <string name="premium_view_title">All Features,\nNo interruptions.</string>
-    <string name="premium_view_message">No quantity limit, no period limit.\nEverything is unlimited at the premium</string>
-    <string name="premium_view_description_azure">Accurately translates most languages around the world.</string>
-    <string name="premium_view_description_deepl">We provide sophisticated translations that capture the meaning well.</string>
-    <string name="premium_view_description_papago">Papago Translation automatically translates languages from multiple countries into the target language through the Neural Machine Translation algorithm.</string>
-    <string name="premium_view_description_google">We provide the fastest translation. Unlimited, free indefinitely.</string>
-    <string name="premium_view_description_sentence_detection">Use your fingertips to translate lines.</string>
+    <string name="premium_view_description_sentence_detection">Sentences are selected automatically.</string>
     <string name="premium_view_description_paragraph_detection">Paragraph units are automatically recognized.</string>
     <string name="premium_view_description_select_detection">You can also specify the range you want.</string>
-    <string name="premium_view_description_word_detection">Word-by-word translation is always free and unlimited.</string>
+    <string name="premium_view_description_word_detection">Point at a word to translate it instantly.</string>
     <string name="premium_view_description_fixed_area_detection">You can continuously translate fixed areas, such as movie subtitles.</string>
-    <string name="premium_view_unsubscribe">Unsubscribe</string>
 </resources>

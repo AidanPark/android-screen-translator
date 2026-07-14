@@ -8,14 +8,10 @@
     <!-- Overlay Permission -->
     <string name="message_permission_overlay">అనుమతి అవసరం:\nఇతర యాప్‌ల పైన చూపించు</string>
     <string name="message_permission_overlay_detail">Screen Translator ప్రారంభించడానికి ఇతర యాప్‌ల పైన చూపించేందుకు అనుమతి అవసరం.</string>
-    <string name="message_permission_overlay_denied">ఓవర్లే అనుమతి నిరాకరించబడింది</string>
-    <string name="message_permission_overlay_denied_detail">ఓవర్లే అనుమతి ఇవ్వబడలేదు.\nయాప్ మూసివేయబడుతుంది.</string>
 
     <!-- MediaProjection token 요청 -->
     <string name="message_media_projection">అనుమతి అవసరం:\nస్క్రీన్ రికార్డింగ్</string>
     <string name="message_media_projection_detail">Screen Translator ప్రారంభించడానికి స్క్రీన్ రికార్డింగ్‌కు అనుమతి అవసరం.\n\nస్క్రీన్‌లోని సమాచారం అనువాద ప్రయోజనాల కోసం మాత్రమే ఉపయోగించబడుతుంది మరియు ఎక్కడా భద్రపరచబడదు లేదా పంపబడదు.</string>
-    <string name="message_media_projection_denied">స్క్రీన్ రికార్డింగ్ అనుమతి నిరాకరించబడింది</string>
-    <string name="message_media_projection_denied_detail">స్క్రీన్ రికార్డింగ్ అనుమతి ఇవ్వబడలేదు.\nయాప్ మూసివేయబడుతుంది.</string>
 
     <!-- Foreground Service 시작 알림 -->
     <string name="notification_foreground_service">అనువాద పనిలో భాగంగా స్క్రీన్ క్యాప్చర్ ఫంక్షన్ ఉపయోగించబడుతోంది.</string>
@@ -23,7 +19,6 @@
     <string name="message_start_foreground_service">యాప్ స్క్రీన్ కంటెంట్‌ను క్యాప్చర్ చేసి అనువదించేందుకు ఫోర్‌గ్రౌండ్ సర్వీస్ ప్రారంభిస్తుంది.\n\nక్యాప్చర్ చేసిన చిత్రాలు సేవ్ చేయబడవు లేదా బయటకు పంపబడవు.</string>
     <string name="label_confirm_start_foreground_service">ప్రారంభించు</string>
     <string name="label_dismiss_start_foreground_service">ముగించు</string>
-    <string name="snack_message_start_foreground_service">యాప్ స్క్రీన్ కంటెంట్‌ను క్యాప్చర్ చేసి అనువదించేందుకు ఫోర్‌గ్రౌండ్ సర్వీస్ ప్రారంభిస్తుంది.</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">ముగించు</string>
@@ -36,18 +31,6 @@
     <string name="title_voice_list_view">లభ్యమైన వాయిస్‌లు</string>
 
     <!-- Dialog -->
-    <string name="message_authentication_error">ఆధారపత్రం లోపం</string>
-    <string name="message_authentication_error_detail">ఆథెంటికేషన్ సర్వర్ స్పందించడంలేదు.\nదయచేసి తరువాత ప్రయత్నించండి.</string>
-    <string name="message_untrusted_environment">నమ్మలేని వాతావరణం</string>
-    <string name="message_untrusted_environment_detail">మీ యాప్ Google Play సమగ్రత తనిఖీని ఉత్తీర్ణం కాలేదు అని అనిపిస్తోంది.</string>
-    <string name="message_unknown_device">తెలియని పరికరం</string>
-    <string name="message_unknown_device_detail">ఈ పరికరం మద్దతు పొందదు.</string>
-    <string name="message_authentication_required">ఆధారపత్రం అవసరం</string>
-    <string name="message_authentication_required_detail">మీరు Googleతో లాగిన్ అయి ఉండాలి.</string>
-    <string name="message_playstore_update_required">Play Store అప్‌డేట్ అవసరం</string>
-    <string name="message_playstore_update_required_detail">Play Store సేవకు బైండ్ చేయడంలో విఫలమైంది.\nఇది పాత వెర్షన్ Play Store వలన కావచ్చు.</string>
-    <string name="message_unknown_source">ఈ యాప్‌ను Play నుండి పొందండి</string>
-    <string name="message_unknown_source_detail">ఈ అద్భుతమైన యాప్‌ను ఉపయోగించడం కొనసాగించేందుకు, దయచేసి Google Play నుండి పొందండి.</string>
     <string name="message_force_update">అప్‌డేట్ అవసరం</string>
     <string name="message_force_update_detail">ఈ వెర్షన్ ఇకపై మద్దతు ఇవ్వబడదు.\nస్టోర్‌కు వెళ్లండి.</string>
     <string name="message_service_unavailable">సేవ అందుబాటులో లేదు</string>
@@ -56,61 +39,57 @@
     <string name="message_network_unavailable_detail">నెట్‌వర్క్ అందుబాటులో లేదు.\nదయచేసి తనిఖీ చేసి మళ్లీ ప్రయత్నించండి.</string>
     <string name="message_translate_fixedarea_warn">బ్యాటరీ హెచ్చరిక</string>
     <string name="message_translate_fixedarea_warn_detail">బ్యాటరీ త్వరగా ఖాళీ కావచ్చు.</string>
-    <string name="message_translate_fixedarea_promotion">ఉత్పత్తి కొనుగోలు సమాచారం</string>
-    <string name="message_translate_fixedarea_promotion_detail">మా ప్రీమియం ఫీచర్ల గురించి స్నేహపూర్వకంగా గుర్తుచేసే విషయం ప్రతి %1$s నిమిషాలకు ఒకసారి కనిపిస్తుంది.</string>
-    <string name="message_free_trial_ends">మీ ఉచిత ట్రయల్ ముగిసింది.</string>
-    <string name="message_free_trial_ends_detail">ఉచిత ట్రయల్‌ను పొడిగించడానికి ప్రకటనను చూడాలనుకుంటున్నారా?</string>
-    <string name="message_ad_reward">మీకు %1$d అదనపు నిమిషాల ఉచిత ట్రయల్ లభించింది!</string>
-    <string name="message_ad_reward_detail">తదుపరి %1$d నిమిషాలపాటు అన్ని ప్రీమియం ఫీచర్లను ఉచితంగా ఉపయోగించండి.</string>
+    <string name="ad_gate_loading">ప్రకటన సిద్ధమవుతోంది…</string>
+    <string name="ad_gate_reward_notice">ప్రకటనను చివరి వరకు చూసి, యాప్ మూసే వరకు ప్రకటనలు లేకుండా వాడండి.</string>
 
     <!-- SettingsActivity -->
     <string name="settings_title">సెట్టింగులు</string>
     <string name="settings_menu_cat_pointer">సూచిక</string>
     <string name="settings_menu_pointer_docking_delay">డాకింగ్ లో ఆలస్యం</string>
-    <string name="settings_menu_haptic_feedback_to_detection">గమనించినప్పుడు కంపన</string>
+    <string name="settings_menu_haptic_feedback_to_detection">గుర్తించినప్పుడు హాప్టిక్</string>
     <string name="settings_menu_cat_menubar">మెను బార్</string>
     <string name="settings_menu_menubar_transparency">మెను పారదర్శకత</string>
     <string name="settings_menu_menubar_composition">మెను ఫంక్షన్లు</string>
-    <string name="settings_menu_cat_ai">AI సవరణ</string>
     <string name="settings_menu_cat_translation">అనువాదం</string>
     <string name="settings_menu_translation_transparency">అనువాదం పారదర్శకత</string>
     <string name="settings_menu_translation_close_delay">మూసివేసే ఆలస్యం</string>
-    <string name="settings_menu_automated_read_aloud">ఆటోమేటిక్ చదవడం</string>
+    <string name="settings_menu_automated_read_aloud">అనువాదాన్ని ఆటోమేటిక్ చదవడం</string>
     <string name="settings_menu_reply_transparency">ప్రత్యుత్తరం పారదర్శకత</string>
     <string name="settings_menu_cat_tts">పేరు నుండి వాయిస్</string>
+    <string name="settings_menu_tts_read_target">చదివే లక్ష్యం</string>
+    <string name="settings_tts_read_target_source">మూలం</string>
+    <string name="settings_tts_read_target_target">అనువాదం</string>
     <string name="settings_menu_tts_voices">TTS వాయిస్‌లు</string>
     <string name="settings_menu_tts_rate">TTS వేగం</string>
     <string name="settings_menu_cat_about">గురించి</string>
-    <string name="settings_menu_on_premium_free_trial">ప్రీమియం ట్రయల్ నడుస్తోంది</string>
-    <string name="settings_menu_premium_free_trial_remain">మిగిలిన %1$d నిమిషాలు</string>
-    <string name="settings_menu_your_premium_benefits">మీ ప్రయోజనాలు</string>
-    <string name="settings_menu_your_premium_benefits_peding">ప్రయోజనాలు (ఇందరికీ వేచి ఉంది)</string>
     <string name="settings_menu_app_version">ఆప్ వెర్షన్</string>
     <string name="settings_menu_app_version_latest">(కొత్తది)</string>
 
     <!-- HelpTextDetectModeView, HelpTranslationKitView -->
-    <string name="help_text_no_limit">ప్రీమియంతో అన్నీ పరిమితిలేకుండా</string>
     <string name="help_text_no_limit_free">పరిమితి లేదు, గడువు లేదు</string>
-    <string name="help_text_no_limit_title">పరిమితులులేకుండా ఆనందించండి</string>
-    <string name="help_text_no_limit_free_title">ఆపాదించి ఉచితం</string>
-    <string name="help_text_get_premium">ప్రీమియం పొందండి</string>
+    <string name="help_text_deepl_own_key">మీ వ్యక్తిగత DeepL API కీని ఉపయోగిస్తుంది</string>
+    <string name="deepl_key_guide">DeepL అనువాదాన్ని ఉపయోగించడానికి మీ DeepL API కీని నమోదు చేయండి.</string>
+    <string name="deepl_key_signup_guide">DeepL లో సైన్ అప్ చేసి, మీరు ఉచిత ప్లాన్‌కు సబ్‌స్క్రైబ్ చేయవచ్చు.</string>
+    <string name="deepl_key_link_subscription">ఉచిత ప్లాన్‌కు సబ్‌స్క్రైబ్ చేయండి</string>
+    <string name="deepl_key_link_keys">మీ API కీని తనిఖీ చేయండి</string>
+    <string name="deepl_key_active">సక్రియం చేయబడింది</string>
+    <string name="label_save">సేవ్ చేయి</string>
+    <string name="deepl_key_invalid">API కీ చెల్లదు.</string>
+    <string name="deepl_key_validating">ధృవీకరిస్తోంది…</string>
+    <string name="deepl_key_network_error">నెట్‌వర్క్ లోపం కారణంగా కీని ధృవీకరించలేకపోయింది. కీ సేవ్ చేయబడింది.</string>
 
     <!-- PremiumView -->
-    <string name="premium_view_get_premium">ప్రీమియం పొందండి</string>
-    <string name="premium_view_get_premium_purchased">మీ ప్రీమియం ప్రయోజనాలు</string>
-    <string name="premium_view_get_premium_pending">మీ ప్రీమియం ప్రయోజనాలు (లంబించివున్నాయి)</string>
-    <string name="premium_view_get_premium_not_available">ప్రీమియం పొందడం (ప్రస్తుతం అందుబాటులో లేదు)</string>
-    <string name="premium_view_price_format">%1$s/నెల • VAT చేర్చబడింది\n• ఎప్పుడైనా రద్దు చేయవచ్చు</string>
-    <string name="premium_view_title">అన్నీ ఫీచర్లు,\nఖండితంగా అంతరాయం లేకుండా</string>
-    <string name="premium_view_message">పరిమితుల్లేకుండా ఉపయోగించండి — పరిమాణం లేదా గడువు పరిమితి లేదు</string>
-    <string name="premium_view_description_azure">ప్రపంచంలోని ఎక్కువ భాషలను ఖచ్చితంగా అనువదిస్తుంది</string>
-    <string name="premium_view_description_deepl">అర్థాన్ని స్పష్టంగా చూపే ఖచ్చితమైన అనువాదాలు అందించబడతాయి</string>
-    <string name="premium_view_description_papago">Papago అనువాదం న్యూరల్ మిషన్ ట్రాన్స్లేషన్‌ను ఉపయోగించి అనేక దేశ భాషల నుండి లక్ష్య భాషకు స్వయంగా అనువదిస్తుంది</string>
-    <string name="premium_view_description_google">అతి వేగంగా అనువదించబడుతుంది. ఎల్లప్పుడూ ఉచితం మరియు పరిమితిలేదు</string>
-    <string name="premium_view_description_sentence_detection">మీ వేళ్లతో లైన్లు అనువదించండి</string>
+    <string name="premium_view_description_sentence_detection">వాక్యాలు స్వయంచాలకంగా ఎంపికవుతాయి.</string>
     <string name="premium_view_description_paragraph_detection">పేరాల గుర్తింపు స్వయంచాలకంగా జరుగుతుంది</string>
     <string name="premium_view_description_select_detection">మీకు కావలసిన పరిధిని కూడా ఎంచుకోవచ్చు</string>
-    <string name="premium_view_description_word_detection">పదం వారీగా అనువాదం ఎల్లప్పుడూ ఉచితం మరియు పరిమితిలేకుండా ఉంటుంది</string>
+    <string name="premium_view_description_word_detection">ఒక పదాన్ని చూపిస్తే అది వెంటనే అనువదించబడుతుంది.</string>
     <string name="premium_view_description_fixed_area_detection">సినిమా సబ్‌టైటిల్స్ వంటి ఫిక్స్ చేసిన ప్రాంతాలను మీరు నిరంతరంగా అనువదించవచ్చు.</string>
-    <string name="premium_view_unsubscribe">సబ్‌స్క్రిప్షన్‌ను రద్దు చేయండి</string>
+  <string name="say_here">నేను ఇక్కడ!</string>
+  <string name="hint_settings_reopen">సెట్టింగ్‌లను మళ్లీ తెరవడానికి హ్యాండిల్‌ను రెండుసార్లు నొక్కండి</string>
+  <string name="openai_key_guide">OpenAI మోడల్‌లతో అనువదించడానికి మీ OpenAI API కీని నమోదు చేయండి.</string>
+  <string name="openai_key_signup_guide">OpenAI డాష్‌బోర్డ్‌లో కీని సృష్టించండి. వినియోగం మీ OpenAI ఖాతాకు బిల్ చేయబడుతుంది.</string>
+  <string name="openai_key_link_keys">మీ API కీని పొందండి</string>
+  <string name="openai_key_link_billing">బిల్లింగ్ మరియు వినియోగం</string>
+  <string name="openai_model_label">మోడల్</string>
+  <string name="help_text_openai_own_key">మీ వ్యక్తిగత OpenAI API కీని ఉపయోగిస్తుంది</string>
 </resources>

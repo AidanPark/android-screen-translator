@@ -8,14 +8,10 @@
   <!-- Overlay Permission -->
   <string name="message_permission_overlay">必要な権限：\n他のアプリの上に表示</string>
   <string name="message_permission_overlay_detail">画面翻訳を起動するには、他のアプリの上に表示する権限を許可してください。</string>
-  <string name="message_permission_overlay_denied">オーバーレイの権限が拒否されました</string>
-  <string name="message_permission_overlay_denied_detail">オーバーレイの権限が付与されていません。\nアプリを終了します。</string>
 
   <!-- MediaProjection token 요청 -->
   <string name="message_media_projection">必要な権限：\n画面録画</string>
   <string name="message_media_projection_detail">画面翻訳を起動するには、画面録画の権限を許可してください。\n\n画面上の情報は翻訳目的のみに使用され、他に保存・送信されることはありません。</string>
-  <string name="message_media_projection_denied">画面録画の権限が拒否されました</string>
-  <string name="message_media_projection_denied_detail">画面録画の権限が付与されていません。\nアプリを終了します。</string>
 
   <!-- Foreground Service 시작 알림 -->
   <string name="notification_foreground_service">翻訳作業のために画面キャプチャ機能を使用しています。</string>
@@ -23,7 +19,6 @@
   <string name="message_start_foreground_service">アプリは画面の内容をキャプチャして翻訳するためにフォアグラウンドサービスを開始します。\n\nキャプチャされた画像は保存も送信もされません。</string>
   <string name="label_confirm_start_foreground_service">開始</string>
   <string name="label_dismiss_start_foreground_service">終了</string>
-  <string name="snack_message_start_foreground_service">アプリは画面の内容をキャプチャして翻訳するためにフォアグラウンドサービスを開始します。</string>
 
   <!-- OverlayService -->
   <string name="service_menu_finish">終了</string>
@@ -36,18 +31,6 @@
   <string name="title_voice_list_view">利用可能な音声</string>
 
   <!-- Dialog -->
-  <string name="message_authentication_error">認証エラー</string>
-  <string name="message_authentication_error_detail">認証サーバーが応答していません。\nしばらくしてから再試行してください。</string>
-  <string name="message_untrusted_environment">信頼できない環境</string>
-  <string name="message_untrusted_environment_detail">アプリがGoogle Playの整合性チェックに合格していないようです。</string>
-  <string name="message_unknown_device">不明なデバイス</string>
-  <string name="message_unknown_device_detail">このデバイスはサポートされていません。</string>
-  <string name="message_authentication_required">認証が必要です</string>
-  <string name="message_authentication_required_detail">Googleにログインする必要があります。</string>
-  <string name="message_playstore_update_required">Playストアの更新が必要です</string>
-  <string name="message_playstore_update_required_detail">Playストアのサービスとのバインディングに失敗しました。\n古いバージョンのPlayストアがインストールされている可能性があります。</string>
-  <string name="message_unknown_source">Playからこのアプリを取得</string>
-  <string name="message_unknown_source_detail">この優れたアプリを引き続き利用するには、Google Playから入手してください。</string>
   <string name="message_force_update">アップデートが必要です</string>
   <string name="message_force_update_detail">このバージョンはサポートされていません。\nストアへ移動してください。</string>
   <string name="message_service_unavailable">サービス利用不可</string>
@@ -56,61 +39,57 @@
   <string name="message_network_unavailable_detail">ネットワークが利用できません。\n確認してから再試行してください。</string>
   <string name="message_translate_fixedarea_warn">バッテリーの警告</string>
   <string name="message_translate_fixedarea_warn_detail">バッテリーが急速に消耗する可能性があります。</string>
-  <string name="message_translate_fixedarea_promotion">製品購入情報</string>
-  <string name="message_translate_fixedarea_promotion_detail">プレミアム機能に関するお知らせが %1$s 分ごとに表示されます。</string>
-  <string name="message_free_trial_ends">無料トライアルが終了しました。</string>
-  <string name="message_free_trial_ends_detail">広告を見て無料トライアル期間を延長しますか？</string>
-  <string name="message_ad_reward">無料トライアルがさらに%1$d分追加されました！</string>
-  <string name="message_ad_reward_detail">これから%1$d分間、すべてのプレミアム機能を無料でご利用いただけます。</string>
+  <string name="ad_gate_loading">広告を準備しています…</string>
+  <string name="ad_gate_reward_notice">広告を最後まで見ると、アプリを閉じるまで広告なしで利用できます。</string>
 
   <!-- SettingsActivity -->
   <string name="settings_title">設定</string>
   <string name="settings_menu_cat_pointer">ポインタ</string>
   <string name="settings_menu_pointer_docking_delay">ドッキング遅延</string>
-  <string name="settings_menu_haptic_feedback_to_detection">検出時にバイブ</string>
+  <string name="settings_menu_haptic_feedback_to_detection">検出時に触覚フィードバック</string>
   <string name="settings_menu_cat_menubar">メニューバー</string>
   <string name="settings_menu_menubar_transparency">メニューの透明度</string>
   <string name="settings_menu_menubar_composition">メニュー構成</string>
-  <string name="settings_menu_cat_ai">AI補正</string>
   <string name="settings_menu_cat_translation">翻訳</string>
   <string name="settings_menu_translation_transparency">翻訳の透明度</string>
   <string name="settings_menu_translation_close_delay">閉じる遅延</string>
-  <string name="settings_menu_automated_read_aloud">自動読み上げ</string>
+  <string name="settings_menu_automated_read_aloud">翻訳の自動読み上げ</string>
   <string name="settings_menu_reply_transparency">返信の透明度</string>
   <string name="settings_menu_cat_tts">音声読み上げ</string>
+  <string name="settings_menu_tts_read_target">読み上げ対象</string>
+  <string name="settings_tts_read_target_source">原文</string>
+  <string name="settings_tts_read_target_target">訳文</string>
   <string name="settings_menu_tts_voices">TTS音声</string>
   <string name="settings_menu_tts_rate">TTS速度</string>
   <string name="settings_menu_cat_about">アプリ情報</string>
-  <string name="settings_menu_on_premium_free_trial">プレミアム無料体験中</string>
-  <string name="settings_menu_premium_free_trial_remain">あと%1$d分</string>
-  <string name="settings_menu_your_premium_benefits">あなたの特典</string>
-  <string name="settings_menu_your_premium_benefits_peding">特典（保留中）</string>
   <string name="settings_menu_app_version">アプリのバージョン</string>
   <string name="settings_menu_app_version_latest">（最新）</string>
 
   <!-- HelpTextDetectModeView, HelpTranslationKitView -->
-  <string name="help_text_no_limit">プレミアムならすべて無制限</string>
   <string name="help_text_no_limit_free">回数制限なし、期間制限なし</string>
-  <string name="help_text_no_limit_title">制限なしで楽しもう</string>
-  <string name="help_text_no_limit_free_title">制限なしで無料</string>
-  <string name="help_text_get_premium">プレミアムを取得</string>
+  <string name="help_text_deepl_own_key">個人のDeepL APIキーを使用します</string>
+  <string name="deepl_key_guide">DeepL翻訳を使用するにはDeepL APIキーを入力してください。</string>
+  <string name="deepl_key_signup_guide">DeepLに登録すると無料プランに申し込めます。</string>
+  <string name="deepl_key_link_subscription">無料プランに申し込む</string>
+  <string name="deepl_key_link_keys">APIキーを確認</string>
+  <string name="deepl_key_active">有効</string>
+  <string name="label_save">保存</string>
+  <string name="deepl_key_invalid">APIキーが無効です。</string>
+  <string name="deepl_key_validating">確認中…</string>
+  <string name="deepl_key_network_error">ネットワークエラーのためキーを検証できませんでした。キーは保存されました。</string>
 
   <!-- PremiumView -->
-  <string name="premium_view_get_premium">プレミアムを取得</string>
-  <string name="premium_view_get_premium_purchased">あなたのプレミアム特典</string>
-  <string name="premium_view_get_premium_pending">あなたのプレミアム特典（保留中）</string>
-  <string name="premium_view_get_premium_not_available">プレミアム（現在利用不可）</string>
-  <string name="premium_view_price_format">%1$s/月 • 税込\n• いつでもキャンセル可能</string>
-  <string name="premium_view_title">すべての機能を、\n中断なく。</string>
-  <string name="premium_view_message">回数制限なし、期間制限なし。\nプレミアムならすべて無制限</string>
-  <string name="premium_view_description_azure">世界中のほとんどの言語を正確に翻訳します。</string>
-  <string name="premium_view_description_deepl">意味を正確に捉えた洗練された翻訳を提供します。</string>
-  <string name="premium_view_description_papago">Papago翻訳はニューラル機械翻訳アルゴリズムで多言語を自動翻訳します。</string>
-  <string name="premium_view_description_google">最速の翻訳を提供。無制限で永久無料。</string>
-  <string name="premium_view_description_sentence_detection">指先で行単位の翻訳が可能です。</string>
+  <string name="premium_view_description_sentence_detection">文単位で自動的に選択されます。</string>
   <string name="premium_view_description_paragraph_detection">段落単位で自動認識されます。</string>
   <string name="premium_view_description_select_detection">翻訳範囲を自分で指定できます。</string>
-  <string name="premium_view_description_word_detection">単語単位の翻訳は常に無料で無制限です。</string>
+  <string name="premium_view_description_word_detection">単語を指し示すとすぐに翻訳されます。</string>
   <string name="premium_view_description_fixed_area_detection">映画の字幕など、固定された領域を継続的に翻訳できます。</string>
-  <string name="premium_view_unsubscribe">購読をキャンセル</string>
+  <string name="say_here">ここだよ！</string>
+  <string name="hint_settings_reopen">ハンドルをダブルタップすると設定をもう一度開けます</string>
+  <string name="openai_key_guide">OpenAIモデルで翻訳するには、OpenAI APIキーを入力してください。</string>
+  <string name="openai_key_signup_guide">OpenAIダッシュボードでキーを作成します。使用料はOpenAIアカウントに請求されます。</string>
+  <string name="openai_key_link_keys">APIキーを取得</string>
+  <string name="openai_key_link_billing">請求と使用状況</string>
+  <string name="openai_model_label">モデル</string>
+  <string name="help_text_openai_own_key">個人のOpenAI APIキーを使用します</string>
 </resources>

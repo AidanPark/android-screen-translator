@@ -8,14 +8,10 @@
   <!-- Overlay Permission -->
   <string name="message_permission_overlay">Erforderliche Berechtigung:\nÜber anderen Apps anzeigen</string>
   <string name="message_permission_overlay_detail">Zum Starten des Bildschirmübersetzers müssen Sie die Berechtigung zum Anzeigen über anderen Apps gewähren.</string>
-  <string name="message_permission_overlay_denied">Overlay-Berechtigung verweigert</string>
-  <string name="message_permission_overlay_denied_detail">Die Overlay-Berechtigung wurde nicht gewährt.\nApp wird beendet.</string>
 
   <!-- MediaProjection token -->
   <string name="message_media_projection">Erforderliche Berechtigung:\nBildschirmaufnahme</string>
   <string name="message_media_projection_detail">Zum Starten des Bildschirmübersetzers müssen Sie die Bildschirmaufnahme-Berechtigung gewähren.\n\nDie Informationen auf dem Bildschirm dienen ausschließlich der Übersetzung und werden nicht gespeichert oder weitergegeben.</string>
-  <string name="message_media_projection_denied">Bildschirmaufnahme-Berechtigung verweigert</string>
-  <string name="message_media_projection_denied_detail">Die Bildschirmaufnahme-Berechtigung wurde nicht gewährt.\nApp wird beendet.</string>
 
   <!-- Foreground Service -->
   <string name="notification_foreground_service">Die Bildschirmaufnahme wird für Übersetzungszwecke verwendet.</string>
@@ -23,7 +19,6 @@
   <string name="message_start_foreground_service">Die App startet einen Vordergrunddienst, um Bildschirminhalte zu erfassen und zu übersetzen.\n\nAufgezeichnete Bilder werden nicht gespeichert oder extern weitergegeben.</string>
   <string name="label_confirm_start_foreground_service">Starten</string>
   <string name="label_dismiss_start_foreground_service">Beenden</string>
-  <string name="snack_message_start_foreground_service">Die App startet einen Vordergrunddienst zur Bildschirmübersetzung.</string>
 
   <!-- OverlayService -->
   <string name="service_menu_finish">Beenden</string>
@@ -36,18 +31,6 @@
   <string name="title_voice_list_view">Verfügbare Stimmen</string>
 
   <!-- Dialog -->
-  <string name="message_authentication_error">Authentifizierungsfehler</string>
-  <string name="message_authentication_error_detail">Der Authentifizierungsserver antwortet nicht.\nBitte versuchen Sie es später erneut.</string>
-  <string name="message_untrusted_environment">Nicht vertrauenswürdige Umgebung</string>
-  <string name="message_untrusted_environment_detail">Ihre App hat den Google Play Integritätscheck nicht bestanden.</string>
-  <string name="message_unknown_device">Unbekanntes Gerät</string>
-  <string name="message_unknown_device_detail">Dieses Gerät wird nicht unterstützt.</string>
-  <string name="message_authentication_required">Authentifizierung erforderlich</string>
-  <string name="message_authentication_required_detail">Sie müssen mit Google angemeldet sein.</string>
-  <string name="message_playstore_update_required">Play Store-Update erforderlich</string>
-  <string name="message_playstore_update_required_detail">Die Verbindung zum Dienst im Play Store ist fehlgeschlagen.\nMöglicherweise ist eine veraltete Version installiert.</string>
-  <string name="message_unknown_source">App im Play Store herunterladen</string>
-  <string name="message_unknown_source_detail">Laden Sie diese App über Google Play herunter, um sie weiterhin zu verwenden.</string>
   <string name="message_force_update">Update erforderlich</string>
   <string name="message_force_update_detail">Diese Version wird nicht mehr unterstützt.\nZum Store wechseln.</string>
   <string name="message_service_unavailable">Dienst nicht verfügbar</string>
@@ -56,61 +39,57 @@
   <string name="message_network_unavailable_detail">Netzwerk nicht verfügbar.\nBitte überprüfen Sie Ihre Verbindung und versuchen Sie es erneut.</string>
   <string name="message_translate_fixedarea_warn">Batteriewarnung</string>
   <string name="message_translate_fixedarea_warn_detail">Der Akku kann sich schnell entladen.</string>
-  <string name="message_translate_fixedarea_promotion">Produktkaufinformationen</string>
-  <string name="message_translate_fixedarea_promotion_detail">Eine freundliche Erinnerung an unsere Premiumfunktionen wird alle %1$s Minuten angezeigt.</string>
-  <string name="message_free_trial_ends">Deine kostenlose Testphase ist beendet.</string>
-  <string name="message_free_trial_ends_detail">Möchtest du eine Anzeige ansehen, um die Testphase zu verlängern?</string>
-  <string name="message_ad_reward">Du hast %1$d weitere Minuten der kostenlosen Testversion erhalten!</string>
-  <string name="message_ad_reward_detail">Genieße alle Premium-Funktionen für die nächsten %1$d Minuten kostenlos.</string>
+  <string name="ad_gate_loading">Werbung wird vorbereitet …</string>
+  <string name="ad_gate_reward_notice">Sieh dir die Werbung bis zum Ende an, um die App bis zum Schließen werbefrei zu nutzen.</string>
 
   <!-- SettingsActivity -->
   <string name="settings_title">Einstellungen</string>
   <string name="settings_menu_cat_pointer">Zeiger</string>
   <string name="settings_menu_pointer_docking_delay">Andockverzögerung</string>
-  <string name="settings_menu_haptic_feedback_to_detection">Vibration bei Erkennung</string>
+  <string name="settings_menu_haptic_feedback_to_detection">Haptisches Feedback bei Erkennung</string>
   <string name="settings_menu_cat_menubar">Menüleiste</string>
   <string name="settings_menu_menubar_transparency">Menü-Transparenz</string>
   <string name="settings_menu_menubar_composition">Menüfunktionen</string>
-  <string name="settings_menu_cat_ai">KI-Korrektur</string>
   <string name="settings_menu_cat_translation">Übersetzung</string>
   <string name="settings_menu_translation_transparency">Übersetzungs-Transparenz</string>
   <string name="settings_menu_translation_close_delay">Schließverzögerung</string>
-  <string name="settings_menu_automated_read_aloud">Auto-Vorlesen</string>
+  <string name="settings_menu_automated_read_aloud">Übersetzung automatisch vorlesen</string>
   <string name="settings_menu_reply_transparency">Antwort-Transparenz</string>
   <string name="settings_menu_cat_tts">Text-zu-Sprache</string>
+  <string name="settings_menu_tts_read_target">Vorleseziel</string>
+  <string name="settings_tts_read_target_source">Original</string>
+  <string name="settings_tts_read_target_target">Übersetzung</string>
   <string name="settings_menu_tts_voices">TTS-Stimmen</string>
   <string name="settings_menu_tts_rate">TTS-Geschwindigkeit</string>
   <string name="settings_menu_cat_about">Info</string>
-  <string name="settings_menu_on_premium_free_trial">Premium-Testversion aktiv</string>
-  <string name="settings_menu_premium_free_trial_remain">Noch %1$d Minuten</string>
-  <string name="settings_menu_your_premium_benefits">Deine Vorteile</string>
-  <string name="settings_menu_your_premium_benefits_peding">Vorteile (wartend)</string>
   <string name="settings_menu_app_version">App-Version</string>
   <string name="settings_menu_app_version_latest">(Neueste)</string>
 
   <!-- HelpTextDetectModeView, HelpTranslationKitView -->
-  <string name="help_text_no_limit">Mit Premium ist alles unbegrenzt</string>
   <string name="help_text_no_limit_free">Keine Mengen- oder Zeitbegrenzung</string>
-  <string name="help_text_no_limit_title">Ohne Einschränkungen genießen</string>
-  <string name="help_text_no_limit_free_title">Kostenlos ohne Begrenzung</string>
-  <string name="help_text_get_premium">Premium holen</string>
+  <string name="help_text_deepl_own_key">Verwendet Ihren persönlichen DeepL-API-Schlüssel</string>
+  <string name="deepl_key_guide">Geben Sie Ihren DeepL-API-Schlüssel ein, um die DeepL-Übersetzung zu nutzen.</string>
+  <string name="deepl_key_signup_guide">Registrieren Sie sich bei DeepL, um das kostenlose Abo zu abonnieren.</string>
+  <string name="deepl_key_link_subscription">Kostenloses Abo abonnieren</string>
+  <string name="deepl_key_link_keys">API-Schlüssel überprüfen</string>
+  <string name="deepl_key_active">Aktiviert</string>
+  <string name="label_save">Speichern</string>
+  <string name="deepl_key_invalid">Der API-Schlüssel ist ungültig.</string>
+  <string name="deepl_key_validating">Wird überprüft…</string>
+  <string name="deepl_key_network_error">Der Schlüssel konnte aufgrund eines Netzwerkfehlers nicht überprüft werden. Der Schlüssel wurde gespeichert.</string>
 
   <!-- PremiumView -->
-  <string name="premium_view_get_premium">Premium holen</string>
-  <string name="premium_view_get_premium_purchased">Ihre Premium-Vorteile</string>
-  <string name="premium_view_get_premium_pending">Ihre Premium-Vorteile (Ausstehend)</string>
-  <string name="premium_view_get_premium_not_available">Premium nicht verfügbar</string>
-  <string name="premium_view_price_format">%1$s/Monat • inkl. MwSt.\n• Jederzeit kündbar</string>
-  <string name="premium_view_title">Alle Funktionen,\nKeine Unterbrechungen.</string>
-  <string name="premium_view_message">Keine Mengen- oder Zeitbegrenzung.\nMit Premium ist alles unbegrenzt</string>
-  <string name="premium_view_description_azure">Übersetzt die meisten Sprachen der Welt präzise.</string>
-  <string name="premium_view_description_deepl">Wir bieten anspruchsvolle Übersetzungen mit präzisem Sinnverständnis.</string>
-  <string name="premium_view_description_papago">Papago nutzt neuronale Maschinenübersetzung für automatische Übersetzungen.</string>
-  <string name="premium_view_description_google">Die schnellste Übersetzung. Unbegrenzt, für immer kostenlos.</string>
-  <string name="premium_view_description_sentence_detection">Verwenden Sie Ihre Fingerspitzen, um Zeilen zu übersetzen.</string>
+  <string name="premium_view_description_sentence_detection">Sätze werden automatisch ausgewählt.</string>
   <string name="premium_view_description_paragraph_detection">Absätze werden automatisch erkannt.</string>
   <string name="premium_view_description_select_detection">Sie können auch den gewünschten Bereich auswählen.</string>
-  <string name="premium_view_description_word_detection">Wort-für-Wort-Übersetzung ist immer kostenlos und unbegrenzt.</string>
+  <string name="premium_view_description_word_detection">Zeige auf ein Wort, um es sofort zu übersetzen.</string>
   <string name="premium_view_description_fixed_area_detection">Du kannst feste Bereiche wie Filmuntertitel kontinuierlich übersetzen.</string>
-  <string name="premium_view_unsubscribe">Abo kündigen</string>
+  <string name="say_here">Ich bin hier!</string>
+  <string name="hint_settings_reopen">Tippe doppelt auf den Griff, um die Einstellungen wieder zu öffnen</string>
+  <string name="openai_key_guide">Geben Sie Ihren OpenAI API-Schlüssel ein, um mit OpenAI-Modellen zu übersetzen.</string>
+  <string name="openai_key_signup_guide">Erstellen Sie einen Schlüssel im OpenAI-Dashboard. Die Nutzung wird Ihrem OpenAI-Konto berechnet.</string>
+  <string name="openai_key_link_keys">API-Schlüssel abrufen</string>
+  <string name="openai_key_link_billing">Abrechnung und Nutzung</string>
+  <string name="openai_model_label">Modell</string>
+  <string name="help_text_openai_own_key">Verwendet Ihren persönlichen OpenAI-API-Schlüssel</string>
 </resources>

@@ -5,7 +5,6 @@ import android.content.ClipboardManager
 import android.content.Context
 import android.graphics.Paint
 import android.graphics.PixelFormat
-import android.os.Build
 import android.text.Layout
 import android.text.StaticLayout
 import android.text.TextPaint
@@ -15,8 +14,12 @@ import android.view.WindowManager
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectTapGestures
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.text.InlineTextContent
+import androidx.compose.foundation.text.appendInlineContent
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -33,6 +36,7 @@ import androidx.compose.material.icons.automirrored.outlined.VolumeUp
 import androidx.compose.material.icons.filled.ContentCopy
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -51,12 +55,15 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.Placeholder
+import androidx.compose.ui.text.PlaceholderVerticalAlign
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
@@ -68,10 +75,8 @@ import com.galaxy.airviewdictionary.data.local.screen.ScreenInfo
 import com.galaxy.airviewdictionary.data.local.screen.ScreenInfoHolder
 import com.galaxy.airviewdictionary.data.local.vision.WritingDirection
 import com.galaxy.airviewdictionary.data.local.vision.model.VisionText
-import com.galaxy.airviewdictionary.data.remote.ai.CorrectionKitType
 import com.galaxy.airviewdictionary.data.remote.translation.Language
 import com.galaxy.airviewdictionary.data.remote.translation.Transaction
-import com.galaxy.airviewdictionary.extensions.toPx
 import com.galaxy.airviewdictionary.extensions.toSpValue
 import com.galaxy.airviewdictionary.ui.common.AutoResizeText
 import com.galaxy.airviewdictionary.ui.screen.overlay.Event
@@ -84,6 +89,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import javax.inject.Singleton
+import kotlin.math.ceil
 import kotlin.math.min
 import kotlin.math.roundToInt
 
@@ -113,17 +119,6 @@ open class TranslationView : OverlayView() {
             initialValue = Pair<VisionText?, Transaction?>(null, null)
         )
 
-        // AI text correction
-        val useCorrectionKit by targetHandleViewModel.preferenceRepository.useCorrectionKitFlow.collectAsStateWithLifecycle(
-            lifecycle = lifecycleOwner.lifecycle,
-            initialValue = false
-        )
-
-        val correctionKit by targetHandleViewModel.preferenceRepository.correctionKitTypeFlow.collectAsStateWithLifecycle(
-            lifecycle = lifecycleOwner.lifecycle,
-            initialValue = CorrectionKitType.CHAT_GPT
-        )
-
         translationState?.let { (visionText, translation) ->
             if (visionText != null && translation != null) {
                 if (isAttachedToWindow()) {
@@ -131,8 +126,6 @@ open class TranslationView : OverlayView() {
                     TranslationBox(
                         translation,
                         fontSizeSp,
-                        useCorrectionKit = useCorrectionKit,
-                        correctionKit = correctionKit,
                         onPauseDismissRunning = { targetHandleViewModel.pauseDismissRunning() },
                         onResumeDismissRunning = { targetHandleViewModel.resumeDismissRunning() },
                         onRerunDismissRunning = { targetHandleViewModel.rerunDismissRunning() }
@@ -140,7 +133,6 @@ open class TranslationView : OverlayView() {
                     targetHandleViewModel.analyticsRepository.translationReport(
                         transaction = translation,
                         textDetectMode = targetHandleViewModel.textDetectMode,
-                        correctionKitType = if (useCorrectionKit) correctionKit else null,
                     )
                 }
             }
@@ -195,16 +187,30 @@ open class TranslationView : OverlayView() {
     private val CONTENT_WIDTH_RATIO: Float = 1.2f // VisionText 대비 콘텐트 너비 비율
     private val SOURCE_TEXT_RESULT_TEXT_SPACE: String = "  " // 원본텍스트와 번역텍스트 사이의 공백
 
-    private fun getSpeakerSpace(fontSize: Float): String { // 스피커 아이콘 공간
-        return if (fontSize > 60.0) {
-            "    "
-        } else if (fontSize > 50.0) {
-            "     "
-        } else if (fontSize > 40.0) {
-            "      "
-        } else {
-            "       "
-        }
+    // 텍스트 맨 앞에 특수문자처럼 인라인으로 들어가는 스피커 아이콘.
+    private val SPEAKER_INLINE_ID: String = "speaker" // annotatedString inline content id
+    private val SPEAKER_ICON_EM: Float = 1.1f // 아이콘 크기(폰트 대비 배율). 텍스트와 위화감 없도록 폰트 크기에 비례한다.
+    private val SPEAKER_TEXT_GAP: String = " " // 아이콘과 원본텍스트 사이의 여백(폰트 크기에 비례하는 공백 한 칸)
+
+    /**
+     * 창 크기 측정용으로, 인라인 스피커 아이콘(≈ SPEAKER_ICON_EM em)이 차지하는 폭을 공백 문자로 환산해 돌려준다.
+     * StaticLayout 은 inline content 를 렌더링하지 못하므로, 측정 텍스트 앞에 이 공백을 붙여
+     * 실제 렌더(인라인 아이콘)와 창 너비/줄바꿈 계산이 일치하도록 한다.
+     * 공백 한 칸의 폭은 폰트 크기에 비례하므로, 필요한 개수는 폰트 크기가 변해도 아이콘 폭을 일정하게 반영한다.
+     */
+    private fun getSpeakerSpace(context: Context, fontSizeSp: Float): String {
+        val fontSizePx = TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_SP,
+            fontSizeSp,
+            context.resources.displayMetrics
+        )
+        val spaceWidthPx = TextPaint(Paint.ANTI_ALIAS_FLAG).apply {
+            textSize = fontSizePx
+        }.measureText(" ").coerceAtLeast(1f)
+
+        val iconWidthPx = fontSizePx * SPEAKER_ICON_EM
+        val spaceCount = ceil(iconWidthPx / spaceWidthPx).toInt().coerceIn(1, 20)
+        return " ".repeat(spaceCount)
     }
 
     private fun getTranslationLayout(
@@ -229,14 +235,14 @@ open class TranslationView : OverlayView() {
             clear()
         }
 
-        val sourceText = translation.correctedText ?: translation.sourceText
+        val sourceText = translation.sourceText
 
         // 폰트 사이즈
         val fontSizeSp = getRenderFontSizeSp(applicationContext, visionText.fontHeight)
         Timber.tag(TAG).d("+++++++++++ getTranslationLayout fontSizeSp [${fontSizeSp}]")
 
-        // text
-        val text = getSpeakerSpace(fontSizeSp) + sourceText + SOURCE_TEXT_RESULT_TEXT_SPACE + translation.resultText
+        // text (측정용): [인라인 아이콘 폭≈공백] + [아이콘~텍스트 갭] + 원본 + 사이여백 + 번역
+        val text = getSpeakerSpace(applicationContext, fontSizeSp) + SPEAKER_TEXT_GAP + sourceText + SOURCE_TEXT_RESULT_TEXT_SPACE + translation.resultText
 
         // 화면상 text 너비
         val textWidth = measureTextWidth(applicationContext, text, fontSizeSp)
@@ -320,11 +326,7 @@ open class TranslationView : OverlayView() {
             viewHeight,
             layoutPosX,
             layoutPosY,
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
-            } else {
-                WindowManager.LayoutParams.TYPE_PHONE
-            },
+            WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
             WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN
                     or WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
             PixelFormat.TRANSLUCENT
@@ -407,8 +409,6 @@ open class TranslationView : OverlayView() {
     fun TranslationBox(
         translation: Transaction,
         fontSize: TextUnit = 60.sp,
-        useCorrectionKit: Boolean = false,
-        correctionKit: CorrectionKitType = CorrectionKitType.CHAT_GPT,
         enableAutoResize: Boolean = true,
         onPauseDismissRunning: () -> Unit,
         onResumeDismissRunning: () -> Unit,
@@ -447,9 +447,11 @@ open class TranslationView : OverlayView() {
             isWritingRtl.value = writingDirection.value == WritingDirection.RTL
         }
 
-        val sourceText = translation.correctedText ?: translation.sourceText
+        val sourceText = translation.sourceText
         val annotatedText = buildAnnotatedString {
-            append(getSpeakerSpace(fontSize.toPx()))
+            // 스피커 아이콘을 텍스트 맨 앞에 특수문자처럼 인라인으로 삽입한다(폰트 크기에 맞춰 스케일).
+            appendInlineContent(SPEAKER_INLINE_ID, "🔊")
+            append(SPEAKER_TEXT_GAP)
             if (isWritingRtl.value) {
                 withStyle(
                     style = SpanStyle(
@@ -499,8 +501,36 @@ open class TranslationView : OverlayView() {
         )
 
         if (automaticTranslationPlayback) {
-            targetHandleViewModel.playTTS(translation.sourceText!!)
+            targetHandleViewModel.playTTS(translation)
         }
+
+        // 인라인 스피커 아이콘: 폰트 크기(em) 기준으로 크기가 정해져 텍스트와 위화감 없이 특수문자처럼 렌더링된다.
+        // 탭하면 TTS 재생. Placeholder 크기가 em 단위라 폰트가 커지면 아이콘도 함께 커진다.
+        val inlineContent = mapOf(
+            SPEAKER_INLINE_ID to InlineTextContent(
+                Placeholder(
+                    width = SPEAKER_ICON_EM.em,
+                    height = SPEAKER_ICON_EM.em,
+                    placeholderVerticalAlign = PlaceholderVerticalAlign.Center
+                )
+            ) {
+                Icon(
+                    imageVector = Icons.AutoMirrored.Outlined.VolumeUp,
+                    contentDescription = "Listen to translation",
+                    tint = sourceTextColor,
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .clickable(
+                            interactionSource = remember { MutableInteractionSource() },
+                            // 아이콘 글리프를 자르지 않도록 unbounded(원형) 리플. 색상은 원문 텍스트 색을 따른다.
+                            indication = ripple(bounded = false, color = sourceTextColor)
+                        ) {
+                            Timber.tag("TranslationView").d("onClick 스피커 아이콘 (inline)")
+                            targetHandleViewModel.playTTS(translation)
+                        }
+                )
+            }
+        )
 
         Box(
             modifier = Modifier
@@ -557,27 +587,6 @@ open class TranslationView : OverlayView() {
                             verticalAlignment = Alignment.CenterVertically, // 수직 가운데 정렬
                             horizontalArrangement = Arrangement.End // 수평 방향 끝에 위치
                         ) {
-                            // AI kit 이미지
-                            if (useCorrectionKit) {
-                                Image(
-                                    painter = painterResource(id = correctionKit.ciResourceId),
-                                    contentDescription = "Corrected by $correctionKit",
-                                    modifier = Modifier
-                                        .sizeIn(
-                                            maxHeight = 15.dp,
-                                        ),
-                                    contentScale = ContentScale.Fit,
-                                )
-                                Icon(
-                                    painter = painterResource(id = R.drawable.ic_add_nopadding),
-                                    contentDescription = "with",
-                                    tint = Color(0xFF888888),
-                                    modifier = Modifier
-                                        .size(12.dp)
-                                        .padding(horizontal = 2.dp)
-                                )
-                            }
-
                             // 번역 kit 이미지
                             Image(
                                 painter = painterResource(id = translation.translationKitType!!.logoResourceId),
@@ -668,28 +677,11 @@ open class TranslationView : OverlayView() {
                                 text = annotatedText,
                                 maxFontSize = fontSize,
                                 enableAutoResize = enableAutoResize,
+                                inlineContent = inlineContent,
                                 onReadyToDisplay = { readyToDisplay = true },
                                 modifier = Modifier.align(Alignment.TopStart)
                             )
                         }
-                    }
-
-                    // 스피커 아이콘 버튼
-                    IconButton(
-                        onClick = {
-                            Timber.tag("TranslationView").d("onClick 스피커 아이콘")
-                            targetHandleViewModel.playTTS(sourceText!!)
-                        },
-                        modifier = Modifier
-                            .size(bottomMenuHeight)
-                            .padding(0.1.dp) // 버튼 크기
-                    ) {
-                        Icon(
-                            imageVector = Icons.AutoMirrored.Outlined.VolumeUp,
-                            contentDescription = "Listen to translation",
-                            tint = sourceTextColor,
-                            modifier = Modifier.size(18.dp) // 아이콘 크기
-                        )
                     }
                 }
             }

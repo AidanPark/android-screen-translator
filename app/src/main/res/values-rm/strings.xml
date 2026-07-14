@@ -8,14 +8,10 @@
     <!-- Overlay Permission -->
     <string name="message_permission_overlay">Permissi necessari:\nMussar sur autras apps</string>
     <string name="message_permission_overlay_detail">Per lantschar Translaziun da scherm, sto dar permissiun per mussar sur autras applicaziuns.</string>
-    <string name="message_permission_overlay_denied">Permissi d’overlay refusà</string>
-    <string name="message_permission_overlay_denied_detail">Il permissiun d’overlay n’è betg vegnì dada.\nL\'app vegn terminada.</string>
 
     <!-- MediaProjection token 요청 -->
     <string name="message_media_projection">Permissi necessari:\nEnregistrament da scherm</string>
     <string name="message_media_projection_detail">Per lantschar Translaziun da scherm, sto dar permissiun per registrar il scherm.\n\nL’infurmaziun sin il scherm vegn utilisada mo per translaziun e na vegn betg memorisada u transmessida.</string>
-    <string name="message_media_projection_denied">Permissi per registrar il scherm refusà</string>
-    <string name="message_media_projection_denied_detail">Il permissiun per registrar il scherm n’è betg vegnì dada.\nL\'app vegn terminada.</string>
 
     <!-- Foreground Service 시작 알림 -->
     <string name="notification_foreground_service">La funcziun da capturar il scherm vegn utilisada per translaziun.</string>
@@ -23,7 +19,6 @@
     <string name="message_start_foreground_service">L’app lantscha in servetsch en prim plan per capturar e translatar il cuntegn dal scherm.\n\nLas maletgs capturads na vegnan betg memorisads ni transmess.</string>
     <string name="label_confirm_start_foreground_service">Cumenzar</string>
     <string name="label_dismiss_start_foreground_service">Finir</string>
-    <string name="snack_message_start_foreground_service">L’app ha lantschà in servetsch per capturar e translatar il cuntegn dal scherm.</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">Finir</string>
@@ -36,18 +31,6 @@
     <string name="title_voice_list_view">Vuschs disponiblas</string>
 
     <!-- Dialog -->
-    <string name="message_authentication_error">Errur d’autentificaziun</string>
-    <string name="message_authentication_error_detail">Il server d’autentificaziun na respunda betg.\nEmprovai pli tard anc ina giada.</string>
-    <string name="message_untrusted_environment">Ambient nunaffidabel</string>
-    <string name="message_untrusted_environment_detail">Pareis che tia app n’ha betg gì success tar la controlla d’integritad da Google Play.</string>
-    <string name="message_unknown_device">Apparat nunenconuschent</string>
-    <string name="message_unknown_device_detail">Quest apparat na vegn betg supportà.</string>
-    <string name="message_authentication_required">Autentificaziun necessaria</string>
-    <string name="message_authentication_required_detail">Stuais esser annunzià cun Google.</string>
-    <string name="message_playstore_update_required">Actualisaziun da Play Store necessaria</string>
-    <string name="message_playstore_update_required_detail">Impussibel da colliar cun il servetsch da Play Store.\nI po esser che l’apparat utilisescha ina versiun veglia.</string>
-    <string name="message_unknown_source">Telechargia questa app da Google Play</string>
-    <string name="message_unknown_source_detail">Per cuntinuar cun l’utilisaziun da l’app, telechargiai la versiun uffiziala da Google Play.</string>
     <string name="message_force_update">Actualisaziun obligatorica</string>
     <string name="message_force_update_detail">Questa versiun n’è betg pli supportada.\nI va a la butia.</string>
     <string name="message_service_unavailable">Servetsch betg disponibel</string>
@@ -56,61 +39,57 @@
     <string name="message_network_unavailable_detail">Rait betg disponibla.\nControllai la connexiun e reemprovai.</string>
     <string name="message_translate_fixedarea_warn">Avis da batteria</string>
     <string name="message_translate_fixedarea_warn_detail">La batteria po sa svidar spert.</string>
-    <string name="message_translate_fixedarea_promotion">Infurmaziuns davart la cumpra dal product</string>
-    <string name="message_translate_fixedarea_promotion_detail">In gentar promemoria davart nossas funcziuns premium vegn a vegnir mussà mintga %1$s minutas.</string>
-    <string name="message_free_trial_ends">Tia emprova gratuita è terminada.</string>
-    <string name="message_free_trial_ends_detail">Vuls guardar in\'annunzia per prolungar l\'emprova gratuita?</string>
-    <string name="message_ad_reward">T\'i retschavì %1$d minutas supplementaras da prova gratuita!</string>
-    <string name="message_ad_reward_detail">Goda tut las funcziuns premium gratuitamain durant las proximas %1$d minutas.</string>
+    <string name="ad_gate_loading">L\'annunzia vegn preparada…</string>
+    <string name="ad_gate_reward_notice">Guarda l\'annunzia fin a la fin per utilisar l\'app senza reclamas fin che ti la serras.</string>
 
     <!-- SettingsActivity -->
     <string name="settings_title">Configuraziuns</string>
     <string name="settings_menu_cat_pointer">Indicatur</string>
     <string name="settings_menu_pointer_docking_delay">Retard d\'acuplament</string>
-    <string name="settings_menu_haptic_feedback_to_detection">Vibrar tar detectaziun</string>
+    <string name="settings_menu_haptic_feedback_to_detection">Resposta haptica tar la detecziun</string>
     <string name="settings_menu_cat_menubar">Trav d’uschigliada</string>
     <string name="settings_menu_menubar_transparency">Transparenza da menu</string>
     <string name="settings_menu_menubar_composition">Funcziuns dal menu</string>
-    <string name="settings_menu_cat_ai">Correctur cun AI</string>
     <string name="settings_menu_cat_translation">Translaziun</string>
     <string name="settings_menu_translation_transparency">Transparenza translaziun</string>
     <string name="settings_menu_translation_close_delay">Retard da serrar</string>
-    <string name="settings_menu_automated_read_aloud">Lettura automatica</string>
+    <string name="settings_menu_automated_read_aloud">Lettura automatica della traduzione</string>
     <string name="settings_menu_reply_transparency">Transparenza resposta</string>
     <string name="settings_menu_cat_tts">Text a pled</string>
+    <string name="settings_menu_tts_read_target">Testo da leggere</string>
+    <string name="settings_tts_read_target_source">Originale</string>
+    <string name="settings_tts_read_target_target">Traduzione</string>
     <string name="settings_menu_tts_voices">Vuschs TTS</string>
     <string name="settings_menu_tts_rate">Speed TTS</string>
     <string name="settings_menu_cat_about">Davart</string>
-    <string name="settings_menu_on_premium_free_trial">Test Premium activ</string>
-    <string name="settings_menu_premium_free_trial_remain">Restan %1$d minutas</string>
-    <string name="settings_menu_your_premium_benefits">Tes avantatgs</string>
-    <string name="settings_menu_your_premium_benefits_peding">Avantatgs (en spetga)</string>
     <string name="settings_menu_app_version">Versiun app</string>
     <string name="settings_menu_app_version_latest">(Ultima)</string>
 
     <!-- HelpTextDetectModeView, HelpTranslationKitView -->
-    <string name="help_text_no_limit">Tut senza limitaziuns cun Premium</string>
     <string name="help_text_no_limit_free">Naginas limitaziuns da quantitad ni temp</string>
-    <string name="help_text_no_limit_title">Gudognai senza restricziuns</string>
-    <string name="help_text_no_limit_free_title">Gratis senza restricziuns</string>
-    <string name="help_text_get_premium">Obten Premium</string>
+    <string name="help_text_deepl_own_key">Utilisescha tia clav API persunala da DeepL</string>
+    <string name="deepl_key_guide">Endatescha tia clav API da DeepL per utilisar la translaziun da DeepL.</string>
+    <string name="deepl_key_signup_guide">T\'annunzia tar DeepL per abunar l\'abunament gratuit.</string>
+    <string name="deepl_key_link_subscription">Abunar l\'abunament gratuit</string>
+    <string name="deepl_key_link_keys">Controllar tia clav API</string>
+    <string name="deepl_key_active">Activà</string>
+    <string name="label_save">Memorisar</string>
+    <string name="deepl_key_invalid">La clav API n\'è betg valaivla.</string>
+    <string name="deepl_key_validating">Verifitgar…</string>
+    <string name="deepl_key_network_error">Impussibel da verifitgar la clav pervia d\'ina errur da rait. La clav è vegnida memorisada.</string>
 
     <!-- PremiumView -->
-    <string name="premium_view_get_premium">Obten Premium</string>
-    <string name="premium_view_get_premium_purchased">Tes avantatgs Premium</string>
-    <string name="premium_view_get_premium_pending">Tes avantatgs Premium (en spetga)</string>
-    <string name="premium_view_get_premium_not_available">Premium (actualmain betg disponibel)</string>
-    <string name="premium_view_price_format">%1$s/mais • Inclus VAT\n• Annulaziun en mintga mument</string>
-    <string name="premium_view_title">Tut ils funcziunalitads,\nsenza interrupziuns.</string>
-    <string name="premium_view_message">Naginas limitaziuns da temp ni quantitad.\nTut inclus cun Premium.</string>
-    <string name="premium_view_description_azure">Translates languages around the world accurately.</string>
-    <string name="premium_view_description_deepl">Offrescha translaziuns elegantas cun precis significà.</string>
-    <string name="premium_view_description_papago">Papago fa translaziuns automaticas cun IA neurala.</string>
-    <string name="premium_view_description_google">La pli svelta translaziun. Illimitada e gratuita per adina.</string>
-    <string name="premium_view_description_sentence_detection">Utilisai il det per translatar lingias.</string>
+    <string name="premium_view_description_sentence_detection">Las frasas vegnan tschernidas automaticamain.</string>
     <string name="premium_view_description_paragraph_detection">Paragraphs vegnan renconuschids automaticamain.</string>
     <string name="premium_view_description_select_detection">Pudais era tscherner la zona da translatar.</string>
-    <string name="premium_view_description_word_detection">Translaziun pled per pled è adina gratuita ed illimitada.</string>
+    <string name="premium_view_description_word_detection">Mussa sin in pled per translatar el immediatamain.</string>
     <string name="premium_view_description_fixed_area_detection">Pudais translatar cuntinuaivlamain zonas fixas, sco per exempel sutitels da films.</string>
-    <string name="premium_view_unsubscribe">Terminar l’abunament</string>
+  <string name="say_here">Jau sun qua!</string>
+  <string name="hint_settings_reopen">Tutgai dubel la maunetta per avrir danovamain ils parameters</string>
+  <string name="openai_key_guide">Endatai vossa clav API OpenAI per translatar cun models OpenAI.</string>
+  <string name="openai_key_signup_guide">Creai ina clav en il pannel da controlla da OpenAI. L’utilisaziun vegn fatturada a voss conto OpenAI.</string>
+  <string name="openai_key_link_keys">Obtegnair vossa clav API</string>
+  <string name="openai_key_link_billing">Facturaziun ed utilisaziun</string>
+  <string name="openai_model_label">Model</string>
+  <string name="help_text_openai_own_key">Utilisescha tia clav API persunala da OpenAI</string>
 </resources>

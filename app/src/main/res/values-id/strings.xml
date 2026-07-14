@@ -8,14 +8,10 @@
   <!-- Overlay Permission -->
   <string name="message_permission_overlay">Izin yang dibutuhkan:\nTampilkan di atas aplikasi lain</string>
   <string name="message_permission_overlay_detail">Untuk menjalankan Penerjemah Layar, Anda perlu memberikan izin untuk tampil di atas aplikasi lain.</string>
-  <string name="message_permission_overlay_denied">Izin overlay ditolak</string>
-  <string name="message_permission_overlay_denied_detail">Izin overlay tidak diberikan.\nAplikasi akan ditutup.</string>
 
   <!-- MediaProjection token 요청 -->
   <string name="message_media_projection">Izin yang dibutuhkan:\nPerekaman layar</string>
   <string name="message_media_projection_detail">Untuk menjalankan Penerjemah Layar, Anda perlu memberikan izin perekaman layar.\n\nInformasi di layar hanya digunakan untuk keperluan terjemahan dan tidak akan disimpan atau dikirim ke mana pun.</string>
-  <string name="message_media_projection_denied">Izin perekaman layar ditolak</string>
-  <string name="message_media_projection_denied_detail">Izin perekaman layar tidak diberikan.\nAplikasi akan ditutup.</string>
 
   <!-- Foreground Service 시작 알림 -->
   <string name="notification_foreground_service">Fungsi tangkap layar sedang digunakan untuk keperluan penerjemahan.</string>
@@ -23,7 +19,6 @@
   <string name="message_start_foreground_service">Aplikasi memulai Layanan Latar Depan untuk menangkap dan menerjemahkan konten layar.\n\nGambar yang ditangkap tidak disimpan atau dikirim ke luar.</string>
   <string name="label_confirm_start_foreground_service">Mulai</string>
   <string name="label_dismiss_start_foreground_service">Selesai</string>
-  <string name="snack_message_start_foreground_service">Aplikasi memulai Layanan Latar Depan untuk menangkap dan menerjemahkan konten layar.</string>
 
   <!-- OverlayService -->
   <string name="service_menu_finish">Selesai</string>
@@ -36,18 +31,6 @@
   <string name="title_voice_list_view">Suara yang tersedia</string>
 
   <!-- Dialog -->
-  <string name="message_authentication_error">Kesalahan otentikasi</string>
-  <string name="message_authentication_error_detail">Server otentikasi tidak merespons.\nSilakan coba lagi nanti.</string>
-  <string name="message_untrusted_environment">Lingkungan tidak tepercaya</string>
-  <string name="message_untrusted_environment_detail">Sepertinya aplikasi Anda tidak lulus pemeriksaan integritas Google Play.</string>
-  <string name="message_unknown_device">Perangkat tidak dikenal</string>
-  <string name="message_unknown_device_detail">Perangkat ini tidak didukung.</string>
-  <string name="message_authentication_required">Diperlukan otentikasi</string>
-  <string name="message_authentication_required_detail">Anda harus masuk dengan akun Google.</string>
-  <string name="message_playstore_update_required">Diperlukan pembaruan Play Store</string>
-  <string name="message_playstore_update_required_detail">Gagal terhubung ke layanan Play Store.\nHal ini bisa disebabkan oleh versi Play Store yang lama di perangkat Anda.</string>
-  <string name="message_unknown_source">Dapatkan aplikasi ini dari Play Store</string>
-  <string name="message_unknown_source_detail">Untuk terus menggunakan aplikasi hebat ini, dapatkan dari Google Play.</string>
   <string name="message_force_update">Perlu diperbarui</string>
   <string name="message_force_update_detail">Versi ini tidak lagi didukung.\nBuka Play Store.</string>
   <string name="message_service_unavailable">Layanan tidak tersedia</string>
@@ -56,61 +39,57 @@
   <string name="message_network_unavailable_detail">Jaringan tidak tersedia.\nPeriksa dan coba lagi.</string>
   <string name="message_translate_fixedarea_warn">Peringatan baterai</string>
   <string name="message_translate_fixedarea_warn_detail">Baterai mungkin cepat habis.</string>
-  <string name="message_translate_fixedarea_promotion">Informasi pembelian produk</string>
-  <string name="message_translate_fixedarea_promotion_detail">Pengingat ramah tentang fitur premium kami akan muncul setiap %1$s menit.</string>
-  <string name="message_free_trial_ends">Masa uji coba gratis Anda telah berakhir.</string>
-  <string name="message_free_trial_ends_detail">Ingin menonton iklan untuk memperpanjang uji coba gratis?</string>
-  <string name="message_ad_reward">Anda menerima %1$d menit tambahan uji coba gratis!</string>
-  <string name="message_ad_reward_detail">Nikmati semua fitur premium secara gratis selama %1$d menit ke depan.</string>
+  <string name="ad_gate_loading">Menyiapkan iklan…</string>
+  <string name="ad_gate_reward_notice">Tonton iklan sampai selesai untuk menggunakan aplikasi tanpa iklan sampai Anda menutupnya.</string>
 
   <!-- SettingsActivity -->
   <string name="settings_title">Pengaturan</string>
   <string name="settings_menu_cat_pointer">Penunjuk</string>
   <string name="settings_menu_pointer_docking_delay">Tunda pemasangan</string>
-  <string name="settings_menu_haptic_feedback_to_detection">Getar saat terdeteksi</string>
+  <string name="settings_menu_haptic_feedback_to_detection">Umpan balik haptik saat terdeteksi</string>
   <string name="settings_menu_cat_menubar">Bilah menu</string>
   <string name="settings_menu_menubar_transparency">Transparansi menu</string>
   <string name="settings_menu_menubar_composition">Fungsi menu</string>
-  <string name="settings_menu_cat_ai">Koreksi AI</string>
   <string name="settings_menu_cat_translation">Terjemahan</string>
   <string name="settings_menu_translation_transparency">Transparansi terjemahan</string>
   <string name="settings_menu_translation_close_delay">Tunda penutupan</string>
-  <string name="settings_menu_automated_read_aloud">Baca otomatis</string>
+  <string name="settings_menu_automated_read_aloud">Baca terjemahan otomatis</string>
   <string name="settings_menu_reply_transparency">Transparansi balasan</string>
   <string name="settings_menu_cat_tts">Teks ke Ucapan</string>
+  <string name="settings_menu_tts_read_target">Teks yang dibaca</string>
+  <string name="settings_tts_read_target_source">Asli</string>
+  <string name="settings_tts_read_target_target">Terjemahan</string>
   <string name="settings_menu_tts_voices">Suara TTS</string>
   <string name="settings_menu_tts_rate">Kecepatan TTS</string>
   <string name="settings_menu_cat_about">Tentang</string>
-  <string name="settings_menu_on_premium_free_trial">Trial Premium aktif</string>
-  <string name="settings_menu_premium_free_trial_remain">Sisa %1$d menit</string>
-  <string name="settings_menu_your_premium_benefits">Manfaat Premium Anda</string>
-  <string name="settings_menu_your_premium_benefits_peding">Manfaat (tertunda)</string>
   <string name="settings_menu_app_version">Versi aplikasi</string>
   <string name="settings_menu_app_version_latest">(Terbaru)</string>
 
   <!-- HelpTextDetectModeView, HelpTranslationKitView -->
-  <string name="help_text_no_limit">Semuanya tidak terbatas dengan Premium</string>
   <string name="help_text_no_limit_free">Tanpa batas jumlah, tanpa batas waktu</string>
-  <string name="help_text_no_limit_title">Nikmati tanpa batas</string>
-  <string name="help_text_no_limit_free_title">Gratis tanpa batasan</string>
-  <string name="help_text_get_premium">Dapatkan Premium</string>
+  <string name="help_text_deepl_own_key">Menggunakan kunci API DeepL pribadi Anda</string>
+  <string name="deepl_key_guide">Masukkan kunci API DeepL Anda untuk menggunakan terjemahan DeepL.</string>
+  <string name="deepl_key_signup_guide">Daftar di DeepL dan Anda dapat berlangganan paket gratis.</string>
+  <string name="deepl_key_link_subscription">Berlangganan paket gratis</string>
+  <string name="deepl_key_link_keys">Periksa kunci API Anda</string>
+  <string name="deepl_key_active">Diaktifkan</string>
+  <string name="label_save">Simpan</string>
+  <string name="deepl_key_invalid">Kunci API tidak valid.</string>
+  <string name="deepl_key_validating">Memverifikasi…</string>
+  <string name="deepl_key_network_error">Kunci tidak dapat diverifikasi karena kesalahan jaringan. Kunci telah disimpan.</string>
 
   <!-- PremiumView -->
-  <string name="premium_view_get_premium">Dapatkan Premium</string>
-  <string name="premium_view_get_premium_purchased">Keuntungan Premium Anda</string>
-  <string name="premium_view_get_premium_pending">Keuntungan Premium Anda (Menunggu)</string>
-  <string name="premium_view_get_premium_not_available">Dapatkan Premium (Saat ini tidak tersedia)</string>
-  <string name="premium_view_price_format">%1$s/bulan • Termasuk PPN\n• Batalkan kapan saja</string>
-  <string name="premium_view_title">Semua fitur,\nTanpa gangguan.</string>
-  <string name="premium_view_message">Tanpa batas jumlah, tanpa batas waktu.\nSemuanya tidak terbatas dengan Premium</string>
-  <string name="premium_view_description_azure">Menerjemahkan sebagian besar bahasa di dunia secara akurat.</string>
-  <string name="premium_view_description_deepl">Kami menyediakan terjemahan canggih yang menangkap makna dengan baik.</string>
-  <string name="premium_view_description_papago">Papago menerjemahkan bahasa dari berbagai negara ke dalam bahasa target melalui algoritme Neural Machine Translation.</string>
-  <string name="premium_view_description_google">Kami menyediakan terjemahan tercepat. Tak terbatas, gratis selamanya.</string>
-  <string name="premium_view_description_sentence_detection">Gunakan jari Anda untuk menerjemahkan baris.</string>
+  <string name="premium_view_description_sentence_detection">Kalimat dipilih secara otomatis.</string>
   <string name="premium_view_description_paragraph_detection">Unit paragraf dikenali secara otomatis.</string>
   <string name="premium_view_description_select_detection">Anda juga dapat menentukan area yang ingin diterjemahkan.</string>
-  <string name="premium_view_description_word_detection">Terjemahan kata per kata selalu gratis dan tanpa batas.</string>
+  <string name="premium_view_description_word_detection">Arahkan ke sebuah kata untuk menerjemahkannya seketika.</string>
   <string name="premium_view_description_fixed_area_detection">Anda dapat menerjemahkan area tetap secara terus-menerus, seperti subtitle film.</string>
-  <string name="premium_view_unsubscribe">Batalkan Langganan</string>
+  <string name="say_here">Saya di sini!</string>
+  <string name="hint_settings_reopen">Ketuk dua kali gagang untuk membuka setelan lagi</string>
+  <string name="openai_key_guide">Masukkan kunci OpenAI API Anda untuk menerjemahkan dengan model OpenAI.</string>
+  <string name="openai_key_signup_guide">Buat kunci di dasbor OpenAI. Penggunaan ditagihkan ke akun OpenAI Anda.</string>
+  <string name="openai_key_link_keys">Dapatkan kunci API Anda</string>
+  <string name="openai_key_link_billing">Penagihan dan penggunaan</string>
+  <string name="openai_model_label">Model</string>
+  <string name="help_text_openai_own_key">Menggunakan kunci API OpenAI pribadi Anda</string>
 </resources>

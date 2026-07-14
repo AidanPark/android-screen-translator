@@ -8,14 +8,10 @@
     <!-- Overlay Permission -->
     <string name="message_permission_overlay">Требуется разрешение:\nОтображать поверх других приложений</string>
     <string name="message_permission_overlay_detail">Чтобы запустить Переводчик экрана, необходимо разрешение на отображение поверх других приложений.</string>
-    <string name="message_permission_overlay_denied">Разрешение на наложение отклонено</string>
-    <string name="message_permission_overlay_denied_detail">Разрешение на наложение не предоставлено.\nПриложение будет закрыто.</string>
 
     <!-- MediaProjection token -->
     <string name="message_media_projection">Требуется разрешение:\nЗапись экрана</string>
     <string name="message_media_projection_detail">Чтобы запустить Переводчик экрана, необходимо разрешение на запись экрана.\n\nИнформация на экране используется только для перевода и не сохраняется и не передается.</string>
-    <string name="message_media_projection_denied">Разрешение на запись экрана отклонено</string>
-    <string name="message_media_projection_denied_detail">Разрешение на запись экрана не предоставлено.\nПриложение будет закрыто.</string>
 
     <!-- Foreground Service -->
     <string name="notification_foreground_service">Функция захвата экрана используется для перевода.</string>
@@ -23,7 +19,6 @@
     <string name="message_start_foreground_service">Приложение запускает фоновый сервис для захвата и перевода содержимого экрана.\n\nЗахваченные изображения не сохраняются и не передаются.</string>
     <string name="label_confirm_start_foreground_service">Запустить</string>
     <string name="label_dismiss_start_foreground_service">Завершить</string>
-    <string name="snack_message_start_foreground_service">Приложение запускает фоновый сервис для захвата и перевода содержимого экрана.</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">Завершить</string>
@@ -36,18 +31,6 @@
     <string name="title_voice_list_view">Доступные голоса</string>
 
     <!-- Dialog -->
-    <string name="message_authentication_error">Ошибка аутентификации</string>
-    <string name="message_authentication_error_detail">Сервер аутентификации не отвечает.\nПопробуйте позже.</string>
-    <string name="message_untrusted_environment">Небезопасная среда</string>
-    <string name="message_untrusted_environment_detail">Похоже, ваше приложение не прошло проверку целостности Google Play.</string>
-    <string name="message_unknown_device">Неизвестное устройство</string>
-    <string name="message_unknown_device_detail">Это устройство не поддерживается.</string>
-    <string name="message_authentication_required">Требуется аутентификация</string>
-    <string name="message_authentication_required_detail">Необходимо войти в систему с помощью Google.</string>
-    <string name="message_playstore_update_required">Требуется обновление Play Store</string>
-    <string name="message_playstore_update_required_detail">Не удалось подключиться к сервису Play Store.\nВозможно, установлена старая версия.</string>
-    <string name="message_unknown_source">Скачайте это приложение из Play</string>
-    <string name="message_unknown_source_detail">Чтобы продолжить использовать приложение, скачайте его из Google Play.</string>
     <string name="message_force_update">Требуется обновление</string>
     <string name="message_force_update_detail">Эта версия больше не поддерживается.\nПерейдите в магазин.</string>
     <string name="message_service_unavailable">Сервис недоступен</string>
@@ -56,61 +39,57 @@
     <string name="message_network_unavailable_detail">Сеть недоступна.\nПроверьте соединение и попробуйте снова.</string>
     <string name="message_translate_fixedarea_warn">Предупреждение о батарее</string>
     <string name="message_translate_fixedarea_warn_detail">Батарея может быстро разрядиться.</string>
-    <string name="message_translate_fixedarea_promotion">Информация о покупке продукта</string>
-    <string name="message_translate_fixedarea_promotion_detail">Дружественное напоминание о наших премиум-функциях будет появляться каждые %1$s минут.</string>
-    <string name="message_free_trial_ends">Ваш бесплатный пробный период завершён.</string>
-    <string name="message_free_trial_ends_detail">Хотите посмотреть рекламу, чтобы продлить пробный период?</string>
-    <string name="message_ad_reward">Вы получили ещё %1$d минут бесплатного пробного периода!</string>
-    <string name="message_ad_reward_detail">Наслаждайтесь всеми премиум-функциями бесплатно в течение следующих %1$d минут.</string>
+    <string name="ad_gate_loading">Подготовка рекламы…</string>
+    <string name="ad_gate_reward_notice">Досмотрите рекламу до конца, чтобы пользоваться приложением без рекламы до его закрытия.</string>
 
     <!-- SettingsActivity -->
     <string name="settings_title">Настройки</string>
     <string name="settings_menu_cat_pointer">Указатель</string>
     <string name="settings_menu_pointer_docking_delay">Задержка закрепления</string>
-    <string name="settings_menu_haptic_feedback_to_detection">Вибрация при обнаружении</string>
+    <string name="settings_menu_haptic_feedback_to_detection">Тактильный отклик при обнаружении</string>
     <string name="settings_menu_cat_menubar">Панель меню</string>
     <string name="settings_menu_menubar_transparency">Прозрачность меню</string>
     <string name="settings_menu_menubar_composition">Функции меню</string>
-    <string name="settings_menu_cat_ai">Коррекция ИИ</string>
     <string name="settings_menu_cat_translation">Перевод</string>
     <string name="settings_menu_translation_transparency">Прозрачность перевода</string>
     <string name="settings_menu_translation_close_delay">Задержка закрытия</string>
-    <string name="settings_menu_automated_read_aloud">Авто чтение</string>
+    <string name="settings_menu_automated_read_aloud">Авто чтение перевода</string>
     <string name="settings_menu_reply_transparency">Прозрачность ответа</string>
     <string name="settings_menu_cat_tts">Текст в речь</string>
+    <string name="settings_menu_tts_read_target">Читаемый текст</string>
+    <string name="settings_tts_read_target_source">Оригинал</string>
+    <string name="settings_tts_read_target_target">Перевод</string>
     <string name="settings_menu_tts_voices">Голоса TTS</string>
     <string name="settings_menu_tts_rate">Скорость TTS</string>
     <string name="settings_menu_cat_about">О приложении</string>
-    <string name="settings_menu_on_premium_free_trial">Премиум активен</string>
-    <string name="settings_menu_premium_free_trial_remain">Осталось %1$d минут</string>
-    <string name="settings_menu_your_premium_benefits">Ваши привилегии</string>
-    <string name="settings_menu_your_premium_benefits_peding">Привилегии (ожидают)</string>
     <string name="settings_menu_app_version">Версия приложения</string>
     <string name="settings_menu_app_version_latest">(Актуальная)</string>
 
     <!-- HelpTextDetectModeView, HelpTranslationKitView -->
-    <string name="help_text_no_limit">Все функции доступны с Premium</string>
     <string name="help_text_no_limit_free">Нет ограничений по количеству или времени</string>
-    <string name="help_text_no_limit_title">Пользуйтесь без ограничений</string>
-    <string name="help_text_no_limit_free_title">Бесплатно и без ограничений</string>
-    <string name="help_text_get_premium">Получить Premium</string>
+    <string name="help_text_deepl_own_key">Использует ваш личный API-ключ DeepL</string>
+    <string name="deepl_key_guide">Введите свой API-ключ DeepL, чтобы использовать перевод DeepL.</string>
+    <string name="deepl_key_signup_guide">Зарегистрируйтесь в DeepL, и вы сможете подписаться на бесплатный план.</string>
+    <string name="deepl_key_link_subscription">Подписаться на бесплатный план</string>
+    <string name="deepl_key_link_keys">Проверить ваш API-ключ</string>
+    <string name="deepl_key_active">Активировано</string>
+    <string name="label_save">Сохранить</string>
+    <string name="deepl_key_invalid">API-ключ недействителен.</string>
+    <string name="deepl_key_validating">Проверка…</string>
+    <string name="deepl_key_network_error">Не удалось проверить ключ из-за ошибки сети. Ключ сохранён.</string>
 
     <!-- PremiumView -->
-    <string name="premium_view_get_premium">Получить Premium</string>
-    <string name="premium_view_get_premium_purchased">Ваши преимущества Premium</string>
-    <string name="premium_view_get_premium_pending">Ваши преимущества Premium (ожидается)</string>
-    <string name="premium_view_get_premium_not_available">Premium недоступен в данный момент</string>
-    <string name="premium_view_price_format">%1$s/мес • Включает НДС\n• Отмена в любой момент</string>
-    <string name="premium_view_title">Все функции,\nБез перерывов.</string>
-    <string name="premium_view_message">Без ограничений по объему и времени.\nВсё доступно с Premium</string>
-    <string name="premium_view_description_azure">Точно переводит большинство языков мира.</string>
-    <string name="premium_view_description_deepl">Предоставляет качественные переводы с глубоким смыслом.</string>
-    <string name="premium_view_description_papago">Papago использует нейросети для автоматического перевода между языками.</string>
-    <string name="premium_view_description_google">Самый быстрый перевод. Без ограничений, навсегда бесплатно.</string>
-    <string name="premium_view_description_sentence_detection">Переводите строки движением пальца.</string>
+    <string name="premium_view_description_sentence_detection">Предложения выделяются автоматически.</string>
     <string name="premium_view_description_paragraph_detection">Абзацы распознаются автоматически.</string>
     <string name="premium_view_description_select_detection">Можно выбрать нужную область вручную.</string>
-    <string name="premium_view_description_word_detection">Помесячный перевод всегда бесплатен и без ограничений.</string>
+    <string name="premium_view_description_word_detection">Наведите на слово, чтобы мгновенно его перевести.</string>
     <string name="premium_view_description_fixed_area_detection">Вы можете непрерывно переводить фиксированные области, например, субтитры фильмов.</string>
-    <string name="premium_view_unsubscribe">Отменить подписку</string>
+  <string name="say_here">Я здесь!</string>
+  <string name="hint_settings_reopen">Дважды коснитесь маркера, чтобы снова открыть настройки</string>
+  <string name="openai_key_guide">Введите свой ключ OpenAI API, чтобы переводить с помощью моделей OpenAI.</string>
+  <string name="openai_key_signup_guide">Создайте ключ в панели управления OpenAI. Использование оплачивается с вашего аккаунта OpenAI.</string>
+  <string name="openai_key_link_keys">Получить ключ API</string>
+  <string name="openai_key_link_billing">Оплата и использование</string>
+  <string name="openai_model_label">Модель</string>
+  <string name="help_text_openai_own_key">Использует ваш личный API-ключ OpenAI</string>
 </resources>

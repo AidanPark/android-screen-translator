@@ -5,7 +5,7 @@ import android.app.Activity
 import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
+import androidx.core.net.toUri
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
@@ -277,7 +277,7 @@ class SplashActivity : AVDActivity() {
                 delay(400)
                 overlayPermissionLauncher.launch(
                     Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION).apply {
-                        data = Uri.parse("package:${context.packageName}")
+                        data = "package:${context.packageName}".toUri()
                     }
                 ).also { setOverlayPermissionState(PermissionStatus.Requested) }
             }

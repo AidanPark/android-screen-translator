@@ -23,6 +23,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.withTimeoutOrNull
 import timber.log.Timber
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -41,6 +42,10 @@ class CaptureRepository @Inject constructor(@ApplicationContext val context: Con
     }
 
     companion object {
+        // request() 가 프레임을 기다리는 최대 시간. 이 안에 프레임이 안 오면 프로젝션이 죽은 것으로 보고
+        // 재동의 경로로 유도한다(무한 대기 방지).
+        private const val CAPTURE_FRAME_TIMEOUT_MS = 3000L
+
         var mediaProjectionToken: Intent? = null
             set(value) {
                 field = value
@@ -61,17 +66,6 @@ class CaptureRepository @Inject constructor(@ApplicationContext val context: Con
     private val captureResponseFlow = MutableStateFlow<CaptureResponse?>(null)
 
     private val handler = Handler(Looper.getMainLooper())
-
-    // 타임아웃 감시를 위한 Runnable
-    private val timeoutRunnable = Runnable {
-        state = State.Uninitialized
-        val powerManager = context.getSystemService(Context.POWER_SERVICE) as PowerManager
-        val isScreenOn = powerManager.isInteractive
-        Timber.tag(TAG).d("No image available for over 3 second. Setting end = true isScreenOn = $isScreenOn")
-        if (!isScreenOn) {
-            mediaProjectionToken = null
-        }
-    }
 
     private fun start() {
         Timber.tag(TAG).d("#### request() #### $mediaProjectionToken")
@@ -96,8 +90,17 @@ class CaptureRepository @Inject constructor(@ApplicationContext val context: Con
 
             mediaProjectionStopCallback = object : MediaProjection.Callback() {
                 override fun onStop() {
+                    // 시스템(화면 잠금 등)이 프로젝션을 종료한 경우에만 호출된다.
+                    // (앱 스스로 정리할 때는 clearResources() 가 콜백을 먼저 해제한다)
+                    // 토큰은 일회용이라 더 이상 유효하지 않으므로 상태를 완전히 초기화해서
+                    // 다음 request() 가 대기에 빠지지 않고 재동의 경로(NoMediaProjectionToken)로 빠지게 한다.
                     Timber.tag(TAG).w("#### MediaProjectionStopCallback onStop() ####")
                     clearResources()
+                    state = State.Uninitialized
+                    mediaProjectionToken = null
+                    if (captureResponseFlow.value == null) { // 진행 중인 request() 가 있으면 깨워서 오류로 종료시킨다
+                        captureResponseFlow.value = CaptureResponse.Error(NoMediaProjectionTokenException("MediaProjection stopped by system"))
+                    }
                 }
             }
             mediaProjection!!.registerCallback(mediaProjectionStopCallback!!, null)
@@ -116,9 +119,6 @@ class CaptureRepository @Inject constructor(@ApplicationContext val context: Con
             )
 
             imageReader!!.setOnImageAvailableListener({ imageReader ->
-                handler.removeCallbacks(timeoutRunnable)
-                handler.postDelayed(timeoutRunnable, 3000L) // 3초 동안 이벤트가 발생하지 않으면 end를 true로 설정
-
 //                Timber.tag(TAG).d("---- onImageAvailable imageReader $imageReader ----")
                 val capturedImage = imageReader.acquireLatestImage()
                 try {
@@ -181,8 +181,26 @@ class CaptureRepository @Inject constructor(@ApplicationContext val context: Con
         state = State.Uninitialized
     }
 
+    /**
+     * 살아있는 VirtualDisplay 에 surface 를 다시 붙여 캡처 프레임 생산을 재개한다.
+     * MediaProjection/VirtualDisplay 객체를 그대로 유지하므로 토큰을 다시 요청하지 않는다.
+     */
+    private fun resumeFrames() {
+        val reader = imageReader ?: return
+        virtualDisplay?.setSurface(reader.surface)
+    }
+
+    /**
+     * VirtualDisplay 에서 surface 를 분리해 프레임 생산(화면 미러링)을 멈춘다.
+     * 캡처가 없는 유휴 구간에 가상 디스플레이가 60fps 로 계속 돌며 CPU 를 태우는 것을 막는다.
+     * 객체 자체는 살려두므로 다음 캡처는 resumeFrames() 로 즉시 재개할 수 있다(토큰 재사용).
+     */
+    private fun pauseFrames() {
+        virtualDisplay?.setSurface(null)
+    }
+
     private fun removeAlphaChannel(original: Bitmap): Bitmap {
-        val bitmapWithoutAlpha = Bitmap.createBitmap(original.width, original.height, Bitmap.Config.RGB_565)
+        val bitmapWithoutAlpha = createBitmap(original.width, original.height, Bitmap.Config.RGB_565)
         val canvas = Canvas(bitmapWithoutAlpha)
         val paint = Paint()
         // paint.color = Color.WHITE // Set the default background color if needed
@@ -250,10 +268,28 @@ class CaptureRepository @Inject constructor(@ApplicationContext val context: Con
 
         Timber.tag(TAG).i("State $state")
         if (state == State.Uninitialized) {
-            start()
+            start() // 최초 캡처: 토큰으로 MediaProjection/VirtualDisplay 를 생성 (surface 부착 상태)
+        } else {
+            resumeFrames() // 이후 캡처: 살아있는 디스플레이의 프레임 생산만 재개 (토큰 재요청 없음)
         }
 
-        var captureResponse: CaptureResponse = captureResponseFlow.filterNotNull().first()
+        // 프레임을 무한정 기다리지 않는다. 프로젝션이 죽어(onStop 미발생 기기 등) 프레임이 오지 않으면
+        // 상태를 초기화하고 재동의 경로(NoMediaProjectionToken)로 유도한다.
+        var captureResponse: CaptureResponse =
+            withTimeoutOrNull(CAPTURE_FRAME_TIMEOUT_MS) {
+                captureResponseFlow.filterNotNull().first()
+            } ?: run {
+                Timber.tag(TAG).w("no capture frame within ${CAPTURE_FRAME_TIMEOUT_MS}ms — projection likely dead")
+                state = State.Uninitialized
+                val isScreenOn = (context.getSystemService(Context.POWER_SERVICE) as PowerManager).isInteractive
+                if (!isScreenOn) mediaProjectionToken = null
+                clearResources()
+                CaptureResponse.Error(NoMediaProjectionTokenException("no capture frame within timeout"))
+            }
+
+        // 캡처가 끝나면 프레임 생산을 멈춰 유휴 시 CPU 낭비를 막는다. (객체는 유지 → 토큰 재사용)
+        pauseFrames()
+
         if (captureResponse is CaptureResponse.Success) {
             captureResponse = CaptureResponse.Success(removeAlphaChannel(captureResponse.bitmap))
             Timber.tag(TAG).d("removeAlphaChannel capturedBitmap.allocationByteCount ${captureResponse.bitmap.allocationByteCount}")
@@ -272,7 +308,6 @@ class CaptureRepository @Inject constructor(@ApplicationContext val context: Con
 
     override fun onZeroReferences() {
         Timber.tag(TAG).d("====================== mediaProjectionToken = null ============================ ")
-        handler.removeCallbacks(timeoutRunnable)
         clearResources()
         mediaProjectionToken = null
     }

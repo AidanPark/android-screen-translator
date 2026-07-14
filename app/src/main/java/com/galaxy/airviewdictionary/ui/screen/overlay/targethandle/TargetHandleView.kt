@@ -211,6 +211,23 @@ class TargetHandleView private constructor() : OverlayView() {
             }
         }
 
+        // 설정 화면이 처음 닫힌 뒤, 핸들 더블탭으로 설정을 다시 열 수 있음을 딱 한 번 안내한다.
+        val settingsLive by SettingsActivity.liveStateFlow.collectAsStateWithLifecycle()
+        val wasSettingsLive = remember { mutableStateOf(false) }
+        LaunchedEffect(settingsLive) {
+            val justClosed = wasSettingsLive.value && !settingsLive
+            wasSettingsLive.value = settingsLive
+            if (justClosed
+                && !viewModel.preferenceRepository.isSettingsReopenHintShownFlow.first()
+                && !SettingsReopenHintView.INSTANCE.isRunning.get()
+            ) {
+                delay(600) // 설정이 닫히고 핸들이 자리 잡을 시간
+                if (!SettingsActivity.liveStateFlow.value) {
+                    SettingsReopenHintView.INSTANCE.cast(context, Point(layoutParams.x, layoutParams.y))
+                }
+            }
+        }
+
         Column(
             modifier = Modifier
                 .wrapContentSize()
@@ -423,11 +440,7 @@ class TargetHandleView private constructor() : OverlayView() {
             WindowManager.LayoutParams.WRAP_CONTENT,
             screenInfo.width / 2 - viewWidth / 2,
             screenInfo.height / 2 - viewHeight / 2,
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
-            } else {
-                WindowManager.LayoutParams.TYPE_PHONE
-            },
+            WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
             WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
                     or WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN
                     or WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
@@ -519,6 +532,12 @@ class TargetHandleView private constructor() : OverlayView() {
     //                                      핸들 자동 포지셔닝                                       //
     //                                                                                            //
     ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * 삼성 기기 여부. 삼성은 화면 세로 중앙 가장자리에 '엣지 패널' 핸들이 있어
+     * 우리 앱의 도킹과 충돌하므로, 삼성에서는 도킹 기능을 제공하지 않는다.
+     */
+    private val isSamsungDevice: Boolean = Build.MANUFACTURER.equals("samsung", ignoreCase = true)
 
     private var dragHandleDockingJob: Job? = null
 
@@ -632,12 +651,17 @@ class TargetHandleView private constructor() : OverlayView() {
     }
 
     private fun dockDragHandle(context: Context, start: Boolean) {
+        // 삼성 기기에서는 엣지 패널과의 충돌을 피하기 위해 도킹하지 않는다.
+        if (isSamsungDevice) return
         Timber.tag(TAG).d("#### dockDragHandle() ####")
         val screenInfo: ScreenInfo = ScreenInfoHolder.get()
         val hideDepth = context.resources.getDimensionPixelSize(R.dimen.target_handle_width)
         val targetX = (if (start) -hideDepth else screenInfo.width).toDouble()
 //        val targetX:Double =  -context.resources.getDimensionPixelSize(R.dimen.target_handle_width) * 0.94
-        val targetY = (screenInfo.height - context.resources.getDimensionPixelSize(R.dimen.target_handle_height) - context.resources.getDimensionPixelSize(R.dimen.target_handle_width)) / 2
+        // 도킹 세로 위치 비율. 0.5 = 화면 세로 중앙.
+        // 삼성 엣지 패널 핸들(기본 중앙)과 겹치지 않도록 화면 높이의 3/4 지점으로 내린다. (조정 가능)
+        val dockYRatio = 0.75
+        val targetY = ((screenInfo.height - context.resources.getDimensionPixelSize(R.dimen.target_handle_height) - context.resources.getDimensionPixelSize(R.dimen.target_handle_width)) * dockYRatio).toInt()
 
         val startX = layoutParams.x
         val startY = layoutParams.y

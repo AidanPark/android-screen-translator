@@ -28,14 +28,23 @@ class RemoteConfigRepository @Inject constructor(@ApplicationContext val context
         const val SERVICE_AVAILABLE_KEY = "service_available"
         const val LATEST_VERSION_CODE_KEY = "latest_version_code"
         const val FORCE_UPDATE_VERSION_CODE_KEY = "force_update_version_code"
-        const val API_KEY_VERSION_AZURE = "api_key_version_azure"
-        const val API_KEY_VERSION_DEEPL = "api_key_version_deepl"
-        const val API_KEY_VERSION_PAPAGO = "api_key_version_papago"
-        const val API_KEY_VERSION_YANDEX = "api_key_version_yandex"
-        const val API_KEY_VERSION_CHATGPT = "api_key_version_chatgpt"
         const val TRIAL_TIME_LIMIT_MINUTE = "trial_time_limit_minute"
         const val FIXED_AREA_VIEW_CAMPAIGN_PERIOD_MINUTE = "fixed_area_view_campaign_period_minute"
         const val AD_UNIT_ID = "ad_unit_id"
+
+        // OpenAI 번역에서 고를 수 있는 모델 후보 (쉼표 구분). 설정 UI 가 이 목록을 노출한다.
+        const val OPENAI_TRANSLATE_MODELS = "openai_translate_models"
+    }
+
+    /**
+     * OpenAI 번역 모델 후보 목록. Remote Config 의 쉼표 구분 문자열을 파싱한다.
+     * (기본값은 res/xml/remote_config_defaults.xml 참조)
+     */
+    fun getOpenAiTranslateModels(): List<String> {
+        return remoteConfig[OPENAI_TRANSLATE_MODELS].asString()
+            .split(",")
+            .map { it.trim() }
+            .filter { it.isNotBlank() }
     }
 
     private val remoteConfig: FirebaseRemoteConfig = Firebase.remoteConfig
@@ -48,11 +57,6 @@ class RemoteConfigRepository @Inject constructor(@ApplicationContext val context
         Timber.tag(TAG).d("SERVICE_AVAILABLE_KEY ${remoteConfig[SERVICE_AVAILABLE_KEY].asString()}")
         Timber.tag(TAG).d("LATEST_VERSION_CODE_KEY ${remoteConfig[LATEST_VERSION_CODE_KEY].asString()}")
         Timber.tag(TAG).d("FORCE_UPDATE_VERSION_CODE_KEY ${remoteConfig[FORCE_UPDATE_VERSION_CODE_KEY].asString()}")
-        Timber.tag(TAG).d("API_KEY_VERSION_AZURE ${remoteConfig[API_KEY_VERSION_AZURE].asString()}")
-        Timber.tag(TAG).d("API_KEY_VERSION_DEEPL ${remoteConfig[API_KEY_VERSION_DEEPL].asString()}")
-        Timber.tag(TAG).d("API_KEY_VERSION_PAPAGO ${remoteConfig[API_KEY_VERSION_PAPAGO].asString()}")
-        Timber.tag(TAG).d("API_KEY_VERSION_YANDEX ${remoteConfig[API_KEY_VERSION_YANDEX].asString()}")
-        Timber.tag(TAG).d("API_KEY_VERSION_CHATGPT ${remoteConfig[API_KEY_VERSION_CHATGPT].asString()}")
         Timber.tag(TAG).d("TRIAL_TIME_LIMIT_MINUTE ${remoteConfig[TRIAL_TIME_LIMIT_MINUTE].asString()}")
         Timber.tag(TAG).d("FIXED_AREA_VIEW_CAMPAIGN_PERIOD_MINUTE ${remoteConfig[FIXED_AREA_VIEW_CAMPAIGN_PERIOD_MINUTE].asString()}")
         Timber.tag(TAG).d("AD_UNIT_ID ${remoteConfig[AD_UNIT_ID].asString()}")

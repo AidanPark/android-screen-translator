@@ -4,7 +4,6 @@ package com.galaxy.airviewdictionary.ui.screen.overlay.languagelist
 import android.content.Context
 import android.content.res.Configuration
 import android.graphics.PixelFormat
-import android.os.Build
 import android.view.Gravity
 import android.view.WindowManager
 import androidx.compose.animation.AnimatedVisibility
@@ -61,6 +60,7 @@ import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.galaxy.airviewdictionary.R
 import com.galaxy.airviewdictionary.data.remote.translation.Language
+import com.galaxy.airviewdictionary.data.remote.translation.TranslationKitType
 import com.galaxy.airviewdictionary.core.OverlayService
 import com.galaxy.airviewdictionary.ui.screen.overlay.OverlayView
 import kotlinx.coroutines.delay
@@ -100,11 +100,7 @@ class LanguageListView private constructor() : OverlayView() {
         layoutParams = WindowManager.LayoutParams(
             WindowManager.LayoutParams.MATCH_PARENT,
             WindowManager.LayoutParams.MATCH_PARENT,
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
-            } else {
-                WindowManager.LayoutParams.TYPE_PHONE
-            },
+            WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
             WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
                     or WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN
                     or WindowManager.LayoutParams.FLAG_DIM_BEHIND
@@ -165,7 +161,7 @@ class LanguageListView private constructor() : OverlayView() {
         // target language
         val targetLanguageCode by viewModel.preferenceRepository.targetLanguageCodeFlow.collectAsStateWithLifecycle(
             lifecycle = lifecycleOwner.lifecycle,
-            initialValue = context.resources.configuration.locales.get(0).language
+            initialValue = configuration.locales.get(0).language
         )
         val targetLanguage: Language = viewModel.translationRepository.getSupportedTargetLanguage(targetLanguageCode)
 
@@ -367,7 +363,8 @@ class LanguageListView private constructor() : OverlayView() {
                         painter = painterResource(id = kitType.ciResourceId),
                         contentDescription = "$kitType logo",
                         modifier = Modifier
-                            .size(22.dp)
+                            // OpenAI 로고는 캔버스를 꽉 채워 같은 dp 에서 더 커 보이므로 살짝 줄인다
+                            .size(if (kitType == TranslationKitType.OPENAI) 19.dp else 22.dp)
                             .align(Alignment.CenterVertically)
                             .alpha(if (support) 1.0f else 0.25f),
                     )

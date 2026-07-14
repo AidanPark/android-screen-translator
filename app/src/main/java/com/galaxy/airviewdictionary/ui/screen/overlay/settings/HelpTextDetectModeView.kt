@@ -4,7 +4,6 @@ package com.galaxy.airviewdictionary.ui.screen.overlay.settings
 import android.content.Context
 import android.content.res.Configuration
 import android.graphics.PixelFormat
-import android.os.Build
 import android.view.Gravity
 import android.view.WindowManager
 import androidx.compose.foundation.Image
@@ -45,7 +44,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.android.billingclient.api.Purchase
 import com.galaxy.airviewdictionary.R
 import com.galaxy.airviewdictionary.core.OverlayService
 import com.galaxy.airviewdictionary.data.local.vision.TextDetectMode
@@ -73,11 +71,7 @@ class HelpTextDetectModeView private constructor() : OverlayView() {
     override val layoutParams: WindowManager.LayoutParams = WindowManager.LayoutParams(
         WindowManager.LayoutParams.MATCH_PARENT,
         WindowManager.LayoutParams.MATCH_PARENT,
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
-        } else {
-            WindowManager.LayoutParams.TYPE_PHONE
-        },
+        WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
         WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
                 or WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN
                 or WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
@@ -98,11 +92,6 @@ class HelpTextDetectModeView private constructor() : OverlayView() {
             val isPortrait = configuration.orientation == Configuration.ORIENTATION_PORTRAIT
 
             val textDetectMode = remember { mutableStateOf(initialDetectMode) }
-
-            val purchaseState by menuBarViewModel.billingRepository.purchaseStateFlow.collectAsStateWithLifecycle(
-                lifecycle = lifecycleOwner.lifecycle,
-                initialValue = Purchase.PurchaseState.UNSPECIFIED_STATE
-            )
 
             if (isPortrait) {
                 Column(
@@ -142,12 +131,7 @@ class HelpTextDetectModeView private constructor() : OverlayView() {
                         contentAlignment = Alignment.TopCenter
                     ) {
                         ProductBox(
-                            isFree = textDetectMode.value == TextDetectMode.WORD,
-                            needsPurchase = purchaseState != Purchase.PurchaseState.PURCHASED,
-                            onPurchase = {
-                                clear()
-                                SettingsActivity.purchase(context = context)
-                            }
+                            descriptionResId = textDetectMode.value.descriptionResourceId
                         )
                     }
                 }
@@ -185,12 +169,7 @@ class HelpTextDetectModeView private constructor() : OverlayView() {
                         contentAlignment = Alignment.Center
                     ) {
                         ProductBox(
-                            isFree = textDetectMode.value == TextDetectMode.WORD,
-                            needsPurchase = purchaseState != Purchase.PurchaseState.PURCHASED,
-                            onPurchase = {
-                                clear()
-                                SettingsActivity.purchase(context = context)
-                            }
+                            descriptionResId = textDetectMode.value.descriptionResourceId
                         )
                     }
                 }
@@ -240,14 +219,12 @@ class HelpTextDetectModeView private constructor() : OverlayView() {
 
 @Composable
 fun ProductBox(
-    isFree: Boolean,
-    needsPurchase: Boolean,
-    onPurchase: () -> Unit
+    descriptionResId: Int
 ) {
     Column {
         Image(
-            painter = painterResource(id = if (isFree) R.drawable.image_free else R.drawable.image_premium),
-            contentDescription = "image_premium",
+            painter = painterResource(id = R.drawable.image_free),
+            contentDescription = "image_free",
             modifier = Modifier
                 .sizeIn(
                     maxWidth = 58.dp,
@@ -259,36 +236,12 @@ fun ProductBox(
         Text(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 12.dp),
+                .padding(top = 16.dp, start = 24.dp, end = 24.dp),
             textAlign = TextAlign.Center,
-            text = stringResource(id = if (isFree) R.string.help_text_no_limit_free else R.string.help_text_no_limit),
+            text = stringResource(id = descriptionResId),
             color = Color.White,
-            style = MaterialTheme.typography.bodyLarge.copy(fontSize = 16.sp)
+            style = MaterialTheme.typography.bodyLarge.copy(fontSize = 18.sp)
         )
-        Text(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 12.dp),
-            textAlign = TextAlign.Center,
-            text = stringResource(id = if (isFree) R.string.help_text_no_limit_free_title else R.string.help_text_no_limit_title),
-            color = Color.White,
-            style = MaterialTheme.typography.headlineLarge.copy(fontSize = 28.sp)
-        )
-        if (!isFree && needsPurchase) {
-            Button(
-                onClick = { onPurchase() },
-                modifier = Modifier
-                    .padding(24.dp)
-                    .align(Alignment.CenterHorizontally),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0Xff115ef7),
-                    contentColor = Color.White
-                ),
-                shape = RoundedCornerShape(24.dp)
-            ) {
-                Text(text = stringResource(id = R.string.help_text_get_premium))
-            }
-        }
     }
 }
 

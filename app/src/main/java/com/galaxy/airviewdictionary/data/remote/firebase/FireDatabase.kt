@@ -1,14 +1,7 @@
 package com.galaxy.airviewdictionary.data.remote.firebase
 
 import android.content.Context
-import com.android.billingclient.api.Purchase
-import com.galaxy.airviewdictionary.data.local.secure.DeviceActivityLevel
-import com.galaxy.airviewdictionary.data.local.secure.VerdictAppLicensing
-import com.galaxy.airviewdictionary.data.local.secure.VerdictAppRecognition
-import com.galaxy.airviewdictionary.data.local.secure.VerdictDeviceRecognition
-import com.galaxy.airviewdictionary.data.local.secure.VerdictPlayProtect
 import com.galaxy.airviewdictionary.data.local.vision.TextDetectMode
-import com.galaxy.airviewdictionary.data.remote.ai.CorrectionKitType
 import com.galaxy.airviewdictionary.extensions.getOrCreateAppInstanceId
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -35,51 +28,6 @@ object FireDatabase {
     private fun sanitizeKey(input: String): String {
         val disallowedChars = "[.$#\\[\\]/]".toRegex()
         return input.replace(disallowedChars, "_")  // 특수 문자를 밑줄로 대체
-    }
-
-    fun badIntegrityReport(
-        verdictAppRecognition: VerdictAppRecognition,
-        verdictDeviceRecognition: VerdictDeviceRecognition,
-        deviceActivityLevel: DeviceActivityLevel,
-        verdictAppLicensing: VerdictAppLicensing,
-        verdictPlayProtect: VerdictPlayProtect
-    ) {
-        FirebaseAuth.getInstance().signInAnonymously().addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                val dbRef = FirebaseDatabase.getInstance().reference
-                val jsonObject = JSONObject().apply {
-                    put("verdictAppRecognition", verdictAppRecognition.name)
-                    put("verdictDeviceRecognition", verdictDeviceRecognition.name)
-                    put("deviceActivityLevel", deviceActivityLevel.name)
-                    put("verdictAppLicensing", verdictAppLicensing.name)
-                    put("verdictPlayProtect", verdictPlayProtect.name)
-                }
-                val jsonString = jsonObject.toString()
-                val userRef = dbRef.child("badIntegrityReport").child(sanitizeKey(jsonString))
-
-                userRef.runTransaction(object : Transaction.Handler {
-                    override fun doTransaction(currentData: MutableData): Transaction.Result {
-                        val currentCount = currentData.getValue(Int::class.java) ?: 0
-                        currentData.value = currentCount + 1
-                        return Transaction.success(currentData)
-                    }
-
-                    override fun onComplete(
-                        error: DatabaseError?,
-                        committed: Boolean,
-                        currentData: DataSnapshot?
-                    ) {
-                        if (error != null) {
-                            Timber.tag(TAG).e("badIntegrityReport failed: ${error.message}")
-                        } else {
-                            Timber.tag(TAG).d("badIntegrityReport successfully")
-                        }
-                    }
-                })
-            } else {
-                Timber.tag(TAG).e("Authentication failed: ${task.exception}")
-            }
-        }
     }
 
     fun secureReport(eventDetail: String) {
@@ -152,7 +100,6 @@ object FireDatabase {
         transTransparency: String,
         closeDelay: String,
         replyTransparency: String,
-        correctionKit: String,
         autoTTS: String,
         TTSRate: String,
     ) {
@@ -167,7 +114,6 @@ object FireDatabase {
                     put(Param.TRANSLATION_TRANSPARENCY, transTransparency)
                     put(Param.TRANSLATION_CLOSE_DELAY, closeDelay)
                     put(Param.REPLY_TRANSPARENCY, replyTransparency)
-                    put(Param.CORRECTION_KIT_TYPE, correctionKit)
                     put(Param.AUTOMATIC_TRANSLATION_PLAYBACK, autoTTS)
                     put(Param.TTS_SPEECH_RATE, TTSRate)
                 }
@@ -201,7 +147,6 @@ object FireDatabase {
     fun translationReport(
         transaction: com.galaxy.airviewdictionary.data.remote.translation.Transaction,
         textDetectMode: TextDetectMode?,
-        correctionKitType: CorrectionKitType?
     ) {
         FirebaseAuth.getInstance().signInAnonymously().addOnCompleteListener { task ->
             Timber.tag(TAG).d("task.isSuccessful ${task.isSuccessful}")
@@ -213,7 +158,6 @@ object FireDatabase {
                     put(Param.TRANSLATION_KIT_TYPE, transaction.translationKitType?.name ?: "unknown")
                     put(Param.TEXT_DETECT_MODE, textDetectMode?.name ?: "unknown")
                     put(Param.DETECTED_LANGUAGE_CODE, transaction.detectedLanguageCode ?: "unknown")
-                    put(Param.CORRECTION_KIT_TYPE, correctionKitType?.name ?: "none")
                 }
                 val userRef = dbRef.child("translationReport").child(sanitizeKey(reportObject.toString()))
 
@@ -341,49 +285,6 @@ object FireDatabase {
                             Timber.tag(TAG).e("daysTakenReport failed: ${error.message}")
                         } else {
                             Timber.tag(TAG).d("daysTakenReport successfully")
-                        }
-                    }
-                })
-            } else {
-                Timber.tag(TAG).e("Authentication failed: ${task.exception}")
-            }
-        }
-    }
-
-    fun purchaseReport(context: Context, purchase: Purchase) {
-        val appUuid = context.getOrCreateAppInstanceId()
-        Timber.tag(TAG).i("=========================== purchaseReport $appUuid ==========================")
-        FirebaseAuth.getInstance().signInAnonymously().addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                val dbRef = FirebaseDatabase.getInstance().reference
-
-                val orderID = purchase.orderId ?: "N/A"
-                val userRef = dbRef.child("purchaseReport").child(sanitizeKey(appUuid))
-
-                userRef.runTransaction(object : Transaction.Handler {
-                    override fun doTransaction(currentData: MutableData): Transaction.Result {
-
-                        val currentJSONArray = currentData.getValue(JSONArray::class.java) ?: JSONArray()
-                        val reportObject = JSONObject().apply {
-                            put("orderID", orderID)
-                            put("product", purchase.products.joinToString(", "))
-                            put("purchaseTime", formatTimestamp(purchase.purchaseTime))
-                        }
-                        currentJSONArray.put(reportObject)
-
-                        currentData.value = sanitizeKey(currentJSONArray.toString())
-                        return Transaction.success(currentData)
-                    }
-
-                    override fun onComplete(
-                        error: DatabaseError?,
-                        committed: Boolean,
-                        currentData: DataSnapshot?
-                    ) {
-                        if (error != null) {
-                            Timber.tag(TAG).e("purchaseReport failed: ${error.message}")
-                        } else {
-                            Timber.tag(TAG).d("purchaseReport successfully")
                         }
                     }
                 })

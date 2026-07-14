@@ -193,7 +193,11 @@ class VisionRepository @Inject constructor() {
         }
     }
 
-    private suspend fun identifyLanguage(text: String): String = suspendCancellableCoroutine { continuation ->
+    /**
+     * 주어진 텍스트의 언어를 ML Kit 으로 판정한다. 판정 불가 시 "und".
+     * 자동 감지 번역에서 화면 전체가 아니라 실제 번역 대상 문장으로 감지할 때도 재사용한다.
+     */
+    suspend fun identifyLanguage(text: String): String = suspendCancellableCoroutine { continuation ->
         val languageIdentifier = LanguageIdentification.getClient()
         languageIdentifier.identifyLanguage(text)
             .addOnSuccessListener { languageCode ->

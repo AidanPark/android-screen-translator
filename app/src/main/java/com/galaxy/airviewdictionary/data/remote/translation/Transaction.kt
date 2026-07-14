@@ -1,15 +1,11 @@
 package com.galaxy.airviewdictionary.data.remote.translation
 
-import com.galaxy.airviewdictionary.data.remote.ai.CorrectionKitType
-
 data class Transaction(
     val sourceLanguageCode: String? = null,
     val targetLanguageCode: String? = null,
     val sourceText: String? = null,
     val translationKitType: TranslationKitType? = null,
     val detectedLanguageCode: String? = null,
-    val correctionKitType: CorrectionKitType? = null,
-    val correctedText: String? = null,
     val resultText: String? = null,
 ) {
     override fun toString(): String {
@@ -19,8 +15,6 @@ data class Transaction(
                 "sourceText=$sourceText, " +
                 "translationKitType=$translationKitType, " +
                 "detectedLanguageCode=$detectedLanguageCode, " +
-                "correctionKitType=$correctionKitType, " +
-                "correctedText=$correctedText, " +
                 "resultText=$resultText, " +
                 ")"
     }

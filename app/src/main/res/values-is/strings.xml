@@ -8,14 +8,10 @@
     <!-- Overlay Permission -->
     <string name="message_permission_overlay">Krafist heimildar:\nBirta yfir öðrum forritum</string>
     <string name="message_permission_overlay_detail">Til að keyra Skjáþýðanda þarftu að leyfa birtingu yfir öðrum forritum.</string>
-    <string name="message_permission_overlay_denied">Yfirlag heimild hafnað</string>
-    <string name="message_permission_overlay_denied_detail">Yfirlag heimild var ekki veitt.\nForritið verður lokað.</string>
 
     <!-- MediaProjection token -->
     <string name="message_media_projection">Krafist heimildar:\nSkjáupptaka</string>
     <string name="message_media_projection_detail">Til að keyra Skjáþýðanda þarftu að leyfa skjáupptöku.\n\nUpptakan verður aðeins notuð til þýðingar og verður ekki geymd eða deilt.</string>
-    <string name="message_media_projection_denied">Skjáupptökuheimild hafnað</string>
-    <string name="message_media_projection_denied_detail">Skjáupptökuheimild var ekki veitt.\nForritið verður lokað.</string>
 
     <!-- Foreground Service -->
     <string name="notification_foreground_service">Skjáupptökuaðgerð er notuð til þýðingar.</string>
@@ -23,7 +19,6 @@
     <string name="message_start_foreground_service">Forritið ræsir forgrunnsþjónustu til að fanga og þýða skjáefni.\n\nUpptökurnar verða ekki geymdar eða sendar.</string>
     <string name="label_confirm_start_foreground_service">Ræsa</string>
     <string name="label_dismiss_start_foreground_service">Loka</string>
-    <string name="snack_message_start_foreground_service">Forritið ræsir forgrunnsþjónustu til að fanga og þýða skjáefni.</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">Ljúka</string>
@@ -36,18 +31,6 @@
     <string name="title_voice_list_view">Tiltækir raddir</string>
 
     <!-- Dialog -->
-    <string name="message_authentication_error">Auðkenning villa</string>
-    <string name="message_authentication_error_detail">Auðkenningarþjónn svarar ekki.\nVinsamlegast reyndu aftur síðar.</string>
-    <string name="message_untrusted_environment">Óáreiðanlegt umhverfi</string>
-    <string name="message_untrusted_environment_detail">Forritið þitt stóðst ekki heilleikapróf Google Play.</string>
-    <string name="message_unknown_device">Óþekkt tæki</string>
-    <string name="message_unknown_device_detail">Þetta tæki er ekki stutt.</string>
-    <string name="message_authentication_required">Auðkenning krafist</string>
-    <string name="message_authentication_required_detail">Þú verður að skrá þig inn með Google reikningi.</string>
-    <string name="message_playstore_update_required">Uppfærsla á Play Store krafist</string>
-    <string name="message_playstore_update_required_detail">Ekki tókst að tengjast Play Store þjónustunni.\nÞú gætir verið að nota eldri útgáfu.</string>
-    <string name="message_unknown_source">Sæktu forritið úr Play Store</string>
-    <string name="message_unknown_source_detail">Til að halda áfram að nota forritið, sæktu það úr Google Play.</string>
     <string name="message_force_update">Uppfærsla krafist</string>
     <string name="message_force_update_detail">Þessi útgáfa er ekki lengur studd.\nVinsamlegast farðu í verslunina.</string>
     <string name="message_service_unavailable">Þjónustan er tímabundið ekki tiltæk</string>
@@ -56,63 +39,59 @@
     <string name="message_network_unavailable_detail">Netið er ekki tiltækt.\nVinsamlegast athugaðu tenginguna og reyndu aftur.</string>
     <string name="message_translate_fixedarea_warn">Viðvörun um rafhlöðu</string>
     <string name="message_translate_fixedarea_warn_detail">Rafhlaðan gæti tæmst hratt.</string>
-    <string name="message_translate_fixedarea_promotion">Upplýsingar um vörukaup</string>
-    <string name="message_translate_fixedarea_promotion_detail">Vinaleg áminning um aukaeiginleika okkar birtist á %1$s mínútna fresti.</string>
-    <string name="message_free_trial_ends">Ókeypis prufuútgáfan þín er lokið.</string>
-    <string name="message_free_trial_ends_detail">Viltu horfa á auglýsingu til að framlengja prufuna?</string>
-    <string name="message_ad_reward">Þú hefur fengið %1$d fleiri mínútur af ókeypis prufu!</string>
-    <string name="message_ad_reward_detail">Njóttu allra úrvals eiginleika ókeypis næstu %1$d mínúturnar.</string>
+    <string name="ad_gate_loading">Undirbý auglýsingu…</string>
+    <string name="ad_gate_reward_notice">Horfðu á auglýsinguna til enda til að nota forritið án auglýsinga þar til þú lokar því.</string>
 
     <!-- SettingsActivity -->
     <string name="settings_title">Stillingar</string>
     <string name="settings_menu_cat_pointer">Bendill</string>
     <string name="settings_menu_pointer_docking_delay">Töf við festingu</string>
-    <string name="settings_menu_haptic_feedback_to_detection">Titringur við greiningu</string>
+    <string name="settings_menu_haptic_feedback_to_detection">Snertisvörun við greiningu</string>
     <string name="settings_menu_cat_menubar">Valmyndarslá</string>
     <string name="settings_menu_menubar_transparency">Gegnsæi valmyndar</string>
     <string name="settings_menu_menubar_composition">Valmynda aðgerðir</string>
-    <string name="settings_menu_cat_ai">AI-leiðrétting</string>
     <string name="settings_menu_cat_translation">Þýðing</string>
     <string name="settings_menu_translation_transparency">Gegnsæi þýðingar</string>
     <string name="settings_menu_translation_close_delay">Töf við lokun</string>
-    <string name="settings_menu_automated_read_aloud">Sjálfvirk lestur</string>
+    <string name="settings_menu_automated_read_aloud">Sjálfvirkur lestur þýðingar</string>
     <string name="settings_menu_reply_transparency">Gegnsæi svars</string>
     <string name="settings_menu_cat_tts">Texti í tal</string>
+    <string name="settings_menu_tts_read_target">Lesefni</string>
+    <string name="settings_tts_read_target_source">Frumtexti</string>
+    <string name="settings_tts_read_target_target">Þýðing</string>
     <string name="settings_menu_tts_voices">TTS raddir</string>
     <string name="settings_menu_tts_rate">TTS hraði</string>
     <string name="settings_menu_cat_about">Um forritið</string>
-    <string name="settings_menu_on_premium_free_trial">Premium prufa virk</string>
-    <string name="settings_menu_premium_free_trial_remain">%1$d mínútur eftir</string>
-    <string name="settings_menu_your_premium_benefits">Premium fríðindi</string>
-    <string name="settings_menu_your_premium_benefits_peding">Fríðindi (bíður)</string>
     <string name="settings_menu_app_version">Útgáfa apps</string>
     <string name="settings_menu_app_version_latest">(Nýjasta)</string>
 
     <!-- HelpTextDetectModeView, HelpTranslationKitView -->
-    <string name="help_text_no_limit">Allt er ótakmarkað með Premium</string>
     <string name="help_text_no_limit_free">Engin takmörk á magni eða tíma</string>
-    <string name="help_text_no_limit_title">Njóttu án takmarkana</string>
-    <string name="help_text_no_limit_free_title">Ókeypis og án takmarkana</string>
-    <string name="help_text_get_premium">Fáðu Premium</string>
+    <string name="help_text_deepl_own_key">Notar persónulega DeepL API-lykilinn þinn</string>
+    <string name="deepl_key_guide">Sláðu inn DeepL API-lykilinn þinn til að nota DeepL-þýðingu.</string>
+    <string name="deepl_key_signup_guide">Skráðu þig hjá DeepL og þú getur gerst áskrifandi að ókeypis áskriftinni.</string>
+    <string name="deepl_key_link_subscription">Gerast áskrifandi að ókeypis áskriftinni</string>
+    <string name="deepl_key_link_keys">Athuga API-lykilinn þinn</string>
+    <string name="deepl_key_active">Virkjað</string>
+    <string name="label_save">Vista</string>
+    <string name="deepl_key_invalid">API-lykillinn er ógildur.</string>
+    <string name="deepl_key_validating">Staðfestir…</string>
+    <string name="deepl_key_network_error">Ekki tókst að staðfesta lykilinn vegna netvillu. Lykillinn var vistaður.</string>
 
     <!-- PremiumView -->
-    <string name="premium_view_get_premium">Fáðu Premium</string>
-    <string name="premium_view_get_premium_purchased">Þín Premium forréttindi</string>
-    <string name="premium_view_get_premium_pending">Þín Premium forréttindi (bíður)</string>
-    <string name="premium_view_get_premium_not_available">Premium er ekki tiltækt eins og er</string>
-    <string name="premium_view_price_format">%1$s/mánuði • með VSK\n• Hægt að segja upp hvenær sem er</string>
-    <string name="premium_view_title">Allir eiginleikar,\nEngin truflun.</string>
-    <string name="premium_view_message">Engin takmörk á magni eða tíma.\nAllt aðgengilegt með Premium</string>
-    <string name="premium_view_description_azure">Þýðir nákvæmlega flest tungumál heims.</string>
-    <string name="premium_view_description_deepl">Veitir vandaðar og merkingarréttar þýðingar.</string>
-    <string name="premium_view_description_papago">Papago þýðir sjálfkrafa milli margra tungumála með taugakerfum.</string>
-    <string name="premium_view_description_google">Hraðasta þýðingin. Ókeypis og ótakmarkað að eilífu.</string>
-    <string name="premium_view_description_sentence_detection">Notaðu puttann til að þýða línur.</string>
+    <string name="premium_view_description_sentence_detection">Setningar eru valdar sjálfkrafa.</string>
     <string name="premium_view_description_paragraph_detection">Málsgreinar eru greindar sjálfkrafa.</string>
     <string name="premium_view_description_select_detection">Þú getur líka valið svæðið sem þú vilt.</string>
-    <string name="premium_view_description_word_detection">Orð fyrir orð þýðing er alltaf ókeypis og ótakmörkuð.</string>
+    <string name="premium_view_description_word_detection">Bentu á orð til að þýða það samstundis.</string>
     <string name="premium_view_description_fixed_area_detection">Þú getur þýtt stöðug svæði eins og texta í kvikmyndum.</string>
-    <string name="premium_view_unsubscribe">Hætta við áskrift</string>
+  <string name="say_here">Ég er hér!</string>
+  <string name="hint_settings_reopen">Tvísmelltu á handfangið til að opna stillingar aftur</string>
+  <string name="openai_key_guide">Sláðu inn OpenAI API-lykilinn þinn til að þýða með OpenAI-líkönum.</string>
+  <string name="openai_key_signup_guide">Búðu til lykil á OpenAI-stjórnborðinu. Notkun er gjaldfærð á OpenAI-reikninginn þinn.</string>
+  <string name="openai_key_link_keys">Sæktu API-lykilinn þinn</string>
+  <string name="openai_key_link_billing">Reikningagerð og notkun</string>
+  <string name="openai_model_label">Líkan</string>
+  <string name="help_text_openai_own_key">Notar persónulega OpenAI API-lykilinn þinn</string>
 </resources>
 
 

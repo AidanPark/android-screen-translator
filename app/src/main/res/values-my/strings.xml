@@ -8,14 +8,10 @@
     <!-- Overlay Permission -->
     <string name="message_permission_overlay">လိုအပ်သောခွင့်ပြုချက်:\nအခြားအက်ပ်များပေါ်တွင်ပြရန်</string>
     <string name="message_permission_overlay_detail">ဖန်သားပြင်ဘာသာပြန်ကိုစတင်ရန် အခြားအက်ပ်များပေါ်တွင်ပြရန်ခွင့်ပြုချက်ပေးရန် လိုအပ်ပါသည်။</string>
-    <string name="message_permission_overlay_denied">Overlay ခွင့်ပြုချက် ပယ်ချခဲ့သည်</string>
-    <string name="message_permission_overlay_denied_detail">Overlay ခွင့်ပြုချက်ကို မပေးထားပါ။\nအက်ပ်မှထွက်ပါမည်။</string>
 
     <!-- MediaProjection token 요청 -->
     <string name="message_media_projection">လိုအပ်သောခွင့်ပြုချက်:\nဖန်သားပြင်မှတ်တမ်းတင်ခြင်း</string>
     <string name="message_media_projection_detail">ဖန်သားပြင်ဘာသာပြန်ကိုစတင်ရန် ဖန်သားပြင်မှတ်တမ်းတင်ခွင့်ပြုချက်ပေးရန် လိုအပ်ပါသည်။\n\nဖန်သားပြင်ပေါ်ရှိအချက်အလက်များကိုဘာသာပြန်ရေးအတွက်သာအသုံးပြုမည်ဖြစ်ပြီး သိမ်းဆည်းခြင်း သို့မဟုတ် ပို့ဆောင်ခြင်း မပြုပါ။</string>
-    <string name="message_media_projection_denied">ဖန်သားပြင်မှတ်တမ်းတင်ခွင့်ပြုချက် ပယ်ခံခဲ့သည်</string>
-    <string name="message_media_projection_denied_detail">ဖန်သားပြင်မှတ်တမ်းတင်ခွင့်ပြုချက် မပေးထားပါ။\nအက်ပ်မှထွက်ပါမည်။</string>
 
     <!-- Foreground Service 시작 알림 -->
     <string name="notification_foreground_service">ဘာသာပြန်လုပ်ငန်းအတွက် ဖန်သားပြင်ဖမ်းယူမှုကို အသုံးပြုနေသည်။</string>
@@ -23,7 +19,6 @@
     <string name="message_start_foreground_service">အက်ပ်သည် ဖန်သားပြင်အကြောင်းအရာ ဖမ်းယူပြီး ဘာသာပြန်ရန်အတွက် Foreground Service ကိုစတင်ပါသည်။\n\nဖမ်းယူထားသောပုံများကို မသိမ်းဆည်းပါ၊ မပို့ပါ။</string>
     <string name="label_confirm_start_foreground_service">စတင်မည်</string>
     <string name="label_dismiss_start_foreground_service">ပြီးဆုံးမည်</string>
-    <string name="snack_message_start_foreground_service">အက်ပ်သည် ဖန်သားပြင်အကြောင်းအရာကို ဖမ်းယူပြီး ဘာသာပြန်ရန် Foreground Service ကိုစတင်သည်။</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">ပြီးဆုံးမည်</string>
@@ -36,18 +31,6 @@
     <string name="title_voice_list_view">အသံရွေးချယ်စရာများ</string>
 
     <!-- Dialog -->
-    <string name="message_authentication_error">အတည်ပြုခြင်းအမှား</string>
-    <string name="message_authentication_error_detail">အတည်ပြုမှုဆာဗာ မပြန်သွားပါ။\nနောက်မှပြန်လည်ကြိုးစားပါ။</string>
-    <string name="message_untrusted_environment">မယုံကြည်ရသည့်ပတ်ဝန်းကျင်</string>
-    <string name="message_untrusted_environment_detail">သင့်အက်ပ်သည် Google Play Integrity စစ်ဆေးမှုအောင်မဖြတ်နိုင်ခဲ့ပါ။</string>
-    <string name="message_unknown_device">မသိသောစက်</string>
-    <string name="message_unknown_device_detail">ဤစက်ကို မပံ့ပိုးပါ။</string>
-    <string name="message_authentication_required">အတည်ပြုရန်လိုအပ်သည်</string>
-    <string name="message_authentication_required_detail">Google ဖြင့် log in ဝင်ထားရပါမည်။</string>
-    <string name="message_playstore_update_required">Play Store ကိုအပ်ဒိတ်လုပ်ရန် လိုအပ်သည်</string>
-    <string name="message_playstore_update_required_detail">Play Store ဝန်ဆောင်မှုနှင့် ချိတ်ဆက်မှု မအောင်မြင်ပါ။\nသင်၏စက်တွင်အဟောင်းဗားရှင်း Play Store တပ်ဆင်ထားနိုင်သည်။</string>
-    <string name="message_unknown_source">ဤအက်ပ်ကို Play မှရယူပါ</string>
-    <string name="message_unknown_source_detail">ဤအက်ပ်ကိုဆက်လက်အသုံးပြုလိုပါက Google Play မှတဆင့်ရယူပါ။</string>
     <string name="message_force_update">အပ်ဒိတ်လိုအပ်ပါသည်</string>
     <string name="message_force_update_detail">ဤဗားရှင်းကို ထောက်ပံ့တော့မည်မဟုတ်ပါ။\nStore သို့သွားပါ။</string>
     <string name="message_service_unavailable">ဝန်ဆောင်မှုမရနိုင်ပါ</string>
@@ -56,61 +39,57 @@
     <string name="message_network_unavailable_detail">ကွန်ယက်မရရှိပါ။\nအတည်ပြုပြီးနောက်ထပ်ကြိုးစားပါ။</string>
     <string name="message_translate_fixedarea_warn">ဘက်ထရီသတိပေးချက်</string>
     <string name="message_translate_fixedarea_warn_detail">ဘက်ထရီအလျင်အမြန် ဆွဲချပေးနိုင်ပါတယ်။</string>
-    <string name="message_translate_fixedarea_promotion">ကုန်ပစ္စည်းဝယ်ယူမှုအချက်အလက်</string>
-    <string name="message_translate_fixedarea_promotion_detail">ကျွန်ုပ်တို့၏ ပရီမီယံလက္ခဏာများအကြောင်း သတိပေးချက်တစ်ခုသည် %1$s မိနစ်တိုင်းတွင် ပေါ်လာပါမည်။</string>
-    <string name="message_free_trial_ends">သင့်အခမဲ့စမ်းသပ်ချိန်ပြီးဆုံးသွားပါပြီ။</string>
-    <string name="message_free_trial_ends_detail">အခမဲ့စမ်းသပ်ချိန်တိုးချင်ရင် ကြော်ငြာကြည့်မလား?</string>
-    <string name="message_ad_reward">%1$d မိနစ်ထပ်မံ၍ အခမဲ့စမ်းသပ်ခွင့်ရရှိထားပါသည်။</string>
-    <string name="message_ad_reward_detail">နောက်ထပ် %1$d မိနစ်အတွင်း premium လုပ်ဆောင်ချက်အားလုံးကို အခမဲ့ အသုံးပြုနိုင်ပါသည်။</string>
+    <string name="ad_gate_loading">ကြော်ငြာ ပြင်ဆင်နေသည်…</string>
+    <string name="ad_gate_reward_notice">ကြော်ငြာကို အဆုံးအထိကြည့်ပြီး အက်ပ်ကိုပိတ်သည်အထိ ကြော်ငြာမပါဘဲ အသုံးပြုပါ။</string>
 
     <!-- SettingsActivity -->
     <string name="settings_title">ဆက်တင်</string>
     <string name="settings_menu_cat_pointer">ညွှန်ပြ</string>
     <string name="settings_menu_pointer_docking_delay">တွဲဆက်နောက်ကျချိန်</string>
-    <string name="settings_menu_haptic_feedback_to_detection">သိရှိသည့်အချိန် တုန်ခါမှု</string>
+    <string name="settings_menu_haptic_feedback_to_detection">တွေ့ရှိချိန် ဟက်ပတစ်</string>
     <string name="settings_menu_cat_menubar">မီနူးဘား</string>
     <string name="settings_menu_menubar_transparency">မီနူး အထင်ကြည်မှု</string>
     <string name="settings_menu_menubar_composition">မီနူး လုပ်ဆောင်ချက်များ</string>
-    <string name="settings_menu_cat_ai">AI ဖြင့်ပြင်ဆင်</string>
     <string name="settings_menu_cat_translation">ဘာသာပြန်</string>
     <string name="settings_menu_translation_transparency">ဘာသာပြန် အထင်ကြည်မှု</string>
     <string name="settings_menu_translation_close_delay">ပိတ်ချိန်နောက်ကျမှု</string>
-    <string name="settings_menu_automated_read_aloud">အလိုအလျောက်ဖတ်</string>
+    <string name="settings_menu_automated_read_aloud">ဘာသာပြန်ကို အလိုအလျောက်ဖတ်</string>
     <string name="settings_menu_reply_transparency">ပြန်ကြားမှု အထင်ကြည်မှု</string>
     <string name="settings_menu_cat_tts">စာလုံးသံပြောင်း</string>
+    <string name="settings_menu_tts_read_target">ဖတ်မည့်စာသား</string>
+    <string name="settings_tts_read_target_source">မူရင်း</string>
+    <string name="settings_tts_read_target_target">ဘာသာပြန်</string>
     <string name="settings_menu_tts_voices">TTS အသံများ</string>
     <string name="settings_menu_tts_rate">TTS အမြန်နှုန်း</string>
     <string name="settings_menu_cat_about">အကြောင်း</string>
-    <string name="settings_menu_on_premium_free_trial">Premium စမ်းသပ်မှုအလုပ်လုပ်</string>
-    <string name="settings_menu_premium_free_trial_remain">ကျန် %1$d မိနစ်</string>
-    <string name="settings_menu_your_premium_benefits">သင်၏အကျိုးခံစားခွင့်</string>
-    <string name="settings_menu_your_premium_benefits_peding">အကျိုးခံစားခွင့် (စောင့်နေ)</string>
     <string name="settings_menu_app_version">အပ်ဗားရှင်း</string>
     <string name="settings_menu_app_version_latest">(နောက်ဆုံးထွက်)</string>
 
     <!-- HelpTextDetectModeView, HelpTranslationKitView -->
-    <string name="help_text_no_limit">ပရီမီယမ်တွင် ကန့်သတ်ချက်မရှိပါ</string>
     <string name="help_text_no_limit_free">အရေအတွက်ကန့်သတ်မရှိ၊ အချိန်ကန့်သတ်မရှိ</string>
-    <string name="help_text_no_limit_title">ကန့်သတ်မှုမရှိဘဲ အသုံးပြုပါ</string>
-    <string name="help_text_no_limit_free_title">အကန့်အသတ်မရှိ မျှတစွာအသုံးပြုပါ</string>
-    <string name="help_text_get_premium">Premium ရယူပါ</string>
+    <string name="help_text_deepl_own_key">သင့်ကိုယ်ပိုင် DeepL API သော့ကို အသုံးပြုသည်</string>
+    <string name="deepl_key_guide">DeepL ဘာသာပြန်ကို အသုံးပြုရန် သင့် DeepL API သော့ကို ထည့်ပါ။</string>
+    <string name="deepl_key_signup_guide">DeepL တွင် စာရင်းသွင်းပြီး အခမဲ့ အစီအစဉ်ကို စာရင်းသွင်းနိုင်ပါသည်။</string>
+    <string name="deepl_key_link_subscription">အခမဲ့ အစီအစဉ်ကို စာရင်းသွင်းပါ</string>
+    <string name="deepl_key_link_keys">သင့် API သော့ကို စစ်ဆေးပါ</string>
+    <string name="deepl_key_active">ဖွင့်ထားသည်</string>
+    <string name="label_save">သိမ်းဆည်းပါ</string>
+    <string name="deepl_key_invalid">API သော့ မမှန်ကန်ပါ။</string>
+    <string name="deepl_key_validating">စစ်ဆေးနေသည်…</string>
+    <string name="deepl_key_network_error">ကွန်ရက်အမှားကြောင့် သော့ကို အတည်ပြု၍မရပါ။ သော့ကို သိမ်းဆည်းပြီးပါပြီ။</string>
 
     <!-- PremiumView -->
-    <string name="premium_view_get_premium">Premium ရယူပါ</string>
-    <string name="premium_view_get_premium_purchased">သင့် Premium အကျိုးခံစားခွင့်များ</string>
-    <string name="premium_view_get_premium_pending">သင့် Premium အကျိုးခံစားခွင့်များ (ဆိုင်းငံ့ထားသည်)</string>
-    <string name="premium_view_get_premium_not_available">Premium (လောလောဆယ် မရနိုင်ပါ)</string>
-    <string name="premium_view_price_format">%1$s/လ • အခွန်ပါဝင်သည်\n• မည်သည့်အချိန်မဆို ဖျက်သိမ်းနိုင်သည်</string>
-    <string name="premium_view_title">အင်္ဂါရပ်အားလုံး၊\nအနှောင့်အယှက်မရှိ။</string>
-    <string name="premium_view_message">အရေအတွက်ကန့်သတ်မရှိ၊ အချိန်ကန့်သတ်မရှိ။\nPremium ဖြင့် အားလုံးကိုအကန့်အသတ်မရှိအသုံးပြုနိုင်သည်။</string>
-    <string name="premium_view_description_azure">ကမ္ဘာအနှံ့ရှိဘာသာစကားအများစုကို တိကျစွာဘာသာပြန်ပေးသည်။</string>
-    <string name="premium_view_description_deepl">အဓိပ္ပါယ်ကိုမှန်ကန်စွာဖော်ပြသည့် ဆန်းသစ်သည့်ဘာသာပြန်မှုများပေးသည်။</string>
-    <string name="premium_view_description_papago">Papago သည် Neural Machine Translation ဖြင့် အများအပြားဘာသာစကားများကိုအလိုအလျောက်ဘာသာပြန်သည်။</string>
-    <string name="premium_view_description_google">အမြန်ဆုံးဘာသာပြန်မှု။ အကန့်အသတ်မရှိ၊ အမြဲအခမဲ့။</string>
-    <string name="premium_view_description_sentence_detection">လိုင်းများကိုလက်ဗွေအတိုင်းဘာသာပြန်နိုင်သည်။</string>
+    <string name="premium_view_description_sentence_detection">ဝါကျများကို အလိုအလျောက် ရွေးချယ်ပေးသည်။</string>
     <string name="premium_view_description_paragraph_detection">စာပိုဒ်များကိုအလိုအလျောက်သိနိုင်သည်။</string>
     <string name="premium_view_description_select_detection">သင့်လိုအပ်သောအပိုင်းကိုရွေးနိုင်သည်။</string>
-    <string name="premium_view_description_word_detection">စာလုံးအလိုက်ဘာသာပြန်ခြင်းသည် အမြဲအခမဲ့ဖြစ်သည်။</string>
+    <string name="premium_view_description_word_detection">စကားလုံးတစ်လုံးကို ညွှန်ပြပါ၊ ချက်ချင်းဘာသာပြန်ပေးပါမည်။</string>
     <string name="premium_view_description_fixed_area_detection">ရုပ်ရှင်စာတန်းထိုးများကဲ့သို့သော တည်မြဲသောနေရာများကို သင်အမြဲတမ်းဘာသာပြန်နိုင်ပါသည်။</string>
-    <string name="premium_view_unsubscribe">Subscription ဖျက်သိမ်းပါ</string>
+  <string name="say_here">ဒီမှာပါ!</string>
+  <string name="hint_settings_reopen">ဆက်တင်များ ပြန်ဖွင့်ရန် လက်ကိုင်ကို နှစ်ချက်တို့ပါ</string>
+  <string name="openai_key_guide">OpenAI မော်ဒယ်များဖြင့် ဘာသာပြန်ရန် သင့် OpenAI API သော့ကို ထည့်သွင်းပါ။</string>
+  <string name="openai_key_signup_guide">OpenAI ဒက်ရှ်ဘုတ်တွင် သော့တစ်ခု ဖန်တီးပါ။ အသုံးပြုမှုကို သင့် OpenAI အကောင့်သို့ ငွေတောင်းခံပါမည်။</string>
+  <string name="openai_key_link_keys">သင့် API သော့ကို ရယူပါ</string>
+  <string name="openai_key_link_billing">ငွေတောင်းခံခြင်းနှင့် အသုံးပြုမှု</string>
+  <string name="openai_model_label">မော်ဒယ်</string>
+  <string name="help_text_openai_own_key">သင့်ကိုယ်ပိုင် OpenAI API သော့ကို အသုံးပြုသည်</string>
 </resources>

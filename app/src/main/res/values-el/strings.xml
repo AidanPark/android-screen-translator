@@ -8,14 +8,10 @@
     <!-- Overlay Permission -->
     <string name="message_permission_overlay">Απαιτούμενη άδεια:\nΕμφάνιση πάνω από άλλες εφαρμογές</string>
     <string name="message_permission_overlay_detail">Για να εκκινήσετε το Screen Translator, πρέπει να δώσετε άδεια για εμφάνιση πάνω από άλλες εφαρμογές.</string>
-    <string name="message_permission_overlay_denied">Άρνηση άδειας επικάλυψης</string>
-    <string name="message_permission_overlay_denied_detail">Η άδεια επικάλυψης δεν έχει χορηγηθεί.\nΈξοδος από την εφαρμογή.</string>
 
     <!-- MediaProjection token 요청 -->
     <string name="message_media_projection">Απαιτούμενη άδεια:\nΗχογράφηση οθόνης</string>
     <string name="message_media_projection_detail">Για να εκκινήσετε το Screen Translator, πρέπει να δώσετε άδεια για ηχογράφηση οθόνης.\n\nΟι πληροφορίες στην οθόνη χρησιμοποιούνται μόνο για σκοπούς μετάφρασης και δεν θα μεταφερθούν ή αποθηκευτούν αλλού.</string>
-    <string name="message_media_projection_denied">Άρνηση άδειας ηχογράφησης οθόνης</string>
-    <string name="message_media_projection_denied_detail">Η άδεια ηχογράφησης οθόνης δεν έχει χορηγηθεί.\nΈξοδος από την εφαρμογή.</string>
 
     <!-- Foreground Service 시작 알림 -->
     <string name="notification_foreground_service">Η λειτουργία καταγραφής οθόνης χρησιμοποιείται για εργασία μετάφρασης.</string>
@@ -23,7 +19,6 @@
     <string name="message_start_foreground_service">Η εφαρμογή ξεκινά μια υπηρεσία στο προσκήνιο για να καταγράψει και να μεταφράσει το περιεχόμενο της οθόνης.\n\nΟι καταγεγραμμένες εικόνες δεν αποθηκεύονται ούτε μεταδίδονται εξωτερικά.</string>
     <string name="label_confirm_start_foreground_service">Έναρξη</string>
     <string name="label_dismiss_start_foreground_service">Τέλος</string>
-    <string name="snack_message_start_foreground_service">Η εφαρμογή ξεκινά μια υπηρεσία στο προσκήνιο για να καταγράψει και να μεταφράσει το περιεχόμενο της οθόνης.</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">Τέλος</string>
@@ -36,18 +31,6 @@
     <string name="title_voice_list_view">Διαθέσιμες φωνές</string>
 
     <!-- Dialog -->
-    <string name="message_authentication_error">Σφάλμα επικύρωσης</string>
-    <string name="message_authentication_error_detail">Ο διακομιστής επικύρωσης δεν απαντά.\nΠαρακαλώ δοκιμάστε ξανά αργότερα.</string>
-    <string name="message_untrusted_environment">Μη αξιόπιστο περιβάλλον</string>
-    <string name="message_untrusted_environment_detail">Φαίνεται ότι η εφαρμογή σας δεν πέρασε τον έλεγχο ακεραιότητας του Google Play.</string>
-    <string name="message_unknown_device">Άγνωστη συσκευή</string>
-    <string name="message_unknown_device_detail">Αυτή η συσκευή δεν υποστηρίζεται.</string>
-    <string name="message_authentication_required">Απαιτείται επικύρωση</string>
-    <string name="message_authentication_required_detail">Πρέπει να έχετε συνδεθεί με το Google.</string>
-    <string name="message_playstore_update_required">Απαιτείται ενημέρωση Play Store</string>
-    <string name="message_playstore_update_required_detail">Η σύνδεση με την υπηρεσία στο Play Store απέτυχε.\nΑυτό μπορεί να οφείλεται στην εγκατάσταση παλιάς έκδοσης του Play Store στη συσκευή.</string>
-    <string name="message_unknown_source">Αποκτήστε αυτήν την εφαρμογή από το Play</string>
-    <string name="message_unknown_source_detail">Για να συνεχίσετε να χρησιμοποιείτε αυτήν την υπέροχη εφαρμογή, αποκτήστε την από το Google Play.</string>
     <string name="message_force_update">Απαιτείται ενημέρωση</string>
     <string name="message_force_update_detail">Αυτή η έκδοση δεν υποστηρίζεται πλέον.\nΠηγαίνετε στο κατάστημα.</string>
     <string name="message_service_unavailable">Υπηρεσία μη διαθέσιμη</string>
@@ -56,63 +39,59 @@
     <string name="message_network_unavailable_detail">Δίκτυο μη διαθέσιμο.\nΠαρακαλώ ελέγξτε και δοκιμάστε ξανά.</string>
     <string name="message_translate_fixedarea_warn">Προειδοποίηση μπαταρίας</string>
     <string name="message_translate_fixedarea_warn_detail">Η μπαταρία μπορεί να εξαντληθεί γρήγορα.</string>
-    <string name="message_translate_fixedarea_promotion">Πληροφορίες αγοράς προϊόντος</string>
-    <string name="message_translate_fixedarea_promotion_detail">Ένα φιλικό υπενθύμιση για τις premium δυνατότητές μας θα εμφανίζεται κάθε %1$s λεπτά.</string>
-    <string name="message_free_trial_ends">Η δωρεάν δοκιμή σας ολοκληρώθηκε.</string>
-    <string name="message_free_trial_ends_detail">Θέλετε να δείτε μια διαφήμιση για να επεκτείνετε τη δοκιμή;</string>
-    <string name="message_ad_reward">Λάβατε %1$d επιπλέον λεπτά δωρεάν δοκιμής!</string>
-    <string name="message_ad_reward_detail">Απολαύστε όλα τα premium χαρακτηριστικά δωρεάν για τα επόμενα %1$d λεπτά.</string>
+    <string name="ad_gate_loading">Προετοιμασία διαφήμισης…</string>
+    <string name="ad_gate_reward_notice">Δείτε τη διαφήμιση μέχρι το τέλος για να χρησιμοποιείτε την εφαρμογή χωρίς διαφημίσεις μέχρι να την κλείσετε.</string>
 
     <!-- SettingsActivity -->
     <string name="settings_title">Ρυθμίσεις</string>
     <string name="settings_menu_cat_pointer">Δείκτης</string>
     <string name="settings_menu_pointer_docking_delay">Καθυστέρηση σύνδεσης</string>
-    <string name="settings_menu_haptic_feedback_to_detection">Δόνηση σε ανίχνευση</string>
+    <string name="settings_menu_haptic_feedback_to_detection">Απτική ανάδραση σε ανίχνευση</string>
     <string name="settings_menu_cat_menubar">Γραμμή μενού</string>
     <string name="settings_menu_menubar_transparency">Διαφάνεια μενού</string>
     <string name="settings_menu_menubar_composition">Λειτουργίες μενού</string>
-    <string name="settings_menu_cat_ai">Διόρθωση AI</string>
     <string name="settings_menu_cat_translation">Μετάφραση</string>
     <string name="settings_menu_translation_transparency">Διαφάνεια μετάφρασης</string>
     <string name="settings_menu_translation_close_delay">Καθυστέρηση κλεισίματος</string>
-    <string name="settings_menu_automated_read_aloud">Αυτόματη ανάγνωση</string>
+    <string name="settings_menu_automated_read_aloud">Αυτόματη ανάγνωση μετάφρασης</string>
     <string name="settings_menu_reply_transparency">Διαφάνεια απάντησης</string>
     <string name="settings_menu_cat_tts">Κείμενο σε ομιλία</string>
+    <string name="settings_menu_tts_read_target">Στόχος ανάγνωσης</string>
+    <string name="settings_tts_read_target_source">Πρωτότυπο</string>
+    <string name="settings_tts_read_target_target">Μετάφραση</string>
     <string name="settings_menu_tts_voices">Φωνές TTS</string>
     <string name="settings_menu_tts_rate">Ταχύτητα TTS</string>
     <string name="settings_menu_cat_about">Σχετικά</string>
-    <string name="settings_menu_on_premium_free_trial">Premium δοκιμή ενεργή</string>
-    <string name="settings_menu_premium_free_trial_remain">Απομένουν %1$d λεπτά</string>
-    <string name="settings_menu_your_premium_benefits">Τα προνόμιά σας</string>
-    <string name="settings_menu_your_premium_benefits_peding">Προνόμια (σε αναμονή)</string>
     <string name="settings_menu_app_version">Έκδοση εφαρμογής</string>
     <string name="settings_menu_app_version_latest">(Τελευταία)</string>
 
     <!-- HelpTextDetectModeView, HelpTranslationKitView -->
-    <string name="help_text_no_limit">Όλα είναι απεριόριστα στο premium</string>
     <string name="help_text_no_limit_free">Χωρίς όριο ποσότητας, χωρίς χρονικό όριο</string>
-    <string name="help_text_no_limit_title">Απολαύστε το χωρίς όρια</string>
-    <string name="help_text_no_limit_free_title">Δωρεάν χωρίς περιορισμούς</string>
-    <string name="help_text_get_premium">Αποκτήστε Premium</string>
+    <string name="help_text_deepl_own_key">Χρησιμοποιεί το προσωπικό σας κλειδί API του DeepL</string>
+    <string name="deepl_key_guide">Εισαγάγετε το κλειδί API του DeepL για να χρησιμοποιήσετε τη μετάφραση DeepL.</string>
+    <string name="deepl_key_signup_guide">Εγγραφείτε στο DeepL και μπορείτε να εγγραφείτε στο δωρεάν πρόγραμμα.</string>
+    <string name="deepl_key_link_subscription">Εγγραφή στο δωρεάν πρόγραμμα</string>
+    <string name="deepl_key_link_keys">Ελέγξτε το κλειδί API σας</string>
+    <string name="deepl_key_active">Ενεργοποιήθηκε</string>
+    <string name="label_save">Αποθήκευση</string>
+    <string name="deepl_key_invalid">Το κλειδί API δεν είναι έγκυρο.</string>
+    <string name="deepl_key_validating">Γίνεται επαλήθευση…</string>
+    <string name="deepl_key_network_error">Δεν ήταν δυνατή η επαλήθευση του κλειδιού λόγω σφάλματος δικτύου. Το κλειδί αποθηκεύτηκε.</string>
 
     <!-- PremiumView -->
-    <string name="premium_view_get_premium">Αποκτήστε Premium</string>
-    <string name="premium_view_get_premium_purchased">Τα πλεονεκτήματα Premium σας</string>
-    <string name="premium_view_get_premium_pending">Τα πλεονεκτήματα Premium σας (Εκκρεμεί)</string>
-    <string name="premium_view_get_premium_not_available">Αποκτήστε Premium (Δεν διατίθεται επί του παρόντος)</string>
-    <string name="premium_view_price_format">%1$s/μήνα • Συμπεριλαμβάνεται ΦΠΑ\n• Ακύρωση οποτεδήποτε</string>
-    <string name="premium_view_title">Όλες οι δυνατότητες,\nΧωρίς διακοπές.</string>
-    <string name="premium_view_message">Χωρίς όριο ποσότητας, χωρίς χρονικό όριο.\nΌλα είναι απεριόριστα στο premium</string>
-    <string name="premium_view_description_azure">Μεταφράζει με ακρίβεια τις περισσότερες γλώσσες παγκοσμίως.</string>
-    <string name="premium_view_description_deepl">Παρέχουμε σοφιστικέ μεταφράσεις που αποτυπώνουν καλά το νόημα.</string>
-    <string name="premium_view_description_papago">Η μετάφραση Papago μεταφράζει αυτόματα γλώσσες από πολλές χώρες στην στοχευμένη γλώσσα μέσω του αλγορίθμου Μηχανικής Μετάφρασης Νευρώνων.</string>
-    <string name="premium_view_description_google">Προσφέρουμε την ταχύτερη μετάφραση. Απεριόριστη, δωρεάν για πάντα.</string>
-    <string name="premium_view_description_sentence_detection">Χρησιμοποιήστε τα δάχτυλά σας για να μεταφράσετε γραμμές.</string>
+    <string name="premium_view_description_sentence_detection">Οι προτάσεις επιλέγονται αυτόματα.</string>
     <string name="premium_view_description_paragraph_detection">Οι παράγραφοι αναγνωρίζονται αυτόματα.</string>
     <string name="premium_view_description_select_detection">Μπορείτε επίσης να καθορίσετε το εύρος που θέλετε.</string>
-    <string name="premium_view_description_word_detection">Η μετάφραση λέξη προς λέξη είναι πάντα δωρεάν και απεριόριστη.</string>
+    <string name="premium_view_description_word_detection">Δείξτε μια λέξη για άμεση μετάφραση.</string>
     <string name="premium_view_description_fixed_area_detection">Μπορείτε να μεταφράζετε συνεχώς σταθερές περιοχές, όπως οι υπότιτλοι ταινιών.</string>
-    <string name="premium_view_unsubscribe">Ακύρωση συνδρομής</string>
+  <string name="say_here">Εδώ είμαι!</string>
+  <string name="hint_settings_reopen">Πατήστε δύο φορές τη λαβή για να ανοίξετε ξανά τις ρυθμίσεις</string>
+  <string name="openai_key_guide">Εισαγάγετε το κλειδί OpenAI API σας για μετάφραση με μοντέλα OpenAI.</string>
+  <string name="openai_key_signup_guide">Δημιουργήστε ένα κλειδί στον πίνακα ελέγχου του OpenAI. Η χρήση χρεώνεται στον λογαριασμό σας OpenAI.</string>
+  <string name="openai_key_link_keys">Λάβετε το κλειδί API σας</string>
+  <string name="openai_key_link_billing">Χρέωση και χρήση</string>
+  <string name="openai_model_label">Μοντέλο</string>
+  <string name="help_text_openai_own_key">Χρησιμοποιεί το προσωπικό σας κλειδί API του OpenAI</string>
 </resources>
 
 

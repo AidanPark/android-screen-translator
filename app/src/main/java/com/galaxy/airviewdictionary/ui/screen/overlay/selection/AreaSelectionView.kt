@@ -5,10 +5,10 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import androidx.core.graphics.createBitmap
 import android.graphics.PixelFormat
 import android.graphics.Point
 import android.graphics.Rect
-import android.os.Build
 import android.view.Gravity
 import android.view.WindowManager
 import androidx.compose.foundation.background
@@ -304,11 +304,7 @@ open class AreaSelectionView : OverlayView() {
             1,
             startPosition.x,
             startPosition.y,
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
-            } else {
-                WindowManager.LayoutParams.TYPE_PHONE
-            },
+            WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
             WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN
                     or WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
                     or WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
@@ -353,7 +349,6 @@ open class AreaSelectionView : OverlayView() {
             val selectedAreaBitmap = createOverlaidBitmap(captureResponse.bitmap, selectedArea)
 
             // Test 캡처 이미지 확인
-//                    TestCapturedActivity.start(context, selectedAreaBitmap)
 
             val sourceLanguageCode: String = targetHandleViewModel.preferenceRepository.sourceLanguageCodeFlow.first()
             val visionResponse: VisionResponse = targetHandleViewModel.visionRepository.request(
@@ -391,7 +386,7 @@ fun createOverlaidBitmap(originalBitmap: Bitmap, rect: Rect): Bitmap {
                     "computed=(left=$safeLeft, top=$safeTop, right=$safeRight, bottom=$safeBottom), " +
                     "width=$safeWidth, height=$safeHeight"
         )
-        return Bitmap.createBitmap(maxWidth, maxHeight, Bitmap.Config.ARGB_8888).apply {
+        return createBitmap(maxWidth, maxHeight, Bitmap.Config.ARGB_8888).apply {
             eraseColor(android.graphics.Color.BLACK)
         }
     }
@@ -399,7 +394,7 @@ fun createOverlaidBitmap(originalBitmap: Bitmap, rect: Rect): Bitmap {
     return try {
         val croppedBitmap = Bitmap.createBitmap(originalBitmap, safeLeft, safeTop, safeWidth, safeHeight)
 
-        val returnBitmap = Bitmap.createBitmap(maxWidth, maxHeight, Bitmap.Config.ARGB_8888).apply {
+        val returnBitmap = createBitmap(maxWidth, maxHeight, Bitmap.Config.ARGB_8888).apply {
             eraseColor(android.graphics.Color.BLACK)
         }
 
@@ -409,7 +404,7 @@ fun createOverlaidBitmap(originalBitmap: Bitmap, rect: Rect): Bitmap {
         returnBitmap
     } catch (e: IllegalArgumentException) {
         Timber.e(e, "Bitmap.createBitmap failed in createOverlaidBitmap")
-        Bitmap.createBitmap(maxWidth, maxHeight, Bitmap.Config.ARGB_8888).apply {
+        createBitmap(maxWidth, maxHeight, Bitmap.Config.ARGB_8888).apply {
             eraseColor(android.graphics.Color.BLACK)
         }
     }

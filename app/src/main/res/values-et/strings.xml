@@ -8,14 +8,10 @@
     <!-- Overlay Permission -->
     <string name="message_permission_overlay">Nõutav luba:\nKuva teiste rakenduste kohal</string>
     <string name="message_permission_overlay_detail">Ekraanitõlkija kasutamiseks peate lubama kuvamise teiste rakenduste kohal.</string>
-    <string name="message_permission_overlay_denied">Ülekatteloa keelamine</string>
-    <string name="message_permission_overlay_denied_detail">Ülekatteluba pole antud.\nRakendus suletakse.</string>
 
     <!-- MediaProjection token -->
     <string name="message_media_projection">Nõutav luba:\nEkraani salvestamine</string>
     <string name="message_media_projection_detail">Ekraanitõlkija kasutamiseks peate lubama ekraani salvestamise.\n\nEkraanilt kogutud teavet kasutatakse ainult tõlkimiseks ega salvestata ega jagata.</string>
-    <string name="message_media_projection_denied">Ekraani salvestamise loa keelamine</string>
-    <string name="message_media_projection_denied_detail">Ekraani salvestamise luba pole antud.\nRakendus suletakse.</string>
 
     <!-- Foreground Service -->
     <string name="notification_foreground_service">Ekraani salvestamise funktsioon on tõlkimiseks aktiivne.</string>
@@ -23,7 +19,6 @@
     <string name="message_start_foreground_service">Rakendus käivitab esiplaaniteenuse ekraani sisu jäädvustamiseks ja tõlkimiseks.\n\nJäädvustatud pilte ei salvestata ega saadeta.</string>
     <string name="label_confirm_start_foreground_service">Käivita</string>
     <string name="label_dismiss_start_foreground_service">Sulge</string>
-    <string name="snack_message_start_foreground_service">Rakendus käivitab esiplaaniteenuse ekraani sisu jäädvustamiseks ja tõlkimiseks.</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">Lõpeta</string>
@@ -36,18 +31,6 @@
     <string name="title_voice_list_view">Saadaolevad hääled</string>
 
     <!-- Dialog -->
-    <string name="message_authentication_error">Autentimise viga</string>
-    <string name="message_authentication_error_detail">Autentimisteenus ei vasta.\nPalun proovige hiljem uuesti.</string>
-    <string name="message_untrusted_environment">Ebausaldusväärne keskkond</string>
-    <string name="message_untrusted_environment_detail">Teie rakendus ei läbinud Google Play usaldusväärsuse kontrolli.</string>
-    <string name="message_unknown_device">Tundmatu seade</string>
-    <string name="message_unknown_device_detail">See seade ei ole toetatud.</string>
-    <string name="message_authentication_required">Autentimine vajalik</string>
-    <string name="message_authentication_required_detail">Peate sisse logima Google\'i kontoga.</string>
-    <string name="message_playstore_update_required">Play Store\'i värskendus vajalik</string>
-    <string name="message_playstore_update_required_detail">Play Store\'i teenusega ühenduse loomine ebaõnnestus.\nVõimalik, et kasutate vananenud versiooni.</string>
-    <string name="message_unknown_source">Laadige rakendus alla Play Store\'ist</string>
-    <string name="message_unknown_source_detail">Rakenduse kasutamiseks laadige see alla Google Playst.</string>
     <string name="message_force_update">Värskendus vajalik</string>
     <string name="message_force_update_detail">See versioon ei ole enam toetatud.\nPalun külastage poodi.</string>
     <string name="message_service_unavailable">Teenuse ajutine katkestus</string>
@@ -56,63 +39,59 @@
     <string name="message_network_unavailable_detail">Võrk pole saadaval.\nKontrollige ühendust ja proovige uuesti.</string>
     <string name="message_translate_fixedarea_warn">Akutähtsus</string>
     <string name="message_translate_fixedarea_warn_detail">Aku võib kiiresti tühjeneda.</string>
-    <string name="message_translate_fixedarea_promotion">Toote ostmise teave</string>
-    <string name="message_translate_fixedarea_promotion_detail">Meeldetuletus meie premium-funktsioonide kohta ilmub iga %1$s minuti järel.</string>
-    <string name="message_free_trial_ends">Teie tasuta prooviperiood on lõppenud.</string>
-    <string name="message_free_trial_ends_detail">Kas soovite vaadata reklaami tasuta prooviperioodi pikendamiseks?</string>
-    <string name="message_ad_reward">Olete saanud veel %1$d minutit tasuta prooviperioodi!</string>
-    <string name="message_ad_reward_detail">Nautige kõiki premium-funktsioone tasuta järgmise %1$d minuti jooksul.</string>
+    <string name="ad_gate_loading">Reklaami ettevalmistamine…</string>
+    <string name="ad_gate_reward_notice">Vaadake reklaam lõpuni, et kasutada rakendust reklaamivabalt kuni selle sulgemiseni.</string>
 
     <!-- SettingsActivity -->
     <string name="settings_title">Seaded</string>
     <string name="settings_menu_cat_pointer">Kursor</string>
     <string name="settings_menu_pointer_docking_delay">Dokkimise viivitus</string>
-    <string name="settings_menu_haptic_feedback_to_detection">Vibratsioon tuvastusel</string>
+    <string name="settings_menu_haptic_feedback_to_detection">Haptiline tagasiside tuvastusel</string>
     <string name="settings_menu_cat_menubar">Menüüriba</string>
     <string name="settings_menu_menubar_transparency">Menüü läbipaistvus</string>
     <string name="settings_menu_menubar_composition">Menüü funktsioonid</string>
-    <string name="settings_menu_cat_ai">AI parandamine</string>
     <string name="settings_menu_cat_translation">Tõlge</string>
     <string name="settings_menu_translation_transparency">Tõlke läbipaistvus</string>
     <string name="settings_menu_translation_close_delay">Sulgemise viivitus</string>
-    <string name="settings_menu_automated_read_aloud">Aut. ettelugemine</string>
+    <string name="settings_menu_automated_read_aloud">Tõlke automaatne ettelugemine</string>
     <string name="settings_menu_reply_transparency">Vastuse läbipaistvus</string>
     <string name="settings_menu_cat_tts">Tekst kõneks</string>
+    <string name="settings_menu_tts_read_target">Loetav tekst</string>
+    <string name="settings_tts_read_target_source">Originaal</string>
+    <string name="settings_tts_read_target_target">Tõlge</string>
     <string name="settings_menu_tts_voices">TTS hääled</string>
     <string name="settings_menu_tts_rate">TTS kiirus</string>
     <string name="settings_menu_cat_about">Teave</string>
-    <string name="settings_menu_on_premium_free_trial">Premium proov aktiivne</string>
-    <string name="settings_menu_premium_free_trial_remain">%1$d minutit jäänud</string>
-    <string name="settings_menu_your_premium_benefits">Sinu eelised</string>
-    <string name="settings_menu_your_premium_benefits_peding">Eelised (ootel)</string>
     <string name="settings_menu_app_version">Rakenduse versioon</string>
     <string name="settings_menu_app_version_latest">(Uusim)</string>
 
     <!-- HelpTextDetectModeView, HelpTranslationKitView -->
-    <string name="help_text_no_limit">Kõik on piiranguteta Premiumi puhul</string>
     <string name="help_text_no_limit_free">Ei mingit koguse ega ajapiirangut</string>
-    <string name="help_text_no_limit_title">Naudi piiranguteta</string>
-    <string name="help_text_no_limit_free_title">Tasuta ja piiranguteta</string>
-    <string name="help_text_get_premium">Hangi Premium</string>
+    <string name="help_text_deepl_own_key">Kasutab teie isiklikku DeepL-i API-võtit</string>
+    <string name="deepl_key_guide">DeepL-i tõlke kasutamiseks sisestage oma DeepL-i API-võti.</string>
+    <string name="deepl_key_signup_guide">Registreeruge DeepL-is ja saate tellida tasuta paketi.</string>
+    <string name="deepl_key_link_subscription">Telli tasuta pakett</string>
+    <string name="deepl_key_link_keys">Kontrolli oma API-võtit</string>
+    <string name="deepl_key_active">Aktiveeritud</string>
+    <string name="label_save">Salvesta</string>
+    <string name="deepl_key_invalid">API-võti ei ole kehtiv.</string>
+    <string name="deepl_key_validating">Kontrollimine…</string>
+    <string name="deepl_key_network_error">Võtit ei õnnestunud võrguvea tõttu kontrollida. Võti salvestati.</string>
 
     <!-- PremiumView -->
-    <string name="premium_view_get_premium">Hangi Premium</string>
-    <string name="premium_view_get_premium_purchased">Teie Premium eelised</string>
-    <string name="premium_view_get_premium_pending">Teie Premium eelised (ootel)</string>
-    <string name="premium_view_get_premium_not_available">Premium pole hetkel saadaval</string>
-    <string name="premium_view_price_format">%1$s/kuu • sisaldab KM\n• Tühista igal ajal</string>
-    <string name="premium_view_title">Kõik funktsioonid,\nIlma katkestusteta.</string>
-    <string name="premium_view_message">Ei koguse- ega ajapiiranguid.\nKõik on saadaval Premiumiga</string>
-    <string name="premium_view_description_azure">Tõlgib täpselt enamiku maailma keeltest.</string>
-    <string name="premium_view_description_deepl">Annab tähenduslikke ja täpseid tõlkeid.</string>
-    <string name="premium_view_description_papago">Papago kasutab närvivõrgu algoritmi keelte automaatseks tõlkimiseks.</string>
-    <string name="premium_view_description_google">Kõige kiirem tõlge. Igavesti tasuta ja piiranguteta.</string>
-    <string name="premium_view_description_sentence_detection">Tõlgi ridu sõrmega osutades.</string>
+    <string name="premium_view_description_sentence_detection">Laused valitakse automaatselt.</string>
     <string name="premium_view_description_paragraph_detection">Lõigud tuvastatakse automaatselt.</string>
     <string name="premium_view_description_select_detection">Saate ka soovitud ala käsitsi valida.</string>
-    <string name="premium_view_description_word_detection">Sõna-sõnalt tõlkimine on alati tasuta ja piiranguteta.</string>
+    <string name="premium_view_description_word_detection">Osuta sõnale, et see kohe tõlkida.</string>
     <string name="premium_view_description_fixed_area_detection">Saad pidevalt tõlkida fikseeritud alasid, näiteks filmide subtiitreid.</string>
-    <string name="premium_view_unsubscribe">Tühista tellimus</string>
+  <string name="say_here">Olen siin!</string>
+  <string name="hint_settings_reopen">Seadete uuesti avamiseks topeltpuudutage pidet</string>
+  <string name="openai_key_guide">Sisestage oma OpenAI API-võti, et tõlkida OpenAI mudelitega.</string>
+  <string name="openai_key_signup_guide">Looge võti OpenAI juhtpaneelil. Kasutus arveldatakse teie OpenAI kontole.</string>
+  <string name="openai_key_link_keys">Hankige oma API-võti</string>
+  <string name="openai_key_link_billing">Arveldus ja kasutus</string>
+  <string name="openai_model_label">Mudel</string>
+  <string name="help_text_openai_own_key">Kasutab teie isiklikku OpenAI-i API-võtit</string>
 </resources>
 
 

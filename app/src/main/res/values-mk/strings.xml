@@ -8,14 +8,10 @@
   <!-- Overlay Permission -->
   <string name="message_permission_overlay">Потребна дозвола:\nПрикажување над други апликации</string>
   <string name="message_permission_overlay_detail">За да го стартувате Screen Translator, мора да дозволите прикажување над други апликации.</string>
-  <string name="message_permission_overlay_denied">Дозволата за преклопување е одбиена</string>
-  <string name="message_permission_overlay_denied_detail">Дозволата за преклопување не е доделена.\nАпликацијата ќе се затвори.</string>
 
   <!-- MediaProjection token 요청 -->
   <string name="message_media_projection">Потребна дозвола:\nСнимање на екранот</string>
   <string name="message_media_projection_detail">За да го стартувате Screen Translator, мора да дозволите снимање на екранот.\n\nИнформациите од екранот се користат само за преведување и нема да бидат зачувани или префрлени на друго место.</string>
-  <string name="message_media_projection_denied">Одбиена дозвола за снимање на екранот</string>
-  <string name="message_media_projection_denied_detail">Дозволата за снимање на екранот не е доделена.\nАпликацијата ќе се затвори.</string>
 
   <!-- Foreground Service 시작 알림 -->
   <string name="notification_foreground_service">Функцијата за снимање на екранот се користи за превод.</string>
@@ -23,7 +19,6 @@
   <string name="message_start_foreground_service">Апликацијата стартува Foreground Service за да го снима и преведува содржината од екранот.\n\nСнимените слики не се зачувуваат ниту се испраќаат надворешно.</string>
   <string name="label_confirm_start_foreground_service">Стартувај</string>
   <string name="label_dismiss_start_foreground_service">Заврши</string>
-  <string name="snack_message_start_foreground_service">Апликацијата стартува Foreground Service за снимање и преведување на содржина од екранот.</string>
 
   <!-- OverlayService -->
   <string name="service_menu_finish">Заврши</string>
@@ -36,18 +31,6 @@
   <string name="title_voice_list_view">Достапни гласови</string>
 
   <!-- Dialog -->
-  <string name="message_authentication_error">Грешка при најава</string>
-  <string name="message_authentication_error_detail">Серверот за најава не одговара.\nОбидете се повторно подоцна.</string>
-  <string name="message_untrusted_environment">Непроверена околина</string>
-  <string name="message_untrusted_environment_detail">Изгледа дека вашата апликација не ја помина Google Play проверката.</string>
-  <string name="message_unknown_device">Непознат уред</string>
-  <string name="message_unknown_device_detail">Овој уред не е поддржан.</string>
-  <string name="message_authentication_required">Потребна е најава</string>
-  <string name="message_authentication_required_detail">Мора да сте најавени со Google сметка.</string>
-  <string name="message_playstore_update_required">Потребно е ажурирање на Play Store</string>
-  <string name="message_playstore_update_required_detail">Поврзувањето со Play Store сервисот не успеа.\nМожно е да користите стара верзија на Play Store.</string>
-  <string name="message_unknown_source">Преземете ја апликацијата од Play</string>
-  <string name="message_unknown_source_detail">За да продолжите да ја користите апликацијата, преземете ја од Google Play.</string>
   <string name="message_force_update">Потребно е ажурирање</string>
   <string name="message_force_update_detail">Оваа верзија веќе не е поддржана.\nПосетете ја продавницата.</string>
   <string name="message_service_unavailable">Сервисот не е достапен</string>
@@ -56,62 +39,58 @@
   <string name="message_network_unavailable_detail">Мрежата не е достапна.\nПроверете и обидете се повторно.</string>
   <string name="message_translate_fixedarea_warn">Предупредување за батеријата</string>
   <string name="message_translate_fixedarea_warn_detail">Батеријата може брзо да се испразни.</string>
-  <string name="message_translate_fixedarea_promotion">Информации за купување на производот</string>
-  <string name="message_translate_fixedarea_promotion_detail">Ќе се појавува пријателски потсетник за нашите премиум функции на секои %1$s минути.</string>
-  <string name="message_free_trial_ends">Вашиот бесплатен пробен период заврши.</string>
-  <string name="message_free_trial_ends_detail">Дали сакате да гледате реклама за да го продолжите пробниот период?</string>
-  <string name="message_ad_reward">Добијте уште %1$d минути бесплатен пробен период!</string>
-  <string name="message_ad_reward_detail">Уживајте во сите премиум функции бесплатно во следните %1$d минути.</string>
+  <string name="ad_gate_loading">Се подготвува реклама…</string>
+  <string name="ad_gate_reward_notice">Гледајте ја рекламата до крај за да ја користите апликацијата без реклами додека не ја затворите.</string>
 
   <!-- SettingsActivity -->
   <string name="settings_title">Поставки</string>
   <string name="settings_menu_cat_pointer">Покажувач</string>
   <string name="settings_menu_pointer_docking_delay">Кашнење при спојување</string>
-  <string name="settings_menu_haptic_feedback_to_detection">Вибрација при детекција</string>
+  <string name="settings_menu_haptic_feedback_to_detection">Хаптички одѕив при детекција</string>
   <string name="settings_menu_cat_menubar">Мени лента</string>
   <string name="settings_menu_menubar_transparency">Прозирност на менито</string>
   <string name="settings_menu_menubar_composition">Функции на менито</string>
-  <string name="settings_menu_cat_ai">AI корекција</string>
   <string name="settings_menu_cat_translation">Превод</string>
   <string name="settings_menu_translation_transparency">Прозирност на преводот</string>
   <string name="settings_menu_translation_close_delay">Кашнење при затворање</string>
-  <string name="settings_menu_automated_read_aloud">Авто читање</string>
+  <string name="settings_menu_automated_read_aloud">Авто читање на преводот</string>
   <string name="settings_menu_reply_transparency">Прозирност на одговорот</string>
   <string name="settings_menu_cat_tts">Текст во говор</string>
+  <string name="settings_menu_tts_read_target">Текст за читање</string>
+  <string name="settings_tts_read_target_source">Оригинал</string>
+  <string name="settings_tts_read_target_target">Превод</string>
   <string name="settings_menu_tts_voices">TTS гласови</string>
   <string name="settings_menu_tts_rate">TTS брзина</string>
   <string name="settings_menu_cat_about">За апликацијата</string>
-  <string name="settings_menu_on_premium_free_trial">Premium проба е активна</string>
-  <string name="settings_menu_premium_free_trial_remain">Остануваат %1$d минути</string>
-  <string name="settings_menu_your_premium_benefits">Твои поволности</string>
-  <string name="settings_menu_your_premium_benefits_peding">Поволности (во тек)</string>
   <string name="settings_menu_app_version">Верзија на апликацијата</string>
   <string name="settings_menu_app_version_latest">(Најнова)</string>
 
 
   <!-- HelpTextDetectModeView, HelpTranslationKitView -->
-  <string name="help_text_no_limit">Сè е неограничено со премиум</string>
   <string name="help_text_no_limit_free">Без ограничување на количина, без временско ограничување</string>
-  <string name="help_text_no_limit_title">Уживајте без ограничувања</string>
-  <string name="help_text_no_limit_free_title">Бесплатно и без ограничувања</string>
-  <string name="help_text_get_premium">Набави Premium</string>
+  <string name="help_text_deepl_own_key">Го користи вашиот личен DeepL API клуч</string>
+  <string name="deepl_key_guide">Внесете го вашиот DeepL API клуч за да користите превод со DeepL.</string>
+  <string name="deepl_key_signup_guide">Регистрирајте се на DeepL и можете да се претплатите на бесплатниот план.</string>
+  <string name="deepl_key_link_subscription">Претплатете се на бесплатниот план</string>
+  <string name="deepl_key_link_keys">Проверете го вашиот API клуч</string>
+  <string name="deepl_key_active">Активирано</string>
+  <string name="label_save">Зачувај</string>
+  <string name="deepl_key_invalid">API клучот е неважечки.</string>
+  <string name="deepl_key_validating">Се проверува…</string>
+  <string name="deepl_key_network_error">Клучот не можеше да се провери поради мрежна грешка. Клучот е зачуван.</string>
 
   <!-- PremiumView -->
-  <string name="premium_view_get_premium">Набави Premium</string>
-  <string name="premium_view_get_premium_purchased">Вашите Premium придобивки</string>
-  <string name="premium_view_get_premium_pending">Вашите Premium придобивки (во очекување)</string>
-  <string name="premium_view_get_premium_not_available">Premium (моментално недостапен)</string>
-  <string name="premium_view_price_format">%1$s/месец • Вклучува ДДВ\n• Откажи во секое време</string>
-  <string name="premium_view_title">Сите функции,\nбез прекини.</string>
-  <string name="premium_view_message">Без ограничувања на количина или време.\nСè е неограничено со Premium</string>
-  <string name="premium_view_description_azure">Прецизен превод на повеќето јазици низ светот.</string>
-  <string name="premium_view_description_deepl">Обезбедуваме софистицирани и значајни преводи.</string>
-  <string name="premium_view_description_papago">Papago автоматски преведува со помош на невронска машинска технологија.</string>
-  <string name="premium_view_description_google">Најбрз превод. Неограничен и засекогаш бесплатен.</string>
-  <string name="premium_view_description_sentence_detection">Преведувајте со допир по редови.</string>
+  <string name="premium_view_description_sentence_detection">Речениците се избираат автоматски.</string>
   <string name="premium_view_description_paragraph_detection">Параграфите се препознаваат автоматски.</string>
   <string name="premium_view_description_select_detection">Можете да изберете точен опсег.</string>
-  <string name="premium_view_description_word_detection">Превод по збор секогаш е бесплатен и неограничен.</string>
+  <string name="premium_view_description_word_detection">Покажете на збор за да се преведе веднаш.</string>
   <string name="premium_view_description_fixed_area_detection">Можете постојано да преведувате фиксни области, како што се филмските преводи.</string>
-  <string name="premium_view_unsubscribe">Откажи претплата</string>
+  <string name="say_here">Тука сум!</string>
+  <string name="hint_settings_reopen">Допрете двапати на рачката за повторно да ги отворите поставките</string>
+  <string name="openai_key_guide">Внесете го вашиот OpenAI API клуч за да преведувате со модели на OpenAI.</string>
+  <string name="openai_key_signup_guide">Создадете клуч на контролната табла на OpenAI. Користењето се наплаќа на вашата сметка на OpenAI.</string>
+  <string name="openai_key_link_keys">Земете го вашиот API клуч</string>
+  <string name="openai_key_link_billing">Наплата и користење</string>
+  <string name="openai_model_label">Модел</string>
+  <string name="help_text_openai_own_key">Го користи вашиот личен OpenAI API клуч</string>
 </resources>

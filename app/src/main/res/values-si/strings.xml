@@ -8,14 +8,10 @@
     <!-- Overlay Permission -->
     <string name="message_permission_overlay">අවශ්‍ය අවසරය:\nවෙනත් යෙදුම් ඉහත පෙන්වන්න</string>
     <string name="message_permission_overlay_detail">තිර පරිවර්තකය ආරම්භ කිරීමට, වෙනත් යෙදුම් ඉහත පෙන්වීම සඳහා අවසරය අවශ්‍ය වේ.</string>
-    <string name="message_permission_overlay_denied">උපරිම අවසරය ප්‍රතික්ෂේප විය</string>
-    <string name="message_permission_overlay_denied_detail">උපරිම අවසරය ලබාදී නොමැත.\nයෙදුම වසා දැමේ.</string>
 
     <!-- MediaProjection token 요청 -->
     <string name="message_media_projection">අවශ්‍ය අවසරය:\nතිර ගතකිරීම</string>
     <string name="message_media_projection_detail">තිර පරිවර්තකය ආරම්භ කිරීමට, තිරය ගත කිරීම සඳහා අවසරය ලබාදිය යුතුය.\n\nතිරයේ තොරතුරු පරිවර්තනය සඳහා පමණක් භාවිතා වන අතර කිසිවක් ගබඩා නොකරන අතරෙහි යැවීම සිදු නොවේ.</string>
-    <string name="message_media_projection_denied">තිර ගතකිරීම සඳහා අවසරය ප්‍රතික්ෂේප විය</string>
-    <string name="message_media_projection_denied_detail">තිර ගතකිරීම සඳහා අවසරය ලබා නොදී ඇත.\nයෙදුම වසා දැමේ.</string>
 
     <!-- Foreground Service 시작 알림 -->
     <string name="notification_foreground_service">පරිවර්තනය සඳහා තිර පටිගත කිරීම ක්‍රියාත්මක වේ.</string>
@@ -23,7 +19,6 @@
     <string name="message_start_foreground_service">තිර අන්තර්ගතය ලබාගෙන පරිවර්තනය කිරීම සඳහා යෙදුම අග්‍රභාග සේවාවක් ආරම්භ කරයි.\n\nලබාගත් පින්තූර ගබඩා නොකරනු ලබන අතර පිටතට යැවීම සිදු නොවේ.</string>
     <string name="label_confirm_start_foreground_service">ආරම්භ කරන්න</string>
     <string name="label_dismiss_start_foreground_service">අවසන් කරන්න</string>
-    <string name="snack_message_start_foreground_service">තිර අන්තර්ගතය ලබාගෙන පරිවර්තනය කිරීම සඳහා අග්‍රභාග සේවාවක් ආරම්භ කරයි.</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">අවසන්</string>
@@ -36,18 +31,6 @@
     <string name="title_voice_list_view">ලභ්‍ය හඬ</string>
 
     <!-- Dialog -->
-    <string name="message_authentication_error">සත්‍යාපන දෝෂයක්</string>
-    <string name="message_authentication_error_detail">සත්‍යාපන සේවාදායකයා ප්‍රතිචාර නොදක්වයි.\nකරුණාකර පසුව නැවත උත්සාහ කරන්න.</string>
-    <string name="message_untrusted_environment">අවිශ්වාසිත පරිසරය</string>
-    <string name="message_untrusted_environment_detail">ඔබගේ යෙදුම Google Play අඛණ්ඩතාව පරීක්ෂාව සමත්වී නැහැ.</string>
-    <string name="message_unknown_device">නොදන්නා උපාංගය</string>
-    <string name="message_unknown_device_detail">මෙම උපාංගය සහය නොදක්වයි.</string>
-    <string name="message_authentication_required">සත්‍යාපනය අවශ්‍යයි</string>
-    <string name="message_authentication_required_detail">ඔබ Google හරහා පුරනය වී සිටිය යුතුය.</string>
-    <string name="message_playstore_update_required">Play Store යාවත්කාලීන කිරීම අවශ්‍යයි</string>
-    <string name="message_playstore_update_required_detail">Play Store සේවාවට සම්බන්ධ වීම අසාර්ථක විය.\nඔබගේ උපාංගයේ පැරණි Play Store අනුවාදයක් තිබිය හැක.</string>
-    <string name="message_unknown_source">මෙම යෙදුම Play වෙතින් ලබාගන්න</string>
-    <string name="message_unknown_source_detail">මෙම විශිෂ්ට යෙදුම භාවිතා කරගෙන යාමට, කරුණාකර Google Play වෙතින් ලබාගන්න.</string>
     <string name="message_force_update">යාවත්කාලීන අවශ්‍යයි</string>
     <string name="message_force_update_detail">මෙම අනුවාදය තවදුරටත් සහය නොදක්වයි.\nStore වෙත යන්න.</string>
     <string name="message_service_unavailable">සේවාව නොලැබේ</string>
@@ -56,61 +39,57 @@
     <string name="message_network_unavailable_detail">ජාලය නොමැත.\nකරුණාකර පරීක්ෂා කර නැවත උත්සාහ කරන්න.</string>
     <string name="message_translate_fixedarea_warn">බැටරි අනතුරු ඇඟවීම</string>
     <string name="message_translate_fixedarea_warn_detail">බැටරිය ඉතා ඉක්මනින් විශේෂ වශයෙන් නිම විය හැක.</string>
-    <string name="message_translate_fixedarea_promotion">නිෂ්පාදන මිලදී ගැනීම පිළිබඳ තොරතුරු</string>
-    <string name="message_translate_fixedarea_promotion_detail">අපගේ ප්‍රිමියම් විශේෂාංග සම්බන්ධයෙන් මිත්‍රශීලී සටහනක් සෑම මිනිත්තු %1$s කින් වරක් පෙන්වනු ඇත.</string>
-    <string name="message_free_trial_ends">ඔබේ නොමිලේ පරීක්ෂණය අවසන් වී ඇත.</string>
-    <string name="message_free_trial_ends_detail">නොමිලේ කාලය දිගු කිරීම සඳහා ඔබ දැන්වීමක් නරඹන්න කැමතිද?</string>
-    <string name="message_ad_reward">ඔබට %1$d තවත් විනාඩි නොමිලේ නව පරීක්ෂණය ලැබී ඇත!</string>
-    <string name="message_ad_reward_detail">ඊළඟ %1$d විනාඩි සඳහා සියලුම ප්‍රිමියම් විශේෂාංග නොමිලේ භාවිතා කරන්න.</string>
+    <string name="ad_gate_loading">දැන්වීම සූදානම් වෙමින්…</string>
+    <string name="ad_gate_reward_notice">දැන්වීම අවසානය දක්වා නරඹා, යෙදුම වසන තුරු දැන්වීම් රහිතව භාවිතා කරන්න.</string>
 
     <!-- SettingsActivity -->
     <string name="settings_title">සැකසීම්</string>
     <string name="settings_menu_cat_pointer">ඇඟිලි සලකුණු</string>
     <string name="settings_menu_pointer_docking_delay">ඩොක් විලම්බය</string>
-    <string name="settings_menu_haptic_feedback_to_detection">හඳුනාගත් විබ්‍රේශන්</string>
+    <string name="settings_menu_haptic_feedback_to_detection">හඳුනාගත් විට හැප්ටික්</string>
     <string name="settings_menu_cat_menubar">මෙනු තීරුව</string>
     <string name="settings_menu_menubar_transparency">මෙනු පැහැදිලිභාවය</string>
     <string name="settings_menu_menubar_composition">මෙනු ක්‍රියාකාරිත්වය</string>
-    <string name="settings_menu_cat_ai">AI නිවැරදි කිරීම</string>
     <string name="settings_menu_cat_translation">පරිවර්තනය</string>
     <string name="settings_menu_translation_transparency">පරිවර්තන පැහැදිලිභාවය</string>
     <string name="settings_menu_translation_close_delay">වසීමේ විලම්බය</string>
-    <string name="settings_menu_automated_read_aloud">ස්වයං කියවීම</string>
+    <string name="settings_menu_automated_read_aloud">පරිවර්තනයේ ස්වයං කියවීම</string>
     <string name="settings_menu_reply_transparency">පිළිතුරු පැහැදිලිභාවය</string>
     <string name="settings_menu_cat_tts">පෙළ-වචනය</string>
+    <string name="settings_menu_tts_read_target">කියවීමේ ඉලක්කය</string>
+    <string name="settings_tts_read_target_source">මුල් පිටපත</string>
+    <string name="settings_tts_read_target_target">පරිවර්තනය</string>
     <string name="settings_menu_tts_voices">TTS හඬ</string>
     <string name="settings_menu_tts_rate">TTS වේගය</string>
     <string name="settings_menu_cat_about">පිළිබඳව</string>
-    <string name="settings_menu_on_premium_free_trial">ප්‍රිමියම් ටෙස්ට් ක්‍රියාත්මකයි</string>
-    <string name="settings_menu_premium_free_trial_remain">%1$d මිනිත්තු ඉතුරී ඇත</string>
-    <string name="settings_menu_your_premium_benefits">ඔබගේ වාසි</string>
-    <string name="settings_menu_your_premium_benefits_peding">වාසි (පැකින් පවතියි)</string>
     <string name="settings_menu_app_version">යෙදුම් අනුවාදය</string>
     <string name="settings_menu_app_version_latest">(නවතමය)</string>
 
     <!-- HelpTextDetectModeView, HelpTranslationKitView -->
-    <string name="help_text_no_limit">Premium මගින් සියල්ලම සීමාවන් රහිත වේ</string>
     <string name="help_text_no_limit_free">ප්‍රමාණ සීමාවක් නැත, කාල සීමාවක් නැත</string>
-    <string name="help_text_no_limit_title">සීමාවකින් තොරව භාවිතා කරන්න</string>
-    <string name="help_text_no_limit_free_title">සීමා නැතිව නොමිලේ</string>
-    <string name="help_text_get_premium">Premium ලබාගන්න</string>
+    <string name="help_text_deepl_own_key">ඔබේ පෞද්ගලික DeepL API යතුර භාවිත කරයි</string>
+    <string name="deepl_key_guide">DeepL පරිවර්තනය භාවිත කිරීමට ඔබේ DeepL API යතුර ඇතුළත් කරන්න.</string>
+    <string name="deepl_key_signup_guide">DeepL හි ලියාපදිංචි වී ඔබට නොමිලේ සැලැස්මට දායක විය හැක.</string>
+    <string name="deepl_key_link_subscription">නොමිලේ සැලැස්මට දායක වන්න</string>
+    <string name="deepl_key_link_keys">ඔබේ API යතුර පරීක්ෂා කරන්න</string>
+    <string name="deepl_key_active">සක්‍රිය කර ඇත</string>
+    <string name="label_save">සුරකින්න</string>
+    <string name="deepl_key_invalid">API යතුර වලංගු නැත.</string>
+    <string name="deepl_key_validating">තහවුරු කරමින්…</string>
+    <string name="deepl_key_network_error">ජාල දෝෂයක් හේතුවෙන් යතුර තහවුරු කළ නොහැකි විය. යතුර සුරකින ලදී.</string>
 
     <!-- PremiumView -->
-    <string name="premium_view_get_premium">Premium ලබාගන්න</string>
-    <string name="premium_view_get_premium_purchased">ඔබගේ Premium වාසි</string>
-    <string name="premium_view_get_premium_pending">ඔබගේ Premium වාසි (සිදු වේමින්)</string>
-    <string name="premium_view_get_premium_not_available">Premium (දැනට නොලැබේ)</string>
-    <string name="premium_view_price_format">%1$s/මසකට • VAT ඇතුළත් වේ\n• ඕනෑම වේලාවක අවලංගු කරන්න</string>
-    <string name="premium_view_title">සියලුම විශේෂාංග,\nවැලඳීමකින් තොරව.</string>
-    <string name="premium_view_message">ප්‍රමාණ සීමාවක් නැත, කාල සීමාවක් නැත.\nPremium මගින් සියල්ලම සීමාවන් රහිත වේ.</string>
-    <string name="premium_view_description_azure">ලෝකයේ බොහෝ භාෂාවන් නිවැරදිව පරිවර්තනය කරයි.</string>
-    <string name="premium_view_description_deepl">උචිත තේරුම සමඟ නවීන පරිවර්තන ලබාදේ.</string>
-    <string name="premium_view_description_papago">Papago පද්ධතිය නියමිතව නියමිත භාෂාවට පරිවර්තනය කරයි.</string>
-    <string name="premium_view_description_google">ඉතා වේගවත් පරිවර්තනය. සදාකාලිකව නොමිලේ.</string>
-    <string name="premium_view_description_sentence_detection">බාරයන් පරිවර්තනය කිරීමට ඇඟිලි භාවිතා කරන්න.</string>
+    <string name="premium_view_description_sentence_detection">වාක්‍ය ස්වයංක්‍රීයව තෝරා ගැනේ.</string>
     <string name="premium_view_description_paragraph_detection">පෙළ කොටස් ස්වයංක්‍රීයව හඳුනාගනී.</string>
     <string name="premium_view_description_select_detection">ඔබට අවශ්‍ය පරාසය තෝරා ගත හැක.</string>
-    <string name="premium_view_description_word_detection">වචනයෙන් වචනයට පරිවර්තනය හැමවිටම නොමිලේ සහ සීමා රහිතය.</string>
+    <string name="premium_view_description_word_detection">වචනයක් වෙත යොමු කරන්න, එය වහාම පරිවර්තනය වේ.</string>
     <string name="premium_view_description_fixed_area_detection">චිත්‍රපට උපසිරැසි වැනි ස්ථිර ප්‍රදේශ නිරතුරුවම පරිවර්තනය කළ හැකිය.</string>
-    <string name="premium_view_unsubscribe">දායකත්වය අවලංගු කරන්න</string>
+  <string name="say_here">මම මෙතන!</string>
+  <string name="hint_settings_reopen">සැකසුම් නැවත විවෘත කිරීමට හැඬලය දෙවරක් තට්ටු කරන්න</string>
+  <string name="openai_key_guide">OpenAI ආකෘති සමඟ පරිවර්තනය කිරීමට ඔබගේ OpenAI API යතුර ඇතුළත් කරන්න.</string>
+  <string name="openai_key_signup_guide">OpenAI උපකරණ පුවරුවේ යතුරක් සාදන්න. භාවිතය ඔබගේ OpenAI ගිණුමට අය කෙරේ.</string>
+  <string name="openai_key_link_keys">ඔබගේ API යතුර ලබා ගන්න</string>
+  <string name="openai_key_link_billing">බිල්පත් කිරීම සහ භාවිතය</string>
+  <string name="openai_model_label">ආකෘතිය</string>
+  <string name="help_text_openai_own_key">ඔබේ පෞද්ගලික OpenAI API යතුර භාවිත කරයි</string>
 </resources>

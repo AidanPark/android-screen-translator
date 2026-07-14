@@ -8,14 +8,10 @@
     <!-- Overlay Permission -->
     <string name="message_permission_overlay">Vaadittu lupa:\nNäytä muiden sovellusten päällä</string>
     <string name="message_permission_overlay_detail">Näytön Kääntäjän käynnistämiseksi sinun on sallittava näkyvyys muiden sovellusten päällä.</string>
-    <string name="message_permission_overlay_denied">Ylimenolupa evätty</string>
-    <string name="message_permission_overlay_denied_detail">Ylimenolupaa ei myönnetty.\nSovellus suljetaan.</string>
 
     <!-- MediaProjection token 요청 -->
     <string name="message_media_projection">Vaadittu lupa:\nNäytön tallennus</string>
     <string name="message_media_projection_detail">Näytön Kääntäjän käynnistämiseksi sinun on sallittava näytön tallennus.\n\nNäytön tiedot ovat vain käännöskäyttöön, eikä niitä tallenneta tai jaeta.</string>
-    <string name="message_media_projection_denied">Näytön tallennuslupa evätty</string>
-    <string name="message_media_projection_denied_detail">Näytön tallennuslupaa ei myönnetty.\nSovellus suljetaan.</string>
 
     <!-- Foreground Service 시작 알림 -->
     <string name="notification_foreground_service">Näytön sieppaus on käytössä käännöstarkoituksiin.</string>
@@ -23,7 +19,6 @@
     <string name="message_start_foreground_service">Sovellus käynnistää taustapalvelun näytön sisällön sieppaamiseen ja kääntämiseen.\n\nKaapattuja kuvia ei tallenneta tai jaeta ulkoisesti.</string>
     <string name="label_confirm_start_foreground_service">Aloita</string>
     <string name="label_dismiss_start_foreground_service">Lopeta</string>
-    <string name="snack_message_start_foreground_service">Sovellus käynnistää taustapalvelun näytön sisällön sieppaamiseen ja kääntämiseen.</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">Lopeta</string>
@@ -36,18 +31,6 @@
     <string name="title_voice_list_view">Saatavilla olevat äänet</string>
 
     <!-- Dialog -->
-    <string name="message_authentication_error">Todennusvirhe</string>
-    <string name="message_authentication_error_detail">Todennuspalvelin ei vastaa.\nYritä myöhemmin uudelleen.</string>
-    <string name="message_untrusted_environment">Epäluotettava ympäristö</string>
-    <string name="message_untrusted_environment_detail">Sovelluksesi ei näytä läpäisseen Google Play -eheyden tarkistusta.</string>
-    <string name="message_unknown_device">Tuntematon laite</string>
-    <string name="message_unknown_device_detail">Tätä laitetta ei tueta.</string>
-    <string name="message_authentication_required">Todennus vaaditaan</string>
-    <string name="message_authentication_required_detail">Sinun täytyy kirjautua sisään Google-tililläsi.</string>
-    <string name="message_playstore_update_required">Play Kaupan päivitys vaaditaan</string>
-    <string name="message_playstore_update_required_detail">Yhteys Play Kaupan palveluun epäonnistui.\nTämä voi johtua vanhasta Play Kaupan versiosta.</string>
-    <string name="message_unknown_source">Hanki tämä sovellus Play Kaupasta</string>
-    <string name="message_unknown_source_detail">Jatka tämän mahtavan sovelluksen käyttöä lataamalla se Google Playsta.</string>
     <string name="message_force_update">Päivitys vaaditaan</string>
     <string name="message_force_update_detail">Tätä versiota ei enää tueta.\nSiirry kauppaan.</string>
     <string name="message_service_unavailable">Palvelu ei ole käytettävissä</string>
@@ -56,61 +39,57 @@
     <string name="message_network_unavailable_detail">Verkkoa ei ole saatavilla.\nTarkista yhteys ja yritä uudelleen.</string>
     <string name="message_translate_fixedarea_warn">Akkun varoitus</string>
     <string name="message_translate_fixedarea_warn_detail">Akku voi tyhjentyä nopeasti.</string>
-    <string name="message_translate_fixedarea_promotion">Tuotteen ostoilmoitus</string>
-    <string name="message_translate_fixedarea_promotion_detail">Ystävällinen muistutus premium-ominaisuuksistamme ilmestyy %1$s minuutin välein.</string>
-    <string name="message_free_trial_ends">Ilmainen kokeilujaksosi on päättynyt.</string>
-    <string name="message_free_trial_ends_detail">Haluatko katsoa mainoksen kokeilun jatkamiseksi?</string>
-    <string name="message_ad_reward">Sait %1$d minuuttia lisää ilmaista kokeiluaikaa!</string>
-    <string name="message_ad_reward_detail">Nauti kaikista premium-ominaisuuksista ilmaiseksi seuraavat %1$d minuuttia.</string>
+    <string name="ad_gate_loading">Valmistellaan mainosta…</string>
+    <string name="ad_gate_reward_notice">Katso mainos loppuun asti, niin voit käyttää sovellusta mainoksitta sen sulkemiseen saakka.</string>
 
     <!-- SettingsActivity -->
     <string name="settings_title">Asetukset</string>
     <string name="settings_menu_cat_pointer">Osoitin</string>
     <string name="settings_menu_pointer_docking_delay">Telakoinnin viive</string>
-    <string name="settings_menu_haptic_feedback_to_detection">Värinä tunnistettaessa</string>
+    <string name="settings_menu_haptic_feedback_to_detection">Haptinen palaute tunnistettaessa</string>
     <string name="settings_menu_cat_menubar">Valikkopalkki</string>
     <string name="settings_menu_menubar_transparency">Valikon läpinäkyvyys</string>
     <string name="settings_menu_menubar_composition">Valikon toiminnot</string>
-    <string name="settings_menu_cat_ai">AI-korjaus</string>
     <string name="settings_menu_cat_translation">Käännös</string>
     <string name="settings_menu_translation_transparency">Käännöksen läpinäkyvyys</string>
     <string name="settings_menu_translation_close_delay">Sulkemisen viive</string>
-    <string name="settings_menu_automated_read_aloud">Automaattinen luku</string>
+    <string name="settings_menu_automated_read_aloud">Käännöksen automaattinen luku</string>
     <string name="settings_menu_reply_transparency">Vastauksen läpinäkyvyys</string>
     <string name="settings_menu_cat_tts">Teksti puheeksi</string>
+    <string name="settings_menu_tts_read_target">Luettava teksti</string>
+    <string name="settings_tts_read_target_source">Alkuperäinen</string>
+    <string name="settings_tts_read_target_target">Käännös</string>
     <string name="settings_menu_tts_voices">TTS-äänet</string>
     <string name="settings_menu_tts_rate">TTS-nopeus</string>
     <string name="settings_menu_cat_about">Tietoja</string>
-    <string name="settings_menu_on_premium_free_trial">Premium-kokeilu käynnissä</string>
-    <string name="settings_menu_premium_free_trial_remain">%1$d minuuttia jäljellä</string>
-    <string name="settings_menu_your_premium_benefits">Premium-edut</string>
-    <string name="settings_menu_your_premium_benefits_peding">Edut (odottaa)</string>
     <string name="settings_menu_app_version">Sovelluksen versio</string>
     <string name="settings_menu_app_version_latest">(Uusin)</string>
 
     <!-- HelpTextDetectModeView, HelpTranslationKitView -->
-    <string name="help_text_no_limit">Kaikki on rajatonta Premiumin avulla</string>
     <string name="help_text_no_limit_free">Ei määrärajoja, ei aikarajoja</string>
-    <string name="help_text_no_limit_title">Nauti rajattomasti</string>
-    <string name="help_text_no_limit_free_title">Ilmainen ilman rajoituksia</string>
-    <string name="help_text_get_premium">Hanki Premium</string>
+    <string name="help_text_deepl_own_key">Käyttää henkilökohtaista DeepL API -avaintasi</string>
+    <string name="deepl_key_guide">Anna DeepL API -avaimesi käyttääksesi DeepL-käännöstä.</string>
+    <string name="deepl_key_signup_guide">Rekisteröidy DeepL-palveluun, niin voit tilata ilmaisen tilauksen.</string>
+    <string name="deepl_key_link_subscription">Tilaa ilmainen tilaus</string>
+    <string name="deepl_key_link_keys">Tarkista API-avaimesi</string>
+    <string name="deepl_key_active">Aktivoitu</string>
+    <string name="label_save">Tallenna</string>
+    <string name="deepl_key_invalid">API-avain ei kelpaa.</string>
+    <string name="deepl_key_validating">Vahvistetaan…</string>
+    <string name="deepl_key_network_error">Avainta ei voitu vahvistaa verkkovirheen vuoksi. Avain tallennettiin.</string>
 
     <!-- PremiumView -->
-    <string name="premium_view_get_premium">Hanki Premium</string>
-    <string name="premium_view_get_premium_purchased">Premium-edut</string>
-    <string name="premium_view_get_premium_pending">Premium-edut (odottaa)</string>
-    <string name="premium_view_get_premium_not_available">Premium ei ole tällä hetkellä saatavilla</string>
-    <string name="premium_view_price_format">%1$s/kk • Sisältää ALV:n\n• Voit peruuttaa milloin tahansa</string>
-    <string name="premium_view_title">Kaikki ominaisuudet,\nIlman keskeytyksiä.</string>
-    <string name="premium_view_message">Ei määrärajoja, ei aikarajoja.\nKaikki on rajatonta Premiumilla.</string>
-    <string name="premium_view_description_azure">Tarkka käännös useimmille maailman kielille.</string>
-    <string name="premium_view_description_deepl">Laadukkaat käännökset, jotka säilyttävät merkityksen.</string>
-    <string name="premium_view_description_papago">Papago kääntää automaattisesti eri kielet neuroverkkoteknologialla.</string>
-    <string name="premium_view_description_google">Nopein käännös. Ilmainen ja rajaton ikuisesti.</string>
-    <string name="premium_view_description_sentence_detection">Käännä riveittäin sormellasi.</string>
+    <string name="premium_view_description_sentence_detection">Lauseet valitaan automaattisesti.</string>
     <string name="premium_view_description_paragraph_detection">Kappaleet tunnistetaan automaattisesti.</string>
     <string name="premium_view_description_select_detection">Voit myös valita käännettävän alueen itse.</string>
-    <string name="premium_view_description_word_detection">Sana sanalta -käännös on aina ilmainen ja rajaton.</string>
+    <string name="premium_view_description_word_detection">Osoita sanaa, niin se käännetään heti.</string>
     <string name="premium_view_description_fixed_area_detection">Voit kääntää jatkuvasti kiinteitä alueita, kuten elokuvien tekstityksiä.</string>
-    <string name="premium_view_unsubscribe">Peru tilaus</string>
+  <string name="say_here">Olen täällä!</string>
+  <string name="hint_settings_reopen">Avaa asetukset uudelleen kaksoisnapauttamalla kahvaa</string>
+  <string name="openai_key_guide">Anna OpenAI API -avaimesi kääntääksesi OpenAI-malleilla.</string>
+  <string name="openai_key_signup_guide">Luo avain OpenAI-hallintapaneelissa. Käyttö laskutetaan OpenAI-tililtäsi.</string>
+  <string name="openai_key_link_keys">Hae API-avaimesi</string>
+  <string name="openai_key_link_billing">Laskutus ja käyttö</string>
+  <string name="openai_model_label">Malli</string>
+  <string name="help_text_openai_own_key">Käyttää henkilökohtaista OpenAI API -avaintasi</string>
 </resources>

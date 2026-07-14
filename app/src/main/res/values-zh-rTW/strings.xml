@@ -8,14 +8,10 @@
     <!-- Overlay Permission -->
     <string name="message_permission_overlay">所需權限：\n顯示在其他應用程式上方</string>
     <string name="message_permission_overlay_detail">啟動螢幕翻譯器需要授予在其他應用程式上方顯示的權限。</string>
-    <string name="message_permission_overlay_denied">懸浮窗權限已被拒絕</string>
-    <string name="message_permission_overlay_denied_detail">未授予懸浮窗權限。\n應用程式將結束。</string>
 
     <!-- MediaProjection token 請求 -->
     <string name="message_media_projection">所需權限：\n螢幕錄製</string>
     <string name="message_media_projection_detail">啟動螢幕翻譯器需要授予螢幕錄製權限。\n\n螢幕上的資訊僅用於翻譯，不會儲存或傳送至其他地方。</string>
-    <string name="message_media_projection_denied">螢幕錄製權限被拒絕</string>
-    <string name="message_media_projection_denied_detail">未授予螢幕錄製權限。\n應用程式將結束。</string>
 
     <!-- Foreground Service 啟動通知 -->
     <string name="notification_foreground_service">正在使用螢幕擷取功能進行翻譯。</string>
@@ -23,7 +19,6 @@
     <string name="message_start_foreground_service">應用程式將啟動前景服務以擷取並翻譯螢幕內容。\n\n擷取的圖像不會被儲存或傳送。</string>
     <string name="label_confirm_start_foreground_service">開始</string>
     <string name="label_dismiss_start_foreground_service">結束</string>
-    <string name="snack_message_start_foreground_service">應用程式已啟動前景服務以擷取並翻譯螢幕內容。</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">結束</string>
@@ -36,18 +31,6 @@
     <string name="title_voice_list_view">可用語音</string>
 
     <!-- Dialog -->
-    <string name="message_authentication_error">驗證錯誤</string>
-    <string name="message_authentication_error_detail">驗證伺服器未回應。\n請稍後再試。</string>
-    <string name="message_untrusted_environment">不受信任的環境</string>
-    <string name="message_untrusted_environment_detail">您的應用程式似乎未通過 Google Play 的完整性檢查。</string>
-    <string name="message_unknown_device">未知裝置</string>
-    <string name="message_unknown_device_detail">此裝置不受支援。</string>
-    <string name="message_authentication_required">需要驗證</string>
-    <string name="message_authentication_required_detail">您必須使用 Google 登入。</string>
-    <string name="message_playstore_update_required">需要更新 Play 商店</string>
-    <string name="message_playstore_update_required_detail">連接至 Play 商店服務失敗。\n可能是因為裝置安裝了舊版本的 Play 商店。</string>
-    <string name="message_unknown_source">請從 Play 商店下載此應用</string>
-    <string name="message_unknown_source_detail">若要繼續使用此優質應用，請至 Google Play 下載。</string>
     <string name="message_force_update">需要更新</string>
     <string name="message_force_update_detail">此版本已不再支援。\n請前往商店更新。</string>
     <string name="message_service_unavailable">服務不可用</string>
@@ -56,61 +39,57 @@
     <string name="message_network_unavailable_detail">網路不可用。\n請檢查後再試一次。</string>
     <string name="message_translate_fixedarea_warn">電池警告</string>
     <string name="message_translate_fixedarea_warn_detail">電池可能很快會耗盡。</string>
-    <string name="message_translate_fixedarea_promotion">產品購買資訊</string>
-    <string name="message_translate_fixedarea_promotion_detail">關於我們高級功能的友善提醒將每 %1$s 分鐘顯示一次。</string>
-    <string name="message_free_trial_ends">您的免费试用已结束。</string>
-    <string name="message_free_trial_ends_detail">要观看广告以延长免费试用时间吗？</string>
-    <string name="message_ad_reward">您已獲得額外 %1$d 分鐘的免費試用！</string>
-    <string name="message_ad_reward_detail">於接下來的 %1$d 分鐘內，所有高級功能皆可免費使用。</string>
+    <string name="ad_gate_loading">正在準備廣告…</string>
+    <string name="ad_gate_reward_notice">看完整段廣告後，在關閉應用程式前將不再顯示廣告。</string>
 
     <!-- SettingsActivity -->
     <string name="settings_title">設定</string>
     <string name="settings_menu_cat_pointer">指標</string>
     <string name="settings_menu_pointer_docking_delay">連接延遲</string>
-    <string name="settings_menu_haptic_feedback_to_detection">偵測時震動</string>
+    <string name="settings_menu_haptic_feedback_to_detection">偵測時觸覺回饋</string>
     <string name="settings_menu_cat_menubar">選單列</string>
     <string name="settings_menu_menubar_transparency">選單透明度</string>
     <string name="settings_menu_menubar_composition">選單功能</string>
-    <string name="settings_menu_cat_ai">AI修正</string>
     <string name="settings_menu_cat_translation">翻譯</string>
     <string name="settings_menu_translation_transparency">翻譯透明度</string>
     <string name="settings_menu_translation_close_delay">關閉延遲</string>
-    <string name="settings_menu_automated_read_aloud">自動朗讀</string>
+    <string name="settings_menu_automated_read_aloud">自動朗讀譯文</string>
     <string name="settings_menu_reply_transparency">回應透明度</string>
     <string name="settings_menu_cat_tts">文字轉語音</string>
+    <string name="settings_menu_tts_read_target">朗讀對象</string>
+    <string name="settings_tts_read_target_source">原文</string>
+    <string name="settings_tts_read_target_target">譯文</string>
     <string name="settings_menu_tts_voices">TTS 聲音</string>
     <string name="settings_menu_tts_rate">TTS 速度</string>
     <string name="settings_menu_cat_about">關於</string>
-    <string name="settings_menu_on_premium_free_trial">正在使用Premium免費試用</string>
-    <string name="settings_menu_premium_free_trial_remain">剩下 %1$d 分鐘</string>
-    <string name="settings_menu_your_premium_benefits">您的權益</string>
-    <string name="settings_menu_your_premium_benefits_peding">權益（待處理）</string>
     <string name="settings_menu_app_version">應用版本</string>
     <string name="settings_menu_app_version_latest">(最新)</string>
 
     <!-- HelpTextDetectModeView, HelpTranslationKitView -->
-    <string name="help_text_no_limit">進階版功能全部無限制</string>
     <string name="help_text_no_limit_free">不限次數、不限時間</string>
-    <string name="help_text_no_limit_title">享受無限制的體驗</string>
-    <string name="help_text_no_limit_free_title">免費且無限制</string>
-    <string name="help_text_get_premium">升級為進階版</string>
+    <string name="help_text_deepl_own_key">使用您的個人 DeepL API 金鑰</string>
+    <string name="deepl_key_guide">輸入您的 DeepL API 金鑰即可使用 DeepL 翻譯。</string>
+    <string name="deepl_key_signup_guide">註冊 DeepL 後即可訂閱免費方案。</string>
+    <string name="deepl_key_link_subscription">訂閱免費方案</string>
+    <string name="deepl_key_link_keys">查看您的 API 金鑰</string>
+    <string name="deepl_key_active">已啟用</string>
+    <string name="label_save">儲存</string>
+    <string name="deepl_key_invalid">API 金鑰無效。</string>
+    <string name="deepl_key_validating">正在驗證…</string>
+    <string name="deepl_key_network_error">由於網路錯誤，無法驗證金鑰。金鑰已儲存。</string>
 
     <!-- PremiumView -->
-    <string name="premium_view_get_premium">升級為進階版</string>
-    <string name="premium_view_get_premium_purchased">您的進階版權益</string>
-    <string name="premium_view_get_premium_pending">您的進階版權益（待處理）</string>
-    <string name="premium_view_get_premium_not_available">進階版（目前不可用）</string>
-    <string name="premium_view_price_format">%1$s/月 • 含稅\n• 可隨時取消</string>
-    <string name="premium_view_title">所有功能，\n無中斷體驗。</string>
-    <string name="premium_view_message">不限次數、不限時間。\n進階版功能全部無限制</string>
-    <string name="premium_view_description_azure">準確翻譯世界上大多數語言。</string>
-    <string name="premium_view_description_deepl">提供精準且具備語意理解的高品質翻譯。</string>
-    <string name="premium_view_description_papago">Papago 使用神經機器翻譯演算法，自動將多語言翻譯為目標語言。</string>
-    <string name="premium_view_description_google">最快速的翻譯，永久免費、無限制。</string>
-    <string name="premium_view_description_sentence_detection">用手指滑動翻譯整行文字。</string>
+    <string name="premium_view_description_sentence_detection">自動以句子為單位選取。</string>
     <string name="premium_view_description_paragraph_detection">自動識別段落單位。</string>
     <string name="premium_view_description_select_detection">也可以選取自訂翻譯區域。</string>
-    <string name="premium_view_description_word_detection">逐字翻譯永遠免費且無限制。</string>
+    <string name="premium_view_description_word_detection">指向一個單字即可即時翻譯。</string>
     <string name="premium_view_description_fixed_area_detection">您可以持續翻譯固定區域，如電影字幕。</string>
-    <string name="premium_view_unsubscribe">取消訂閱</string>
+  <string name="say_here">我在這裡！</string>
+  <string name="hint_settings_reopen">點兩下把手即可重新開啟設定</string>
+  <string name="openai_key_guide">輸入您的 OpenAI API 金鑰即可使用 OpenAI 模型進行翻譯。</string>
+  <string name="openai_key_signup_guide">在 OpenAI 主控台中建立金鑰。使用費用將計入您的 OpenAI 帳戶。</string>
+  <string name="openai_key_link_keys">取得 API 金鑰</string>
+  <string name="openai_key_link_billing">帳單與用量</string>
+  <string name="openai_model_label">模型</string>
+  <string name="help_text_openai_own_key">使用您的個人 OpenAI API 金鑰</string>
 </resources>

@@ -6,7 +6,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.ServiceConnection
 import android.graphics.drawable.RippleDrawable
-import android.os.Build
 import android.os.IBinder
 import android.view.View
 import android.view.WindowManager
@@ -238,6 +237,19 @@ abstract class OverlayView : OverlayServiceEventListener {
         }
     }
 
+    /**
+     * 오버레이 뷰를 일시적으로 숨긴다 (윈도우는 유지).
+     * 광고 게이트처럼 오버레이가 다른 화면 위에 떠서는 안 되는 구간에 사용한다.
+     */
+    fun hideTemporarily() {
+        view?.post { view?.visibility = View.INVISIBLE }
+    }
+
+    /** [hideTemporarily] 로 숨긴 뷰를 다시 보이게 한다. */
+    fun showFromTemporaryHide() {
+        view?.post { view?.visibility = View.VISIBLE }
+    }
+
     @CallSuper
     open fun clear() {
         overlayViewCoroutineScope.cancel()
@@ -301,11 +313,7 @@ class ServiceConnector<T : Service>(
 
     suspend fun bind(): T = suspendCancellableCoroutine { continuation ->
         val intent = Intent(context, serviceClass)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            context.startForegroundService(intent)
-        } else {
-            context.startService(intent)
-        }
+        context.startForegroundService(intent)
         connection = object : ServiceConnection {
             override fun onServiceConnected(name: ComponentName?, binder: IBinder?) {
                 isBound = true

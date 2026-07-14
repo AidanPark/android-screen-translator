@@ -1,15 +1,15 @@
 [versions]
-androidGradlePlugin = "8.9.3"
-googleServices = "4.4.3"
+androidGradlePlugin = "9.2.1"
+googleServices = "4.5.0"
 firebaseCrashlytics = "3.0.4"
-kotlin = "2.1.20"
+kotlin = "2.2.21"
+ksp = "2.2.21-2.0.4"
 hilt = "2.56.2"
-composeBom = "2025.07.00"
+composeBom = "2026.06.01"
 composeCompiler = "1.5.4"
 
-billingclient = "8.0.0"
-admob = "24.4.0"
-integrity = "1.4.0"
+admob = "25.4.0"
+integrity = "1.6.0"
 review = "2.0.2"
 
 appcompat = "1.7.1"
@@ -19,16 +19,16 @@ androidxComposeCompiler = "1.5.15"
 constraintlayout = "1.1.1"
 dynamicanimation = "1.1.0"
 
-annotation = "1.9.1"
+annotation = "1.10.0"
 
-datastore = "1.1.7"
+datastore = "1.2.1"
 hiltNavigationCompose = "1.2.0"
 
 kotlinxCoroutines = "1.9.0"
 
-window = "1.4.0"
+window = "1.5.1"
 
-material = "1.12.0"
+material = "1.14.0"
 
 mlkitTextRecognition = "16.0.1"
 #mlkitGmsTextRecognition = "19.0.1"
@@ -37,7 +37,7 @@ mlkitLanguageId = "17.0.6"
 mlkitTranslation = "17.0.3"
 deepl = "1.7.0"
 
-firebaseBom = "33.16.0"
+firebaseBom = "34.16.0"
 
 gson = "2.11.0"
 kotlinxSerializationJson = "1.7.3"
@@ -50,9 +50,9 @@ exoplayer = "2.19.1"
 timber = "5.0.1"
 
 junit = "4.13.2"
-junitVersion = "1.2.1"
-espressoCore = "3.6.1"
-monitor = "1.7.2"
+junitVersion = "1.3.0"
+espressoCore = "3.7.0"
+monitor = "1.8.0"
 
 
 [plugins]
@@ -62,13 +62,12 @@ google-firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 
 
 [libraries]
-billingclient = { group = "com.android.billingclient", name = "billing-ktx", version.ref = "billingclient" }
 admob = { group = "com.google.android.gms", name = "play-services-ads", version.ref = "admob" }
 integrity = { group = "com.google.android.play", name = "integrity", version.ref = "integrity" }
 app-review = { group = "com.google.android.play", name = "review-ktx", version.ref = "review" }

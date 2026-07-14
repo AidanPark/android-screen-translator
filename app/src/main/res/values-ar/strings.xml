@@ -8,14 +8,10 @@
   <!-- Overlay Permission -->
   <string name="message_permission_overlay">الإذن المطلوب:\nالعرض فوق التطبيقات الأخرى</string>
   <string name="message_permission_overlay_detail">لتشغيل مترجم الشاشة، يجب السماح بالعرض فوق التطبيقات الأخرى.</string>
-  <string name="message_permission_overlay_denied">تم رفض إذن التراكب</string>
-  <string name="message_permission_overlay_denied_detail">لم يتم منح إذن التراكب.\nسيتم إغلاق التطبيق.</string>
 
   <!-- MediaProjection token -->
   <string name="message_media_projection">الإذن المطلوب:\nتسجيل الشاشة</string>
   <string name="message_media_projection_detail">لتشغيل مترجم الشاشة، يجب السماح بتسجيل الشاشة.\n\nسيتم استخدام المعلومات الملتقطة من الشاشة فقط للترجمة ولن يتم تخزينها أو مشاركتها.</string>
-  <string name="message_media_projection_denied">تم رفض إذن تسجيل الشاشة</string>
-  <string name="message_media_projection_denied_detail">لم يتم منح إذن تسجيل الشاشة.\nسيتم إغلاق التطبيق.</string>
 
   <!-- Foreground Service -->
   <string name="notification_foreground_service">يتم استخدام وظيفة التقاط الشاشة للترجمة.</string>
@@ -23,7 +19,6 @@
   <string name="message_start_foreground_service">يبدأ التطبيق خدمة في المقدمة لالتقاط محتوى الشاشة وترجمته.\n\nلن يتم حفظ أو إرسال اللقطات الملتقطة.</string>
   <string name="label_confirm_start_foreground_service">ابدأ</string>
   <string name="label_dismiss_start_foreground_service">إنهاء</string>
-  <string name="snack_message_start_foreground_service">يبدأ التطبيق خدمة في المقدمة لالتقاط محتوى الشاشة وترجمته.</string>
 
   <!-- OverlayService -->
   <string name="service_menu_finish">إنهاء</string>
@@ -36,18 +31,6 @@
   <string name="title_voice_list_view">الأصوات المتاحة</string>
 
   <!-- Dialog -->
-  <string name="message_authentication_error">خطأ في المصادقة</string>
-  <string name="message_authentication_error_detail">خادم المصادقة لا يستجيب.\nيرجى المحاولة مرة أخرى لاحقًا.</string>
-  <string name="message_untrusted_environment">بيئة غير موثوقة</string>
-  <string name="message_untrusted_environment_detail">لم يجتز تطبيقك فحص سلامة Google Play.</string>
-  <string name="message_unknown_device">جهاز غير معروف</string>
-  <string name="message_unknown_device_detail">هذا الجهاز غير مدعوم.</string>
-  <string name="message_authentication_required">المصادقة مطلوبة</string>
-  <string name="message_authentication_required_detail">يجب تسجيل الدخول باستخدام حساب Google.</string>
-  <string name="message_playstore_update_required">تحديث متجر Play مطلوب</string>
-  <string name="message_playstore_update_required_detail">تعذر الاتصال بخدمة متجر Play.\nقد تستخدم إصدارًا قديمًا.</string>
-  <string name="message_unknown_source">قم بتنزيل التطبيق من متجر Google Play</string>
-  <string name="message_unknown_source_detail">لمتابعة استخدام التطبيق، يرجى تنزيله من متجر Google Play.</string>
   <string name="message_force_update">التحديث مطلوب</string>
   <string name="message_force_update_detail">هذا الإصدار لم يعد مدعومًا.\nيرجى الانتقال إلى المتجر.</string>
   <string name="message_service_unavailable">الخدمة غير متاحة مؤقتًا</string>
@@ -56,63 +39,59 @@
   <string name="message_network_unavailable_detail">الشبكة غير متاحة.\nيرجى التحقق من الاتصال والمحاولة مرة أخرى.</string>
   <string name="message_translate_fixedarea_warn">تحذير البطارية</string>
   <string name="message_translate_fixedarea_warn_detail">قد تنفد البطارية بسرعة.</string>
-  <string name="message_translate_fixedarea_promotion">معلومات شراء المنتج</string>
-  <string name="message_translate_fixedarea_promotion_detail">تذكير ودود بميزاتنا المميزة سيظهر كل %1$s دقيقة.</string>
-  <string name="message_free_trial_ends">انتهت الفترة التجريبية المجانية الخاصة بك.</string>
-  <string name="message_free_trial_ends_detail">هل ترغب في مشاهدة إعلان لتمديد الفترة التجريبية المجانية؟</string>
-  <string name="message_ad_reward">لقد حصلت على %1$d دقيقة إضافية من التجربة المجانية!</string>
-  <string name="message_ad_reward_detail">استمتع بجميع الميزات المميزة مجانًا لمدة %1$d دقيقة القادمة.</string>
+  <string name="ad_gate_loading">جارٍ تحضير إعلان…</string>
+  <string name="ad_gate_reward_notice">شاهد الإعلان حتى النهاية لاستخدام التطبيق دون إعلانات حتى إغلاقه.</string>
 
   <!-- SettingsActivity -->
   <string name="settings_title">الإعدادات</string>
   <string name="settings_menu_cat_pointer">المؤشر</string>
   <string name="settings_menu_pointer_docking_delay">تأخير الإرساء</string>
-  <string name="settings_menu_haptic_feedback_to_detection">اهتزاز عند الكشف</string>
+  <string name="settings_menu_haptic_feedback_to_detection">استجابة لمسية عند الكشف</string>
   <string name="settings_menu_cat_menubar">شريط القوائم</string>
   <string name="settings_menu_menubar_transparency">شفافية القائمة</string>
   <string name="settings_menu_menubar_composition">خيارات القائمة</string>
-  <string name="settings_menu_cat_ai">تصحيح AI</string>
   <string name="settings_menu_cat_translation">الترجمة</string>
   <string name="settings_menu_translation_transparency">شفافية الترجمة</string>
   <string name="settings_menu_translation_close_delay">تأخير الإغلاق</string>
-  <string name="settings_menu_automated_read_aloud">قراءة تلقائية</string>
+  <string name="settings_menu_automated_read_aloud">قراءة تلقائية للترجمة</string>
   <string name="settings_menu_reply_transparency">شفافية الرد</string>
   <string name="settings_menu_cat_tts">تحويل النص</string>
+  <string name="settings_menu_tts_read_target">هدف القراءة</string>
+  <string name="settings_tts_read_target_source">الأصل</string>
+  <string name="settings_tts_read_target_target">الترجمة</string>
   <string name="settings_menu_tts_voices">أصوات TTS</string>
   <string name="settings_menu_tts_rate">سرعة TTS</string>
   <string name="settings_menu_cat_about">حول</string>
-  <string name="settings_menu_on_premium_free_trial">تجربة بريميوم نشطة</string>
-  <string name="settings_menu_premium_free_trial_remain">تبقّى %1$d دقيقة</string>
-  <string name="settings_menu_your_premium_benefits">مزايا Premium</string>
-  <string name="settings_menu_your_premium_benefits_peding">مزايا (قيد الانتظار)</string>
   <string name="settings_menu_app_version">إصدار التطبيق</string>
   <string name="settings_menu_app_version_latest">(الأحدث)</string>
 
   <!-- HelpTextDetectModeView, HelpTranslationKitView -->
-  <string name="help_text_no_limit">كل شيء غير محدود مع Premium</string>
   <string name="help_text_no_limit_free">بدون قيود على الكمية أو المدة</string>
-  <string name="help_text_no_limit_title">استمتع بلا حدود</string>
-  <string name="help_text_no_limit_free_title">مجاني بدون قيود</string>
-  <string name="help_text_get_premium">احصل على Premium</string>
+  <string name="help_text_deepl_own_key">يستخدم مفتاح DeepL API الخاص بك</string>
+  <string name="deepl_key_guide">أدخل مفتاح DeepL API الخاص بك لاستخدام ترجمة DeepL.</string>
+  <string name="deepl_key_signup_guide">سجّل في DeepL ويمكنك الاشتراك في الخطة المجانية.</string>
+  <string name="deepl_key_link_subscription">اشترك في الخطة المجانية</string>
+  <string name="deepl_key_link_keys">تحقق من مفتاح API الخاص بك</string>
+  <string name="deepl_key_active">مُفعّل</string>
+  <string name="label_save">حفظ</string>
+  <string name="deepl_key_invalid">مفتاح API غير صالح.</string>
+  <string name="deepl_key_validating">جارٍ التحقق…</string>
+  <string name="deepl_key_network_error">تعذّر التحقق من المفتاح بسبب خطأ في الشبكة. تم حفظ المفتاح.</string>
 
   <!-- PremiumView -->
-  <string name="premium_view_get_premium">احصل على Premium</string>
-  <string name="premium_view_get_premium_purchased">مزايا Premium الخاصة بك</string>
-  <string name="premium_view_get_premium_pending">مزايا Premium الخاصة بك (قيد الانتظار)</string>
-  <string name="premium_view_get_premium_not_available">Premium غير متاح حاليًا</string>
-  <string name="premium_view_price_format">%1$s/شهريًا • يشمل الضريبة\n• يمكنك الإلغاء في أي وقت</string>
-  <string name="premium_view_title">كل الميزات،\nبدون انقطاعات.</string>
-  <string name="premium_view_message">لا يوجد حد للكمية أو المدة.\nكل شيء متاح مع Premium</string>
-  <string name="premium_view_description_azure">يترجم بدقة معظم لغات العالم.</string>
-  <string name="premium_view_description_deepl">يقدم ترجمات متقنة تعبر عن المعنى بوضوح.</string>
-  <string name="premium_view_description_papago">يقوم Papago بترجمة اللغات تلقائيًا باستخدام تقنية الشبكات العصبية.</string>
-  <string name="premium_view_description_google">أسرع ترجمة. مجانية وغير محدودة إلى الأبد.</string>
-  <string name="premium_view_description_sentence_detection">استخدم إصبعك لترجمة السطور.</string>
+  <string name="premium_view_description_sentence_detection">يتم تحديد الجمل تلقائيًا.</string>
   <string name="premium_view_description_paragraph_detection">يتم التعرف على الفقرات تلقائيًا.</string>
   <string name="premium_view_description_select_detection">يمكنك أيضًا تحديد المنطقة التي تريد ترجمتها.</string>
   <string name="premium_view_description_fixed_area_detection">يمكنك ترجمة المناطق الثابتة مثل ترجمات الأفلام باستمرار.</string>
-  <string name="premium_view_description_word_detection">الترجمة كلمة بكلمة دائمًا مجانية وغير محدودة.</string>
-  <string name="premium_view_unsubscribe">إلغاء الاشتراك</string>
+  <string name="premium_view_description_word_detection">أشِر إلى كلمة لتتم ترجمتها فورًا.</string>
+  <string name="say_here">أنا هنا!</string>
+  <string name="hint_settings_reopen">انقر نقرًا مزدوجًا على المقبض لفتح الإعدادات مرة أخرى</string>
+  <string name="openai_key_guide">أدخل مفتاح OpenAI API الخاص بك للترجمة باستخدام نماذج OpenAI.</string>
+  <string name="openai_key_signup_guide">أنشئ مفتاحًا في لوحة تحكم OpenAI. تُحتسب تكلفة الاستخدام على حساب OpenAI الخاص بك.</string>
+  <string name="openai_key_link_keys">احصل على مفتاح API</string>
+  <string name="openai_key_link_billing">الفوترة والاستخدام</string>
+  <string name="openai_model_label">النموذج</string>
+  <string name="help_text_openai_own_key">يستخدم مفتاح OpenAI API الخاص بك</string>
 </resources>
 
 

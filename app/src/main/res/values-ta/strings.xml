@@ -8,14 +8,10 @@
     <!-- Overlay Permission -->
     <string name="message_permission_overlay">தேவையான அனுமதி:\nமற்ற பயன்பாடுகளின் மீது காட்டவும்</string>
     <string name="message_permission_overlay_detail">Screen Translator ஐ தொடங்க, மற்ற பயன்பாடுகளின் மீது காட்ட அனுமதி தேவை.</string>
-    <string name="message_permission_overlay_denied">ஓவர்லே அனுமதி மறுக்கப்பட்டது</string>
-    <string name="message_permission_overlay_denied_detail">ஓவர்லே அனுமதி வழங்கப்படவில்லை.\nபயன்பாடு முடிக்கப்படும்.</string>
 
     <!-- MediaProjection token 요청 -->
     <string name="message_media_projection">தேவையான அனுமதி:\nதிரை பதிவுதல்</string>
     <string name="message_media_projection_detail">Screen Translator ஐ தொடங்க, திரையை பதிவு செய்ய அனுமதி தேவை.\n\nதிரையில் உள்ள தகவல்கள் மொழிபெயர்ப்புக்காக மட்டுமே பயன்படுத்தப்படும்; அவை சேமிக்கப்படவோ பகிரப்படவோ கூடாது.</string>
-    <string name="message_media_projection_denied">திரை பதிவு அனுமதி மறுக்கப்பட்டது</string>
-    <string name="message_media_projection_denied_detail">திரை பதிவு அனுமதி வழங்கப்படவில்லை.\nபயன்பாடு முடிக்கப்படும்.</string>
 
     <!-- Foreground Service 시작 알림 -->
     <string name="notification_foreground_service">மொழிபெயர்ப்பு பணிக்காக திரைப் பிடிப்பு செயல்பாடு பயன்படுத்தப்படுகிறது.</string>
@@ -23,7 +19,6 @@
     <string name="message_start_foreground_service">திரையின் உள்ளடக்கத்தை பிடித்து மொழிபெயர்ப்பதற்காக பயன்பாடு முன்னணி சேவையை தொடங்குகிறது.\n\nபிடிக்கப்பட்ட படங்கள் சேமிக்கப்படவோ வெளியில் அனுப்பப்படவோ கூடாது.</string>
     <string name="label_confirm_start_foreground_service">தொடங்கு</string>
     <string name="label_dismiss_start_foreground_service">முடி</string>
-    <string name="snack_message_start_foreground_service">திரையின் உள்ளடக்கத்தை பிடித்து மொழிபெயர்ப்பதற்காக பயன்பாடு முன்னணி சேவையை தொடங்குகிறது.</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">முடி</string>
@@ -36,18 +31,6 @@
     <string name="title_voice_list_view">கிடைக்கும் குரல்கள்</string>
 
     <!-- Dialog -->
-    <string name="message_authentication_error">அங்கீகார பிழை</string>
-    <string name="message_authentication_error_detail">அங்கீகார சேவையகம் பதிலளிக்கவில்லை.\nதயவுசெய்து பின்னர் முயற்சிக்கவும்.</string>
-    <string name="message_untrusted_environment">நம்பிக்கையில்லா சூழல்</string>
-    <string name="message_untrusted_environment_detail">Google Play செருகுநிலை சோதனையை உங்கள் பயன்பாடு கடந்து செல்லவில்லை போல தெரிகிறது.</string>
-    <string name="message_unknown_device">அறியப்படாத சாதனம்</string>
-    <string name="message_unknown_device_detail">இந்த சாதனம் ஆதரிக்கப்படவில்லை.</string>
-    <string name="message_authentication_required">அங்கீகாரம் தேவை</string>
-    <string name="message_authentication_required_detail">Google கணக்கில் உள்நுழைவது அவசியம்.</string>
-    <string name="message_playstore_update_required">Play Store புதுப்பிப்பு தேவை</string>
-    <string name="message_playstore_update_required_detail">Play Store சேவையை இணைக்க முடியவில்லை.\nஇது சாதனத்தில் பழைய பதிப்பு இருக்கக்கூடும் என்பதற்காக இருக்கலாம்.</string>
-    <string name="message_unknown_source">இந்த பயன்பாட்டைப் Play-இல் பெறுங்கள்</string>
-    <string name="message_unknown_source_detail">இந்த சிறந்த பயன்பாட்டைப் பயன்படுத்த தொடர, Google Play-இல் இருந்து பெறுங்கள்.</string>
     <string name="message_force_update">புதுப்பிப்பு தேவை</string>
     <string name="message_force_update_detail">இந்த பதிப்பு இனி ஆதரிக்கப்படாது.\nStore-க்கு செல்லவும்.</string>
     <string name="message_service_unavailable">சேவை கிடைக்கவில்லை</string>
@@ -56,61 +39,57 @@
     <string name="message_network_unavailable_detail">நெட்வொர்க் இல்லை.\nதயவுசெய்து சரிபார்த்து மீண்டும் முயற்சிக்கவும்.</string>
     <string name="message_translate_fixedarea_warn">மின்கலன் எச்சரிக்கை</string>
     <string name="message_translate_fixedarea_warn_detail">மின்கலன் விரைவாக தீரலாம்.</string>
-    <string name="message_translate_fixedarea_promotion">தயாரிப்பு வாங்கும் தகவல்</string>
-    <string name="message_translate_fixedarea_promotion_detail">எங்கள் பிரீமியம் அம்சங்களைப் பற்றி நண்பனாக நினைவூட்டல் ஒவ்வொரு %1$s நிமிடத்திற்கும் தோன்றும்.</string>
-    <string name="message_free_trial_ends">உங்கள் இலவச டிரயல் முடிந்துவிட்டது.</string>
-    <string name="message_free_trial_ends_detail">டிரயலை நீட்டுவதற்காக விளம்பரம் பார்க்க விரும்புகிறீர்களா?</string>
-    <string name="message_ad_reward">நீங்கள் கூடுதல் %1$d நிமிடங்கள் இலவச ட்ரையல் பெற்றுள்ளீர்கள்!</string>
-    <string name="message_ad_reward_detail">அடுத்த %1$d நிமிடங்களுக்கு அனைத்து பிரீமியம் அம்சங்களையும் இலவசமாக அனுபவிக்கவும்.</string>
+    <string name="ad_gate_loading">விளம்பரம் தயாராகிறது…</string>
+    <string name="ad_gate_reward_notice">விளம்பரத்தை இறுதிவரை பார்த்து, ஆப்ஸை மூடும் வரை விளம்பரமின்றி பயன்படுத்துங்கள்.</string>
 
     <!-- SettingsActivity -->
     <string name="settings_title">அமைப்புகள்</string>
     <string name="settings_menu_cat_pointer">சுட்டி</string>
     <string name="settings_menu_pointer_docking_delay">இணைக்கும் தாமதம்</string>
-    <string name="settings_menu_haptic_feedback_to_detection">அறிதல் போது कंपनம்</string>
+    <string name="settings_menu_haptic_feedback_to_detection">கண்டறியும்போது ஹாப்டிக்</string>
     <string name="settings_menu_cat_menubar">மெனு பட்டி</string>
     <string name="settings_menu_menubar_transparency">மெனு வெளிப்படைத்தன்மை</string>
     <string name="settings_menu_menubar_composition">மெனு செயல்பாடுகள்</string>
-    <string name="settings_menu_cat_ai">AI திருத்தம்</string>
     <string name="settings_menu_cat_translation">மொழிபெயர்ப்பு</string>
     <string name="settings_menu_translation_transparency">மொழிபெயர்ப்பின் வெளிப்படைத்தன்மை</string>
     <string name="settings_menu_translation_close_delay">மூடு தாமதம்</string>
-    <string name="settings_menu_automated_read_aloud">தானாக வாசிக்கவும்</string>
+    <string name="settings_menu_automated_read_aloud">மொழிபெயர்ப்பை தானாக வாசித்தல்</string>
     <string name="settings_menu_reply_transparency">பதில் வெளிப்படைத்தன்மை</string>
     <string name="settings_menu_cat_tts">உரை-இல்-பேசல்</string>
+    <string name="settings_menu_tts_read_target">வாசிப்பு இலக்கு</string>
+    <string name="settings_tts_read_target_source">மூலம்</string>
+    <string name="settings_tts_read_target_target">மொழிபெயர்ப்பு</string>
     <string name="settings_menu_tts_voices">TTS குரல்கள்</string>
     <string name="settings_menu_tts_rate">TTS வேகம்</string>
     <string name="settings_menu_cat_about">பற்றி</string>
-    <string name="settings_menu_on_premium_free_trial">பிரீமியம் முயற்சி செயலில்</string>
-    <string name="settings_menu_premium_free_trial_remain">இன்னும் %1$d நிமிடங்கள்</string>
-    <string name="settings_menu_your_premium_benefits">உங்கள் நன்மைகள்</string>
-    <string name="settings_menu_your_premium_benefits_peding">நன்மைகள் (காத்திருக்கின்றன)</string>
     <string name="settings_menu_app_version">ஆப் பதிப்பு</string>
     <string name="settings_menu_app_version_latest">(புதியது)</string>
 
     <!-- HelpTextDetectModeView, HelpTranslationKitView -->
-    <string name="help_text_no_limit">பிரீமியத்தில் எல்லாம் வரம்பில்லாது</string>
     <string name="help_text_no_limit_free">அளவிலும் காலத்தில் வரம்பில்லை</string>
-    <string name="help_text_no_limit_title">வரம்பில்லாமல் அனுபவிக்கவும்</string>
-    <string name="help_text_no_limit_free_title">வரம்பில்லா இலவசம்</string>
-    <string name="help_text_get_premium">பிரீமியம் பெறுங்கள்</string>
+    <string name="help_text_deepl_own_key">உங்கள் தனிப்பட்ட DeepL API விசையைப் பயன்படுத்துகிறது</string>
+    <string name="deepl_key_guide">DeepL மொழிபெயர்ப்பைப் பயன்படுத்த உங்கள் DeepL API விசையை உள்ளிடவும்.</string>
+    <string name="deepl_key_signup_guide">DeepL இல் பதிவு செய்து இலவசத் திட்டத்திற்கு சந்தா செலுத்தலாம்.</string>
+    <string name="deepl_key_link_subscription">இலவசத் திட்டத்திற்கு சந்தா செலுத்துங்கள்</string>
+    <string name="deepl_key_link_keys">உங்கள் API விசையைச் சரிபார்க்கவும்</string>
+    <string name="deepl_key_active">செயல்படுத்தப்பட்டது</string>
+    <string name="label_save">சேமி</string>
+    <string name="deepl_key_invalid">API விசை செல்லுபடியாகாது.</string>
+    <string name="deepl_key_validating">சரிபார்க்கிறது…</string>
+    <string name="deepl_key_network_error">நெட்வொர்க் பிழை காரணமாக விசையைச் சரிபார்க்க முடியவில்லை. விசை சேமிக்கப்பட்டது.</string>
 
     <!-- PremiumView -->
-    <string name="premium_view_get_premium">பிரீமியம் பெறுங்கள்</string>
-    <string name="premium_view_get_premium_purchased">உங்கள் பிரீமியம் நன்மைகள்</string>
-    <string name="premium_view_get_premium_pending">உங்கள் பிரீமியம் நன்மைகள் (நிலுவையில்)</string>
-    <string name="premium_view_get_premium_not_available">பிரீமியம் பெறுதல் (தற்போது கிடைக்கவில்லை)</string>
-    <string name="premium_view_price_format">%1$s/மாதம் • VAT உட்பட\n• எப்போது வேண்டுமானாலும் ரத்து செய்யலாம்</string>
-    <string name="premium_view_title">அனைத்து அம்சங்கள்,\nதடையில்லாமல்.</string>
-    <string name="premium_view_message">அளவிலும் காலத்திலும் வரம்பில்லை.\nபிரீமியம் மூலம் அனைத்தும் வரம்பில்லாது கிடைக்கும்.</string>
-    <string name="premium_view_description_azure">உலகின் பெரும்பாலான மொழிகளை துல்லியமாக மொழிபெயர்க்கிறது.</string>
-    <string name="premium_view_description_deepl">அர்த்தத்தை மிக நன்றாக பிடித்துவைக்கும் நுட்பமான மொழிபெயர்ப்புகளை வழங்குகிறோம்.</string>
-    <string name="premium_view_description_papago">Papago மொழிபெயர்ப்பு நரம்பியல் இயந்திரம் மூலம் பல நாடுகளின் மொழிகளை இலக்கு மொழிக்கு தானாகவே மொழிபெயர்க்கிறது.</string>
-    <string name="premium_view_description_google">மிக விரைவான மொழிபெயர்ப்பு. முடிவில்லாமல் இலவசம்.</string>
-    <string name="premium_view_description_sentence_detection">கோடுகளை விரலால் தேர்ந்தெடுத்து மொழிபெயர்க்கலாம்.</string>
+    <string name="premium_view_description_sentence_detection">வாக்கியங்கள் தானாகவே தேர்ந்தெடுக்கப்படும்.</string>
     <string name="premium_view_description_paragraph_detection">பத்தி அளவுகள் தானாக அடையாளம் காணப்படும்.</string>
     <string name="premium_view_description_select_detection">நீங்கள் விரும்பும் பகுதியை தேர்ந்தெடுக்கலாம்.</string>
-    <string name="premium_view_description_word_detection">சொல்லுக்கு சொல்லாக மொழிபெயர்ப்பு எப்போதும் இலவசம் மற்றும் வரம்பில்லாது.</string>
+    <string name="premium_view_description_word_detection">ஒரு சொல்லைச் சுட்டிக்காட்டினால் உடனே மொழிபெயர்க்கப்படும்.</string>
     <string name="premium_view_description_fixed_area_detection">திரைப்பட வசன வரிகள் போன்ற நிலையான பகுதிகளை நீங்கள் தொடர்ச்சியாக மொழிபெயர்க்கலாம்.</string>
-    <string name="premium_view_unsubscribe">சந்தாவை ரத்து செய்யவும்</string>
+  <string name="say_here">நான் இங்கே!</string>
+  <string name="hint_settings_reopen">அமைப்புகளை மீண்டும் திறக்க கைப்பிடியை இருமுறை தட்டவும்</string>
+  <string name="openai_key_guide">OpenAI மாதிரிகளுடன் மொழிபெயர்க்க உங்கள் OpenAI API விசையை உள்ளிடவும்.</string>
+  <string name="openai_key_signup_guide">OpenAI டாஷ்போர்டில் ஒரு விசையை உருவாக்கவும். பயன்பாடு உங்கள் OpenAI கணக்கில் கட்டணம் விதிக்கப்படும்.</string>
+  <string name="openai_key_link_keys">உங்கள் API விசையைப் பெறவும்</string>
+  <string name="openai_key_link_billing">பில்லிங் மற்றும் பயன்பாடு</string>
+  <string name="openai_model_label">மாதிரி</string>
+  <string name="help_text_openai_own_key">உங்கள் தனிப்பட்ட OpenAI API விசையைப் பயன்படுத்துகிறது</string>
 </resources>

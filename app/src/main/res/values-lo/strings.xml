@@ -8,14 +8,10 @@
   <!-- Overlay Permission -->
   <string name="message_permission_overlay">ການອະນຸຍາດທີ່ຈໍາເປັນ:\nສະແດງເທິງແອັບອື່ນ</string>
   <string name="message_permission_overlay_detail">ເພື່ອເລີ່ມແອັບ ແປພາສາຈາກຫນ້າຈໍ ເຈົ້າຈໍາເປັນຕ້ອງອະນຸຍາດໃຫ້ສິດສະແດງເທິງແອັບອື່ນ</string>
-  <string name="message_permission_overlay_denied">ຖືກປະຕິເສດສິດສະແດງເທິງ</string>
-  <string name="message_permission_overlay_denied_detail">ສິດສະແດງເທິງບໍ່ໄດ້ຖືກອະນຸຍາດ\nອອກຈາກແອັບ</string>
 
   <!-- MediaProjection token -->
   <string name="message_media_projection">ການອະນຸຍາດທີ່ຈໍາເປັນ:\nບັນທຶກໜ້າຈໍ</string>
   <string name="message_media_projection_detail">ເພື່ອເລີ່ມແອັບ ແປພາສາຈາກຫນ້າຈໍ ເຈົ້າຕ້ອງອະນຸຍາດໃຫ້ບັນທຶກໜ້າຈໍ\n\nຂໍ້ມູນໃນຫນ້າຈໍຖືກນໍາໃຊ້ເພື່ອການແປພາສາເທົ່ານັ້ນ ແລະຈະບໍ່ຖືກບັນທຶກ ຫຼື ສົ່ງອອກ</string>
-  <string name="message_media_projection_denied">ປະຕິເສດສິດບັນທຶກໜ້າຈໍ</string>
-  <string name="message_media_projection_denied_detail">ບໍ່ໄດ້ຮັບສິດບັນທຶກໜ້າຈໍ\nອອກຈາກແອັບ</string>
 
   <!-- Foreground Service -->
   <string name="notification_foreground_service">ຟັງຊັນບັນທຶກໜ້າຈໍກໍາລັງໃຊ້ສໍາລັບການແປພາສາ</string>
@@ -23,7 +19,6 @@
   <string name="message_start_foreground_service">ແອັບເລີ່ມບໍລິການພື້ນຫນ້າເພື່ອບັນທຶກແລະແປພາສາໜ້າຈໍ\n\nຮູບທີ່ບັນທຶກຈະບໍ່ຖືກບັນທຶກ ຫຼື ສົ່ງອອກ</string>
   <string name="label_confirm_start_foreground_service">ເລີ່ມ</string>
   <string name="label_dismiss_start_foreground_service">ສິ້ນສຸດ</string>
-  <string name="snack_message_start_foreground_service">ແອັບເລີ່ມບໍລິການພື້ນຫນ້າເພື່ອບັນທຶກແລະແປພາສາໜ້າຈໍ</string>
 
   <!-- OverlayService -->
   <string name="service_menu_finish">ສິ້ນສຸດ</string>
@@ -36,18 +31,6 @@
   <string name="title_voice_list_view">ສຽງທີ່ມີໃຫ້ໃຊ້</string>
 
   <!-- Dialog -->
-  <string name="message_authentication_error">ຂໍ້ຜິດພາດການຢືນຢັນ</string>
-  <string name="message_authentication_error_detail">ເຊີບເວີຢືນຢັນບໍ່ຕອບກັບ\nກະລຸນາລອງໃໝ່ໃນພາຍຫຼັງ</string>
-  <string name="message_untrusted_environment">ສິ່ງແວດລ້ອມທີ່ບໍ່ໜ້າໄວ້ໃຈ</string>
-  <string name="message_untrusted_environment_detail">ແອັບຂອງເຈົ້າບໍ່ຜ່ານການກວດຄວາມຖືກຕ້ອງຂອງ Google Play</string>
-  <string name="message_unknown_device">ອຸປະກອນທີ່ບໍ່ຮູ້ຈັກ</string>
-  <string name="message_unknown_device_detail">ອຸປະກອນນີ້ບໍ່ຮອງຮັບ</string>
-  <string name="message_authentication_required">ຕ້ອງການການຢືນຢັນ</string>
-  <string name="message_authentication_required_detail">ທ່ານຕ້ອງເຂົ້າລະບົບດ້ວຍ Google</string>
-  <string name="message_playstore_update_required">ຕ້ອງການອັບເດດ Play Store</string>
-  <string name="message_playstore_update_required_detail">ບໍ່ສາມາດເຊື່ອມຕໍ່ກັບບໍລິການໃນ Play Store ໄດ້\nອາດເປັນເພາະວ່າອຸປະກອນມີຮຸ່ນເກົ່າ</string>
-  <string name="message_unknown_source">ດາວໂຫຼດແອັບນີ້ຈາກ Play Store</string>
-  <string name="message_unknown_source_detail">ເພື່ອໃຊ້ງານແອັບນີ້ຕໍ່ ກະລຸນາດາວໂຫຼດຈາກ Google Play</string>
   <string name="message_force_update">ຕ້ອງການອັບເດດ</string>
   <string name="message_force_update_detail">ເວີຊັນນີ້ບໍ່ຖືກຮອງຮັບອີກຕໍ່ໄປ\nໄປທີ່ຮ້ານຄ້າ</string>
   <string name="message_service_unavailable">ບໍລິການບໍ່ພ້ອມໃຊ້</string>
@@ -56,61 +39,57 @@
   <string name="message_network_unavailable_detail">ເຄື່ອຂ່າຍບໍ່ພ້ອມໃຊ້\nກະລຸນາກວດສອບແລະລອງໃໝ່</string>
   <string name="message_translate_fixedarea_warn">ຄໍາເຕືອນແບັດເຕີຣີ</string>
   <string name="message_translate_fixedarea_warn_detail">ແບັດເຕີຣີອາດຈະໝົດໄວ.</string>
-  <string name="message_translate_fixedarea_promotion">ຂໍ້ມູນການຊື້ສິນຄ້າ</string>
-  <string name="message_translate_fixedarea_promotion_detail">ການເຕືອນຢ່າງເປັນມິດກ່ຽວກັບຟັງຊັນພິເສດຂອງພວກເຮົາຈະປາກົດທຸກ %1$s ນາທີ.</string>
-  <string name="message_free_trial_ends">ການທົດລອງຟຣີຂອງທ່ານໄດ້ສິ້ນສຸດແລ້ວ.</string>
-  <string name="message_free_trial_ends_detail">ທ່ານຕ້ອງການເບິ່ງສະຫຼຸບໂຄສະນາເພື່ອຕໍ່ເວລາທົດລອງຟຣີບໍ?</string>
-  <string name="message_ad_reward">ທ່ານໄດ້ຮັບເວລາທົດລອງຟຣີເພີ່ມອີກ %1$d ນາທີ!</string>
-  <string name="message_ad_reward_detail">ໃຊ້ງານທຸກຟັງຊັນພິເສດໄດ້ຟຣີສຳລັບ %1$d ນາທີຖັດໄປນີ້.</string>
+  <string name="ad_gate_loading">ກຳລັງກຽມໂຄສະນາ…</string>
+  <string name="ad_gate_reward_notice">ເບິ່ງໂຄສະນາຈົນຈົບ ເພື່ອໃຊ້ແອັບໂດຍບໍ່ມີໂຄສະນາຈົນກວ່າທ່ານຈະປິດມັນ.</string>
 
   <!-- SettingsActivity -->
   <string name="settings_title">ການຕັ້ງຄ່າ</string>
   <string name="settings_menu_cat_pointer">ເຄື່ອງຊີ້</string>
   <string name="settings_menu_pointer_docking_delay">ຄວາມລ່າຊ້າ Dock</string>
-  <string name="settings_menu_haptic_feedback_to_detection">ສັ່ນເມື່ອພົບ</string>
+  <string name="settings_menu_haptic_feedback_to_detection">ການຕອບສະໜອງສຳຜັດເມື່ອพົບ</string>
   <string name="settings_menu_cat_menubar">ແຖບເມນູ</string>
   <string name="settings_menu_menubar_transparency">ຄວາມໂປ່ງໃສເມນູ</string>
   <string name="settings_menu_menubar_composition">ຟັງຊັນເມນູ</string>
-  <string name="settings_menu_cat_ai">ແກ້ໄຂ AI</string>
   <string name="settings_menu_cat_translation">ການແປ</string>
   <string name="settings_menu_translation_transparency">ຄວາມໂປ່ງໃສແປ</string>
   <string name="settings_menu_translation_close_delay">ຊ້າໃນການປິດ</string>
-  <string name="settings_menu_automated_read_aloud">ອ່ານອັດຕະໂນມັດ</string>
+  <string name="settings_menu_automated_read_aloud">ອ່ານຄຳແປອັດຕະໂນມັດ</string>
   <string name="settings_menu_reply_transparency">ຄວາມໂປ່ງໃສຕອບ</string>
   <string name="settings_menu_cat_tts">ຂໍ້ຄວາມເປັນສຽງ</string>
+  <string name="settings_menu_tts_read_target">ເປົ້າໝາຍການອ່ານ</string>
+  <string name="settings_tts_read_target_source">ຕົ້ນສະບັບ</string>
+  <string name="settings_tts_read_target_target">ຄຳແປ</string>
   <string name="settings_menu_tts_voices">ສຽງ TTS</string>
   <string name="settings_menu_tts_rate">ຄວາມໄວ TTS</string>
   <string name="settings_menu_cat_about">ກ່ຽວກັບ</string>
-  <string name="settings_menu_on_premium_free_trial">ທົດລອງ Premium ກໍາລັງໃຊ້ງານ</string>
-  <string name="settings_menu_premium_free_trial_remain">ຍັງເຫຼືອ %1$d ນາທີ</string>
-  <string name="settings_menu_your_premium_benefits">ສິດປະໂຫຍດຂອງທ່ານ</string>
-  <string name="settings_menu_your_premium_benefits_peding">ປະໂຫຍດ (ລໍຖ້າ)</string>
   <string name="settings_menu_app_version">ເວີຊັນແອັບ</string>
   <string name="settings_menu_app_version_latest">(ລ່າສຸດ)</string>
 
   <!-- HelpTextDetectModeView, HelpTranslationKitView -->
-  <string name="help_text_no_limit">ທຸກຢ່າງແມ່ນບໍ່ຈໍາກັດສໍາລັບ Premium</string>
   <string name="help_text_no_limit_free">ບໍ່ຈໍາກັດຈໍານວນ, ບໍ່ຈໍາກັດເວລາ</string>
-  <string name="help_text_no_limit_title">ໃຊ້ໄດ້ແບບບໍ່ຈໍາກັດ</string>
-  <string name="help_text_no_limit_free_title">ຟຣີໄດ້ແບບບໍ່ຈໍາກັດ</string>
-  <string name="help_text_get_premium">ຮັບສິດ Premium</string>
+  <string name="help_text_deepl_own_key">ໃຊ້ກະແຈ DeepL API ສ່ວນຕົວຂອງທ່ານ</string>
+  <string name="deepl_key_guide">ປ້ອນກະແຈ DeepL API ຂອງທ່ານເພື່ອໃຊ້ການແປ DeepL.</string>
+  <string name="deepl_key_signup_guide">ລົງທະບຽນ DeepL ແລ້ວທ່ານສາມາດສະໝັກແຜນຟຣີໄດ້.</string>
+  <string name="deepl_key_link_subscription">ສະໝັກແຜນຟຣີ</string>
+  <string name="deepl_key_link_keys">ກວດສອບກະແຈ API ຂອງທ່ານ</string>
+  <string name="deepl_key_active">ເປີດໃຊ້ງານແລ້ວ</string>
+  <string name="label_save">ບັນທຶກ</string>
+  <string name="deepl_key_invalid">ກະແຈ API ບໍ່ຖືກຕ້ອງ.</string>
+  <string name="deepl_key_validating">ກຳລັງກວດສອບ…</string>
+  <string name="deepl_key_network_error">ບໍ່ສາມາດກວດສອບກະແຈໄດ້ ເນື່ອງຈາກຂໍ້ຜິດພາດເຄືອຂ່າຍ. ກະແຈຖືກບັນທຶກແລ້ວ.</string>
 
   <!-- PremiumView -->
-  <string name="premium_view_get_premium">ຮັບສິດ Premium</string>
-  <string name="premium_view_get_premium_purchased">ສິດ Premium ຂອງເຈົ້າ</string>
-  <string name="premium_view_get_premium_pending">ສິດ Premium (ລໍຖ້າການຍືນຢັນ)</string>
-  <string name="premium_view_get_premium_not_available">Premium ບໍ່ສາມາດໃຊ້ໄດ້ໃນຕອນນີ້</string>
-  <string name="premium_view_price_format">%1$s/ເດືອນ • ລວມພາສີ\n• ຢຸດໄດ້ທຸກເວລາ</string>
-  <string name="premium_view_title">ທຸກຟັງຊັນ,\nບໍ່ມີຂັດຂ້ອງ</string>
-  <string name="premium_view_message">ບໍ່ຈໍາກັດຈໍານວນ, ບໍ່ຈໍາກັດເວລາ\nPremium ໃຫ້ໃຊ້ໄດ້ທຸກຢ່າງ</string>
-  <string name="premium_view_description_azure">ແປພາສາໄດ້ຖືກຕ້ອງທົ່ວໂລກ</string>
-  <string name="premium_view_description_deepl">ແປໄດ້ລຶກຊຶ້ງ ມີຄວາມໝາຍທີ່ຊັດເຈນ</string>
-  <string name="premium_view_description_papago">Papago ແປອັດຕະໂນມັດໂດຍໃຊ້ AI</string>
-  <string name="premium_view_description_google">ແປໄວທີ່ສຸດ ຟຣີໄດ້ບໍ່ຈໍາກັດ ຕະຫຼອດໄປ</string>
-  <string name="premium_view_description_sentence_detection">ໃຊ້ນິ້ວມືແປຂໍ້ຄວາມແບບແຖວ</string>
+  <string name="premium_view_description_sentence_detection">ປະໂຫຍກຖືກເລືອກໂດຍອັດຕະໂນມັດ</string>
   <string name="premium_view_description_paragraph_detection">ຈັບຂໍ້ຄວາມແບບຍໍ່ໄດ້ອັດຕະໂນມັດ</string>
   <string name="premium_view_description_select_detection">ເຈົ້າສາມາດເລືອກຂອບເຂດໄດ້</string>
-  <string name="premium_view_description_word_detection">ແປຄໍາຕໍ່ຄໍາແມ່ນຟຣີແລະບໍ່ຈໍາກັດ</string>
+  <string name="premium_view_description_word_detection">ຊີ້ໄປທີ່ຄໍາ ເພື່ອແປໃນທັນທີ.</string>
   <string name="premium_view_description_fixed_area_detection">ທ່ານສາມາດແປພື້ນທີ່ຄົງທີ່ໄດ້ຕະຫຼອດ, ເຊັ່ນ ຄຳບັນຍາຍໃນຮູບເງົາ.</string>
-  <string name="premium_view_unsubscribe">ຢຸດການສະໝັກ</string>
+  <string name="say_here">ຢູ່ນີ້!</string>
+  <string name="hint_settings_reopen">ແຕະສອງເທື່ອທີ່ບ່ອນຈັບເພື່ອເປີດການຕັ້ງຄ່າອີກຄັ້ງ</string>
+  <string name="openai_key_guide">ໃສ່ກະແຈ OpenAI API ຂອງທ່ານເພື່ອແປດ້ວຍໂມເດວ OpenAI.</string>
+  <string name="openai_key_signup_guide">ສ້າງກະແຈໃນແດັຊບອດ OpenAI. ການນຳໃຊ້ຈະຖືກຄິດໄລ່ໃສ່ບັນຊີ OpenAI ຂອງທ່ານ.</string>
+  <string name="openai_key_link_keys">ຮັບກະແຈ API ຂອງທ່ານ</string>
+  <string name="openai_key_link_billing">ການເກັບເງິນ ແລະ ການນຳໃຊ້</string>
+  <string name="openai_model_label">ໂມເດວ</string>
+  <string name="help_text_openai_own_key">ໃຊ້ກະແຈ OpenAI API ສ່ວນຕົວຂອງທ່ານ</string>
 </resources>

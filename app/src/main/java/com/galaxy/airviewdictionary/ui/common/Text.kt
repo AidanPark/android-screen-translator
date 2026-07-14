@@ -2,6 +2,7 @@ package com.galaxy.airviewdictionary.ui.common
 
 import androidx.annotation.DimenRes
 import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.text.InlineTextContent
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.ReadOnlyComposable
@@ -36,6 +37,7 @@ fun AutoResizeText(
     maxFontSize: TextUnit = 60.sp,
     minFontSize: TextUnit = 8.sp,
     enableAutoResize: Boolean = true,
+    inlineContent: Map<String, InlineTextContent> = mapOf(), // 텍스트에 삽입할 인라인 콘텐츠(예: 스피커 아이콘)
     modifier: Modifier = Modifier,
     onReadyToDisplay: () -> Unit // 텍스트 준비 완료 시 호출되는 콜백
 ) {
@@ -53,6 +55,7 @@ fun AutoResizeText(
         Text(
             text = text,
             fontSize = fontSize,
+            inlineContent = inlineContent,
             maxLines = Int.MAX_VALUE, // 여러 줄의 텍스트를 박스 내에서 허용
             textAlign = TextAlign.Start, // 텍스트를 시작 지점(기본적으로 왼쪽)부터 정렬
             onTextLayout = { textLayoutResult ->

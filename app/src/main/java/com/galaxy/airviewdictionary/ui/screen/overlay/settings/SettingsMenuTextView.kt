@@ -4,7 +4,6 @@ package com.galaxy.airviewdictionary.ui.screen.overlay.settings
 import android.content.Context
 import android.graphics.PixelFormat
 import android.graphics.Point
-import android.os.Build
 import android.view.Gravity
 import android.view.WindowManager
 import androidx.compose.material3.MaterialTheme
@@ -48,11 +47,7 @@ class SettingsMenuTextView private constructor() : OverlayView() {
             WindowManager.LayoutParams.WRAP_CONTENT,
             position.x,
             position.y,
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
-            } else {
-                WindowManager.LayoutParams.TYPE_PHONE
-            },
+            WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
             WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
                     or WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN
                     or WindowManager.LayoutParams.FLAG_DIM_BEHIND

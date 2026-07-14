@@ -14,7 +14,6 @@ import androidx.core.net.toUri
 import com.galaxy.airviewdictionary.ACTION_SERVICE_CONTROL
 import com.galaxy.airviewdictionary.EXTRA_SERVICE_STOP
 import com.galaxy.airviewdictionary.core.OverlayService
-import com.galaxy.airviewdictionary.data.remote.billing.BillingRepository
 import timber.log.Timber
 import java.util.UUID
 
@@ -45,17 +44,6 @@ fun Context.isNetworkAvailable(): Boolean {
 }
 
 /**
- * 구독페이지 이동
- */
-fun Context.openSubscriptionPage() {
-    val url = "https://play.google.com/store/account/subscriptions?sku=${BillingRepository.PRODUCT_ID}&package=$packageName"
-    val intent = Intent(Intent.ACTION_VIEW, url.toUri()).apply {
-        flags = Intent.FLAG_ACTIVITY_NEW_TASK
-    }
-    startActivity(intent)
-}
-
-/**
  * 햅틱
  */
 fun Context.vibrate(durationMillis: Long = 10) {
@@ -67,14 +55,7 @@ fun Context.vibrate(durationMillis: Long = 10) {
         getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
     }
 
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-        // API 26 이상
-        vibrator.vibrate(VibrationEffect.createOneShot(durationMillis, VibrationEffect.DEFAULT_AMPLITUDE))
-    } else {
-        // API 26 미만
-        @Suppress("DEPRECATION")
-        vibrator.vibrate(durationMillis)
-    }
+    vibrator.vibrate(VibrationEffect.createOneShot(durationMillis, VibrationEffect.DEFAULT_AMPLITUDE))
 }
 
 /**

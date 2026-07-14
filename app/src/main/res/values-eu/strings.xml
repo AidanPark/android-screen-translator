@@ -8,14 +8,10 @@
     <!-- Overlay Permission -->
     <string name="message_permission_overlay">Beharrezko baimena:\nBeste aplikazioen gainean erakutsi</string>
     <string name="message_permission_overlay_detail">Pantaila Itzultzailea abiarazteko, beste aplikazioen gainean erakusteko baimena behar da.</string>
-    <string name="message_permission_overlay_denied">Gainjarritako baimena ukatua</string>
-    <string name="message_permission_overlay_denied_detail">Gainjarritako baimena ez da eman.\nAplikazioa itxiko da.</string>
 
     <!-- MediaProjection token -->
     <string name="message_media_projection">Beharrezko baimena:\nPantaila grabazioa</string>
     <string name="message_media_projection_detail">Pantaila Itzultzailea abiarazteko, pantaila grabatzeko baimena eman behar da.\n\nPantailako informazioa soilik itzulpen-helburuetarako erabiliko da, eta ez da gordeko edo partekatuko.</string>
-    <string name="message_media_projection_denied">Pantaila grabatzeko baimena ukatua</string>
-    <string name="message_media_projection_denied_detail">Pantaila grabatzeko baimena ez da eman.\nAplikazioa itxiko da.</string>
 
     <!-- Foreground Service -->
     <string name="notification_foreground_service">Pantaila atzemateko funtzioa itzulpenarako erabiltzen ari da.</string>
@@ -23,7 +19,6 @@
     <string name="message_start_foreground_service">Aplikazioak aurreko plano zerbitzua abiarazten du pantailako edukia atzeman eta itzultzeko.\n\nAtzemandako irudiak ez dira gordeko edo kanpora bidaliko.</string>
     <string name="label_confirm_start_foreground_service">Hasi</string>
     <string name="label_dismiss_start_foreground_service">Amaitu</string>
-    <string name="snack_message_start_foreground_service">Aplikazioak aurreko plano zerbitzua abiarazten du pantailako edukia atzeman eta itzultzeko.</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">Amaitu</string>
@@ -36,18 +31,6 @@
     <string name="title_voice_list_view">Pantaila Itzultzailea</string>
 
     <!-- Dialog -->
-    <string name="message_authentication_error">Autentifikazio errorea</string>
-    <string name="message_authentication_error_detail">Autentifikazio zerbitzaria ez da erantzuten ari.\nSaiatu berriro geroago.</string>
-    <string name="message_untrusted_environment">Ingurune ez fidagarria</string>
-    <string name="message_untrusted_environment_detail">Badirudi zure aplikazioak ez duela Google Play integritate egiaztapena gainditu.</string>
-    <string name="message_unknown_device">Gailu ezezaguna</string>
-    <string name="message_unknown_device_detail">Gailu hau ez da onartzen.</string>
-    <string name="message_authentication_required">Autentifikazioa beharrezkoa da</string>
-    <string name="message_authentication_required_detail">Google kontuarekin saioa hasi behar duzu.</string>
-    <string name="message_playstore_update_required">Play Store eguneraketa beharrezkoa</string>
-    <string name="message_playstore_update_required_detail">Huts egin du Play Store zerbitzuarekin konektatzean.\nBaliteke bertsio zaharra izatea.</string>
-    <string name="message_unknown_source">Lortu aplikazioa Play Store-tik</string>
-    <string name="message_unknown_source_detail">Erabiltzen jarraitzeko, deskargatu Google Play-tik.</string>
     <string name="message_force_update">Eguneraketa beharrezkoa</string>
     <string name="message_force_update_detail">Bertsio hau ez da gehiago onartzen.\nJoan dendara.</string>
     <string name="message_service_unavailable">Zerbitzua ez dago erabilgarri</string>
@@ -56,61 +39,57 @@
     <string name="message_network_unavailable_detail">Sarea ez dago erabilgarri.\nEgiaztatu eta saiatu berriro.</string>
     <string name="message_translate_fixedarea_warn">Bateriaren abisua</string>
     <string name="message_translate_fixedarea_warn_detail">Bateria azkar agortu daiteke.</string>
-    <string name="message_translate_fixedarea_promotion">Produktuaren erosketa-informazioa</string>
-    <string name="message_translate_fixedarea_promotion_detail">Gure funtzio premiumei buruzko oroigarri atsegin bat agertuko da %1$s minuturo.</string>
-    <string name="message_free_trial_ends">Doako proba amaitu da.</string>
-    <string name="message_free_trial_ends_detail">Doako proba luzatzeko iragarki bat ikusi nahi duzu?</string>
-    <string name="message_ad_reward">%1$d minutu gehiago lortu dituzu doako proban!</string>
-    <string name="message_ad_reward_detail">Goza itzazu premium funtzio guztiak hurrengo %1$d minutuz doan.</string>
+    <string name="ad_gate_loading">Iragarkia prestatzen…</string>
+    <string name="ad_gate_reward_notice">Ikusi iragarkia amaierara arte, aplikazioa itxi arte iragarkirik gabe erabiltzeko.</string>
 
     <!-- SettingsActivity -->
     <string name="settings_title">Ezarpenak</string>
     <string name="settings_menu_cat_pointer">Erakuslea</string>
     <string name="settings_menu_pointer_docking_delay">Atzerapena</string>
-    <string name="settings_menu_haptic_feedback_to_detection">Bibr. detektatzean</string>
+    <string name="settings_menu_haptic_feedback_to_detection">Erantzun haptikoa detektatzean</string>
     <string name="settings_menu_cat_menubar">Menu-barra</string>
     <string name="settings_menu_menubar_transparency">Menuaren gardentasuna</string>
     <string name="settings_menu_menubar_composition">Menu-funtzioak</string>
-    <string name="settings_menu_cat_ai">AI zuzenketa</string>
     <string name="settings_menu_cat_translation">Itzulpena</string>
     <string name="settings_menu_translation_transparency">Itzulpenaren gardentasuna</string>
     <string name="settings_menu_translation_close_delay">Itxiera atzerapena</string>
-    <string name="settings_menu_automated_read_aloud">Irakurketa automatikoa</string>
+    <string name="settings_menu_automated_read_aloud">Itzulpenaren irakurketa automatikoa</string>
     <string name="settings_menu_reply_transparency">Erantzunaren gardentasuna</string>
     <string name="settings_menu_cat_tts">Testua ahots bihurtu</string>
+    <string name="settings_menu_tts_read_target">Irakurketa helburua</string>
+    <string name="settings_tts_read_target_source">Jatorrizkoa</string>
+    <string name="settings_tts_read_target_target">Itzulpena</string>
     <string name="settings_menu_tts_voices">TTS ahotsak</string>
     <string name="settings_menu_tts_rate">TTS abiadura</string>
     <string name="settings_menu_cat_about">Honi buruz</string>
-    <string name="settings_menu_on_premium_free_trial">Premium proba aktibo</string>
-    <string name="settings_menu_premium_free_trial_remain">%1$d minutu falta</string>
-    <string name="settings_menu_your_premium_benefits">Zure onurak</string>
-    <string name="settings_menu_your_premium_benefits_peding">Onurak (zain)</string>
     <string name="settings_menu_app_version">App bertsioa</string>
     <string name="settings_menu_app_version_latest">(Azkena)</string>
 
     <!-- HelpTextDetectModeView, HelpTranslationKitView -->
-    <string name="help_text_no_limit">Premiumekin dena da mugagabe</string>
     <string name="help_text_no_limit_free">Ez dago kopuru edo denbora-mugarik</string>
-    <string name="help_text_no_limit_title">Erabili mugarik gabe</string>
-    <string name="help_text_no_limit_free_title">Doan eta mugarik gabe</string>
-    <string name="help_text_get_premium">Lortu Premium</string>
+    <string name="help_text_deepl_own_key">Zure DeepL API gako pertsonala erabiltzen du</string>
+    <string name="deepl_key_guide">Sartu zure DeepL API gakoa DeepL itzulpena erabiltzeko.</string>
+    <string name="deepl_key_signup_guide">Erregistratu DeepL-en eta doako planera harpidetu zaitezke.</string>
+    <string name="deepl_key_link_subscription">Harpidetu doako planera</string>
+    <string name="deepl_key_link_keys">Egiaztatu zure API gakoa</string>
+    <string name="deepl_key_active">Aktibatuta</string>
+    <string name="label_save">Gorde</string>
+    <string name="deepl_key_invalid">API gakoa ez da baliozkoa.</string>
+    <string name="deepl_key_validating">Egiaztatzen…</string>
+    <string name="deepl_key_network_error">Ezin izan da gakoa egiaztatu sareko errore baten ondorioz. Gakoa gorde da.</string>
 
     <!-- PremiumView -->
-    <string name="premium_view_get_premium">Lortu Premium</string>
-    <string name="premium_view_get_premium_purchased">Zure Premium abantailak</string>
-    <string name="premium_view_get_premium_pending">Zure Premium abantailak (zain)</string>
-    <string name="premium_view_get_premium_not_available">Premium ez dago eskuragarri une honetan</string>
-    <string name="premium_view_price_format">%1$s/hilabete • BEZa barne\n• Ezeztatu edozein unetan</string>
-    <string name="premium_view_title">Ezaugarri guztiak,\nEtenik gabe.</string>
-    <string name="premium_view_message">Ez dago kopuru edo denbora-mugarik.\nPremiumekin dena da mugagabe</string>
-    <string name="premium_view_description_azure">Munduko hizkuntza gehienak zehaztasunez itzultzen ditu.</string>
-    <string name="premium_view_description_deepl">Esanahia hobeto adierazten duten itzulpen sofistikatuak eskaintzen ditu.</string>
-    <string name="premium_view_description_papago">Papagok hizkuntza anitzak automatikoki itzultzen ditu sare neuronal bidez.</string>
-    <string name="premium_view_description_google">Itzulpenik azkarrena. Mugagabe eta betiko doan.</string>
-    <string name="premium_view_description_sentence_detection">Erabili zure hatza lerroak itzultzeko.</string>
+    <string name="premium_view_description_sentence_detection">Esaldiak automatikoki hautatzen dira.</string>
     <string name="premium_view_description_paragraph_detection">Paragrafoak automatikoki detektatzen dira.</string>
     <string name="premium_view_description_select_detection">Aukeratu nahi duzun eremua ere zehatz dezakezu.</string>
-    <string name="premium_view_description_word_detection">Hitzetik-hitzera itzulpena beti da doakoa eta mugagabea.</string>
+    <string name="premium_view_description_word_detection">Seinalatu hitz bat berehala itzultzeko.</string>
     <string name="premium_view_description_fixed_area_detection">Azpitituluak bezala, eremu finkoak etengabe itzuli ditzakezu.</string>
-    <string name="premium_view_unsubscribe">Harpidetza bertan behera utzi</string>
+  <string name="say_here">Hemen nago!</string>
+  <string name="hint_settings_reopen">Sakatu birritan heldulekua ezarpenak berriro irekitzeko</string>
+  <string name="openai_key_guide">Sartu zure OpenAI API gakoa OpenAI ereduekin itzultzeko.</string>
+  <string name="openai_key_signup_guide">Sortu gako bat OpenAI aginte-panelean. Erabilera zure OpenAI kontuan fakturatzen da.</string>
+  <string name="openai_key_link_keys">Lortu zure API gakoa</string>
+  <string name="openai_key_link_billing">Fakturazioa eta erabilera</string>
+  <string name="openai_model_label">Eredua</string>
+  <string name="help_text_openai_own_key">Zure OpenAI API gako pertsonala erabiltzen du</string>
 </resources>

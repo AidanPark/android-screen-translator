@@ -31,8 +31,6 @@ import com.galaxy.airviewdictionary.data.local.screen.ScreenInfoHolder
 import com.galaxy.airviewdictionary.data.local.secure.SecureRepository
 import com.galaxy.airviewdictionary.data.local.tts.TTSRepository
 import com.galaxy.airviewdictionary.data.local.vision.VisionRepository
-import com.galaxy.airviewdictionary.data.remote.ai.CorrectionRepository
-import com.galaxy.airviewdictionary.data.remote.billing.BillingRepository
 import com.galaxy.airviewdictionary.data.remote.firebase.AnalyticsRepository
 import com.galaxy.airviewdictionary.data.remote.firebase.RemoteConfigRepository
 import com.galaxy.airviewdictionary.data.remote.translation.TranslationRepository
@@ -114,13 +112,8 @@ class OverlayService : LifecycleService(), SavedStateRegistryOwner, ViewModelSto
                 EXTRA_SERVICE_STOP -> {
                     Timber.tag(TAG).d("EXTRA_SERVICE_STOP")
                     broadcastEvent(Event.Unbind)
-                    viewModelStore.clear()
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) { // API 24 이상
-                        stopForeground(STOP_FOREGROUND_REMOVE)
-                    } else {
-                        @Suppress("DEPRECATION")
-                        stopForeground(true) // Deprecated 되었지만 API 23 지원 위해 사용
-                    }
+                    clearViewModels()
+                    stopForeground(STOP_FOREGROUND_REMOVE)
                     stopSelf()
                 }
 
@@ -158,8 +151,23 @@ class OverlayService : LifecycleService(), SavedStateRegistryOwner, ViewModelSto
 
     override fun onDestroy() {
         Timber.tag(TAG).i("#### onDestroy() ####")
-        viewModelStore.clear()
+        clearViewModels()
         super.onDestroy()
+    }
+
+    /**
+     * ViewModelStore 를 비울 때는 반드시 캐시 필드도 함께 비운다.
+     * 비우지 않으면 서비스 인스턴스가 살아남았을 때(바인딩 잔존, stopSelf 지연 등)
+     * getXxxViewModel() 이 scope 가 취소된 죽은 ViewModel 을 계속 공급해서
+     * 포인터 이벤트가 처리되지 않는 좀비 상태가 된다.
+     */
+    private fun clearViewModels() {
+        viewModelStore.clear()
+        targetHandleViewModel = null
+        menuBarViewModel = null
+        languageListViewModel = null
+        sliderDialogViewModel = null
+        voiceListViewModel = null
     }
 
 
@@ -206,9 +214,6 @@ class OverlayService : LifecycleService(), SavedStateRegistryOwner, ViewModelSto
 //    lateinit var geoLocaleRepository: GeoLocaleRepository
 
     @Inject
-    lateinit var billingRepository: BillingRepository
-
-    @Inject
     lateinit var preferenceRepository: PreferenceRepository
 
     @Inject
@@ -216,9 +221,6 @@ class OverlayService : LifecycleService(), SavedStateRegistryOwner, ViewModelSto
 
     @Inject
     lateinit var visionRepository: VisionRepository
-
-    @Inject
-    lateinit var correctionRepository: CorrectionRepository
 
     @Inject
     lateinit var translationRepository: TranslationRepository
@@ -235,26 +237,23 @@ class OverlayService : LifecycleService(), SavedStateRegistryOwner, ViewModelSto
     //                                                                                            //
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
-    private lateinit var targetHandleViewModel: TargetHandleViewModel
+    private var targetHandleViewModel: TargetHandleViewModel? = null
 
     fun getTargetHandleViewModel(): TargetHandleViewModel {
-        if (!::targetHandleViewModel.isInitialized) {
+        return targetHandleViewModel ?: run {
             val viewModelFactory = TargetHandleViewModelFactory(
                 applicationContext = applicationContext,
                 secureRepository = secureRepository,
                 remoteConfigRepository = remoteConfigRepository,
-                billingRepository = billingRepository,
                 preferenceRepository = preferenceRepository,
                 captureRepository = captureRepository,
                 visionRepository = visionRepository.apply { addObserver(lifecycle) },
-                correctionRepository = correctionRepository,
                 translationRepository = translationRepository,
                 ttsRepository = ttsRepository,
                 analyticsRepository = analyticsRepository,
             )
-            targetHandleViewModel = ViewModelProvider(this, viewModelFactory)[TargetHandleViewModel::class.java]
+            ViewModelProvider(this, viewModelFactory)[TargetHandleViewModel::class.java].also { targetHandleViewModel = it }
         }
-        return targetHandleViewModel
     }
 
 
@@ -264,19 +263,17 @@ class OverlayService : LifecycleService(), SavedStateRegistryOwner, ViewModelSto
     //                                                                                            //
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
-    private lateinit var menuBarViewModel: MenuBarViewModel
+    private var menuBarViewModel: MenuBarViewModel? = null
 
     fun getMenuBarViewModel(): MenuBarViewModel {
-        if (!::menuBarViewModel.isInitialized) {
+        return menuBarViewModel ?: run {
             val viewModelFactory = MenuBarViewModelFactory(
                 applicationContext = applicationContext,
-                billingRepository = billingRepository,
                 preferenceRepository = preferenceRepository,
                 translationRepository = translationRepository,
             )
-            menuBarViewModel = ViewModelProvider(this, viewModelFactory)[MenuBarViewModel::class.java]
+            ViewModelProvider(this, viewModelFactory)[MenuBarViewModel::class.java].also { menuBarViewModel = it }
         }
-        return menuBarViewModel
     }
 
 
@@ -286,18 +283,17 @@ class OverlayService : LifecycleService(), SavedStateRegistryOwner, ViewModelSto
     //                                                                                            //
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
-    private lateinit var languageListViewModel: LanguageListViewModel
+    private var languageListViewModel: LanguageListViewModel? = null
 
     fun getLanguageListViewModel(): LanguageListViewModel {
-        if (!::languageListViewModel.isInitialized) {
+        return languageListViewModel ?: run {
             val viewModelFactory = LanguageListViewModelFactory(
                 applicationContext = applicationContext,
                 preferenceRepository = preferenceRepository,
                 translationRepository = translationRepository,
             )
-            languageListViewModel = ViewModelProvider(this, viewModelFactory)[LanguageListViewModel::class.java]
+            ViewModelProvider(this, viewModelFactory)[LanguageListViewModel::class.java].also { languageListViewModel = it }
         }
-        return languageListViewModel
     }
 
 
@@ -307,18 +303,17 @@ class OverlayService : LifecycleService(), SavedStateRegistryOwner, ViewModelSto
     //                                                                                            //
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
-    private lateinit var sliderDialogViewModel: SliderDialogViewModel
+    private var sliderDialogViewModel: SliderDialogViewModel? = null
 
     fun getSliderDialogViewModel(): SliderDialogViewModel {
-        if (!::sliderDialogViewModel.isInitialized) {
+        return sliderDialogViewModel ?: run {
             val viewModelFactory = SliderDialogViewModelFactory(
                 preferenceRepository = preferenceRepository,
                 translationRepository = translationRepository,
                 ttsRepository = ttsRepository,
             )
-            sliderDialogViewModel = ViewModelProvider(this, viewModelFactory)[SliderDialogViewModel::class.java]
+            ViewModelProvider(this, viewModelFactory)[SliderDialogViewModel::class.java].also { sliderDialogViewModel = it }
         }
-        return sliderDialogViewModel
     }
 
 
@@ -328,19 +323,18 @@ class OverlayService : LifecycleService(), SavedStateRegistryOwner, ViewModelSto
     //                                                                                            //
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
-    private lateinit var voiceListViewModel: VoiceListViewModel
+    private var voiceListViewModel: VoiceListViewModel? = null
 
     fun getVoiceListViewModel(): VoiceListViewModel {
-        if (!::voiceListViewModel.isInitialized) {
+        return voiceListViewModel ?: run {
             val viewModelFactory = VoiceListViewModelFactory(
                 applicationContext = applicationContext,
                 preferenceRepository = preferenceRepository,
                 translationRepository = translationRepository,
                 ttsRepository = ttsRepository,
             )
-            voiceListViewModel = ViewModelProvider(this, viewModelFactory)[VoiceListViewModel::class.java]
+            ViewModelProvider(this, viewModelFactory)[VoiceListViewModel::class.java].also { voiceListViewModel = it }
         }
-        return voiceListViewModel
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -351,16 +345,19 @@ class OverlayService : LifecycleService(), SavedStateRegistryOwner, ViewModelSto
 
     private fun buildNotification(): Notification {
         // NotificationChannel 생성
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            (getSystemService(NOTIFICATION_SERVICE) as NotificationManager).apply {
-                createNotificationChannel( // NotificationChannel 을 시스템에 등록
-                    NotificationChannel(
-                        NOTIFICATION_CHANNEL_ID, // NotificationChannel 의 고유 식별자
-                        NOTIFICATION_CHANNEL_NAME, //  NotificationChannel 의 이름
-                        NotificationManager.IMPORTANCE_DEFAULT // Notification 의 중요도 설정
-                    )
-                )
-            }
+        (getSystemService(NOTIFICATION_SERVICE) as NotificationManager).apply {
+            createNotificationChannel( // NotificationChannel 을 시스템에 등록
+                // 상시 표시되는 포그라운드 서비스 알림. 감지/번역마다 재게시되므로
+                // 소리·진동 없이 조용해야 한다(IMPORTANCE_LOW + 진동/소리 비활성화).
+                NotificationChannel(
+                    NOTIFICATION_CHANNEL_ID, // NotificationChannel 의 고유 식별자
+                    NOTIFICATION_CHANNEL_NAME, //  NotificationChannel 의 이름
+                    NotificationManager.IMPORTANCE_LOW // 소리/진동/헤드업 없음
+                ).apply {
+                    enableVibration(false)
+                    setSound(null, null)
+                }
+            )
         }
 
         // SettingsActivity로 이동하기 위한 PendingIntent 생성
@@ -391,6 +388,8 @@ class OverlayService : LifecycleService(), SavedStateRegistryOwner, ViewModelSto
                 exitPendingIntent // 'Exit' 액션을 수행할 PendingIntent 설정
             )
             .setForegroundServiceBehavior(NotificationCompat.FOREGROUND_SERVICE_IMMEDIATE) // ForegroundService 동작 설정
+            .setPriority(NotificationCompat.PRIORITY_LOW) // 프리-O 기기에서 소리/진동 억제
+            .setOnlyAlertOnce(true) // 재게시(감지/번역 갱신) 시 다시 알리지 않음 → 반복 진동 방지
             .build()
     }
 }

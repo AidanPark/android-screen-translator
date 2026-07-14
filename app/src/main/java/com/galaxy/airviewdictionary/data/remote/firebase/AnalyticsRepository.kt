@@ -2,11 +2,11 @@ package com.galaxy.airviewdictionary.data.remote.firebase
 
 import android.content.Context
 import com.galaxy.airviewdictionary.BuildConfig
-import com.galaxy.airviewdictionary.data.remote.ai.CorrectionKitType
 import com.galaxy.airviewdictionary.data.local.vision.TextDetectMode
 import com.galaxy.airviewdictionary.data.remote.translation.Transaction
+import com.google.firebase.Firebase
 import com.google.firebase.analytics.FirebaseAnalytics
-import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.analytics.analytics
 import com.google.firebase.analytics.logEvent
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
@@ -17,7 +17,6 @@ import kotlin.math.roundToInt
 object Event {
     const val SECURE = "secure"
     const val TRANSLATE = "translate"
-    const val PURCHASE_INDUCEMENT = "purchase_inducement"
     const val TIME_TAKEN = "time_taken"
 }
 
@@ -37,7 +36,6 @@ object Param {
     const val TRANSLATION_TRANSPARENCY = "transTransparency"
     const val TRANSLATION_CLOSE_DELAY = "closeDelay"
     const val REPLY_TRANSPARENCY = "replyTransparency"
-    const val CORRECTION_KIT_TYPE = "correct"
     const val AUTOMATIC_TRANSLATION_PLAYBACK = "autoTTS"
     const val TTS_VOICE = "TTSVoice"
     const val TTS_SPEECH_RATE = "TTSRate"
@@ -54,7 +52,7 @@ class AnalyticsRepository @Inject constructor(@ApplicationContext val context: C
 
     private val TAG = javaClass.simpleName
 
-    private val firebaseAnalytics: FirebaseAnalytics = com.google.firebase.ktx.Firebase.analytics
+    private val firebaseAnalytics: FirebaseAnalytics = Firebase.analytics
 
     fun secureReport(eventDetail: String) {
         if (BuildConfig.DEBUG) return
@@ -82,7 +80,6 @@ class AnalyticsRepository @Inject constructor(@ApplicationContext val context: C
         transTransparency: String,
         closeDelay: String,
         replyTransparency: String,
-        correctionKit: String,
         autoTTS: String,
         TTSVoice: String,
         TTSRate: String,
@@ -97,7 +94,6 @@ class AnalyticsRepository @Inject constructor(@ApplicationContext val context: C
             param(Param.TRANSLATION_TRANSPARENCY, transTransparency)
             param(Param.TRANSLATION_CLOSE_DELAY, closeDelay)
             param(Param.REPLY_TRANSPARENCY, replyTransparency)
-            param(Param.CORRECTION_KIT_TYPE, correctionKit)
             param(Param.AUTOMATIC_TRANSLATION_PLAYBACK, autoTTS)
             param(Param.TTS_VOICE, TTSVoice)
             param(Param.TTS_SPEECH_RATE, TTSRate)
@@ -110,7 +106,6 @@ class AnalyticsRepository @Inject constructor(@ApplicationContext val context: C
             transTransparency,
             closeDelay,
             replyTransparency,
-            correctionKit,
             autoTTS,
             TTSRate
         )
@@ -119,7 +114,6 @@ class AnalyticsRepository @Inject constructor(@ApplicationContext val context: C
     fun translationReport(
         transaction: Transaction,
         textDetectMode: TextDetectMode?,
-        correctionKitType: CorrectionKitType?
     ) {
         if (BuildConfig.DEBUG) return
 
@@ -129,12 +123,10 @@ class AnalyticsRepository @Inject constructor(@ApplicationContext val context: C
             param(Param.TRANSLATION_KIT_TYPE, transaction.translationKitType?.name ?: "unknown")
             param(Param.TEXT_DETECT_MODE, textDetectMode?.name ?: "unknown")
             param(Param.DETECTED_LANGUAGE_CODE, transaction.detectedLanguageCode ?: "unknown")
-            param(Param.CORRECTION_KIT_TYPE, correctionKitType?.name ?: "none")
         }
         FireDatabase.translationReport(
             transaction,
             textDetectMode,
-            correctionKitType
         )
     }
 

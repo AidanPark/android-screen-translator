@@ -8,14 +8,10 @@
     <!-- Overlay Permission -->
     <string name="message_permission_overlay">የሚያስፈልገው ፍቃድ:\nበሌሎች መተግበሪያዎች ላይ ማሳየት</string>
     <string name="message_permission_overlay_detail">መመልከቻ ትርጉም ለመጠቀም በሌሎች መተግበሪያዎች ላይ ማሳየትን መፍቀድ አለብዎት።</string>
-    <string name="message_permission_overlay_denied">የከፍተኛ የማሳየት ፍቃድ ተከልክሏል</string>
-    <string name="message_permission_overlay_denied_detail">የከፍተኛ የማሳየት ፍቃድ አልተሰጠም።\nመተግበሪያው ይዘጋል።</string>
 
     <!-- MediaProjection token -->
     <string name="message_media_projection">የሚያስፈልገው ፍቃድ:\nየማያ መዝግብ</string>
     <string name="message_media_projection_detail">መመልከቻ ትርጉም ለመጠቀም የማያ መዝግብን መፍቀድ አለብዎት።\n\nከማያ የተወሰዱ መረጃዎች በትርጉም ብቻ ይጠቀማሉ እና አይቀመጡም ወይም አይካፈሉም።</string>
-    <string name="message_media_projection_denied">የማያ መዝግብ ፍቃድ ተከልክሏል</string>
-    <string name="message_media_projection_denied_detail">የማያ መዝግብ ፍቃድ አልተሰጠም።\nመተግበሪያው ይዘጋል።</string>
 
     <!-- Foreground Service -->
     <string name="notification_foreground_service">የማያ መዝግብ ተግባር ለትርጉም ተጠቃሚ ነው።</string>
@@ -23,7 +19,6 @@
     <string name="message_start_foreground_service">መተግበሪያው የፊት አገልግሎትን ይጀምራል እንዲሁም የማያ ይዘትን ለመያዝ እና ለመተርጎም።\n\nየተያዙ ምስሎች አይቀመጡም ወይም አይላኩም።</string>
     <string name="label_confirm_start_foreground_service">ጀምር</string>
     <string name="label_dismiss_start_foreground_service">ዝጋ</string>
-    <string name="snack_message_start_foreground_service">መተግበሪያው የፊት አገልግሎትን ይጀምራል እንዲሁም የማያ ይዘትን ለመያዝ እና ለመተርጎም።</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">ጨርስ</string>
@@ -36,18 +31,6 @@
     <string name="title_voice_list_view">የሚገኙ ድምፆች</string>
 
     <!-- Dialog -->
-    <string name="message_authentication_error">የማረጋገጫ ስህተት</string>
-    <string name="message_authentication_error_detail">የማረጋገጫ አገልግሎቱ አይሰጥም።\nእባክዎ በኋላ ደግመው ይሞክሩ።</string>
-    <string name="message_untrusted_environment">ውስጥ ያልተመነ አካባቢ</string>
-    <string name="message_untrusted_environment_detail">መተግበሪያዎ የGoogle Play እምነት ምርመራን አላለፈም።</string>
-    <string name="message_unknown_device">ያልታወቀ መሳሪያ</string>
-    <string name="message_unknown_device_detail">ይህ መሳሪያ አትደግፍም።</string>
-    <string name="message_authentication_required">ማረጋገጫ ያስፈልጋል</string>
-    <string name="message_authentication_required_detail">በGoogle መለያ መግባት አለብዎት።</string>
-    <string name="message_playstore_update_required">የPlay Store እድሳት ያስፈልጋል</string>
-    <string name="message_playstore_update_required_detail">ከPlay Store አገልግሎት ጋር መገናኘት አልተቻለም።\nምናልባት አሮጌ እትም እየተጠቀሙ ናችሁ።</string>
-    <string name="message_unknown_source">መተግበሪያውን ከPlay Store ያግኙ</string>
-    <string name="message_unknown_source_detail">መተግበሪያውን ለመቀጠል ከGoogle Play ያግኙት።</string>
     <string name="message_force_update">እድሳት ያስፈልጋል</string>
     <string name="message_force_update_detail">ይህ እትም አትደግፍም።\nእባክዎ ወደ መደብር ይሂዱ።</string>
     <string name="message_service_unavailable">አገልግሎቱ በተመጣጣኝ ሁኔታ አይገኝም</string>
@@ -56,62 +39,58 @@
     <string name="message_network_unavailable_detail">ኔትዎርኩ አይገኝም።\nእባክዎ አገናኝነትዎን ያረጋግጡ እና እንደገና ይሞክሩ።</string>
     <string name="message_translate_fixedarea_warn">የባትሪ አስተናጋጅነት</string>
     <string name="message_translate_fixedarea_warn_detail">ባትሪው በፍጥነት ሊያልቅ ይችላል።</string>
-    <string name="message_translate_fixedarea_promotion">የምርት ግዢ መረጃ</string>
-    <string name="message_translate_fixedarea_promotion_detail">ስለ ፕሪሚየም ባለባበሮቻችን አሳሳቢ እንደት በየ %1$s ደቂቃዎቹ ይታያል።</string>
-    <string name="message_free_trial_ends">ነፃ ሙከራዎ አልቋል።</string>
-    <string name="message_free_trial_ends_detail">ነፃ ሙከራዎን ለማራዘም ማስታወቂያ ማየት ትፈልጋለህ?</string>
-    <string name="message_ad_reward">የተጨማሪ %1$d ደቂቃ ነፃ ሙከራ ተቀብለዋል!</string>
-    <string name="message_ad_reward_detail">ቀጣዩ %1$d ደቂቃ ሁሉንም ፕሪሚየም ባህሪያት በነፃ ይበሉ።</string>
+    <string name="ad_gate_loading">ማስታወቂያ በመዘጋጀት ላይ ነው…</string>
+    <string name="ad_gate_reward_notice">ማስታወቂያውን እስከ መጨረሻ ይመልከቱ፣ መተግበሪያውን እስኪዘጉ ድረስ ያለ ማስታወቂያ ይጠቀሙ።</string>
 
     <!-- SettingsActivity -->
     <string name="settings_title">ቅንብሮች</string>
     <string name="settings_menu_cat_pointer">መጠቆሚያ</string>
     <string name="settings_menu_pointer_docking_delay">የመስቀቴ መዘግየት</string>
-    <string name="settings_menu_haptic_feedback_to_detection">ስለ መያዣ መረጃ</string>
+    <string name="settings_menu_haptic_feedback_to_detection">የመዳሰሻ ግብረ መልስ ሲገኝ</string>
     <string name="settings_menu_cat_menubar">ምናሌ</string>
     <string name="settings_menu_menubar_transparency">የምናሌ ትርፍና</string>
     <string name="settings_menu_menubar_composition">ምናሌ ባህሪዎች</string>
-    <string name="settings_menu_cat_ai">AI ጽሑፍ ማስተካከያ</string>
     <string name="settings_menu_cat_translation">ትርጉም</string>
     <string name="settings_menu_translation_transparency">የትርጉም ትርፍና</string>
     <string name="settings_menu_translation_close_delay">መዝጊያ ማቆያ</string>
-    <string name="settings_menu_automated_read_aloud">ራስ-ሰር ንባብ</string>
+    <string name="settings_menu_automated_read_aloud">የትርጉም ራስ-ሰር ንባብ</string>
     <string name="settings_menu_reply_transparency">የምላሽ ትርፍና</string>
     <string name="settings_menu_cat_tts">ወደ-ንግግር</string>
+    <string name="settings_menu_tts_read_target">የንባብ ዒላማ</string>
+    <string name="settings_tts_read_target_source">ምንጭ</string>
+    <string name="settings_tts_read_target_target">ትርጉም</string>
     <string name="settings_menu_tts_voices">ድምፆች</string>
     <string name="settings_menu_tts_rate">ፍጥነት</string>
     <string name="settings_menu_cat_about">ስለ</string>
-    <string name="settings_menu_on_premium_free_trial">ፕሬሚየም ተሞክሮ እየተጠቀምን</string>
-    <string name="settings_menu_premium_free_trial_remain">%1$d ደቂቃዎች ቀርበዋል</string>
-    <string name="settings_menu_your_premium_benefits">ፕሬሚየም አግባብ</string>
-    <string name="settings_menu_your_premium_benefits_peding">አግባብ (በመጠበቅ)</string>
     <string name="settings_menu_app_version">የመተግበሪያ እትም</string>
     <string name="settings_menu_app_version_latest">(የቅርብ)</string>
 
     <!-- HelpTextDetectModeView, HelpTranslationKitView -->
-    <string name="help_text_no_limit">ሁሉም ነገሮች በፕሪሚየም ያለ ገደብ ናቸው</string>
     <string name="help_text_no_limit_free">የብዛት ወይም የጊዜ ገደብ የለም</string>
-    <string name="help_text_no_limit_title">በማንኛውም ገደብ ሳይኖረው ይዘዙ</string>
-    <string name="help_text_no_limit_free_title">በፍጹም ነጻ እና ያለ ገደብ</string>
-    <string name="help_text_get_premium">ፕሪሚየም ያግኙ</string>
+    <string name="help_text_deepl_own_key">የግል የDeepL API ቁልፍዎን ይጠቀማል</string>
+    <string name="deepl_key_guide">የDeepL ትርጉምን ለመጠቀም የDeepL API ቁልፍዎን ያስገቡ።</string>
+    <string name="deepl_key_signup_guide">በDeepL ይመዝገቡ እና የነጻ ዕቅድ መመዝገብ ይችላሉ።</string>
+    <string name="deepl_key_link_subscription">የነጻ ዕቅድ ይመዝገቡ</string>
+    <string name="deepl_key_link_keys">የAPI ቁልፍዎን ያረጋግጡ</string>
+    <string name="deepl_key_active">ነቅቷል</string>
+    <string name="label_save">አስቀምጥ</string>
+    <string name="deepl_key_invalid">የAPI ቁልፉ ልክ አይደለም።</string>
+    <string name="deepl_key_validating">በማረጋገጥ ላይ…</string>
+    <string name="deepl_key_network_error">በአውታረ መረብ ስህተት ምክንያት ቁልፉን ማረጋገጥ አልተቻለም። ቁልፉ ተቀምጧል።</string>
 
     <!-- PremiumView -->
-    <string name="premium_view_get_premium">ፕሪሚየም ያግኙ</string>
-    <string name="premium_view_get_premium_purchased">የእርስዎ ፕሪሚየም ጥቅሞች</string>
-    <string name="premium_view_get_premium_pending">የእርስዎ ፕሪሚየም ጥቅሞች (በመጠባበቅ ላይ)</string>
-    <string name="premium_view_get_premium_not_available">ፕሪሚየም በአሁኑ ጊዜ አይገኝም</string>
-    <string name="premium_view_price_format">%1$s/ወር • ግብር ተካትቷል\n• በማንኛውም ጊዜ ማጥፋት ይቻላል</string>
-    <string name="premium_view_title">ሁሉም ባህሪያት፣\nያለ መከላከያ።</string>
-    <string name="premium_view_message">የብዛት ወይም የጊዜ ገደብ የለም።\nሁሉም በፕሪሚየም ይከፈታል</string>
-    <string name="premium_view_description_azure">ከዓለም ዙሪያ ብዙ ቋንቋዎችን ትክክለኛ ይተረጉማል።</string>
-    <string name="premium_view_description_deepl">ትክክለኛና ውስብስብ ትርጉሞችን ይሰጣል።</string>
-    <string name="premium_view_description_papago">Papago በነሮናል መሳሪያ በብዙ ቋንቋዎች በራሱ ይተረጉማል።</string>
-    <string name="premium_view_description_google">በፍጥነት የሚሰጠው ትርጉም። ለዘላለም ነጻ።</string>
-    <string name="premium_view_description_sentence_detection">መስመሮችን ለመተርጎም ጣቶን ይጠቀሙ።</string>
+    <string name="premium_view_description_sentence_detection">ዓረፍተ ነገሮች በራስ-ሰር ይመረጣሉ።</string>
     <string name="premium_view_description_paragraph_detection">አንቀፆች በራሳቸው ይታወቃሉ።</string>
     <string name="premium_view_description_select_detection">ምርጫ የሚፈልጉትን ክልል ይምረጡ።</string>
-    <string name="premium_view_description_word_detection">ቃላትን በቃል ትርጉም ሁልጊዜ ነጻ እና ያለ ገደብ ነው።</string>
+    <string name="premium_view_description_word_detection">አንድ ቃል ላይ ይጠቁሙ፣ ወዲያውኑ ይተረጎማል።</string>
     <string name="premium_view_description_fixed_area_detection">እንደ ፊልም ንዑሶች ያሉ ቆይታ አካባቢዎችን ቀጥሏል መተርጎም ይችላሉ።</string>
-    <string name="premium_view_unsubscribe">መመዝገብ ማጥፋት</string>
+  <string name="say_here">እዚህ ነኝ!</string>
+  <string name="hint_settings_reopen">ቅንብሮችን እንደገና ለመክፈት እጀታውን ሁለቴ ይንኩ</string>
+  <string name="openai_key_guide">በOpenAI ሞዴሎች ለመተርጎም የOpenAI API ቁልፍዎን ያስገቡ።</string>
+  <string name="openai_key_signup_guide">በOpenAI ዳሽቦርድ ውስጥ ቁልፍ ይፍጠሩ። አጠቃቀም ወደ OpenAI መለያዎ ይከፈላል።</string>
+  <string name="openai_key_link_keys">የAPI ቁልፍዎን ያግኙ</string>
+  <string name="openai_key_link_billing">ክፍያ እና አጠቃቀም</string>
+  <string name="openai_model_label">ሞዴል</string>
+  <string name="help_text_openai_own_key">የግል የOpenAI API ቁልፍዎን ይጠቀማል</string>
 </resources>
 

@@ -8,14 +8,10 @@
   <!-- Overlay Permission -->
   <string name="message_permission_overlay">สิทธิ์ที่จำเป็น:\nแสดงผลทับแอปอื่น</string>
   <string name="message_permission_overlay_detail">ต้องให้สิทธิ์แสดงผลทับแอปอื่นเพื่อเริ่มใช้งาน Screen Translator</string>
-  <string name="message_permission_overlay_denied">ปฏิเสธสิทธิ์การแสดงผลทับ</string>
-  <string name="message_permission_overlay_denied_detail">ไม่ได้รับสิทธิ์การแสดงผลทับแอปอื่น\nแอปจะปิดตัวลง</string>
 
   <!-- MediaProjection token 요청 -->
   <string name="message_media_projection">สิทธิ์ที่จำเป็น:\nการบันทึกหน้าจอ</string>
   <string name="message_media_projection_detail">ต้องให้สิทธิ์การบันทึกหน้าจอเพื่อเริ่มใช้งาน Screen Translator\n\nข้อมูลหน้าจอใช้สำหรับการแปลเท่านั้น จะไม่มีการจัดเก็บหรือส่งออกข้อมูลใดๆ</string>
-  <string name="message_media_projection_denied">ปฏิเสธสิทธิ์การบันทึกหน้าจอ</string>
-  <string name="message_media_projection_denied_detail">ไม่ได้รับสิทธิ์การบันทึกหน้าจอ\nแอปจะปิดตัวลง</string>
 
   <!-- Foreground Service 시작 알림 -->
   <string name="notification_foreground_service">กำลังใช้งานฟังก์ชันจับภาพหน้าจอเพื่อการแปล</string>
@@ -23,7 +19,6 @@
   <string name="message_start_foreground_service">แอปจะเริ่มบริการเบื้องหน้าเพื่อจับภาพและแปลเนื้อหาบนหน้าจอ\n\nภาพที่จับจะไม่ถูกบันทึกหรือส่งออกภายนอก</string>
   <string name="label_confirm_start_foreground_service">เริ่ม</string>
   <string name="label_dismiss_start_foreground_service">เสร็จสิ้น</string>
-  <string name="snack_message_start_foreground_service">แอปจะเริ่มบริการเบื้องหน้าเพื่อจับภาพและแปลเนื้อหาบนหน้าจอ</string>
 
   <!-- OverlayService -->
   <string name="service_menu_finish">เสร็จสิ้น</string>
@@ -36,18 +31,6 @@
   <string name="title_voice_list_view">เสียงที่มีให้เลือก</string>
 
   <!-- Dialog -->
-  <string name="message_authentication_error">เกิดข้อผิดพลาดในการยืนยันตัวตน</string>
-  <string name="message_authentication_error_detail">เซิร์ฟเวอร์ยืนยันตัวตนไม่ตอบสนอง\nโปรดลองใหม่ภายหลัง</string>
-  <string name="message_untrusted_environment">สภาพแวดล้อมที่ไม่ปลอดภัย</string>
-  <string name="message_untrusted_environment_detail">แอปของคุณดูเหมือนจะไม่ผ่านการตรวจสอบความถูกต้องของ Google Play</string>
-  <string name="message_unknown_device">อุปกรณ์ไม่รู้จัก</string>
-  <string name="message_unknown_device_detail">อุปกรณ์นี้ไม่ได้รับการรองรับ</string>
-  <string name="message_authentication_required">ต้องยืนยันตัวตน</string>
-  <string name="message_authentication_required_detail">คุณต้องลงชื่อเข้าใช้ด้วยบัญชี Google</string>
-  <string name="message_playstore_update_required">ต้องอัปเดต Play Store</string>
-  <string name="message_playstore_update_required_detail">การเชื่อมต่อกับบริการใน Play Store ล้มเหลว\nอาจเกิดจากเวอร์ชัน Play Store ที่ล้าสมัย</string>
-  <string name="message_unknown_source">ดาวน์โหลดแอปนี้จาก Play</string>
-  <string name="message_unknown_source_detail">เพื่อใช้งานแอปนี้ต่อ กรุณาดาวน์โหลดจาก Google Play</string>
   <string name="message_force_update">จำเป็นต้องอัปเดต</string>
   <string name="message_force_update_detail">เวอร์ชันนี้ไม่ได้รับการรองรับอีกต่อไป\nไปที่ Store</string>
   <string name="message_service_unavailable">ไม่สามารถให้บริการได้</string>
@@ -56,61 +39,57 @@
   <string name="message_network_unavailable_detail">ไม่สามารถเชื่อมต่อเครือข่ายได้\nกรุณาตรวจสอบและลองใหม่</string>
   <string name="message_translate_fixedarea_warn">คำเตือนแบตเตอรี่</string>
   <string name="message_translate_fixedarea_warn_detail">แบตเตอรี่อาจหมดอย่างรวดเร็ว</string>
-  <string name="message_translate_fixedarea_promotion">ข้อมูลการซื้อสินค้า</string>
-  <string name="message_translate_fixedarea_promotion_detail">การแจ้งเตือนเกี่ยวกับฟีเจอร์พรีเมียมของเราจะปรากฏทุก ๆ %1$s นาที</string>
-  <string name="message_free_trial_ends">ช่วงทดลองใช้ฟรีของคุณสิ้นสุดแล้ว</string>
-  <string name="message_free_trial_ends_detail">คุณต้องการดูโฆษณาเพื่อขยายเวลาทดลองใช้ฟรีหรือไม่?</string>
-  <string name="message_ad_reward">คุณได้รับเวลาทดลองใช้งานฟรีเพิ่มอีก %1$d นาที!</string>
-  <string name="message_ad_reward_detail">เพลิดเพลินกับฟีเจอร์พรีเมียมทั้งหมดฟรีในอีก %1$d นาทีข้างหน้า</string>
+  <string name="ad_gate_loading">กำลังเตรียมโฆษณา…</string>
+  <string name="ad_gate_reward_notice">ดูโฆษณาจนจบเพื่อใช้แอปแบบไม่มีโฆษณาจนกว่าคุณจะปิดแอป</string>
 
   <!-- SettingsActivity -->
   <string name="settings_title">การตั้งค่า</string>
   <string name="settings_menu_cat_pointer">ตัวชี้</string>
   <string name="settings_menu_pointer_docking_delay">ความล่าช้าในการเชื่อมต่อ</string>
-  <string name="settings_menu_haptic_feedback_to_detection">การสั่นเมื่อถูกตรวจพบ</string>
+  <string name="settings_menu_haptic_feedback_to_detection">การตอบสนองแบบสัมผัสเมื่อตรวจพบ</string>
   <string name="settings_menu_cat_menubar">แถบเมนู</string>
   <string name="settings_menu_menubar_transparency">ความโปร่งใสของเมนู</string>
   <string name="settings_menu_menubar_composition">ฟังก์ชั่นเมนู</string>
-  <string name="settings_menu_cat_ai">การแก้ไข AI</string>
   <string name="settings_menu_cat_translation">การแปล</string>
   <string name="settings_menu_translation_transparency">ความโปร่งใสของการแปล</string>
   <string name="settings_menu_translation_close_delay">ความล่าช้าในการปิด</string>
-  <string name="settings_menu_automated_read_aloud">อ่านอัตโนมัติ</string>
+  <string name="settings_menu_automated_read_aloud">อ่านคำแปลอัตโนมัติ</string>
   <string name="settings_menu_reply_transparency">ความโปร่งใสของการตอบกลับ</string>
   <string name="settings_menu_cat_tts">ข้อความเป็นเสียง</string>
+  <string name="settings_menu_tts_read_target">ข้อความที่อ่าน</string>
+  <string name="settings_tts_read_target_source">ต้นฉบับ</string>
+  <string name="settings_tts_read_target_target">คำแปล</string>
   <string name="settings_menu_tts_voices">เสียง TTS</string>
   <string name="settings_menu_tts_rate">ความเร็ว TTS</string>
   <string name="settings_menu_cat_about">เกี่ยวกับ</string>
-  <string name="settings_menu_on_premium_free_trial">ทดลองใช้ Premium อยู่</string>
-  <string name="settings_menu_premium_free_trial_remain">เหลือเวลา %1$d นาที</string>
-  <string name="settings_menu_your_premium_benefits">สิทธิประโยชน์ของคุณ</string>
-  <string name="settings_menu_your_premium_benefits_peding">สิทธิประโยชน์ (รอดำเนินการ)</string>
   <string name="settings_menu_app_version">เวอร์ชันแอป</string>
   <string name="settings_menu_app_version_latest">(ล่าสุด)</string>
 
   <!-- HelpTextDetectModeView, HelpTranslationKitView -->
-  <string name="help_text_no_limit">ทุกอย่างไม่จำกัดเมื่อเป็น Premium</string>
   <string name="help_text_no_limit_free">ไม่มีการจำกัดปริมาณ ไม่มีการจำกัดเวลา</string>
-  <string name="help_text_no_limit_title">สนุกได้แบบไม่จำกัด</string>
-  <string name="help_text_no_limit_free_title">ใช้งานฟรีโดยไม่มีข้อจำกัด</string>
-  <string name="help_text_get_premium">สมัคร Premium</string>
+  <string name="help_text_deepl_own_key">ใช้คีย์ DeepL API ส่วนตัวของคุณ</string>
+  <string name="deepl_key_guide">ป้อนคีย์ DeepL API ของคุณเพื่อใช้การแปล DeepL</string>
+  <string name="deepl_key_signup_guide">สมัคร DeepL แล้วคุณสามารถสมัครแผนฟรีได้</string>
+  <string name="deepl_key_link_subscription">สมัครแผนฟรี</string>
+  <string name="deepl_key_link_keys">ตรวจสอบคีย์ API ของคุณ</string>
+  <string name="deepl_key_active">เปิดใช้งานแล้ว</string>
+  <string name="label_save">บันทึก</string>
+  <string name="deepl_key_invalid">คีย์ API ไม่ถูกต้อง</string>
+  <string name="deepl_key_validating">กำลังตรวจสอบ…</string>
+  <string name="deepl_key_network_error">ไม่สามารถตรวจสอบคีย์ได้เนื่องจากข้อผิดพลาดของเครือข่าย คีย์ถูกบันทึกแล้ว</string>
 
   <!-- PremiumView -->
-  <string name="premium_view_get_premium">สมัคร Premium</string>
-  <string name="premium_view_get_premium_purchased">สิทธิประโยชน์ Premium ของคุณ</string>
-  <string name="premium_view_get_premium_pending">สิทธิประโยชน์ Premium ของคุณ (รอดำเนินการ)</string>
-  <string name="premium_view_get_premium_not_available">สมัคร Premium (ไม่พร้อมใช้งานขณะนี้)</string>
-  <string name="premium_view_price_format">%1$s/เดือน • รวม VAT แล้ว\n• ยกเลิกได้ทุกเมื่อ</string>
-  <string name="premium_view_title">ฟีเจอร์ทั้งหมด,\nไม่มีการขัดจังหวะ</string>
-  <string name="premium_view_message">ไม่มีข้อจำกัดด้านปริมาณหรือเวลา\nPremium ให้คุณเข้าถึงได้ทุกอย่าง</string>
-  <string name="premium_view_description_azure">แปลได้อย่างแม่นยำสำหรับเกือบทุกภาษาทั่วโลก</string>
-  <string name="premium_view_description_deepl">แปลได้อย่างมีความหมายและแม่นยำ</string>
-  <string name="premium_view_description_papago">Papago ใช้ AI ในการแปลอัตโนมัติจากหลายภาษาไปยังภาษาที่คุณเลือก</string>
-  <string name="premium_view_description_google">การแปลที่เร็วที่สุด ไม่มีจำกัด ฟรีตลอดไป</string>
-  <string name="premium_view_description_sentence_detection">แตะเพื่อแปลทีละบรรทัด</string>
+  <string name="premium_view_description_sentence_detection">เลือกประโยคโดยอัตโนมัติ</string>
   <string name="premium_view_description_paragraph_detection">ตรวจจับย่อหน้าโดยอัตโนมัติ</string>
   <string name="premium_view_description_select_detection">เลือกขอบเขตการแปลได้เอง</string>
-  <string name="premium_view_description_word_detection">แปลคำต่อคำฟรีและไม่จำกัดเสมอ</string>
+  <string name="premium_view_description_word_detection">ชี้ไปที่คำเพื่อแปลทันที</string>
   <string name="premium_view_description_fixed_area_detection">คุณสามารถแปลพื้นที่คงที่อย่างต่อเนื่อง เช่น คำบรรยายภาพยนตร์</string>
-  <string name="premium_view_unsubscribe">ยกเลิกการสมัคร</string>
+  <string name="say_here">ฉันอยู่นี่!</string>
+  <string name="hint_settings_reopen">แตะที่จับสองครั้งเพื่อเปิดการตั้งค่าอีกครั้ง</string>
+  <string name="openai_key_guide">ป้อนคีย์ OpenAI API ของคุณเพื่อแปลด้วยโมเดล OpenAI</string>
+  <string name="openai_key_signup_guide">สร้างคีย์ในแดชบอร์ด OpenAI การใช้งานจะถูกเรียกเก็บเงินไปยังบัญชี OpenAI ของคุณ</string>
+  <string name="openai_key_link_keys">รับคีย์ API ของคุณ</string>
+  <string name="openai_key_link_billing">การเรียกเก็บเงินและการใช้งาน</string>
+  <string name="openai_model_label">โมเดล</string>
+  <string name="help_text_openai_own_key">ใช้คีย์ OpenAI API ส่วนตัวของคุณ</string>
 </resources>

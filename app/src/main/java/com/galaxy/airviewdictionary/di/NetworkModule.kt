@@ -1,15 +1,9 @@
 package com.galaxy.airviewdictionary.di
 
-import com.galaxy.airviewdictionary.data.remote.ai.chatgpt.ChatGPTKit
-import com.galaxy.airviewdictionary.data.remote.translation.azure.AzureKit
 import com.galaxy.airviewdictionary.data.remote.translation.goolge.GoogleWebKit
-import com.galaxy.airviewdictionary.data.remote.translation.papago.PapagoKit
-import com.galaxy.airviewdictionary.data.remote.translation.yandex.YandexKit
-import com.galaxy.airviewdictionary.data.remote.ai.chatgpt.ChatGPTService
-import com.galaxy.airviewdictionary.data.remote.translation.azure.AzureService
 import com.galaxy.airviewdictionary.data.remote.translation.goolge.GoogleWebService
-import com.galaxy.airviewdictionary.data.remote.translation.papago.PapagoService
-import com.galaxy.airviewdictionary.data.remote.translation.yandex.YandexService
+import com.galaxy.airviewdictionary.data.remote.translation.openai.OpenAiKit
+import com.galaxy.airviewdictionary.data.remote.translation.openai.OpenAiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -31,19 +25,7 @@ annotation class GoogleWebRetrofit
 
 @Qualifier
 @Retention(AnnotationRetention.BINARY)
-annotation class AzureRetrofit
-
-@Qualifier
-@Retention(AnnotationRetention.BINARY)
-annotation class YandexRetrofit
-
-@Qualifier
-@Retention(AnnotationRetention.BINARY)
-annotation class PapagoRetrofit
-
-@Qualifier
-@Retention(AnnotationRetention.BINARY)
-annotation class ChatGPTRetrofit
+annotation class OpenAiRetrofit
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -75,68 +57,20 @@ object NetworkModule {
         return retrofit.create(GoogleWebService::class.java)
     }
 
-    @AzureRetrofit
+    @OpenAiRetrofit
     @Provides
     @Singleton
-    fun provideAzureRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
-        .baseUrl(AzureKit.BASE_URL)
+    fun provideOpenAiRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
+        .baseUrl(OpenAiKit.BASE_URL)
         .client(okHttpClient)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    @AzureRetrofit
+    @OpenAiRetrofit
     @Provides
     @Singleton
-    fun provideAzureService(@AzureRetrofit retrofit: Retrofit): AzureService {
-        return retrofit.create(AzureService::class.java)
-    }
-
-    @YandexRetrofit
-    @Provides
-    @Singleton
-    fun provideYandexRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
-        .baseUrl(YandexKit.BASE_URL)
-        .client(okHttpClient)
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
-
-    @YandexRetrofit
-    @Provides
-    @Singleton
-    fun provideYandexService(@YandexRetrofit retrofit: Retrofit): YandexService {
-        return retrofit.create(YandexService::class.java)
-    }
-
-    @PapagoRetrofit
-    @Provides
-    @Singleton
-    fun providePapagoRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
-        .baseUrl(PapagoKit.BASE_URL)
-        .client(okHttpClient)
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
-
-    @PapagoRetrofit
-    @Provides
-    @Singleton
-    fun providePapagoService(@PapagoRetrofit retrofit: Retrofit): PapagoService {
-        return retrofit.create(PapagoService::class.java)
-    }
-
-    @ChatGPTRetrofit
-    @Provides
-    @Singleton
-    fun provideChatGPTRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
-        .baseUrl(ChatGPTKit.BASE_URL)
-        .client(okHttpClient)
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
-
-    @ChatGPTRetrofit
-    @Provides
-    @Singleton
-    fun provideChatGPTService(@ChatGPTRetrofit retrofit: Retrofit): ChatGPTService {
-        return retrofit.create(ChatGPTService::class.java)
+    fun provideOpenAiService(@OpenAiRetrofit retrofit: Retrofit): OpenAiService {
+        return retrofit.create(OpenAiService::class.java)
     }
 }
 

@@ -4,7 +4,6 @@ package com.galaxy.airviewdictionary.ui.screen.overlay.settings
 import android.content.Context
 import android.graphics.PixelFormat
 import android.graphics.Point
-import android.os.Build
 import android.view.Gravity
 import android.view.WindowManager
 import androidx.compose.foundation.layout.Box
@@ -18,6 +17,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.layout
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.semantics.contentDescription
@@ -53,6 +53,7 @@ class SettingsMenuBarConfigView private constructor() : OverlayView() {
         if (isAttachedToWindow() && textFlow.value != null) {
             val context = LocalContext.current
             val lifecycleOwner = LocalLifecycleOwner.current
+            val configuration = LocalConfiguration.current
             val layoutDirection = LocalLayoutDirection.current
             val isRtl = layoutDirection == LayoutDirection.Rtl
 
@@ -74,7 +75,7 @@ class SettingsMenuBarConfigView private constructor() : OverlayView() {
             // target language
             val targetLanguageCode by viewModel.preferenceRepository.targetLanguageCodeFlow.collectAsStateWithLifecycle(
                 lifecycle = lifecycleOwner.lifecycle,
-                initialValue = context.resources.configuration.locales.get(0).language
+                initialValue = configuration.locales.get(0).language
             )
             val targetLanguage = viewModel.translationRepository.getSupportedTargetLanguage(targetLanguageCode)
 
@@ -165,11 +166,7 @@ class SettingsMenuBarConfigView private constructor() : OverlayView() {
             WindowManager.LayoutParams.WRAP_CONTENT,
             0,
             position.y,
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
-            } else {
-                WindowManager.LayoutParams.TYPE_PHONE
-            },
+            WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
             WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
                     or WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN
                     or WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,

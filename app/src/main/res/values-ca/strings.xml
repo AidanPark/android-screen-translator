@@ -8,14 +8,10 @@
     <!-- Overlay Permission -->
     <string name="message_permission_overlay">Permís necessari:\nMostrar sobre altres aplicacions</string>
     <string name="message_permission_overlay_detail">Per iniciar el Traductor de Pantalla, cal atorgar permís per mostrar-se sobre altres aplicacions.</string>
-    <string name="message_permission_overlay_denied">Permís de superposició denegat</string>
-    <string name="message_permission_overlay_denied_detail">No s\'ha concedit el permís de superposició.\nL\'aplicació es tancarà.</string>
 
     <!-- MediaProjection token 요청 -->
     <string name="message_media_projection">Permís necessari:\nGravació de pantalla</string>
     <string name="message_media_projection_detail">Per iniciar el Traductor de Pantalla, cal atorgar permís per gravar la pantalla.\n\nLa informació capturada només s\'utilitzarà per traducció i no es guardarà ni es compartirà.</string>
-    <string name="message_media_projection_denied">Permís de gravació de pantalla denegat</string>
-    <string name="message_media_projection_denied_detail">No s\'ha concedit el permís de gravació de pantalla.\nL\'aplicació es tancarà.</string>
 
     <!-- Foreground Service 시작 알림 -->
     <string name="notification_foreground_service">La funció de captura de pantalla s’està utilitzant per a la traducció.</string>
@@ -23,7 +19,6 @@
     <string name="message_start_foreground_service">L\'aplicació inicia un servei en primer pla per capturar i traduir el contingut de la pantalla.\n\nLes imatges capturades no es guarden ni es transfereixen.</string>
     <string name="label_confirm_start_foreground_service">Inicia</string>
     <string name="label_dismiss_start_foreground_service">Finalitza</string>
-    <string name="snack_message_start_foreground_service">L\'aplicació ha iniciat un servei en primer pla per capturar i traduir el contingut de la pantalla.</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">Finalitza</string>
@@ -36,18 +31,6 @@
     <string name="title_voice_list_view">Veus disponibles</string>
 
     <!-- Dialog -->
-    <string name="message_authentication_error">Error d\'autenticació</string>
-    <string name="message_authentication_error_detail">El servidor d\'autenticació no respon.\nSi us plau, torna-ho a intentar més tard.</string>
-    <string name="message_untrusted_environment">Entorn no fiable</string>
-    <string name="message_untrusted_environment_detail">Sembla que l\'aplicació no ha superat la comprovació d\'integritat de Google Play.</string>
-    <string name="message_unknown_device">Dispositiu desconegut</string>
-    <string name="message_unknown_device_detail">Aquest dispositiu no és compatible.</string>
-    <string name="message_authentication_required">Autenticació necessària</string>
-    <string name="message_authentication_required_detail">Heu d\'iniciar sessió amb el vostre compte de Google.</string>
-    <string name="message_playstore_update_required">Actualització del Play Store requerida</string>
-    <string name="message_playstore_update_required_detail">No s\'ha pogut connectar amb el servei del Play Store.\nPot ser que tingueu una versió antiga instal·lada.</string>
-    <string name="message_unknown_source">Descarrega l\'app des de Play</string>
-    <string name="message_unknown_source_detail">Per continuar utilitzant aquesta aplicació, descarrega-la des de Google Play.</string>
     <string name="message_force_update">Cal actualitzar</string>
     <string name="message_force_update_detail">Aquesta versió ja no és compatible.\nObre la botiga per actualitzar-la.</string>
     <string name="message_service_unavailable">Servei no disponible</string>
@@ -56,61 +39,57 @@
     <string name="message_network_unavailable_detail">No hi ha connexió a la xarxa.\nComproveu-ho i torneu-ho a intentar.</string>
     <string name="message_translate_fixedarea_warn">Avís de bateria</string>
     <string name="message_translate_fixedarea_warn_detail">La bateria es pot descarregar ràpidament.</string>
-    <string name="message_translate_fixedarea_promotion">Informació de compra del producte</string>
-    <string name="message_translate_fixedarea_promotion_detail">Apareixerà un recordatori amable sobre les nostres funcions premium cada %1$s minuts.</string>
-    <string name="message_free_trial_ends">La prova gratuïta ha finalitzat.</string>
-    <string name="message_free_trial_ends_detail">Vols veure un anunci per allargar la prova gratuïta?</string>
-    <string name="message_ad_reward">Has rebut %1$d minuts més de prova gratuïta!</string>
-    <string name="message_ad_reward_detail">Gaudeix de totes les funcions premium gratuïtament durant els propers %1$d minuts.</string>
+    <string name="ad_gate_loading">S\'està preparant un anunci…</string>
+    <string name="ad_gate_reward_notice">Mira l\'anunci fins al final per usar l\'aplicació sense anuncis fins que la tanquis.</string>
 
     <!-- SettingsActivity -->
     <string name="settings_title">Configuració</string>
     <string name="settings_menu_cat_pointer">Cursor</string>
     <string name="settings_menu_pointer_docking_delay">Retard d\'acoblament</string>
-    <string name="settings_menu_haptic_feedback_to_detection">Vibració en detectar</string>
+    <string name="settings_menu_haptic_feedback_to_detection">Resposta hàptica en detectar</string>
     <string name="settings_menu_cat_menubar">Barra de menú</string>
     <string name="settings_menu_menubar_transparency">Transparència del menú</string>
     <string name="settings_menu_menubar_composition">Funcions del menú</string>
-    <string name="settings_menu_cat_ai">Correcció amb IA</string>
     <string name="settings_menu_cat_translation">Traducció</string>
     <string name="settings_menu_translation_transparency">Transparència traducció</string>
     <string name="settings_menu_translation_close_delay">Retard de tancament</string>
-    <string name="settings_menu_automated_read_aloud">Lectura automàtica</string>
+    <string name="settings_menu_automated_read_aloud">Lectura automàtica de la traducció</string>
     <string name="settings_menu_reply_transparency">Transparència resposta</string>
     <string name="settings_menu_cat_tts">Text a veu</string>
+    <string name="settings_menu_tts_read_target">Text a llegir</string>
+    <string name="settings_tts_read_target_source">Original</string>
+    <string name="settings_tts_read_target_target">Traducció</string>
     <string name="settings_menu_tts_voices">Veus TTS</string>
     <string name="settings_menu_tts_rate">Velocitat TTS</string>
     <string name="settings_menu_cat_about">Quant a</string>
-    <string name="settings_menu_on_premium_free_trial">Prova Premium activa</string>
-    <string name="settings_menu_premium_free_trial_remain">Queden %1$d minuts</string>
-    <string name="settings_menu_your_premium_benefits">Avantatges Premium</string>
-    <string name="settings_menu_your_premium_benefits_peding">Avantatges (pendent)</string>
     <string name="settings_menu_app_version">Versió de l\'app</string>
     <string name="settings_menu_app_version_latest">(Última)</string>
 
     <!-- HelpTextDetectModeView, HelpTranslationKitView -->
-    <string name="help_text_no_limit">Tot il·limitat amb Premium</string>
     <string name="help_text_no_limit_free">Sense límit de quantitat ni de temps</string>
-    <string name="help_text_no_limit_title">Gaudeix sense límits</string>
-    <string name="help_text_no_limit_free_title">Gratuït i sense restriccions</string>
-    <string name="help_text_get_premium">Obtenir Premium</string>
+    <string name="help_text_deepl_own_key">Utilitza la teva clau API personal de DeepL</string>
+    <string name="deepl_key_guide">Introdueix la teva clau API de DeepL per utilitzar la traducció de DeepL.</string>
+    <string name="deepl_key_signup_guide">Registra\'t a DeepL i podràs subscriure\'t al pla gratuït.</string>
+    <string name="deepl_key_link_subscription">Subscriu-te al pla gratuït</string>
+    <string name="deepl_key_link_keys">Comprova la teva clau API</string>
+    <string name="deepl_key_active">Activat</string>
+    <string name="label_save">Desa</string>
+    <string name="deepl_key_invalid">La clau API no és vàlida.</string>
+    <string name="deepl_key_validating">S\'està verificant…</string>
+    <string name="deepl_key_network_error">No s\'ha pogut verificar la clau a causa d\'un error de xarxa. La clau s\'ha desat.</string>
 
     <!-- PremiumView -->
-    <string name="premium_view_get_premium">Obtenir Premium</string>
-    <string name="premium_view_get_premium_purchased">Els teus avantatges Premium</string>
-    <string name="premium_view_get_premium_pending">Els teus avantatges Premium (pendent)</string>
-    <string name="premium_view_get_premium_not_available">Premium (actualment no disponible)</string>
-    <string name="premium_view_price_format">%1$s/mes • IVA inclòs\n• Cancel·la quan vulguis</string>
-    <string name="premium_view_title">Totes les funcions,\nSense interrupcions.</string>
-    <string name="premium_view_message">Sense límits de quantitat ni temps.\nTot és il·limitat amb Premium</string>
-    <string name="premium_view_description_azure">Traducció precisa de la majoria de llengües del món.</string>
-    <string name="premium_view_description_deepl">Oferim traduccions sofisticades que respecten el significat original.</string>
-    <string name="premium_view_description_papago">Papago tradueix automàticament diversos idiomes utilitzant un algorisme de traducció neuronal.</string>
-    <string name="premium_view_description_google">La traducció més ràpida. Gratuïta i il·limitada per sempre.</string>
-    <string name="premium_view_description_sentence_detection">Tradueix línies amb el teu dit.</string>
+    <string name="premium_view_description_sentence_detection">Les frases se seleccionen automàticament.</string>
     <string name="premium_view_description_paragraph_detection">Els paràgrafs es reconeixen automàticament.</string>
     <string name="premium_view_description_select_detection">També pots seleccionar l’àrea que vulguis.</string>
-    <string name="premium_view_description_word_detection">La traducció per paraules és sempre gratuïta i il·limitada.</string>
+    <string name="premium_view_description_word_detection">Assenyala una paraula per traduir-la a l\'instant.</string>
     <string name="premium_view_description_fixed_area_detection">Pots traduir contínuament àrees fixes, com els subtítols de pel·lícules.</string>
-    <string name="premium_view_unsubscribe">Cancel·lar subscripció</string>
+  <string name="say_here">Soc aquí!</string>
+  <string name="hint_settings_reopen">Toca dues vegades el mànec per tornar a obrir la configuració</string>
+  <string name="openai_key_guide">Introduïu la vostra clau API d’OpenAI per traduir amb els models d’OpenAI.</string>
+  <string name="openai_key_signup_guide">Creeu una clau al tauler d’OpenAI. L’ús es factura al vostre compte d’OpenAI.</string>
+  <string name="openai_key_link_keys">Obteniu la vostra clau API</string>
+  <string name="openai_key_link_billing">Facturació i ús</string>
+  <string name="openai_model_label">Model</string>
+  <string name="help_text_openai_own_key">Utilitza la teva clau API personal de OpenAI</string>
 </resources>

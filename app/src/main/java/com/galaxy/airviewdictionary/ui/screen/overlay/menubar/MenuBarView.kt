@@ -3,11 +3,11 @@ package com.galaxy.airviewdictionary.ui.screen.overlay.menubar
 
 import android.content.Context
 import android.graphics.PixelFormat
-import android.os.Build
 import android.view.Gravity
 import android.view.MotionEvent
 import android.view.View
 import android.view.WindowManager
+import androidx.core.view.isVisible
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
@@ -84,6 +84,9 @@ import com.galaxy.airviewdictionary.data.local.screen.ScreenInfoHolder
 import com.galaxy.airviewdictionary.data.local.vision.TextDetectMode
 import com.galaxy.airviewdictionary.data.remote.translation.Language
 import com.galaxy.airviewdictionary.data.remote.translation.TranslationKitType
+import com.galaxy.airviewdictionary.data.remote.translation.deepl.DeepLKit
+import com.galaxy.airviewdictionary.data.remote.translation.openai.OpenAiKit
+import com.galaxy.airviewdictionary.ui.screen.ads.AdGateActivity
 import com.galaxy.airviewdictionary.ui.screen.main.SettingsActivity
 import com.galaxy.airviewdictionary.ui.screen.overlay.Event
 import com.galaxy.airviewdictionary.ui.screen.overlay.OverlayView
@@ -151,8 +154,8 @@ class MenuBarView private constructor() : OverlayView() {
             // SettingsActivity live 상태 flow
             val settingsActivityLiveState by SettingsActivity.liveStateFlow.collectAsStateWithLifecycle()
 
-            // PremiumView live 상태 flow
-            val premiumState by SettingsActivity.premiumViewVisibleStateFlow.collectAsStateWithLifecycle()
+            // 광고 게이트 live 상태 flow (광고 표시 중에는 메뉴바를 숨긴다)
+            val adGateLiveState by AdGateActivity.liveStateFlow.collectAsStateWithLifecycle()
 
             // Drag handle dock state
             val dragHandleDockState by targetHandleViewModel.dockStateFlow.collectAsStateWithLifecycle()
@@ -171,7 +174,7 @@ class MenuBarView private constructor() : OverlayView() {
                 captureStatus,
                 targetHandleMotionEventState,
                 settingsActivityLiveState,
-                premiumState,
+                adGateLiveState,
                 dragHandleDockState,
                 textDetectMode,
                 fixedAreaViewState
@@ -179,7 +182,8 @@ class MenuBarView private constructor() : OverlayView() {
 
                 view?.let {
                     val menuVisible = when {
-                        settingsActivityLiveState -> !premiumState
+                        adGateLiveState -> false // 광고 게이트/광고 표시 중에는 숨김
+                        settingsActivityLiveState -> true
                         captureStatus != CaptureStatus.Requested
                                 && targetHandleMotionEventState != MotionEvent.ACTION_MOVE
                                 && (!dragHandleDockState || menuBarDragState.value == MenuBarDragStates.Handling)
@@ -210,8 +214,8 @@ class MenuBarView private constructor() : OverlayView() {
                                 .start()
                         }
                     } else {
-                        if (it.visibility == View.VISIBLE) {
-                            it.visibility = View.GONE
+                        if (it.isVisible) {
+                            it.isVisible = false
                         }
                     }
                 }
@@ -254,12 +258,7 @@ class MenuBarView private constructor() : OverlayView() {
             val translationKitTypeAlpha = remember { Animatable(0f) }
             var translationKitTypeAlphaAnimation: Job? by remember { mutableStateOf(null) }
 
-            val localeLanguage: String = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                configuration.locales[0].language
-            } else {
-                @Suppress("DEPRECATION")
-                configuration.locale.language
-            }
+            val localeLanguage: String = configuration.locales[0].language
 
             // source language
             val sourceLanguageCode by viewModel.preferenceRepository.sourceLanguageCodeFlow.collectAsStateWithLifecycle(
@@ -442,11 +441,7 @@ class MenuBarView private constructor() : OverlayView() {
             WindowManager.LayoutParams.WRAP_CONTENT,
             0,
             (screenInfo.height / 5),
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
-            } else {
-                WindowManager.LayoutParams.TYPE_PHONE
-            },
+            WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
             WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
                     or WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN
                     or WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
@@ -1157,7 +1152,16 @@ fun TranslationKitIconButton(
     modifier: Modifier = Modifier
 ) {
     val isDarkMode = isDarkMode ?: isSystemInDarkTheme()
+    val context = LocalContext.current
     val currentKitType = remember { mutableStateOf(translationKitType) }
+
+    // 키 기반 엔진(DeepL / OpenAI)은 사용자 API 키가 저장된 경우에만 전환 대상에 노출한다
+    val deepLActivated by DeepLKit.keyActivatedStateFlow.collectAsStateWithLifecycle()
+    val openAIActivated by OpenAiKit.keyActivatedStateFlow.collectAsStateWithLifecycle()
+    LaunchedEffect(Unit) {
+        DeepLKit.refreshAvailability(context)
+        OpenAiKit.refreshAvailability(context)
+    }
 
     LaunchedEffect(translationKitType) {
         currentKitType.value = translationKitType
@@ -1180,34 +1184,7 @@ fun TranslationKitIconButton(
         animationSpec = tween(durationMillis = animationDuration),
     )
 
-    // 페이드 효과
-    val alphaGoogle by transition.animateFloat(
-        transitionSpec = { tween(durationMillis = animationDuration) },
-        label = "AlphaGoogle"
-    ) { targetState ->
-        if (targetState == TranslationKitType.GOOGLE) 1f else 0f
-    }
-
-    val alphaAzure by transition.animateFloat(
-        transitionSpec = { tween(durationMillis = animationDuration) },
-        label = "alphaAzure"
-    ) { targetState ->
-        if (targetState == TranslationKitType.AZURE) 1f else 0f
-    }
-
-    val alphaDeepl by transition.animateFloat(
-        transitionSpec = { tween(durationMillis = animationDuration) },
-        label = "alphaDeepl"
-    ) { targetState ->
-        if (targetState == TranslationKitType.DEEPL) 1f else 0f
-    }
-
-    val alphaPapago by transition.animateFloat(
-        transitionSpec = { tween(durationMillis = animationDuration) },
-        label = "alphaPapago"
-    ) { targetState ->
-        if (targetState == TranslationKitType.PAPAGO) 1f else 0f
-    }
+    // 엔진별 페이드 효과는 아래 IconButton 안에서 엔진 목록을 순회하며 만든다 (N-provider 일반화)
 
     // 애니메이션 종료 감지
     val animationFinished = remember(rotationBase) {
@@ -1224,26 +1201,29 @@ fun TranslationKitIconButton(
 
     var nextKitType by remember { mutableStateOf<TranslationKitType?>(null) }
 
-    LaunchedEffect(sourceLanguage, targetLanguage, translationKitType) {
-        nextKitType = null
-        if (sourceLanguage == null || targetLanguage == null) {
-            nextKitType = when (translationKitType) {
-                TranslationKitType.GOOGLE -> TranslationKitType.AZURE
-                TranslationKitType.AZURE -> TranslationKitType.DEEPL
-//                TranslationKitType.DEEPL -> TranslationKitType.YANDEX
-//                TranslationKitType.YANDEX -> TranslationKitType.PAPAGO
-                TranslationKitType.DEEPL -> TranslationKitType.PAPAGO
-                TranslationKitType.PAPAGO -> TranslationKitType.GOOGLE
+    LaunchedEffect(sourceLanguage, targetLanguage, translationKitType, deepLActivated, openAIActivated) {
+        // 키 기반 엔진은 활성화된 경우에만 후보에 포함한다 (GOOGLE 은 항상 사용 가능)
+        val activated: (TranslationKitType) -> Boolean = { kit ->
+            when (kit) {
+                TranslationKitType.GOOGLE -> true
+                TranslationKitType.DEEPL -> deepLActivated
+                TranslationKitType.OPENAI -> openAIActivated
             }
+        }
+        // 언어쌍을 아직 모르면 활성 엔진 전체, 알면 두 언어가 공통으로 지원하는 엔진으로 후보를 좁힌다
+        val candidates: List<TranslationKitType> = if (sourceLanguage == null || targetLanguage == null) {
+            TranslationKitType.entries.filter { activated(it) }
         } else {
-            val commonKitTypes = sourceLanguage.supportKitTypes.toSet().intersect(targetLanguage.supportKitTypes.toSet())
-            val sortedCommonKitTypes: List<TranslationKitType> = commonKitTypes.sortedBy { it.name }
-            val currentKitTypeIndex = sortedCommonKitTypes.indexOf(translationKitType)
-            nextKitType = if (currentKitTypeIndex != -1) {
-                sortedCommonKitTypes[(currentKitTypeIndex + 1) % sortedCommonKitTypes.size]
-            } else {
-                null
-            }
+            sourceLanguage.supportKitTypes.toSet()
+                .intersect(targetLanguage.supportKitTypes.toSet())
+                .filter { activated(it) }
+        }.sortedBy { it.name }
+
+        nextKitType = if (candidates.size > 1) {
+            val index = candidates.indexOf(translationKitType)
+            if (index != -1) candidates[(index + 1) % candidates.size] else candidates.firstOrNull()
+        } else {
+            null
         }
     }
 
@@ -1266,58 +1246,30 @@ fun TranslationKitIconButton(
         },
         enabled = enabled && (nextKitType != null && nextKitType != translationKitType)
     ) {
-        // GOOGLE 아이콘
-        Image(
-            painter = painterResource(
-                id = getImageResourceId((currentKitType.value == TranslationKitType.GOOGLE) == rotationEven)
-            ),
-            contentDescription = "KitType: ${currentKitType.value}",
-            modifier = Modifier
-                .size(27.dp)
-                .graphicsLayer(
-                    rotationZ = rotationZ.value,
-                    alpha = alphaGoogle
+        // 엔진별 아이콘 레이어를 쌓고, 현재 선택된 엔진만 alpha 로 보이게 한다 (N-provider 일반화)
+        TranslationKitType.entries.forEach { kit ->
+            val alpha by transition.animateFloat(
+                transitionSpec = { tween(durationMillis = animationDuration) },
+                label = "Alpha_${kit.name}"
+            ) { targetState ->
+                if (targetState == kit) 1f else 0f
+            }
+            Image(
+                painter = painterResource(
+                    id = getImageResourceId((currentKitType.value == kit) == rotationEven)
                 ),
-        )
-        // AZURE 아이콘
-        Image(
-            painter = painterResource(
-                id = getImageResourceId((currentKitType.value == TranslationKitType.AZURE) == rotationEven)
-            ),
-            contentDescription = "KitType: ${currentKitType.value}",
-            modifier = Modifier
-                .size(27.dp)
-                .graphicsLayer(
-                    rotationZ = rotationZ.value,
-                    alpha = alphaAzure
-                ),
-        )
-        // DEEPL 아이콘
-        Image(
-            painter = painterResource(
-                id = getImageResourceId((currentKitType.value == TranslationKitType.DEEPL) == rotationEven)
-            ),
-            contentDescription = "KitType: ${currentKitType.value}",
-            modifier = Modifier
-                .size(27.dp)
-                .graphicsLayer(
-                    rotationZ = rotationZ.value,
-                    alpha = alphaDeepl
-                ),
-        )
-        // PAPAGO 아이콘
-        Image(
-            painter = painterResource(
-                id = getImageResourceId((currentKitType.value == TranslationKitType.PAPAGO) == rotationEven)
-            ),
-            contentDescription = "KitType: ${currentKitType.value}",
-            modifier = Modifier
-                .size(27.dp)
-                .graphicsLayer(
-                    rotationZ = rotationZ.value,
-                    alpha = alphaPapago
-                ),
-        )
+                contentDescription = "KitType: ${currentKitType.value}",
+                modifier = Modifier
+                    // 크기는 표시 중인 아이콘(currentKitType)에 맞춘다. 레이어의 kit 로 잡으면
+                    // 전환 중 사라지는 레이어가 잠깐 큰 크기로 그려져 "컸다가 작아지는" 현상이 생긴다.
+                    // OpenAI 로고는 캔버스를 꽉 채워 같은 dp 에서 더 커 보이므로 살짝 줄인다.
+                    .size(if (currentKitType.value == TranslationKitType.OPENAI) 23.dp else 27.dp)
+                    .graphicsLayer(
+                        rotationZ = rotationZ.value,
+                        alpha = alpha
+                    ),
+            )
+        }
     }
 }
 

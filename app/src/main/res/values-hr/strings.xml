@@ -8,14 +8,10 @@
     <!-- Overlay Permission -->
     <string name="message_permission_overlay">Potrebna dozvola:\nPrikaz preko drugih aplikacija</string>
     <string name="message_permission_overlay_detail">Za pokretanje Prevoditelja Zaslona potrebno je omogućiti prikaz preko drugih aplikacija.</string>
-    <string name="message_permission_overlay_denied">Dozvola za preklapanje je odbijena</string>
-    <string name="message_permission_overlay_denied_detail">Dozvola za preklapanje nije dodijeljena.\nAplikacija će se zatvoriti.</string>
 
     <!-- MediaProjection token 요청 -->
     <string name="message_media_projection">Potrebna dozvola:\nSnimanje zaslona</string>
     <string name="message_media_projection_detail">Za pokretanje Prevoditelja Zaslona potrebno je omogućiti snimanje zaslona.\n\nInformacije na zaslonu koriste se isključivo za prevođenje i neće biti pohranjene ni dijeljene.</string>
-    <string name="message_media_projection_denied">Dozvola za snimanje zaslona je odbijena</string>
-    <string name="message_media_projection_denied_detail">Dozvola za snimanje zaslona nije dodijeljena.\nAplikacija će se zatvoriti.</string>
 
     <!-- Foreground Service 시작 알림 -->
     <string name="notification_foreground_service">Funkcija snimanja zaslona koristi se za prevođenje.</string>
@@ -23,7 +19,6 @@
     <string name="message_start_foreground_service">Aplikacija pokreće pozadinsku uslugu za snimanje i prevođenje sadržaja zaslona.\n\nSnimljene slike neće biti pohranjene ni dijeljene.</string>
     <string name="label_confirm_start_foreground_service">Pokreni</string>
     <string name="label_dismiss_start_foreground_service">Završi</string>
-    <string name="snack_message_start_foreground_service">Aplikacija je pokrenula pozadinsku uslugu za snimanje i prevođenje sadržaja zaslona.</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">Završi</string>
@@ -36,18 +31,6 @@
     <string name="title_voice_list_view">Dostupni glasovi</string>
 
     <!-- Dialog -->
-    <string name="message_authentication_error">Pogreška autentifikacije</string>
-    <string name="message_authentication_error_detail">Poslužitelj za autentifikaciju ne reagira.\nPokušajte ponovno kasnije.</string>
-    <string name="message_untrusted_environment">Nepouzdano okruženje</string>
-    <string name="message_untrusted_environment_detail">Izgleda da aplikacija nije prošla provjeru integriteta Google Playa.</string>
-    <string name="message_unknown_device">Nepoznat uređaj</string>
-    <string name="message_unknown_device_detail">Ovaj uređaj nije podržan.</string>
-    <string name="message_authentication_required">Potrebna prijava</string>
-    <string name="message_authentication_required_detail">Morate biti prijavljeni putem Google računa.</string>
-    <string name="message_playstore_update_required">Potreban je ažurirani Play Store</string>
-    <string name="message_playstore_update_required_detail">Neuspjelo povezivanje s uslugom Play Store.\nMoguće je da je instalirana stara verzija.</string>
-    <string name="message_unknown_source">Preuzmi aplikaciju s Google Playa</string>
-    <string name="message_unknown_source_detail">Za nastavak korištenja aplikacije preuzmite je s Google Playa.</string>
     <string name="message_force_update">Potrebno ažuriranje</string>
     <string name="message_force_update_detail">Ova verzija više nije podržana.\nPosjetite trgovinu za ažuriranje.</string>
     <string name="message_service_unavailable">Usluga nije dostupna</string>
@@ -56,61 +39,57 @@
     <string name="message_network_unavailable_detail">Mreža nije dostupna.\nProvjerite vezu i pokušajte ponovno.</string>
     <string name="message_translate_fixedarea_warn">Upozorenje o bateriji</string>
     <string name="message_translate_fixedarea_warn_detail">Baterija se može brzo isprazniti.</string>
-    <string name="message_translate_fixedarea_promotion">Informacije o kupnji proizvoda</string>
-    <string name="message_translate_fixedarea_promotion_detail">Prijateljski podsjetnik na naše premium značajke pojavit će se svakih %1$s minuta.</string>
-    <string name="message_free_trial_ends">Vaše besplatno probno razdoblje je završilo.</string>
-    <string name="message_free_trial_ends_detail">Želite li pogledati oglas za produženje probnog razdoblja?</string>
-    <string name="message_ad_reward">Dobili ste još %1$d minuta besplatnog probnog razdoblja!</string>
-    <string name="message_ad_reward_detail">Uživajte u svim premium značajkama besplatno sljedećih %1$d minuta.</string>
+    <string name="ad_gate_loading">Priprema se oglas…</string>
+    <string name="ad_gate_reward_notice">Pogledajte oglas do kraja i koristite aplikaciju bez oglasa dok je ne zatvorite.</string>
 
     <!-- SettingsActivity -->
     <string name="settings_title">Postavke</string>
     <string name="settings_menu_cat_pointer">Pokazivač</string>
     <string name="settings_menu_pointer_docking_delay">Kašnjenje spajanja</string>
-    <string name="settings_menu_haptic_feedback_to_detection">Vibracija pri otkrivanju</string>
+    <string name="settings_menu_haptic_feedback_to_detection">Haptički odziv pri otkrivanju</string>
     <string name="settings_menu_cat_menubar">Izbornik</string>
     <string name="settings_menu_menubar_transparency">Prozirnost izbornika</string>
     <string name="settings_menu_menubar_composition">Funkcije izbornika</string>
-    <string name="settings_menu_cat_ai">AI ispravak</string>
     <string name="settings_menu_cat_translation">Prijevod</string>
     <string name="settings_menu_translation_transparency">Prozirnost prijevoda</string>
     <string name="settings_menu_translation_close_delay">Kašnjenje zatvaranja</string>
-    <string name="settings_menu_automated_read_aloud">Auto čitanje</string>
+    <string name="settings_menu_automated_read_aloud">Auto čitanje prijevoda</string>
     <string name="settings_menu_reply_transparency">Prozirnost odgovora</string>
     <string name="settings_menu_cat_tts">Tekst u govor</string>
+    <string name="settings_menu_tts_read_target">Tekst za čitanje</string>
+    <string name="settings_tts_read_target_source">Izvornik</string>
+    <string name="settings_tts_read_target_target">Prijevod</string>
     <string name="settings_menu_tts_voices">TTS glasovi</string>
     <string name="settings_menu_tts_rate">TTS brzina</string>
     <string name="settings_menu_cat_about">O aplikaciji</string>
-    <string name="settings_menu_on_premium_free_trial">Premium probna aktivna</string>
-    <string name="settings_menu_premium_free_trial_remain">Preostalo je %1$d minuta</string>
-    <string name="settings_menu_your_premium_benefits">Tvoje pogodnosti</string>
-    <string name="settings_menu_your_premium_benefits_peding">Pogodnosti (čeka)</string>
     <string name="settings_menu_app_version">Verzija aplikacije</string>
     <string name="settings_menu_app_version_latest">(Najnovije)</string>
 
     <!-- HelpTextDetectModeView, HelpTranslationKitView -->
-    <string name="help_text_no_limit">Sve neograničeno s Premiumom</string>
     <string name="help_text_no_limit_free">Bez ograničenja količine i vremena</string>
-    <string name="help_text_no_limit_title">Uživajte bez ograničenja</string>
-    <string name="help_text_no_limit_free_title">Besplatno i bez ograničenja</string>
-    <string name="help_text_get_premium">Nabavi Premium</string>
+    <string name="help_text_deepl_own_key">Koristi vaš osobni DeepL API ključ</string>
+    <string name="deepl_key_guide">Unesite svoj DeepL API ključ za korištenje DeepL prijevoda.</string>
+    <string name="deepl_key_signup_guide">Registrirajte se na DeepL i možete se pretplatiti na besplatni plan.</string>
+    <string name="deepl_key_link_subscription">Pretplatite se na besplatni plan</string>
+    <string name="deepl_key_link_keys">Provjerite svoj API ključ</string>
+    <string name="deepl_key_active">Aktivirano</string>
+    <string name="label_save">Spremi</string>
+    <string name="deepl_key_invalid">API ključ nije valjan.</string>
+    <string name="deepl_key_validating">Provjeravanje…</string>
+    <string name="deepl_key_network_error">Ključ nije moguće provjeriti zbog mrežne pogreške. Ključ je spremljen.</string>
 
     <!-- PremiumView -->
-    <string name="premium_view_get_premium">Nabavi Premium</string>
-    <string name="premium_view_get_premium_purchased">Vaše Premium pogodnosti</string>
-    <string name="premium_view_get_premium_pending">Vaše Premium pogodnosti (na čekanju)</string>
-    <string name="premium_view_get_premium_not_available">Premium (trenutno nije dostupno)</string>
-    <string name="premium_view_price_format">%1$s/mjesečno • uključuje PDV\n• Otkaži bilo kada</string>
-    <string name="premium_view_title">Sve značajke,\nBez prekida.</string>
-    <string name="premium_view_message">Bez ograničenja količine ili vremena.\nS Premiumom je sve neograničeno</string>
-    <string name="premium_view_description_azure">Precizno prevodi većinu jezika svijeta.</string>
-    <string name="premium_view_description_deepl">Nudi kvalitetne prijevode s izvrsnim razumijevanjem značenja.</string>
-    <string name="premium_view_description_papago">Papago automatski prevodi više jezika pomoću neuronskog strojnog prevođenja.</string>
-    <string name="premium_view_description_google">Najbrži prijevod. Besplatno i neograničeno zauvijek.</string>
-    <string name="premium_view_description_sentence_detection">Prijevod redaka pomoću dodira prstom.</string>
+    <string name="premium_view_description_sentence_detection">Rečenice se biraju automatski.</string>
     <string name="premium_view_description_paragraph_detection">Odlomci se automatski prepoznaju.</string>
     <string name="premium_view_description_select_detection">Također možete odabrati područje za prijevod.</string>
-    <string name="premium_view_description_word_detection">Prijevod riječi je uvijek besplatan i neograničen.</string>
+    <string name="premium_view_description_word_detection">Pokažite na riječ da se odmah prevede.</string>
     <string name="premium_view_description_fixed_area_detection">Možete neprekidno prevoditi fiksna područja, poput filmskih titlova.</string>
-    <string name="premium_view_unsubscribe">Otkaži pretplatu</string>
+  <string name="say_here">Ovdje sam!</string>
+  <string name="hint_settings_reopen">Dvaput dodirnite ručku za ponovno otvaranje postavki</string>
+  <string name="openai_key_guide">Unesite svoj OpenAI API ključ za prevođenje pomoću OpenAI modela.</string>
+  <string name="openai_key_signup_guide">Izradite ključ na OpenAI nadzornoj ploči. Upotreba se naplaćuje na vaš OpenAI račun.</string>
+  <string name="openai_key_link_keys">Nabavite svoj API ključ</string>
+  <string name="openai_key_link_billing">Naplata i upotreba</string>
+  <string name="openai_model_label">Model</string>
+  <string name="help_text_openai_own_key">Koristi vaš osobni OpenAI API ključ</string>
 </resources>

@@ -1,3 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- START xml_defaults -->
 <defaultsMap>
+
+
+    <!--
+        1.18.07 ~
+        서비스 제공 여부. true: 서비스 제공, false: 서비스 제공하지 않음.
+            {
+                "default": true,
+                "KR": true
+            }
+    -->
+    <entry>
+        <key>service_available</key>
+        <value>
+            {
+                "default": false
+            }
+        </value>
+    </entry>
+
+    <!--
+        1.99 ~ 최신 앱 버전 코드
+    -->
+    <entry>
+        <key>latest_version_code</key>
+        <value>19000</value>
+    </entry>
+
+    <!--
+        1.99 ~ 강제 업데이트 버전 코드
+    -->
+    <entry>
+        <key>force_update_version_code</key>
+        <value>0</value>
+    </entry>
+
+    <!--
+        1.99 ~ 무료 번역 제한 시간(분)
+    -->
+    <entry>
+        <key>trial_time_limit_minute</key>
+        <value>10</value>
+    </entry>
+
+    <!--
+        2.2.0 ~ FixedAreaView 에서 무료사용자 대상 광고캠페인 주기(분)
+    -->
+    <entry>
+        <key>fixed_area_view_campaign_period_minute</key>
+        <value>10</value>
+    </entry>
+
+    <!--
+        2.4.0 ~ 무료체험 광고 아이디
+    -->
+    <entry>
+        <key>ad_unit_id</key>
+        <value>ca-app-pub-xxxxxxxxxxxxxxxx/xxxxxxxxxx</value>
+    </entry>
+
+    <!--
+        2.6.0 ~ OpenAI 번역 모델 후보 (쉼표 구분). 설정에서 이 중 하나를 고른다.
+    -->
+    <entry>
+        <key>openai_translate_models</key>
+        <value>gpt-4o-mini,gpt-4o,gpt-4.1-mini</value>
+    </entry>
+
 </defaultsMap>
+    <!-- END xml_defaults -->

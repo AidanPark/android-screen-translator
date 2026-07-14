@@ -8,14 +8,10 @@
   <!-- Overlay Permission -->
   <string name="message_permission_overlay">Nepieciešama atļauja:\nRādīt virs citām lietotnēm</string>
   <string name="message_permission_overlay_detail">Lai palaistu Ekrāna tulkotāju, ir jāatļauj rādīšana virs citām lietotnēm.</string>
-  <string name="message_permission_overlay_denied">Pārklājuma atļauja atteikta</string>
-  <string name="message_permission_overlay_denied_detail">Pārklājuma atļauja nav piešķirta.\nLietotne tiks aizvērta.</string>
 
   <!-- MediaProjection token -->
   <string name="message_media_projection">Nepieciešama atļauja:\nEkrāna ierakstīšana</string>
   <string name="message_media_projection_detail">Lai palaistu Ekrāna tulkotāju, ir jāpiešķir ekrāna ierakstīšanas atļauja.\n\nEkrāna informācija tiks izmantota tikai tulkošanas nolūkiem un netiks saglabāta vai pārsūtīta.</string>
-  <string name="message_media_projection_denied">Ekrāna ierakstīšanas atļauja atteikta</string>
-  <string name="message_media_projection_denied_detail">Ekrāna ierakstīšanas atļauja nav piešķirta.\nLietotne tiks aizvērta.</string>
 
   <!-- Foreground Service -->
   <string name="notification_foreground_service">Ekrāna uztveršana tiek izmantota tulkošanai.</string>
@@ -23,7 +19,6 @@
   <string name="message_start_foreground_service">Lietotne sāk priekšplāna pakalpojumu, lai uztvertu un tulkotu ekrāna saturu.\n\nUztvertie attēli netiek saglabāti vai sūtīti ārpus ierīces.</string>
   <string name="label_confirm_start_foreground_service">Sākt</string>
   <string name="label_dismiss_start_foreground_service">Beigt</string>
-  <string name="snack_message_start_foreground_service">Lietotne sāk priekšplāna pakalpojumu, lai uztvertu un tulkotu ekrāna saturu.</string>
 
   <!-- OverlayService -->
   <string name="service_menu_finish">Beigt</string>
@@ -36,18 +31,6 @@
   <string name="title_voice_list_view">Pieejamās balsis</string>
 
   <!-- Dialog -->
-  <string name="message_authentication_error">Autentifikācijas kļūda</string>
-  <string name="message_authentication_error_detail">Autentifikācijas serveris neatbild.\nLūdzu, mēģiniet vēlāk.</string>
-  <string name="message_untrusted_environment">Nedroša vide</string>
-  <string name="message_untrusted_environment_detail">Izskatās, ka jūsu lietotne nav izturējusi Google Play integritātes pārbaudi.</string>
-  <string name="message_unknown_device">Nezināma ierīce</string>
-  <string name="message_unknown_device_detail">Šī ierīce netiek atbalstīta.</string>
-  <string name="message_authentication_required">Nepieciešama autentifikācija</string>
-  <string name="message_authentication_required_detail">Jums ir jābūt pieteikušamies ar Google kontu.</string>
-  <string name="message_playstore_update_required">Nepieciešams Play Store atjauninājums</string>
-  <string name="message_playstore_update_required_detail">Neizdevās savienojums ar pakalpojumu Play Store.\nIespējams, ir instalēta novecojusi versija.</string>
-  <string name="message_unknown_source">Lejupielādējiet šo lietotni no Play</string>
-  <string name="message_unknown_source_detail">Lai turpinātu izmantot šo lielisko lietotni, lejupielādējiet to no Google Play.</string>
   <string name="message_force_update">Nepieciešama atjaunināšana</string>
   <string name="message_force_update_detail">Šī versija vairs netiek atbalstīta.\nDodieties uz veikalu.</string>
   <string name="message_service_unavailable">Pakalpojums nav pieejams</string>
@@ -56,61 +39,57 @@
   <string name="message_network_unavailable_detail">Tīkls nav pieejams.\nLūdzu, pārbaudiet un mēģiniet vēlreiz.</string>
   <string name="message_translate_fixedarea_warn">Akumulatora brīdinājums</string>
   <string name="message_translate_fixedarea_warn_detail">Akumulators var ātri izlādeties.</string>
-  <string name="message_translate_fixedarea_promotion">Informācija par produkta iegādi</string>
-  <string name="message_translate_fixedarea_promotion_detail">Draudzīgs atgādinājums par mūsu premium funkcijām parādīsies ik pēc %1$s minūtēm.</string>
-  <string name="message_free_trial_ends">Jūsu bezmaksas izmēģinājuma periods ir beidzies.</string>
-  <string name="message_free_trial_ends_detail">Vai vēlaties skatīties reklāmu, lai pagarinātu bezmaksas izmēģinājumu?</string>
-  <string name="message_ad_reward">Jūs esat saņēmis vēl %1$d minūtes bezmaksas izmēģinājuma!</string>
-  <string name="message_ad_reward_detail">Izbaudiet visas premium funkcijas bez maksas nākamās %1$d minūtes.</string>
+  <string name="ad_gate_loading">Notiek reklāmas sagatavošana…</string>
+  <string name="ad_gate_reward_notice">Noskatieties reklāmu līdz beigām, lai lietotni izmantotu bez reklāmām, līdz to aizverat.</string>
 
   <!-- SettingsActivity -->
   <string name="settings_title">Iestatījumi</string>
   <string name="settings_menu_cat_pointer">Rādītājs</string>
   <string name="settings_menu_pointer_docking_delay">Dok. aizkave</string>
-  <string name="settings_menu_haptic_feedback_to_detection">Vibrācija pie noteikšanas</string>
+  <string name="settings_menu_haptic_feedback_to_detection">Haptiskā atsauksme noteikšanā</string>
   <string name="settings_menu_cat_menubar">Izvēlnes josla</string>
   <string name="settings_menu_menubar_transparency">Izvēlnes caurspīdīgums</string>
   <string name="settings_menu_menubar_composition">Izvēlnes funkcijas</string>
-  <string name="settings_menu_cat_ai">AI labošana</string>
   <string name="settings_menu_cat_translation">Tulkot</string>
   <string name="settings_menu_translation_transparency">Tulk. caurspīdīgums</string>
   <string name="settings_menu_translation_close_delay">Aizvēršanas aizkave</string>
-  <string name="settings_menu_automated_read_aloud">Automātiskā lasīšana</string>
+  <string name="settings_menu_automated_read_aloud">Tulkojuma automātiskā lasīšana</string>
   <string name="settings_menu_reply_transparency">Atbildes caurspīdīgums</string>
   <string name="settings_menu_cat_tts">Teksts uz runu</string>
+  <string name="settings_menu_tts_read_target">Lasāmais teksts</string>
+  <string name="settings_tts_read_target_source">Oriģināls</string>
+  <string name="settings_tts_read_target_target">Tulkojums</string>
   <string name="settings_menu_tts_voices">TTS balsis</string>
   <string name="settings_menu_tts_rate">TTS ātrums</string>
   <string name="settings_menu_cat_about">Par</string>
-  <string name="settings_menu_on_premium_free_trial">Premium izmēģinājums aktīvs</string>
-  <string name="settings_menu_premium_free_trial_remain">Atlikušas %1$d minūtes</string>
-  <string name="settings_menu_your_premium_benefits">Jūsu priekšrocības</string>
-  <string name="settings_menu_your_premium_benefits_peding">Priekšrocības (gaida)</string>
   <string name="settings_menu_app_version">Lietotnes versija</string>
   <string name="settings_menu_app_version_latest">(Jaunākā)</string>
 
   <!-- HelpTextDetectModeView, HelpTranslationKitView -->
-  <string name="help_text_no_limit">Viss ir neierobežots ar Premium</string>
   <string name="help_text_no_limit_free">Nav daudzuma ierobežojuma, nav termiņa ierobežojuma</string>
-  <string name="help_text_no_limit_title">Izmanto bez ierobežojumiem</string>
-  <string name="help_text_no_limit_free_title">Bez maksas, bez ierobežojumiem</string>
-  <string name="help_text_get_premium">Iegūt Premium</string>
+  <string name="help_text_deepl_own_key">Izmanto jūsu personīgo DeepL API atslēgu</string>
+  <string name="deepl_key_guide">Ievadiet savu DeepL API atslēgu, lai izmantotu DeepL tulkošanu.</string>
+  <string name="deepl_key_signup_guide">Reģistrējieties DeepL un varat abonēt bezmaksas plānu.</string>
+  <string name="deepl_key_link_subscription">Abonēt bezmaksas plānu</string>
+  <string name="deepl_key_link_keys">Pārbaudiet savu API atslēgu</string>
+  <string name="deepl_key_active">Aktivizēts</string>
+  <string name="label_save">Saglabāt</string>
+  <string name="deepl_key_invalid">API atslēga nav derīga.</string>
+  <string name="deepl_key_validating">Notiek pārbaude…</string>
+  <string name="deepl_key_network_error">Atslēgu nevarēja pārbaudīt tīkla kļūdas dēļ. Atslēga tika saglabāta.</string>
 
   <!-- PremiumView -->
-  <string name="premium_view_get_premium">Iegūt Premium</string>
-  <string name="premium_view_get_premium_purchased">Jūsu Premium priekšrocības</string>
-  <string name="premium_view_get_premium_pending">Jūsu Premium priekšrocības (gaida)</string>
-  <string name="premium_view_get_premium_not_available">Premium nav pieejams šobrīd</string>
-  <string name="premium_view_price_format">%1$s/mēnesī • Iekļauj PVN\n• Atcelt jebkurā laikā</string>
-  <string name="premium_view_title">Visas funkcijas,\nBez pārtraukumiem.</string>
-  <string name="premium_view_message">Nav ierobežojuma apjomam vai laikam.\nViss ir neierobežots ar Premium</string>
-  <string name="premium_view_description_azure">Precīzi tulko lielāko daļu pasaules valodu.</string>
-  <string name="premium_view_description_deepl">Sniedz dziļi nozīmīgus un kvalitatīvus tulkojumus.</string>
-  <string name="premium_view_description_papago">Papago izmanto neironu tulkošanas tehnoloģiju vairāku valodu tulkošanai.</string>
-  <string name="premium_view_description_google">Ātrākais tulkojums. Neierobežoti un bez maksas uz visiem laikiem.</string>
-  <string name="premium_view_description_sentence_detection">Izmantojiet pirkstus, lai tulkotu rindas.</string>
+  <string name="premium_view_description_sentence_detection">Teikumi tiek atlasīti automātiski.</string>
   <string name="premium_view_description_paragraph_detection">Automātiska rindkopu atpazīšana.</string>
   <string name="premium_view_description_select_detection">Varat arī izvēlēties konkrētu apgabalu.</string>
-  <string name="premium_view_description_word_detection">Vārdu pa vārdam tulkojums vienmēr ir bez maksas un bez ierobežojumiem.</string>
+  <string name="premium_view_description_word_detection">Norādiet uz vārdu, un tas tiks nekavējoties iztulkots.</string>
   <string name="premium_view_description_fixed_area_detection">Jūs varat nepārtraukti tulkot fiksētas zonas, piemēram, filmu subtitrus.</string>
-  <string name="premium_view_unsubscribe">Atcelt abonementu</string>
+  <string name="say_here">Es esmu šeit!</string>
+  <string name="hint_settings_reopen">Divreiz pieskarieties rokturim, lai atkal atvērtu iestatījumus</string>
+  <string name="openai_key_guide">Ievadiet savu OpenAI API atslēgu, lai tulkotu ar OpenAI modeļiem.</string>
+  <string name="openai_key_signup_guide">Izveidojiet atslēgu OpenAI vadības panelī. Lietojums tiek iekasēts jūsu OpenAI kontā.</string>
+  <string name="openai_key_link_keys">Iegūstiet savu API atslēgu</string>
+  <string name="openai_key_link_billing">Norēķini un lietojums</string>
+  <string name="openai_model_label">Modelis</string>
+  <string name="help_text_openai_own_key">Izmanto jūsu personīgo OpenAI API atslēgu</string>
 </resources>

@@ -8,14 +8,10 @@
     <!-- Overlay Permission -->
     <string name="message_permission_overlay">Imvume edingekayo:\nBonisa ngaphezu kwezinhlelo zokusebenza</string>
     <string name="message_permission_overlay_detail">Ukuze uvule i-Umhumushi Wesikrini, kudingeka unikeze imvume yokubonisa phezu kwezinye izinhlelo zokusebenza.</string>
-    <string name="message_permission_overlay_denied">Imvume ye-overlay yenqatshiwe</string>
-    <string name="message_permission_overlay_denied_detail">Imvume ye-overlay ayinikezwanga.\nUhlelo luzophuma.</string>
 
     <!-- MediaProjection token 요청 -->
     <string name="message_media_projection">Imvume edingekayo:\nUkuqopha Isikrini</string>
     <string name="message_media_projection_detail">Ukuze uvule i-Umhumushi Wesikrini, kudingeka unikeze imvume yokuqopha isikrini.\n\nUlwazi oluboniswa esikrinini lusetshenziswa kuphela ngenhloso yokuhumusha futhi ngeke lugcinwe noma luthunyelwe kwenye indawo.</string>
-    <string name="message_media_projection_denied">Imvume yokuqopha isikrini yenqatshiwe</string>
-    <string name="message_media_projection_denied_detail">Imvume yokuqopha isikrini ayinikezwanga.\nUhlelo luzophuma.</string>
 
     <!-- Foreground Service 시작 알림 -->
     <string name="notification_foreground_service">Umsebenzi wokuqopha isikrini usetshenziswa ukuze kuhumusheke.</string>
@@ -23,7 +19,6 @@
     <string name="message_start_foreground_service">Uhlelo luqala isevisi engaphambili ukuze luthathe futhi luhumushe okuqukethwe esikrinini.\n\nIzithombe ezithathiwe azigcinwa noma zithunyelwe ngaphandle.</string>
     <string name="label_confirm_start_foreground_service">Qala</string>
     <string name="label_dismiss_start_foreground_service">Qeda</string>
-    <string name="snack_message_start_foreground_service">Uhlelo luqala isevisi engaphambili ukuze luthathe futhi luhumushe okuqukethwe esikrinini.</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">Qeda</string>
@@ -36,18 +31,6 @@
     <string name="title_voice_list_view">Amazwi atholakalayo</string>
 
     <!-- Dialog -->
-    <string name="message_authentication_error">Iphutha lokungena ngemvume</string>
-    <string name="message_authentication_error_detail">Iseva yokungena ngemvume ayiphenduli.\nSicela uzame futhi kamuva.</string>
-    <string name="message_untrusted_environment">Indawo engaqinisekisiwe</string>
-    <string name="message_untrusted_environment_detail">Kubukeka sengathi uhlelo aludlulanga ukuhlolwa kwe-Google Play.</string>
-    <string name="message_unknown_device">Idivayisi engaziwa</string>
-    <string name="message_unknown_device_detail">Le divayisi ayisekelwa.</string>
-    <string name="message_authentication_required">Kudingeka ungene ngemvume</string>
-    <string name="message_authentication_required_detail">Kudingeka ungene ngemvume usebenzisa i-Google.</string>
-    <string name="message_playstore_update_required">Kubuyekezwe i-Play Store</string>
-    <string name="message_playstore_update_required_detail">Ukuxhumeka kusevisi ye-Play Store kwehlulekile.\nLokhu kungabangelwa inguqulo endala ye-Play Store efakiwe kudivayisi.</string>
-    <string name="message_unknown_source">Thola lolu hlelo ku-Play</string>
-    <string name="message_unknown_source_detail">Ukuqhubeka nokusebenzisa uhlelo oluhle, lulande ku-Google Play.</string>
     <string name="message_force_update">Kubuyekezwe kuyadingeka</string>
     <string name="message_force_update_detail">Le nguqulo ayisekelwa.\nVakashela isitolo.</string>
     <string name="message_service_unavailable">Isevisi ayitholakali</string>
@@ -56,61 +39,57 @@
     <string name="message_network_unavailable_detail">Inethiwekhi ayitholakali.\nSicela uhlole bese uzama futhi.</string>
     <string name="message_translate_fixedarea_warn">Isixwayiso sebhathri</string>
     <string name="message_translate_fixedarea_warn_detail">Ibhathri ingase iphele ngokushesha.</string>
-    <string name="message_translate_fixedarea_promotion">Ulwazi lokuthenga umkhiqizo</string>
-    <string name="message_translate_fixedarea_promotion_detail">Isikhumbuzo esihle mayelana nezi功能zethu eziphakeme sizovela njalo njalo %1$s imizuzu.</string>
-    <string name="message_free_trial_ends">Isikhathi sakho sokuzama mahhala sesiphelile.</string>
-    <string name="message_free_trial_ends_detail">Ungathanda ukubuka isikhangiso ukuze unwebe isikhathi sakho sokuzama?</string>
-    <string name="message_ad_reward">Uthole eminye imizuzu engu-%1$d yokuzama mahhala!</string>
-    <string name="message_ad_reward_detail">Jabulela zonke izici eziphezulu mahhala imizuzu engu-%1$d ezayo.</string>
+    <string name="ad_gate_loading">Kulungiswa isikhangiso…</string>
+    <string name="ad_gate_reward_notice">Buka isikhangiso kuze kube sekugcineni ukuze usebenzise uhlelo ngaphandle kwezikhangiso uze uluvale.</string>
 
     <!-- SettingsActivity -->
     <string name="settings_title">Izilungiselelo</string>
     <string name="settings_menu_cat_pointer">Isikhombisi</string>
     <string name="settings_menu_pointer_docking_delay">Ukuhamba kancane kokuxhuma</string>
-    <string name="settings_menu_haptic_feedback_to_detection">Ukudonsa lapho kutholakala</string>
+    <string name="settings_menu_haptic_feedback_to_detection">Impendulo yokuthinta lapho kutholakala</string>
     <string name="settings_menu_cat_menubar">Imenyu yeBar</string>
     <string name="settings_menu_menubar_transparency">Ukuvuleka kweMenyu</string>
     <string name="settings_menu_menubar_composition">Imisebenzi yeMenyu</string>
-    <string name="settings_menu_cat_ai">AI ukulungiswa</string>
     <string name="settings_menu_cat_translation">Ukuguqula</string>
     <string name="settings_menu_translation_transparency">Ukuvuleka kweguqulo</string>
     <string name="settings_menu_translation_close_delay">Ukuhamba kancane kokuphuma</string>
-    <string name="settings_menu_automated_read_aloud">Ukufunda ngokuzenzakalelayo</string>
+    <string name="settings_menu_automated_read_aloud">Ukufunda inguqulo ngokuzenzakalelayo</string>
     <string name="settings_menu_reply_transparency">Ukuvuleka kwempendulo</string>
     <string name="settings_menu_cat_tts">Umbhalo kuSizwelo</string>
+    <string name="settings_menu_tts_read_target">Umbhalo ofundwayo</string>
+    <string name="settings_tts_read_target_source">Okwangempela</string>
+    <string name="settings_tts_read_target_target">Inguqulo</string>
     <string name="settings_menu_tts_voices">Izwi le-TTS</string>
     <string name="settings_menu_tts_rate">Iholo le-TTS</string>
     <string name="settings_menu_cat_about">Ngokuphathelene</string>
-    <string name="settings_menu_on_premium_free_trial">Ukuhlolwa kwePremium kuyasebenza</string>
-    <string name="settings_menu_premium_free_trial_remain">Kusele imizuzu engu-%1$d</string>
-    <string name="settings_menu_your_premium_benefits">Izinzuzo zakho</string>
-    <string name="settings_menu_your_premium_benefits_peding">Izinzuzo (zilindile)</string>
     <string name="settings_menu_app_version">Inguqulo yesicelo</string>
     <string name="settings_menu_app_version_latest">(Okusha)</string>
 
     <!-- HelpTextDetectModeView, HelpTranslationKitView -->
-    <string name="help_text_no_limit">Konke akunamkhawulo nge-Premium</string>
     <string name="help_text_no_limit_free">Akukho mkhawulo wenani, akukho mkhawulo wesikhathi</string>
-    <string name="help_text_no_limit_title">Jabulela ngaphandle kwemingcele</string>
-    <string name="help_text_no_limit_free_title">Mahhala ngaphandle kwemingcele</string>
-    <string name="help_text_get_premium">Thola i-Premium</string>
+    <string name="help_text_deepl_own_key">Isebenzisa ukhiye wakho we-DeepL API womuntu siqu</string>
+    <string name="deepl_key_guide">Faka ukhiye wakho we-DeepL API ukuze usebenzise ukuhumusha kwe-DeepL.</string>
+    <string name="deepl_key_signup_guide">Bhalisela i-DeepL futhi ungabhalisela uhlelo lwamahhala.</string>
+    <string name="deepl_key_link_subscription">Bhalisela uhlelo lwamahhala</string>
+    <string name="deepl_key_link_keys">Hlola ukhiye wakho we-API</string>
+    <string name="deepl_key_active">Kwenziwe kwasebenza</string>
+    <string name="label_save">Londoloza</string>
+    <string name="deepl_key_invalid">Ukhiye we-API awuvumelekile.</string>
+    <string name="deepl_key_validating">Iyaqinisekisa…</string>
+    <string name="deepl_key_network_error">Ukhiye awukwazanga ukuqinisekiswa ngenxa yephutha lenethiwekhi. Ukhiye ulondoloziwe.</string>
 
     <!-- PremiumView -->
-    <string name="premium_view_get_premium">Thola i-Premium</string>
-    <string name="premium_view_get_premium_purchased">Izinzuzo zakho ze-Premium</string>
-    <string name="premium_view_get_premium_pending">Izinzuzo zakho ze-Premium (Kulindelwe)</string>
-    <string name="premium_view_get_premium_not_available">I-Premium (Ayitholakali okwamanje)</string>
-    <string name="premium_view_price_format">%1$s/ngenyanga • Kuhlanganisa i-VAT\n• Ungakhansela noma nini</string>
-    <string name="premium_view_title">Zonke izici,\nAzikho iziphazamiso.</string>
-    <string name="premium_view_message">Akukho mkhawulo wenani, akukho mkhawulo wesikhathi.\nKonke akunamkhawulo nge-Premium</string>
-    <string name="premium_view_description_azure">Ihumusha izilimi eziningi emhlabeni ngokunembile.</string>
-    <string name="premium_view_description_deepl">Sihlinzeka ngohumusho olunembayo nolunengqondo.</string>
-    <string name="premium_view_description_papago">I-Papago ihumusha ngokuzenzakalelayo izilimi eziningi kusetshenziswa ubuhlakani bokufunda ngomshini.</string>
-    <string name="premium_view_description_google">Ihumusho elisheshayo. Mahhala unomphela.</string>
-    <string name="premium_view_description_sentence_detection">Sebenzisa umunwe wakho ukuhumusha imigqa.</string>
+    <string name="premium_view_description_sentence_detection">Imisho ikhethwa ngokuzenzakalela.</string>
     <string name="premium_view_description_paragraph_detection">Amaparagrafu ayahlonzwa ngokuzenzakalelayo.</string>
     <string name="premium_view_description_select_detection">Ungakhetha indawo ofuna ukuyihumusha.</string>
-    <string name="premium_view_description_word_detection">Ukuhumusha igama ngalinye kumahhala futhi akunamkhawulo.</string>
+    <string name="premium_view_description_word_detection">Khomba igama ukuze lihunyushwe ngokushesha.</string>
     <string name="premium_view_description_fixed_area_detection">Ungaguqulela njalo izindawo ezimile, njengezihloko zezifilimu.</string>
-    <string name="premium_view_unsubscribe">Khansela ukubhalisela</string>
+  <string name="say_here">Ngilapha!</string>
+  <string name="hint_settings_reopen">Thepha kabili isibambo ukuze uvule izilungiselelo futhi</string>
+  <string name="openai_key_guide">Faka ukhiye wakho we-OpenAI API ukuze uhumushe ngezimodeli ze-OpenAI.</string>
+  <string name="openai_key_signup_guide">Dala ukhiye ku-dashboard ye-OpenAI. Ukusetshenziswa kukhokhiswa ku-akhawunti yakho ye-OpenAI.</string>
+  <string name="openai_key_link_keys">Thola ukhiye wakho we-API</string>
+  <string name="openai_key_link_billing">Ukukhokhisa nokusetshenziswa</string>
+  <string name="openai_model_label">Imodeli</string>
+  <string name="help_text_openai_own_key">Isebenzisa ukhiye wakho we-OpenAI API womuntu siqu</string>
 </resources>

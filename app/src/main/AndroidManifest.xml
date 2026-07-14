@@ -71,6 +71,17 @@
             android:launchMode="singleTop"
             android:theme="@style/Theme.ScreenTranslator.Transparent" />
 
+        <!-- taskAffinity="": 앱 메인 태스크(설정 화면이 백스택에 남아있을 수 있음)를 끌어올리지 않도록
+             광고 게이트는 항상 독립된 태스크에서 뜬다 -->
+        <activity
+            android:name=".ui.screen.ads.AdGateActivity"
+            android:configChanges="orientation|screenSize"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:taskAffinity=""
+            android:theme="@style/Theme.ScreenTranslator.Transparent" />
+
         <activity
             android:name=".ui.screen.main.SettingsActivity"
             android:exported="false"
@@ -94,27 +105,6 @@
                 android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
                 android:value="Floating timers to display on top of other apps" />
         </service>
-
-        <activity
-            android:name=".ui.screen.test.TestMainActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
-
-        <activity
-            android:name=".ui.screen.test.TestCapturedActivity"
-            android:configChanges="orientation|screenSize"
-            android:excludeFromRecents="true"
-            android:exported="false"
-            android:launchMode="singleTop"
-            android:theme="@style/Theme.ScreenTranslator.Fullscreen" />
-
-        <activity
-            android:name=".ui.screen.test.TestVisionTextActivity"
-            android:configChanges="orientation|screenSize"
-            android:excludeFromRecents="true"
-            android:exported="false"
-            android:launchMode="singleTop"
-            android:theme="@style/Theme.ScreenTranslator.Fullscreen" />
 
         <!-- Automatically download the text recognition model after app install. -->
         <meta-data
@@ -140,7 +130,7 @@
 
 <!--        <meta-data-->
 <!--            android:name="com.google.android.gms.ads.APPLICATION_ID"-->
-<!--            android:value="" />--> <!-- TODO: Set your AdMob App ID -->
+<!--            android:value="ca-app-pub-3940256099942544~3347511713" />-->
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"

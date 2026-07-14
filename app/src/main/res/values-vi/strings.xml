@@ -8,14 +8,10 @@
   <!-- Overlay Permission -->
   <string name="message_permission_overlay">Yêu cầu quyền:\nHiển thị trên ứng dụng khác</string>
   <string name="message_permission_overlay_detail">Để khởi chạy Trình Dịch Màn Hình, bạn cần cấp quyền hiển thị trên ứng dụng khác.</string>
-  <string name="message_permission_overlay_denied">Đã từ chối quyền hiển thị lớp phủ</string>
-  <string name="message_permission_overlay_denied_detail">Chưa được cấp quyền hiển thị lớp phủ.\nỨng dụng sẽ thoát.</string>
 
   <!-- MediaProjection token -->
   <string name="message_media_projection">Yêu cầu quyền:\nGhi màn hình</string>
   <string name="message_media_projection_detail">Để khởi chạy Trình Dịch Màn Hình, bạn cần cấp quyền ghi màn hình.\n\nThông tin trên màn hình chỉ được sử dụng để dịch và sẽ không được lưu trữ hay chia sẻ bên ngoài.</string>
-  <string name="message_media_projection_denied">Đã từ chối quyền ghi màn hình</string>
-  <string name="message_media_projection_denied_detail">Không được cấp quyền ghi màn hình.\nỨng dụng sẽ thoát.</string>
 
   <!-- Foreground Service -->
   <string name="notification_foreground_service">Tính năng chụp màn hình đang được sử dụng để dịch.</string>
@@ -23,7 +19,6 @@
   <string name="message_start_foreground_service">Ứng dụng khởi chạy dịch vụ nền để chụp và dịch nội dung màn hình.\n\nẢnh chụp sẽ không được lưu hay gửi đi.</string>
   <string name="label_confirm_start_foreground_service">Bắt đầu</string>
   <string name="label_dismiss_start_foreground_service">Kết thúc</string>
-  <string name="snack_message_start_foreground_service">Ứng dụng khởi chạy dịch vụ nền để chụp và dịch nội dung màn hình.</string>
 
   <!-- OverlayService -->
   <string name="service_menu_finish">Kết thúc</string>
@@ -36,18 +31,6 @@
   <string name="title_voice_list_view">Giọng nói có sẵn</string>
 
   <!-- Dialog -->
-  <string name="message_authentication_error">Lỗi xác thực</string>
-  <string name="message_authentication_error_detail">Máy chủ xác thực không phản hồi.\nVui lòng thử lại sau.</string>
-  <string name="message_untrusted_environment">Môi trường không đáng tin cậy</string>
-  <string name="message_untrusted_environment_detail">Ứng dụng của bạn không vượt qua kiểm tra tính toàn vẹn của Google Play.</string>
-  <string name="message_unknown_device">Thiết bị không xác định</string>
-  <string name="message_unknown_device_detail">Thiết bị này không được hỗ trợ.</string>
-  <string name="message_authentication_required">Yêu cầu xác thực</string>
-  <string name="message_authentication_required_detail">Bạn cần đăng nhập bằng tài khoản Google.</string>
-  <string name="message_playstore_update_required">Cần cập nhật Play Store</string>
-  <string name="message_playstore_update_required_detail">Không thể kết nối với dịch vụ của Play Store.\nCó thể bạn đang dùng phiên bản cũ.</string>
-  <string name="message_unknown_source">Tải ứng dụng từ Google Play</string>
-  <string name="message_unknown_source_detail">Để tiếp tục sử dụng ứng dụng, hãy tải từ Google Play.</string>
   <string name="message_force_update">Cần cập nhật</string>
   <string name="message_force_update_detail">Phiên bản này không còn được hỗ trợ.\nVui lòng cập nhật từ cửa hàng.</string>
   <string name="message_service_unavailable">Dịch vụ tạm thời không khả dụng</string>
@@ -56,61 +39,57 @@
   <string name="message_network_unavailable_detail">Không thể kết nối mạng.\nVui lòng kiểm tra và thử lại.</string>
   <string name="message_translate_fixedarea_warn">Cảnh báo pin</string>
   <string name="message_translate_fixedarea_warn_detail">Pin có thể hết nhanh chóng.</string>
-  <string name="message_translate_fixedarea_promotion">Thông tin mua sản phẩm</string>
-  <string name="message_translate_fixedarea_promotion_detail">Một lời nhắc nhở thân thiện về các tính năng cao cấp của chúng tôi sẽ xuất hiện mỗi %1$s phút.</string>
-  <string name="message_free_trial_ends">Thời gian dùng thử miễn phí của bạn đã kết thúc.</string>
-  <string name="message_free_trial_ends_detail">Bạn có muốn xem quảng cáo để gia hạn thời gian dùng thử không?</string>
-  <string name="message_ad_reward">Bạn đã nhận thêm %1$d phút dùng thử miễn phí!</string>
-  <string name="message_ad_reward_detail">Hãy trải nghiệm miễn phí tất cả các tính năng cao cấp trong %1$d phút tiếp theo.</string>
+  <string name="ad_gate_loading">Đang chuẩn bị quảng cáo…</string>
+  <string name="ad_gate_reward_notice">Xem hết quảng cáo để dùng ứng dụng không quảng cáo cho đến khi bạn đóng nó.</string>
 
   <!-- SettingsActivity -->
   <string name="settings_title">Cài đặt</string>
   <string name="settings_menu_cat_pointer">Con trỏ</string>
   <string name="settings_menu_pointer_docking_delay">Trễ kết nối</string>
-  <string name="settings_menu_haptic_feedback_to_detection">Rung khi phát hiện</string>
+  <string name="settings_menu_haptic_feedback_to_detection">Phản hồi xúc giác khi phát hiện</string>
   <string name="settings_menu_cat_menubar">Thanh menu</string>
   <string name="settings_menu_menubar_transparency">Độ trong suốt của menu</string>
   <string name="settings_menu_menubar_composition">Chức năng menu</string>
-  <string name="settings_menu_cat_ai">Sửa lỗi AI</string>
   <string name="settings_menu_cat_translation">Dịch</string>
   <string name="settings_menu_translation_transparency">Độ trong suốt của dịch</string>
   <string name="settings_menu_translation_close_delay">Trễ đóng</string>
-  <string name="settings_menu_automated_read_aloud">Đọc tự động</string>
+  <string name="settings_menu_automated_read_aloud">Tự động đọc bản dịch</string>
   <string name="settings_menu_reply_transparency">Độ trong suốt của phản hồi</string>
   <string name="settings_menu_cat_tts">Văn bản thành giọng nói</string>
+  <string name="settings_menu_tts_read_target">Nội dung đọc</string>
+  <string name="settings_tts_read_target_source">Bản gốc</string>
+  <string name="settings_tts_read_target_target">Bản dịch</string>
   <string name="settings_menu_tts_voices">Giọng TTS</string>
   <string name="settings_menu_tts_rate">Tốc độ TTS</string>
   <string name="settings_menu_cat_about">Về</string>
-  <string name="settings_menu_on_premium_free_trial">Đang dùng Premium</string>
-  <string name="settings_menu_premium_free_trial_remain">Còn lại %1$d phút</string>
-  <string name="settings_menu_your_premium_benefits">Lợi ích của bạn</string>
-  <string name="settings_menu_your_premium_benefits_peding">Lợi ích (đang chờ)</string>
   <string name="settings_menu_app_version">Phiên bản ứng dụng</string>
   <string name="settings_menu_app_version_latest">(Mới nhất)</string>
 
   <!-- HelpTextDetectModeView, HelpTranslationKitView -->
-  <string name="help_text_no_limit">Tất cả đều không giới hạn với Premium</string>
   <string name="help_text_no_limit_free">Không giới hạn số lượng, không giới hạn thời gian</string>
-  <string name="help_text_no_limit_title">Trải nghiệm không giới hạn</string>
-  <string name="help_text_no_limit_free_title">Miễn phí, không giới hạn</string>
-  <string name="help_text_get_premium">Nâng cấp Premium</string>
+  <string name="help_text_deepl_own_key">Sử dụng khóa API DeepL cá nhân của bạn</string>
+  <string name="deepl_key_guide">Nhập khóa API DeepL của bạn để sử dụng bản dịch DeepL.</string>
+  <string name="deepl_key_signup_guide">Đăng ký DeepL và bạn có thể đăng ký gói miễn phí.</string>
+  <string name="deepl_key_link_subscription">Đăng ký gói miễn phí</string>
+  <string name="deepl_key_link_keys">Kiểm tra khóa API của bạn</string>
+  <string name="deepl_key_active">Đã kích hoạt</string>
+  <string name="label_save">Lưu</string>
+  <string name="deepl_key_invalid">Khóa API không hợp lệ.</string>
+  <string name="deepl_key_validating">Đang xác minh…</string>
+  <string name="deepl_key_network_error">Không thể xác minh khóa do lỗi mạng. Khóa đã được lưu.</string>
 
   <!-- PremiumView -->
-  <string name="premium_view_get_premium">Nâng cấp Premium</string>
-  <string name="premium_view_get_premium_purchased">Quyền lợi Premium của bạn</string>
-  <string name="premium_view_get_premium_pending">Quyền lợi Premium của bạn (đang chờ)</string>
-  <string name="premium_view_get_premium_not_available">Premium hiện không khả dụng</string>
-  <string name="premium_view_price_format">%1$s/tháng • Đã bao gồm thuế\n• Hủy bất cứ lúc nào</string>
-  <string name="premium_view_title">Tất cả tính năng,\nKhông gián đoạn.</string>
-  <string name="premium_view_message">Không giới hạn số lượng, không giới hạn thời gian.\nPremium cung cấp tất cả</string>
-  <string name="premium_view_description_azure">Dịch chính xác hầu hết các ngôn ngữ trên thế giới.</string>
-  <string name="premium_view_description_deepl">Cung cấp bản dịch chất lượng, diễn đạt đúng ý nghĩa.</string>
-  <string name="premium_view_description_papago">Papago sử dụng trí tuệ nhân tạo để dịch tự động nhiều ngôn ngữ khác nhau.</string>
-  <string name="premium_view_description_google">Dịch nhanh nhất. Không giới hạn, miễn phí mãi mãi.</string>
-  <string name="premium_view_description_sentence_detection">Dùng tay kéo để dịch từng dòng.</string>
+  <string name="premium_view_description_sentence_detection">Câu được chọn tự động.</string>
   <string name="premium_view_description_paragraph_detection">Tự động phát hiện đoạn văn.</string>
   <string name="premium_view_description_select_detection">Bạn cũng có thể chọn vùng muốn dịch.</string>
-  <string name="premium_view_description_word_detection">Dịch từng từ luôn miễn phí và không giới hạn.</string>
+  <string name="premium_view_description_word_detection">Trỏ vào một từ để dịch ngay lập tức.</string>
   <string name="premium_view_description_fixed_area_detection">Bạn có thể dịch liên tục các khu vực cố định, như phụ đề phim.</string>
-  <string name="premium_view_unsubscribe">Hủy đăng ký</string>
+  <string name="say_here">Tôi ở đây!</string>
+  <string name="hint_settings_reopen">Nhấn đúp vào tay cầm để mở lại cài đặt</string>
+  <string name="openai_key_guide">Nhập khóa OpenAI API của bạn để dịch bằng các mô hình OpenAI.</string>
+  <string name="openai_key_signup_guide">Tạo khóa trong bảng điều khiển OpenAI. Mức sử dụng được tính phí vào tài khoản OpenAI của bạn.</string>
+  <string name="openai_key_link_keys">Lấy khóa API của bạn</string>
+  <string name="openai_key_link_billing">Thanh toán và mức sử dụng</string>
+  <string name="openai_model_label">Mô hình</string>
+  <string name="help_text_openai_own_key">Sử dụng khóa API OpenAI cá nhân của bạn</string>
 </resources>

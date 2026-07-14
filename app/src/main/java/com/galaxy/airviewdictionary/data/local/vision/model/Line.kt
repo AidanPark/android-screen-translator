@@ -2,6 +2,7 @@ package com.galaxy.airviewdictionary.data.local.vision.model
 
 import android.graphics.Bitmap
 import android.graphics.Color
+import androidx.core.graphics.get
 import android.graphics.Rect
 import com.galaxy.airviewdictionary.data.local.vision.WritingDirection
 import com.galaxy.airviewdictionary.extensions._cutDecimal
@@ -110,23 +111,23 @@ data class Line(
         val y2 = (boundingBox.top + 2 * boundingBox.height() / 3).coerceIn(0, bitmap.height - 1)
 
         val leftPixels = listOfNotNull(
-            if (left >= 0) bitmap.getPixel(left, y1) else null,
-            if (left >= 0) bitmap.getPixel(left, y2) else null
+            if (left >= 0) bitmap[left, y1] else null,
+            if (left >= 0) bitmap[left, y2] else null
         )
 
         val rightPixels = listOfNotNull(
-            if (right < bitmap.width) bitmap.getPixel(right, y1) else null,
-            if (right < bitmap.width) bitmap.getPixel(right, y2) else null
+            if (right < bitmap.width) bitmap[right, y1] else null,
+            if (right < bitmap.width) bitmap[right, y2] else null
         )
 
         val topPixels = listOfNotNull(
-            if (top >= 0) bitmap.getPixel(x1, top) else null,
-            if (top >= 0) bitmap.getPixel(x2, top) else null
+            if (top >= 0) bitmap[x1, top] else null,
+            if (top >= 0) bitmap[x2, top] else null
         )
 
         val bottomPixels = listOfNotNull(
-            if (bottom < bitmap.height) bitmap.getPixel(x1, bottom) else null,
-            if (bottom < bitmap.height) bitmap.getPixel(x2, bottom) else null
+            if (bottom < bitmap.height) bitmap[x1, bottom] else null,
+            if (bottom < bitmap.height) bitmap[x2, bottom] else null
         )
 
         val pixelColors = leftPixels + rightPixels + topPixels + bottomPixels

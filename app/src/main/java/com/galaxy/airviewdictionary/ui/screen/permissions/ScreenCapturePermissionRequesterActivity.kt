@@ -3,7 +3,9 @@ package com.galaxy.airviewdictionary.ui.screen.permissions
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.media.projection.MediaProjectionConfig
 import android.media.projection.MediaProjectionManager
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -35,8 +37,16 @@ class ScreenCapturePermissionRequesterActivity : AVDActivity() {
             finish()
         }
 
-        // 화면 캡처 권한 요청
-        val captureIntent = mediaProjectionManager.createScreenCaptureIntent()
+        // 화면 캡처 권한 요청.
+        // Android 14(API 34)+ 에서는 '단일 앱 / 전체 화면' 선택지가 뜨는데,
+        // 전체 화면 캡처로 고정하여 사용자가 헷갈리지 않고 전체 화면만 공유하도록 한다.
+        val captureIntent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            mediaProjectionManager.createScreenCaptureIntent(
+                MediaProjectionConfig.createConfigForDefaultDisplay()
+            )
+        } else {
+            mediaProjectionManager.createScreenCaptureIntent()
+        }
         screenCaptureLauncher.launch(captureIntent)
     }
 }

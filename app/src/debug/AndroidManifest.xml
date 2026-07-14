@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 디버그 빌드 전용 테스트 화면. 릴리스 APK에는 포함되지 않는다. -->
+    <application>
+
+        <activity
+            android:name=".ui.screen.test.TestTranslationActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".ui.screen.test.TestCapturedActivity"
+            android:configChanges="orientation|screenSize"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:theme="@style/Theme.ScreenTranslator.Fullscreen" />
+
+        <activity
+            android:name=".ui.screen.test.TestVisionTextActivity"
+            android:configChanges="orientation|screenSize"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:theme="@style/Theme.ScreenTranslator.Fullscreen" />
+
+    </application>
+
+</manifest>

@@ -8,14 +8,10 @@
   <!-- Overlay Permission -->
   <string name="message_permission_overlay">필요한 권한:\n다른 앱 위에 표시</string>
   <string name="message_permission_overlay_detail">스크린 번역기를 실행하려면 다른 앱 위에 표시 권한을 허용해야 합니다.</string>
-  <string name="message_permission_overlay_denied">오버레이 권한이 거부됨</string>
-  <string name="message_permission_overlay_denied_detail">오버레이 권한이 허용되지 않았습니다.\n앱을 종료합니다.</string>
 
   <!-- MediaProjection token 요청 -->
   <string name="message_media_projection">필요한 권한:\n화면 녹화</string>
   <string name="message_media_projection_detail">스크린 번역기를 실행하려면 화면 녹화 권한이 필요합니다.\n\n화면의 정보는 번역 목적에만 사용되며 저장되거나 전송되지 않습니다.</string>
-  <string name="message_media_projection_denied">화면 녹화 권한이 거부됨</string>
-  <string name="message_media_projection_denied_detail">화면 녹화 권한이 허용되지 않았습니다.\n앱을 종료합니다.</string>
 
   <!-- Foreground Service 시작 알림 -->
   <string name="notification_foreground_service">화면 캡처 기능이 번역 작업을 위해 사용 중입니다.</string>
@@ -23,7 +19,6 @@
   <string name="message_start_foreground_service">화면 내용을 캡처하고 번역하기 위해 포그라운드 서비스를 시작합니다.\n\n캡처된 이미지는 저장되거나 외부로 전송되지 않습니다.</string>
   <string name="label_confirm_start_foreground_service">시작</string>
   <string name="label_dismiss_start_foreground_service">종료</string>
-  <string name="snack_message_start_foreground_service">화면 내용을 캡처하고 번역하기 위해 포그라운드 서비스를 시작합니다.</string>
 
   <!-- OverlayService -->
   <string name="service_menu_finish">종료</string>
@@ -36,18 +31,6 @@
   <string name="title_voice_list_view">사용 가능한 음성</string>
 
   <!-- Dialog -->
-  <string name="message_authentication_error">인증 오류</string>
-  <string name="message_authentication_error_detail">인증 서버가 응답하지 않습니다.\n나중에 다시 시도해 주세요.</string>
-  <string name="message_untrusted_environment">신뢰할 수 없는 환경</string>
-  <string name="message_untrusted_environment_detail">앱이 Google Play 무결성 검사를 통과하지 못한 것으로 보입니다.</string>
-  <string name="message_unknown_device">알 수 없는 기기</string>
-  <string name="message_unknown_device_detail">이 기기는 지원되지 않습니다.</string>
-  <string name="message_authentication_required">인증 필요</string>
-  <string name="message_authentication_required_detail">Google 계정으로 로그인해야 합니다.</string>
-  <string name="message_playstore_update_required">Play 스토어 업데이트 필요</string>
-  <string name="message_playstore_update_required_detail">Play 스토어 서비스 연결에 실패했습니다.\n기기에 설치된 Play 스토어 버전이 오래되었을 수 있습니다.</string>
-  <string name="message_unknown_source">이 앱을 Play에서 설치하세요</string>
-  <string name="message_unknown_source_detail">이 훌륭한 앱을 계속 사용하려면 Google Play에서 설치해 주세요.</string>
   <string name="message_force_update">업데이트 필요</string>
   <string name="message_force_update_detail">이 버전은 더 이상 지원되지 않습니다.\n스토어로 이동해 주세요.</string>
   <string name="message_service_unavailable">서비스 이용 불가</string>
@@ -56,61 +39,57 @@
   <string name="message_network_unavailable_detail">네트워크에 연결할 수 없습니다.\n연결 상태를 확인 후 다시 시도해 주세요.</string>
   <string name="message_translate_fixedarea_warn">배터리 주의</string>
   <string name="message_translate_fixedarea_warn_detail">배터리가 빠르게 소모될 수 있습니다.</string>
-  <string name="message_translate_fixedarea_promotion">제품 구매 정보</string>
-  <string name="message_translate_fixedarea_promotion_detail">프리미엄 기능에 대한 안내가 %1$s분마다 표시됩니다.</string>
-  <string name="message_free_trial_ends">무료 체험이 종료되었습니다.</string>
-  <string name="message_free_trial_ends_detail">광고를 시청하고 무료체험 시간을 연장할까요?</string>
-  <string name="message_ad_reward">무료 체험 %1$d분이 추가되었습니다!</string>
-  <string name="message_ad_reward_detail">지금부터 %1$d분 동안 모든 프리미엄 기능을 자유롭게 이용하실 수 있습니다.</string>
+  <string name="ad_gate_loading">광고를 준비하고 있습니다…</string>
+  <string name="ad_gate_reward_notice">광고를 끝까지 보면 앱을 닫을 때까지 광고 없이 사용할 수 있습니다.</string>
 
   <!-- SettingsActivity -->
   <string name="settings_title">설정</string>
   <string name="settings_menu_cat_pointer">포인터</string>
   <string name="settings_menu_pointer_docking_delay">도킹 지연시간</string>
-  <string name="settings_menu_haptic_feedback_to_detection">감지 시 진동</string>
+  <string name="settings_menu_haptic_feedback_to_detection">감지 시 햅틱</string>
   <string name="settings_menu_cat_menubar">메뉴바</string>
   <string name="settings_menu_menubar_transparency">메뉴바 투명도</string>
   <string name="settings_menu_menubar_composition">기능 조합</string>
-  <string name="settings_menu_cat_ai">AI 원문 보정</string>
   <string name="settings_menu_cat_translation">번역</string>
   <string name="settings_menu_translation_transparency">번역창 투명도</string>
   <string name="settings_menu_translation_close_delay">닫기 지연시간</string>
-  <string name="settings_menu_automated_read_aloud">자동 읽기</string>
+  <string name="settings_menu_automated_read_aloud">번역 자동 읽기</string>
   <string name="settings_menu_reply_transparency">답장창 투명도</string>
   <string name="settings_menu_cat_tts">TTS</string>
+  <string name="settings_menu_tts_read_target">읽기 대상</string>
+  <string name="settings_tts_read_target_source">소스</string>
+  <string name="settings_tts_read_target_target">타겟</string>
   <string name="settings_menu_tts_voices">TTS 목소리</string>
   <string name="settings_menu_tts_rate">TTS 속도</string>
   <string name="settings_menu_cat_about">정보</string>
-  <string name="settings_menu_on_premium_free_trial">프리미엄 체험중</string>
-  <string name="settings_menu_premium_free_trial_remain">%1$d분 남음</string>
-  <string name="settings_menu_your_premium_benefits">내 프리미엄 혜택</string>
-  <string name="settings_menu_your_premium_benefits_peding">내 프리미엄 혜택</string>
+  <string name="deepl_key_guide">DeepL API 키를 입력하면 DeepL 번역 기능을 이용할 수 있습니다.</string>
+  <string name="deepl_key_signup_guide">DeepL 에 가입하면 무료 플랜을 신청할 수 있습니다.</string>
+  <string name="deepl_key_link_subscription">무료 플랜 구독 신청</string>
+  <string name="deepl_key_link_keys">API 키 확인</string>
+  <string name="deepl_key_active">활성화됨</string>
+  <string name="deepl_key_invalid">API 키가 유효하지 않습니다.</string>
+  <string name="deepl_key_validating">확인 중\u2026</string>
+  <string name="deepl_key_network_error">네트워크 오류로 키를 검증하지 못했습니다. 키는 저장되었습니다.</string>
+  <string name="label_save">저장</string>
   <string name="settings_menu_app_version">앱 버전</string>
   <string name="settings_menu_app_version_latest">(최신)</string>
 
   <!-- HelpTextDetectModeView, HelpTranslationKitView -->
-  <string name="help_text_no_limit">프리미엄 이용 시 모든 기능 무제한</string>
   <string name="help_text_no_limit_free">사용량 제한 없음, 기간 제한 없음</string>
-  <string name="help_text_no_limit_title">제한 없이 자유롭게 사용하세요</string>
-  <string name="help_text_no_limit_free_title">광고 없이 무료로!</string>
-  <string name="help_text_get_premium">프리미엄 이용하기</string>
+  <string name="help_text_deepl_own_key">개인 DeepL API 키로 동작합니다</string>
 
   <!-- PremiumView -->
-  <string name="premium_view_get_premium">프리미엄 이용하기</string>
-  <string name="premium_view_get_premium_purchased">내 프리미엄 혜택</string>
-  <string name="premium_view_get_premium_pending">내 프리미엄 혜택 (대기 중)</string>
-  <string name="premium_view_get_premium_not_available">프리미엄 이용 불가 (현재)</string>
-  <string name="premium_view_price_format">%1$s/월 • VAT 포함\n• 언제든지 해지 가능</string>
-  <string name="premium_view_title">모든 기능,\n광고 없이.</string>
-  <string name="premium_view_message">사용량과 기간에 제한 없이\n프리미엄에서 모두 이용할 수 있어요.</string>
-  <string name="premium_view_description_azure">전 세계 대부분의 언어를 정확히 번역합니다.</string>
-  <string name="premium_view_description_deepl">의미를 잘 살린 고급 번역을 제공합니다.</string>
-  <string name="premium_view_description_papago">Papago는 뉴럴 기계 번역 알고리즘으로 다양한 언어를 자동 번역합니다.</string>
-  <string name="premium_view_description_google">가장 빠른 번역. 무제한, 영원히 무료입니다.</string>
-  <string name="premium_view_description_sentence_detection">손가락으로 줄 단위 번역이 가능합니다.</string>
+  <string name="premium_view_description_sentence_detection">문장 단위로 자동 선택됩니다.</string>
   <string name="premium_view_description_paragraph_detection">문단 단위를 자동으로 인식합니다.</string>
   <string name="premium_view_description_select_detection">원하는 영역을 직접 지정할 수도 있습니다.</string>
-  <string name="premium_view_description_word_detection">단어 단위 번역은 언제나 무료이며 무제한입니다.</string>
+  <string name="premium_view_description_word_detection">단어를 가리키면 바로 번역됩니다.</string>
   <string name="premium_view_description_fixed_area_detection">영화 자막과 같은 고정된 영역을 지속적으로 번역할 수 있습니다.</string>
-  <string name="premium_view_unsubscribe">구독 해지</string>
+  <string name="say_here">여기 있어요!</string>
+  <string name="hint_settings_reopen">핸들을 두 번 탭하면 설정을 다시 열 수 있어요</string>
+  <string name="openai_key_guide">OpenAI 모델로 번역하려면 OpenAI API 키를 입력하세요.</string>
+  <string name="openai_key_signup_guide">OpenAI 대시보드에서 키를 생성하세요. 사용량은 OpenAI 계정으로 청구됩니다.</string>
+  <string name="openai_key_link_keys">API 키 받기</string>
+  <string name="openai_key_link_billing">결제 및 사용량</string>
+  <string name="openai_model_label">모델</string>
+  <string name="help_text_openai_own_key">개인 OpenAI API 키로 동작합니다</string>
 </resources>

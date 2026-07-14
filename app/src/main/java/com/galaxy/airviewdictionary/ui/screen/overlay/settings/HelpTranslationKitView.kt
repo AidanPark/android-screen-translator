@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
 import android.graphics.PixelFormat
-import android.os.Build
 import android.view.Gravity
 import android.view.WindowManager
 import androidx.compose.foundation.Image
@@ -47,7 +46,7 @@ import androidx.compose.ui.unit.sp
 import androidx.core.net.toUri
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.android.billingclient.api.Purchase
+import com.galaxy.airviewdictionary.R
 import com.galaxy.airviewdictionary.core.OverlayService
 import com.galaxy.airviewdictionary.data.remote.translation.TranslationKitType
 import com.galaxy.airviewdictionary.ui.screen.main.SettingsActivity
@@ -73,11 +72,7 @@ class HelpTranslationKitView private constructor() : OverlayView() {
     override val layoutParams: WindowManager.LayoutParams = WindowManager.LayoutParams(
         WindowManager.LayoutParams.MATCH_PARENT,
         WindowManager.LayoutParams.MATCH_PARENT,
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
-        } else {
-            WindowManager.LayoutParams.TYPE_PHONE
-        },
+        WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
         WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
                 or WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN
                 or WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
@@ -98,11 +93,6 @@ class HelpTranslationKitView private constructor() : OverlayView() {
             val isPortrait = configuration.orientation == Configuration.ORIENTATION_PORTRAIT
 
             val translationKitType = remember { mutableStateOf(initialTranslationKitType) }
-
-            val purchaseState by menuBarViewModel.billingRepository.purchaseStateFlow.collectAsStateWithLifecycle(
-                lifecycle = lifecycleOwner.lifecycle,
-                initialValue = Purchase.PurchaseState.UNSPECIFIED_STATE
-            )
 
             if (isPortrait) {
                 Column(
@@ -143,11 +133,10 @@ class HelpTranslationKitView private constructor() : OverlayView() {
                         contentAlignment = Alignment.TopCenter
                     ) {
                         ProductBox(
-                            isFree = translationKitType.value == TranslationKitType.GOOGLE,
-                            needsPurchase = purchaseState != Purchase.PurchaseState.PURCHASED,
-                            onPurchase = {
-                                clear()
-                                SettingsActivity.purchase(context = context)
+                            descriptionResId = when (translationKitType.value) {
+                                TranslationKitType.DEEPL -> R.string.help_text_deepl_own_key
+                                TranslationKitType.OPENAI -> R.string.help_text_openai_own_key
+                                else -> R.string.help_text_no_limit_free
                             }
                         )
                     }
@@ -186,11 +175,10 @@ class HelpTranslationKitView private constructor() : OverlayView() {
                         contentAlignment = Alignment.Center
                     ) {
                         ProductBox(
-                            isFree = translationKitType.value == TranslationKitType.GOOGLE,
-                            needsPurchase = purchaseState != Purchase.PurchaseState.PURCHASED,
-                            onPurchase = {
-                                clear()
-                                SettingsActivity.purchase(context = context)
+                            descriptionResId = when (translationKitType.value) {
+                                TranslationKitType.DEEPL -> R.string.help_text_deepl_own_key
+                                TranslationKitType.OPENAI -> R.string.help_text_openai_own_key
+                                else -> R.string.help_text_no_limit_free
                             }
                         )
                     }

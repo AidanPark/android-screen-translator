@@ -8,14 +8,10 @@
     <!-- Overlay Permission -->
     <string name="message_permission_overlay">Nødvendig tillatelse:\nVis over andre apper</string>
     <string name="message_permission_overlay_detail">For å starte Skjermoversetter må du gi tillatelse til å vises over andre apper.</string>
-    <string name="message_permission_overlay_denied">Overleggstillatelse ble nektet</string>
-    <string name="message_permission_overlay_denied_detail">Overleggstillatelse er ikke gitt.\nAppen avsluttes.</string>
 
     <!-- MediaProjection token 요청 -->
     <string name="message_media_projection">Nødvendig tillatelse:\nSkjermopptak</string>
     <string name="message_media_projection_detail">For å starte Skjermoversetter må du gi tillatelse til skjermopptak.\n\nInformasjonen på skjermen brukes kun til oversettelse og lagres eller overføres ikke.</string>
-    <string name="message_media_projection_denied">Skjermopptakstillatelse ble nektet</string>
-    <string name="message_media_projection_denied_detail">Skjermopptakstillatelse er ikke gitt.\nAppen avsluttes.</string>
 
     <!-- Foreground Service 시작 알림 -->
     <string name="notification_foreground_service">Skjermopptak brukes for oversettelse.</string>
@@ -23,7 +19,6 @@
     <string name="message_start_foreground_service">Appen starter en forgrunnstjeneste for å fange og oversette skjerminnhold.\n\nOpptatte bilder lagres ikke eller deles.</string>
     <string name="label_confirm_start_foreground_service">Start</string>
     <string name="label_dismiss_start_foreground_service">Avslutt</string>
-    <string name="snack_message_start_foreground_service">Appen starter en forgrunnstjeneste for å fange og oversette skjerminnhold.</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">Avslutt</string>
@@ -36,18 +31,6 @@
     <string name="title_voice_list_view">Tilgjengelige stemmer</string>
 
     <!-- Dialog -->
-    <string name="message_authentication_error">Autentiseringsfeil</string>
-    <string name="message_authentication_error_detail">Autentiseringsserveren svarer ikke.\nVennligst prøv igjen senere.</string>
-    <string name="message_untrusted_environment">Utrustet miljø</string>
-    <string name="message_untrusted_environment_detail">Det ser ut til at appen din ikke bestod Google Play-integritetssjekken.</string>
-    <string name="message_unknown_device">Ukjent enhet</string>
-    <string name="message_unknown_device_detail">Denne enheten støttes ikke.</string>
-    <string name="message_authentication_required">Autentisering kreves</string>
-    <string name="message_authentication_required_detail">Du må være logget inn med en Google-konto.</string>
-    <string name="message_playstore_update_required">Oppdatering av Play Store kreves</string>
-    <string name="message_playstore_update_required_detail">Tilkobling til Play Store-tjenesten mislyktes.\nEn gammel versjon av Play Store kan være installert på enheten.</string>
-    <string name="message_unknown_source">Hent denne appen fra Play</string>
-    <string name="message_unknown_source_detail">For å fortsette å bruke appen, last den ned fra Google Play.</string>
     <string name="message_force_update">Oppdatering nødvendig</string>
     <string name="message_force_update_detail">Denne versjonen støttes ikke lenger.\nGå til butikken.</string>
     <string name="message_service_unavailable">Tjenesten er utilgjengelig</string>
@@ -56,61 +39,57 @@
     <string name="message_network_unavailable_detail">Nettverket er utilgjengelig.\nVennligst sjekk og prøv igjen.</string>
     <string name="message_translate_fixedarea_warn">Batterivarsel</string>
     <string name="message_translate_fixedarea_warn_detail">Batteriet kan bli raskt utladet.</string>
-    <string name="message_translate_fixedarea_promotion">Produktkjøpsinformasjon</string>
-    <string name="message_translate_fixedarea_promotion_detail">En vennlig påminnelse om premiumfunksjonene våre vises hvert %1$s minutt.</string>
-    <string name="message_free_trial_ends">Din gratis prøveperiode er over.</string>
-    <string name="message_free_trial_ends_detail">Vil du se en annonse for å forlenge prøveperioden?</string>
-    <string name="message_ad_reward">Du har mottatt %1$d ekstra minutter med gratis prøveperiode!</string>
-    <string name="message_ad_reward_detail">Nyt alle premium-funksjoner gratis i de neste %1$d minuttene.</string>
+    <string name="ad_gate_loading">Forbereder en annonse…</string>
+    <string name="ad_gate_reward_notice">Se annonsen til slutten for å bruke appen reklamefritt til du lukker den.</string>
 
     <!-- SettingsActivity -->
     <string name="settings_title">Innstillinger</string>
     <string name="settings_menu_cat_pointer">Peker</string>
     <string name="settings_menu_pointer_docking_delay">Tilkoblingsforsinkelse</string>
-    <string name="settings_menu_haptic_feedback_to_detection">Vibrasjon ved deteksjon</string>
+    <string name="settings_menu_haptic_feedback_to_detection">Haptisk tilbakemelding ved gjenkjenning</string>
     <string name="settings_menu_cat_menubar">Menylinje</string>
     <string name="settings_menu_menubar_transparency">Menygjennomsiktighet</string>
     <string name="settings_menu_menubar_composition">Menyfunksjoner</string>
-    <string name="settings_menu_cat_ai">AI-korreksjon</string>
     <string name="settings_menu_cat_translation">Oversettelse</string>
     <string name="settings_menu_translation_transparency">Gjennomsiktighet for oversettelse</string>
     <string name="settings_menu_translation_close_delay">Lukkeforsinkelse</string>
-    <string name="settings_menu_automated_read_aloud">Automatisk opplesning</string>
+    <string name="settings_menu_automated_read_aloud">Automatisk opplesning av oversettelse</string>
     <string name="settings_menu_reply_transparency">Svar-gjennomsiktighet</string>
     <string name="settings_menu_cat_tts">Tekst til tale</string>
+    <string name="settings_menu_tts_read_target">Opplesningsmål</string>
+    <string name="settings_tts_read_target_source">Original</string>
+    <string name="settings_tts_read_target_target">Oversettelse</string>
     <string name="settings_menu_tts_voices">TTS-stemmer</string>
     <string name="settings_menu_tts_rate">TTS-hastighet</string>
     <string name="settings_menu_cat_about">Om</string>
-    <string name="settings_menu_on_premium_free_trial">Premium prøveperiode aktiv</string>
-    <string name="settings_menu_premium_free_trial_remain">%1$d minutter igjen</string>
-    <string name="settings_menu_your_premium_benefits">Dine fordeler</string>
-    <string name="settings_menu_your_premium_benefits_peding">Fordeler (venter)</string>
     <string name="settings_menu_app_version">Appversjon</string>
     <string name="settings_menu_app_version_latest">(Nyeste)</string>
 
     <!-- HelpTextDetectModeView, HelpTranslationKitView -->
-    <string name="help_text_no_limit">Alt er ubegrenset med Premium</string>
     <string name="help_text_no_limit_free">Ingen mengdebegrensning, ingen tidsbegrensning</string>
-    <string name="help_text_no_limit_title">Bruk det uten begrensning</string>
-    <string name="help_text_no_limit_free_title">Gratis uten begrensninger</string>
-    <string name="help_text_get_premium">Få Premium</string>
+    <string name="help_text_deepl_own_key">Bruker din personlige DeepL API-nøkkel</string>
+    <string name="deepl_key_guide">Skriv inn DeepL API-nøkkelen din for å bruke DeepL-oversettelse.</string>
+    <string name="deepl_key_signup_guide">Registrer deg hos DeepL, så kan du abonnere på gratisplanen.</string>
+    <string name="deepl_key_link_subscription">Abonner på gratisplanen</string>
+    <string name="deepl_key_link_keys">Sjekk API-nøkkelen din</string>
+    <string name="deepl_key_active">Aktivert</string>
+    <string name="label_save">Lagre</string>
+    <string name="deepl_key_invalid">API-nøkkelen er ikke gyldig.</string>
+    <string name="deepl_key_validating">Verifiserer…</string>
+    <string name="deepl_key_network_error">Kunne ikke verifisere nøkkelen på grunn av en nettverksfeil. Nøkkelen ble lagret.</string>
 
     <!-- PremiumView -->
-    <string name="premium_view_get_premium">Få Premium</string>
-    <string name="premium_view_get_premium_purchased">Dine Premium-fordeler</string>
-    <string name="premium_view_get_premium_pending">Dine Premium-fordeler (venter)</string>
-    <string name="premium_view_get_premium_not_available">Premium (for øyeblikket utilgjengelig)</string>
-    <string name="premium_view_price_format">%1$s/måned • Inkluderer MVA\n• Avslutt når som helst</string>
-    <string name="premium_view_title">Alle funksjoner,\ningen avbrudd.</string>
-    <string name="premium_view_message">Ingen mengde- eller tidsbegrensning.\nAlt er ubegrenset med Premium.</string>
-    <string name="premium_view_description_azure">Presis oversettelse av de fleste språk i verden.</string>
-    <string name="premium_view_description_deepl">Vi tilbyr nøyaktige og meningsfulle oversettelser.</string>
-    <string name="premium_view_description_papago">Papago oversetter automatisk via nevrale maskinoversettelser.</string>
-    <string name="premium_view_description_google">Den raskeste oversettelsen. Ubegrenset og gratis for alltid.</string>
-    <string name="premium_view_description_sentence_detection">Bruk fingrene for å oversette linjer.</string>
+    <string name="premium_view_description_sentence_detection">Setninger velges automatisk.</string>
     <string name="premium_view_description_paragraph_detection">Avsnitt gjenkjennes automatisk.</string>
     <string name="premium_view_description_select_detection">Velg nøyaktig område du vil oversette.</string>
-    <string name="premium_view_description_word_detection">Ord-for-ord oversettelse er alltid gratis og ubegrenset.</string>
+    <string name="premium_view_description_word_detection">Pek på et ord for å oversette det umiddelbart.</string>
     <string name="premium_view_description_fixed_area_detection">Du kan kontinuerlig oversette faste områder, som filmtekster.</string>
-    <string name="premium_view_unsubscribe">Avslutt abonnement</string>
+  <string name="say_here">Jeg er her!</string>
+  <string name="hint_settings_reopen">Dobbelttrykk på håndtaket for å åpne innstillingene igjen</string>
+  <string name="openai_key_guide">Skriv inn OpenAI API-nøkkelen din for å oversette med OpenAI-modeller.</string>
+  <string name="openai_key_signup_guide">Opprett en nøkkel i OpenAI-dashbordet. Bruk faktureres til OpenAI-kontoen din.</string>
+  <string name="openai_key_link_keys">Hent API-nøkkelen din</string>
+  <string name="openai_key_link_billing">Fakturering og bruk</string>
+  <string name="openai_model_label">Modell</string>
+  <string name="help_text_openai_own_key">Bruker din personlige OpenAI API-nøkkel</string>
 </resources>

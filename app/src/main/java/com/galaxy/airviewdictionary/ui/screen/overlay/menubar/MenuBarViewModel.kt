@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.galaxy.airviewdictionary.data.local.preference.PreferenceRepository
 import com.galaxy.airviewdictionary.data.local.vision.TextDetectMode
-import com.galaxy.airviewdictionary.data.remote.billing.BillingRepository
 import com.galaxy.airviewdictionary.data.remote.translation.TranslationKitType
 import com.galaxy.airviewdictionary.data.remote.translation.TranslationRepository
 import com.galaxy.airviewdictionary.data.remote.translation.Language
@@ -18,7 +17,6 @@ import timber.log.Timber
 @Suppress("UNCHECKED_CAST")
 class MenuBarViewModelFactory(
     private val applicationContext: Context,
-    private val billingRepository: BillingRepository,
     private val preferenceRepository: PreferenceRepository,
     private val translationRepository: TranslationRepository,
 ) : ViewModelProvider.Factory {
@@ -26,7 +24,6 @@ class MenuBarViewModelFactory(
         if (modelClass.isAssignableFrom(MenuBarViewModel::class.java)) {
             return MenuBarViewModel(
                 applicationContext = applicationContext,
-                billingRepository = billingRepository,
                 preferenceRepository = preferenceRepository,
                 translationRepository = translationRepository
             ) as T
@@ -37,7 +34,6 @@ class MenuBarViewModelFactory(
 
 class MenuBarViewModel(
     private val applicationContext: Context,
-    val billingRepository: BillingRepository,
     val preferenceRepository: PreferenceRepository,
     val translationRepository: TranslationRepository
 ) : ViewModel() {
@@ -87,12 +83,10 @@ class MenuBarViewModel(
     init {
         Timber.tag(TAG).i("#### init ####")
         translationRepository.acquire()
-        billingRepository.acquire()
     }
 
     override fun onCleared() {
         translationRepository.release()
-        billingRepository.release()
         super.onCleared()
     }
 }

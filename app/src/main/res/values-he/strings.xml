@@ -8,14 +8,10 @@
   <!-- Overlay Permission -->
   <string name="message_permission_overlay">הרשאה נדרשת:\nהצגה מעל אפליקציות אחרות</string>
   <string name="message_permission_overlay_detail">כדי להפעיל את מתרגם המסך, עליך להעניק הרשאה להופיע מעל אפליקציות אחרות.</string>
-  <string name="message_permission_overlay_denied">ההרשאה להצגה מעל אפליקציות נדחתה</string>
-  <string name="message_permission_overlay_denied_detail">ההרשאה להצגה מעל אפליקציות לא ניתנה.\nהיישום ייסגר.</string>
 
   <!-- MediaProjection token 요청 -->
   <string name="message_media_projection">הרשאה נדרשת:\nהקלטת מסך</string>
   <string name="message_media_projection_detail">כדי להפעיל את מתרגם המסך, עליך להעניק הרשאה להקלטת מסך.\n\nהמידע שעל המסך ישמש לצורכי תרגום בלבד ולא יועבר או יישמר במקום אחר.</string>
-  <string name="message_media_projection_denied">ההרשאה להקלטת מסך נדחתה</string>
-  <string name="message_media_projection_denied_detail">ההרשאה להקלטת מסך לא ניתנה.\nהיישום ייסגר.</string>
 
   <!-- Foreground Service 시작 알림 -->
   <string name="notification_foreground_service">פונקציית לכידת המסך בשימוש לצורכי תרגום.</string>
@@ -23,7 +19,6 @@
   <string name="message_start_foreground_service">האפליקציה מפעילה שירות רקע ללכידת ותרגום תוכן מהמסך.\n\nהתמונות שנתפסות אינן נשמרות או מועברות החוצה.</string>
   <string name="label_confirm_start_foreground_service">התחל</string>
   <string name="label_dismiss_start_foreground_service">סיים</string>
-  <string name="snack_message_start_foreground_service">האפליקציה מפעילה שירות רקע ללכידת ותרגום תוכן מהמסך.</string>
 
   <!-- OverlayService -->
   <string name="service_menu_finish">סיום</string>
@@ -36,18 +31,6 @@
   <string name="title_voice_list_view">קולות זמינים</string>
 
   <!-- Dialog -->
-  <string name="message_authentication_error">שגיאת אימות</string>
-  <string name="message_authentication_error_detail">שרת האימות אינו מגיב.\nאנא נסה שוב מאוחר יותר.</string>
-  <string name="message_untrusted_environment">סביבה לא מהימנה</string>
-  <string name="message_untrusted_environment_detail">נראה שהאפליקציה שלך לא עברה את בדיקת השלמות של Google Play.</string>
-  <string name="message_unknown_device">מכשיר לא ידוע</string>
-  <string name="message_unknown_device_detail">מכשיר זה אינו נתמך.</string>
-  <string name="message_authentication_required">נדרש אימות</string>
-  <string name="message_authentication_required_detail">יש להיכנס עם חשבון Google.</string>
-  <string name="message_playstore_update_required">נדרש עדכון מחנות Play</string>
-  <string name="message_playstore_update_required_detail">נכשל החיבור לשירות בחנות Play.\nייתכן שזה נובע מגירסה ישנה של חנות Play במכשיר.</string>
-  <string name="message_unknown_source">הורד את האפליקציה מחנות Play</string>
-  <string name="message_unknown_source_detail">כדי להמשיך להשתמש באפליקציה הנהדרת הזו, הורד אותה מ-Google Play.</string>
   <string name="message_force_update">נדרש עדכון</string>
   <string name="message_force_update_detail">גרסה זו אינה נתמכת עוד.\nגש לחנות.</string>
   <string name="message_service_unavailable">השירות אינו זמין</string>
@@ -56,61 +39,57 @@
   <string name="message_network_unavailable_detail">הרשת אינה זמינה.\nאנא בדוק ונסה שוב.</string>
   <string name="message_translate_fixedarea_warn">אזהרת סוללה</string>
   <string name="message_translate_fixedarea_warn_detail">הסוללה עלולה להתרוקן במהירות.</string>
-  <string name="message_translate_fixedarea_promotion">מידע על רכישת המוצר</string>
-  <string name="message_translate_fixedarea_promotion_detail">תזכורת ידידותית על התכונות המובחרות שלנו תופיע כל %1$s דקות.</string>
-  <string name="message_free_trial_ends">תקופת הניסיון החינמית שלך הסתיימה.</string>
-  <string name="message_free_trial_ends_detail">רוצה לצפות בפרסומת כדי להאריך את תקופת הניסיון?</string>
-  <string name="message_ad_reward">קיבלת %1$d דקות נוספות לניסיון חינם!</string>
-  <string name="message_ad_reward_detail">תיהנה מכל התכונות הפרימיום בחינם למשך %1$d הדקות הבאות.</string>
+  <string name="ad_gate_loading">מכינים מודעה…</string>
+  <string name="ad_gate_reward_notice">צפו במודעה עד הסוף כדי להשתמש באפליקציה ללא מודעות עד לסגירתה.</string>
 
   <!-- SettingsActivity -->
   <string name="settings_title">הגדרות</string>
   <string name="settings_menu_cat_pointer">מצביע</string>
   <string name="settings_menu_pointer_docking_delay">עיכוב עגינה</string>
-  <string name="settings_menu_haptic_feedback_to_detection">רטט בזיהוי</string>
+  <string name="settings_menu_haptic_feedback_to_detection">משוב מישושי בזיהוי</string>
   <string name="settings_menu_cat_menubar">תפריט עליון</string>
   <string name="settings_menu_menubar_transparency">שקיפות תפריט</string>
   <string name="settings_menu_menubar_composition">אפשרויות תפריט</string>
-  <string name="settings_menu_cat_ai">תיקון ב־AI</string>
   <string name="settings_menu_cat_translation">תרגום</string>
   <string name="settings_menu_translation_transparency">שקיפות תרגום</string>
   <string name="settings_menu_translation_close_delay">עיכוב סגירה</string>
-  <string name="settings_menu_automated_read_aloud">קריאה אוטומטית</string>
+  <string name="settings_menu_automated_read_aloud">קריאה אוטומטית של התרגום</string>
   <string name="settings_menu_reply_transparency">שקיפות תגובה</string>
   <string name="settings_menu_cat_tts">המרת טקסט לדיבור</string>
+  <string name="settings_menu_tts_read_target">יעד הקריאה</string>
+  <string name="settings_tts_read_target_source">מקור</string>
+  <string name="settings_tts_read_target_target">תרגום</string>
   <string name="settings_menu_tts_voices">קולות TTS</string>
   <string name="settings_menu_tts_rate">מהירות TTS</string>
   <string name="settings_menu_cat_about">אודות</string>
-  <string name="settings_menu_on_premium_free_trial">ניסיון פרימיום פעיל</string>
-  <string name="settings_menu_premium_free_trial_remain">נותרו %1$d דקות</string>
-  <string name="settings_menu_your_premium_benefits">ההטבות שלך</string>
-  <string name="settings_menu_your_premium_benefits_peding">הטבות (ממתין)</string>
   <string name="settings_menu_app_version">גרסת אפליקציה</string>
   <string name="settings_menu_app_version_latest">(העדכנית)</string>
 
   <!-- HelpTextDetectModeView, HelpTranslationKitView -->
-  <string name="help_text_no_limit">הכול ללא הגבלה בפרימיום</string>
   <string name="help_text_no_limit_free">אין הגבלת כמות, אין הגבלת זמן</string>
-  <string name="help_text_no_limit_title">הנאה ללא גבולות</string>
-  <string name="help_text_no_limit_free_title">חופשי וללא מגבלות</string>
-  <string name="help_text_get_premium">קבל פרימיום</string>
+  <string name="help_text_deepl_own_key">משתמש במפתח ה-API האישי שלך ב-DeepL</string>
+  <string name="deepl_key_guide">הזן את מפתח ה-API של DeepL כדי להשתמש בתרגום של DeepL.</string>
+  <string name="deepl_key_signup_guide">הירשם ל-DeepL ותוכל להירשם לתוכנית החינמית.</string>
+  <string name="deepl_key_link_subscription">הרשמה לתוכנית החינמית</string>
+  <string name="deepl_key_link_keys">בדוק את מפתח ה-API שלך</string>
+  <string name="deepl_key_active">הופעל</string>
+  <string name="label_save">שמור</string>
+  <string name="deepl_key_invalid">מפתח ה-API אינו תקין.</string>
+  <string name="deepl_key_validating">מאמת…</string>
+  <string name="deepl_key_network_error">לא ניתן היה לאמת את המפתח עקב שגיאת רשת. המפתח נשמר.</string>
 
   <!-- PremiumView -->
-  <string name="premium_view_get_premium">קבל פרימיום</string>
-  <string name="premium_view_get_premium_purchased">ההטבות שלך בפרימיום</string>
-  <string name="premium_view_get_premium_pending">ההטבות שלך בפרימיום (בהמתנה)</string>
-  <string name="premium_view_get_premium_not_available">קבל פרימיום (לא זמין כרגע)</string>
-  <string name="premium_view_price_format">%1$s/חודש • כולל מע”מ\n• ביטול בכל עת</string>
-  <string name="premium_view_title">כל הפיצ’רים,\n בלי הפרעות.</string>
-  <string name="premium_view_message">אין הגבלת כמות, אין הגבלת זמן.\nהכול ללא הגבלה בפרימיום</string>
-  <string name="premium_view_description_azure">מתרגם בדיוק רב את רוב השפות בעולם.</string>
-  <string name="premium_view_description_deepl">אנו מספקים תרגומים מתוחכמים הלוכדים את המשמעות היטב.</string>
-  <string name="premium_view_description_papago">Papago מתרגם אוטומטית שפות רבות באמצעות אלגוריתם NMT.</string>
-  <string name="premium_view_description_google">אנו מספקים את התרגום המהיר ביותר. חופשי, ללא הגבלה, לתמיד.</string>
-  <string name="premium_view_description_sentence_detection">השתמש באצבעך כדי לתרגם שורות.</string>
+  <string name="premium_view_description_sentence_detection">המשפטים נבחרים אוטומטית.</string>
   <string name="premium_view_description_paragraph_detection">יחידות פסקה מזוהות אוטומטית.</string>
   <string name="premium_view_description_select_detection">באפשרותך גם לבחור את הטווח הרצוי.</string>
-  <string name="premium_view_description_word_detection">תרגום לפי מילה חופשי וללא הגבלה תמיד.</string>
+  <string name="premium_view_description_word_detection">הצביעו על מילה כדי לתרגם אותה מיד.</string>
   <string name="premium_view_description_fixed_area_detection">באפשרותך לתרגם ברציפות אזורים קבועים, כמו כתוביות של סרטים.</string>
-  <string name="premium_view_unsubscribe">ביטול מנוי</string>
+  <string name="say_here">אני כאן!</string>
+  <string name="hint_settings_reopen">הקש פעמיים על הידית כדי לפתוח שוב את ההגדרות</string>
+  <string name="openai_key_guide">הזינו את מפתח OpenAI API שלכם כדי לתרגם עם מודלים של OpenAI.</string>
+  <string name="openai_key_signup_guide">צרו מפתח בלוח הבקרה של OpenAI. השימוש מחויב לחשבון OpenAI שלכם.</string>
+  <string name="openai_key_link_keys">קבלו את מפתח ה-API שלכם</string>
+  <string name="openai_key_link_billing">חיוב ושימוש</string>
+  <string name="openai_model_label">מודל</string>
+  <string name="help_text_openai_own_key">משתמש במפתח ה-API האישי שלך ב-OpenAI</string>
 </resources>

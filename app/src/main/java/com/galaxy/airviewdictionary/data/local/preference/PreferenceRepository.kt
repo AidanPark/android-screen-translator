@@ -11,8 +11,8 @@ import androidx.datastore.preferences.core.floatPreferencesKey
 import androidx.datastore.preferences.core.longPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
-import com.galaxy.airviewdictionary.data.remote.ai.CorrectionKitType
 import com.galaxy.airviewdictionary.data.remote.translation.TranslationKitType
+import com.galaxy.airviewdictionary.data.local.tts.TTSReadTarget
 import com.galaxy.airviewdictionary.data.local.vision.TextDetectMode
 import com.galaxy.airviewdictionary.ui.screen.overlay.menubar.MenuConfig
 import com.google.gson.Gson
@@ -42,17 +42,21 @@ class PreferenceRepository @Inject constructor(@ApplicationContext val context: 
     private val TAG = javaClass.simpleName
 
     companion object PreferencesKeys {
-//        val IS_FIRST_START = booleanPreferencesKey("is_first_start")
         val WAS_TRAILER_SHOWN = booleanPreferencesKey("was_trailer_shown")
         val IS_REVIEW_DONE = booleanPreferencesKey("is_review_done")
 
         val IS_SAY_HERE_R_SHOWN = booleanPreferencesKey("is_say_here_r_shown")
         val IS_SAY_HERE_L_SHOWN = booleanPreferencesKey("is_say_here_l_shown")
 
+        // 설정 화면이 처음 닫힌 뒤, 핸들 더블탭으로 설정을 다시 열 수 있음을 한 번만 안내했는지
+        val IS_SETTINGS_REOPEN_HINT_SHOWN = booleanPreferencesKey("is_settings_reopen_hint_shown")
+
         val TEXT_DETECT_MODE: Preferences.Key<String> = stringPreferencesKey("text_detect_mode")
         val SOURCE_LANGUAGE_CODE = stringPreferencesKey("source_language_code")
         val TARGET_LANGUAGE_CODE = stringPreferencesKey("target_language_code")
         val TRANSLATION_KIT_TYPE = stringPreferencesKey("translation_kit_type")
+        // OpenAI 번역에 사용할 모델. 미설정이면 OpenAiKit 이 Remote Config 후보의 첫 번째로 폴백한다.
+        val OPENAI_MODEL = stringPreferencesKey("openai_model")
 
         val DRAG_HANDLE_DOCKING = booleanPreferencesKey("drag_handle_docking")
         val DOCKING_DELAY = longPreferencesKey("docking_delay")
@@ -63,11 +67,10 @@ class PreferenceRepository @Inject constructor(@ApplicationContext val context: 
         val TRANSLATION_TRANSPARENCY = floatPreferencesKey("translation_transparency")
         val TRANSLATION_CLOSE_DELAY = longPreferencesKey("translation_close_delay")
         val REPLY_TRANSPARENCY = floatPreferencesKey("reply_transparency")
-        val USE_CORRECTION_KIT = booleanPreferencesKey("use_correction_kit")
-        val CORRECTION_KIT_TYPE = stringPreferencesKey("correction_kit_type")
         val AUTOMATIC_TRANSLATION_PLAYBACK = booleanPreferencesKey("automatic_translation_playback")
         val TTS_SPEECH_RATE = floatPreferencesKey("tts_speech_rate")
         val TTS_ORDERED_VOICE_NAMES = stringPreferencesKey("tts_ordered_voice_names")
+        val TTS_READ_TARGET = stringPreferencesKey("tts_read_target")
 
         val SOURCE_LANGUAGE_CODE_HISTORY = stringPreferencesKey("source_language_code_history")
         val TARGET_LANGUAGE_CODE_HISTORY = stringPreferencesKey("target_language_code_history")
@@ -94,10 +97,6 @@ class PreferenceRepository @Inject constructor(@ApplicationContext val context: 
         }
     }
 
-//    val isFirstStartFlow: Flow<Boolean> = preferenceFlow.map { preferences ->
-//        preferences[IS_FIRST_START] ?: true
-//    }
-
     val wasTrailerShownFlow: Flow<Boolean> = preferenceFlow.map { preferences ->
         preferences[WAS_TRAILER_SHOWN] ?: false
     }
@@ -114,32 +113,48 @@ class PreferenceRepository @Inject constructor(@ApplicationContext val context: 
         preferences[IS_SAY_HERE_L_SHOWN] ?: false
     }
 
-    val textDetectModeFlow: Flow<TextDetectMode> = preferenceFlow.map { preferences ->
-        val textDetectModeString = preferences[TEXT_DETECT_MODE]
-        textDetectModeString?.let { TextDetectMode.valueOf(textDetectModeString) } ?: TextDetectMode.SENTENCE
+    val isSettingsReopenHintShownFlow: Flow<Boolean> = preferenceFlow.map { preferences ->
+        preferences[IS_SETTINGS_REOPEN_HINT_SHOWN] ?: false
     }
 
-//    val sourceLanguageCodeFlow: Flow<String> = preferenceFlow.map { preferences ->
-//        preferences[SOURCE_LANGUAGE_CODE] ?: "en"//"auto"
-//    }
-//
-//    val targetLanguageCodeFlow: Flow<String> = preferenceFlow.map { preferences ->
-//        preferences[TARGET_LANGUAGE_CODE] ?: getCurrentLocale().language
-//    }
+    /**
+     * 저장된 문자열을 enum 으로 변환한다.
+     * 앱 업데이트로 값이 제거/변경되어 더 이상 존재하지 않는 경우(예: 과거 선택한
+     * 번역 엔진이 삭제된 경우) 크래시 대신 기본값으로 안전하게 폴백한다.
+     */
+    private inline fun <reified T : Enum<T>> safeEnumValueOf(value: String?, default: T): T {
+        if (value == null) return default
+        return try {
+            enumValueOf<T>(value)
+        } catch (e: IllegalArgumentException) {
+            default
+        }
+    }
+
+    val textDetectModeFlow: Flow<TextDetectMode> = preferenceFlow.map { preferences ->
+        safeEnumValueOf(preferences[TEXT_DETECT_MODE], TextDetectMode.SENTENCE)
+    }
 
     val sourceLanguageCodeFlow: Flow<String> = preferenceFlow.map { preferences ->
         Timber.tag(TAG).d(" preferences[SOURCE_LANGUAGE_CODE] ${preferences[SOURCE_LANGUAGE_CODE]} getCurrentLocale().language ${getCurrentLocale().language}")
-        preferences[SOURCE_LANGUAGE_CODE] ?: getCurrentLocale().language
+        // 기본값은 auto(자동 감지). 소스 언어가 원문과 어긋나 OCR 인식기가 잘못 선택되는 문제를 방지한다.
+        preferences[SOURCE_LANGUAGE_CODE] ?: "auto"
     }
 
     val targetLanguageCodeFlow: Flow<String> = preferenceFlow.map { preferences ->
         Timber.tag(TAG).d(" preferences[TARGET_LANGUAGE_CODE] ${preferences[TARGET_LANGUAGE_CODE]}")
-        preferences[TARGET_LANGUAGE_CODE] ?: "en"
+        // 기본 번역 대상은 사용자 시스템 언어. (소스는 auto → "아무 외국어 → 내 언어"가 기본이 된다)
+        preferences[TARGET_LANGUAGE_CODE] ?: getCurrentLocale().language
     }
 
     val translationKitTypeFlow: Flow<TranslationKitType> = preferenceFlow.map { preferences ->
-        val translationKitTypeString = preferences[TRANSLATION_KIT_TYPE]
-        translationKitTypeString?.let { TranslationKitType.valueOf(translationKitTypeString) } ?: TranslationKitType.GOOGLE
+        // 과거 선택한 AZURE/DEEPL/PAPAGO 등이 저장돼 있어도 GOOGLE 로 폴백
+        safeEnumValueOf(preferences[TRANSLATION_KIT_TYPE], TranslationKitType.GOOGLE)
+    }
+
+    // OpenAI 번역 모델 선택값. 미설정이면 null (OpenAiKit 이 Remote Config 후보로 폴백).
+    val openAiModelFlow: Flow<String?> = preferenceFlow.map { preferences ->
+        preferences[OPENAI_MODEL]
     }
 
     val dragHandleDockingFlow: Flow<Boolean> = preferenceFlow.map { preferences ->
@@ -163,8 +178,7 @@ class PreferenceRepository @Inject constructor(@ApplicationContext val context: 
     }
 
     val menuBarConfigFlow: Flow<MenuConfig> = preferenceFlow.map { preferences ->
-        val menuBarConfigString = preferences[MENU_BAR_COMPOSITION]
-        menuBarConfigString?.let { MenuConfig.valueOf(menuBarConfigString) } ?: MenuConfig.WHOLE
+        safeEnumValueOf(preferences[MENU_BAR_COMPOSITION], MenuConfig.WHOLE)
     }
 
     val translationTransparencyFlow: Flow<Float> = preferenceFlow.map { preferences ->
@@ -179,21 +193,16 @@ class PreferenceRepository @Inject constructor(@ApplicationContext val context: 
         preferences[REPLY_TRANSPARENCY] ?: 0.905f
     }
 
-    val useCorrectionKitFlow: Flow<Boolean> = preferenceFlow.map { preferences ->
-        preferences[USE_CORRECTION_KIT] ?: false
-    }
-
-    val correctionKitTypeFlow: Flow<CorrectionKitType> = preferenceFlow.map { preferences ->
-        val correctionKitTypeString = preferences[CORRECTION_KIT_TYPE]
-        correctionKitTypeString?.let { CorrectionKitType.valueOf(correctionKitTypeString) } ?: CorrectionKitType.CHAT_GPT
-    }
-
     val automaticTranslationPlaybackFlow: Flow<Boolean> = preferenceFlow.map { preferences ->
         preferences[AUTOMATIC_TRANSLATION_PLAYBACK] ?: false
     }
 
     val ttsSpeechRateFlow: Flow<Float> = preferenceFlow.map { preferences ->
         preferences[TTS_SPEECH_RATE] ?: 1.0f
+    }
+
+    val ttsReadTargetFlow: Flow<TTSReadTarget> = preferenceFlow.map { preferences ->
+        safeEnumValueOf(preferences[TTS_READ_TARGET], TTSReadTarget.SOURCE)
     }
 
     val ttsOrderedVoiceNamesFlow: Flow<List<String>> = preferenceFlow.map { preferences ->

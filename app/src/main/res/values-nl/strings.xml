@@ -8,14 +8,10 @@
     <!-- Overlay Permission -->
     <string name="message_permission_overlay">Vereiste toestemming:\nWeergeven over andere apps</string>
     <string name="message_permission_overlay_detail">Om Schermvertaler te starten, moet je toestemming geven om bovenop andere apps te worden weergegeven.</string>
-    <string name="message_permission_overlay_denied">Toestemming voor overlay geweigerd</string>
-    <string name="message_permission_overlay_denied_detail">De toestemming voor overlay is niet verleend.\nDe app wordt afgesloten.</string>
 
     <!-- MediaProjection token -->
     <string name="message_media_projection">Vereiste toestemming:\nSchermopname</string>
     <string name="message_media_projection_detail">Om Schermvertaler te starten, moet je toestemming geven voor schermopname.\n\nDe informatie op het scherm wordt alleen gebruikt voor vertaling en wordt niet opgeslagen of overgedragen.</string>
-    <string name="message_media_projection_denied">Toestemming voor schermopname geweigerd</string>
-    <string name="message_media_projection_denied_detail">De toestemming voor schermopname is niet verleend.\nDe app wordt afgesloten.</string>
 
     <!-- Foreground Service -->
     <string name="notification_foreground_service">De schermopnamefunctie wordt gebruikt voor vertaalwerk.</string>
@@ -23,7 +19,6 @@
     <string name="message_start_foreground_service">De app start een voorgrondservice om scherminhoud vast te leggen en te vertalen.\n\nOpgenomen beelden worden niet opgeslagen of extern verzonden.</string>
     <string name="label_confirm_start_foreground_service">Starten</string>
     <string name="label_dismiss_start_foreground_service">Beëindigen</string>
-    <string name="snack_message_start_foreground_service">De app start een voorgrondservice om scherminhoud vast te leggen en te vertalen.</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">Beëindigen</string>
@@ -36,18 +31,6 @@
     <string name="title_voice_list_view">Beschikbare stemmen</string>
 
     <!-- Dialog -->
-    <string name="message_authentication_error">Authenticatiefout</string>
-    <string name="message_authentication_error_detail">De authenticatieserver reageert niet.\nProbeer het later opnieuw.</string>
-    <string name="message_untrusted_environment">Onbetrouwbare omgeving</string>
-    <string name="message_untrusted_environment_detail">Het lijkt erop dat je app de integriteitscontrole van Google Play niet heeft doorstaan.</string>
-    <string name="message_unknown_device">Onbekend apparaat</string>
-    <string name="message_unknown_device_detail">Dit apparaat wordt niet ondersteund.</string>
-    <string name="message_authentication_required">Authenticatie vereist</string>
-    <string name="message_authentication_required_detail">Je moet ingelogd zijn met Google.</string>
-    <string name="message_playstore_update_required">Update van Play Store vereist</string>
-    <string name="message_playstore_update_required_detail">Koppelen aan de service in de Play Store is mislukt.\nDit kan komen doordat een oude versie van de Play Store is geïnstalleerd.</string>
-    <string name="message_unknown_source">Download deze app van Play</string>
-    <string name="message_unknown_source_detail">Om deze geweldige app te blijven gebruiken, download je deze via Google Play.</string>
     <string name="message_force_update">Update vereist</string>
     <string name="message_force_update_detail">Deze versie wordt niet langer ondersteund.\nGa naar de Store.</string>
     <string name="message_service_unavailable">Service niet beschikbaar</string>
@@ -56,61 +39,57 @@
     <string name="message_network_unavailable_detail">Netwerk niet beschikbaar.\nControleer je verbinding en probeer het opnieuw.</string>
     <string name="message_translate_fixedarea_warn">Batterijwaarschuwing</string>
     <string name="message_translate_fixedarea_warn_detail">De batterij kan snel leeglopen.</string>
-    <string name="message_translate_fixedarea_promotion">Productaankoopinformatie</string>
-    <string name="message_translate_fixedarea_promotion_detail">Een vriendelijke herinnering aan onze premiumfuncties verschijnt elke %1$s minuten.</string>
-    <string name="message_free_trial_ends">Je gratis proefperiode is afgelopen.</string>
-    <string name="message_free_trial_ends_detail">Wil je een advertentie bekijken om de gratis proefperiode te verlengen?</string>
-    <string name="message_ad_reward">Je hebt %1$d extra minuten gratis proef ontvangen!</string>
-    <string name="message_ad_reward_detail">Geniet de komende %1$d minuten gratis van alle premiumfuncties.</string>
+    <string name="ad_gate_loading">Advertentie wordt voorbereid…</string>
+    <string name="ad_gate_reward_notice">Bekijk de advertentie tot het einde om de app advertentievrij te gebruiken totdat je deze sluit.</string>
 
     <!-- SettingsActivity -->
     <string name="settings_title">Instellingen</string>
     <string name="settings_menu_cat_pointer">Aanwijzer</string>
     <string name="settings_menu_pointer_docking_delay">Vertraging bij vastmaken</string>
-    <string name="settings_menu_haptic_feedback_to_detection">Trilling bij detectie</string>
+    <string name="settings_menu_haptic_feedback_to_detection">Haptische feedback bij detectie</string>
     <string name="settings_menu_cat_menubar">Menubalk</string>
     <string name="settings_menu_menubar_transparency">Menu-transparantie</string>
     <string name="settings_menu_menubar_composition">Menufuncties</string>
-    <string name="settings_menu_cat_ai">AI-correctie</string>
     <string name="settings_menu_cat_translation">Vertaling</string>
     <string name="settings_menu_translation_transparency">Transparantie vertaling</string>
     <string name="settings_menu_translation_close_delay">Vertraging sluiten</string>
-    <string name="settings_menu_automated_read_aloud">Automatisch voorlezen</string>
+    <string name="settings_menu_automated_read_aloud">Vertaling automatisch voorlezen</string>
     <string name="settings_menu_reply_transparency">Transparantie antwoord</string>
     <string name="settings_menu_cat_tts">Tekst-naar-spraak</string>
+    <string name="settings_menu_tts_read_target">Voorleesdoel</string>
+    <string name="settings_tts_read_target_source">Origineel</string>
+    <string name="settings_tts_read_target_target">Vertaling</string>
     <string name="settings_menu_tts_voices">TTS-stemmen</string>
     <string name="settings_menu_tts_rate">TTS-snelheid</string>
     <string name="settings_menu_cat_about">Over</string>
-    <string name="settings_menu_on_premium_free_trial">Premium proef actief</string>
-    <string name="settings_menu_premium_free_trial_remain">Nog %1$d minuten</string>
-    <string name="settings_menu_your_premium_benefits">Jouw voordelen</string>
-    <string name="settings_menu_your_premium_benefits_peding">Voordelen (in behandeling)</string>
     <string name="settings_menu_app_version">App-versie</string>
     <string name="settings_menu_app_version_latest">(Nieuwste)</string>
 
     <!-- HelpTextDetectModeView, HelpTranslationKitView -->
-    <string name="help_text_no_limit">Alles is onbeperkt met Premium</string>
     <string name="help_text_no_limit_free">Geen hoeveelheidlimiet, geen tijdslimiet</string>
-    <string name="help_text_no_limit_title">Geniet zonder beperkingen</string>
-    <string name="help_text_no_limit_free_title">Vrij zonder beperkingen</string>
-    <string name="help_text_get_premium">Premium verkrijgen</string>
+    <string name="help_text_deepl_own_key">Gebruikt je persoonlijke DeepL API-sleutel</string>
+    <string name="deepl_key_guide">Voer je DeepL API-sleutel in om DeepL-vertaling te gebruiken.</string>
+    <string name="deepl_key_signup_guide">Meld je aan bij DeepL en je kunt je abonneren op het gratis abonnement.</string>
+    <string name="deepl_key_link_subscription">Abonneren op het gratis abonnement</string>
+    <string name="deepl_key_link_keys">Controleer je API-sleutel</string>
+    <string name="deepl_key_active">Geactiveerd</string>
+    <string name="label_save">Opslaan</string>
+    <string name="deepl_key_invalid">De API-sleutel is niet geldig.</string>
+    <string name="deepl_key_validating">Verifiëren…</string>
+    <string name="deepl_key_network_error">De sleutel kon niet worden geverifieerd vanwege een netwerkfout. De sleutel is opgeslagen.</string>
 
     <!-- PremiumView -->
-    <string name="premium_view_get_premium">Premium verkrijgen</string>
-    <string name="premium_view_get_premium_purchased">Je Premium-voordelen</string>
-    <string name="premium_view_get_premium_pending">Je Premium-voordelen (in afwachting)</string>
-    <string name="premium_view_get_premium_not_available">Premium verkrijgen (Momenteel niet beschikbaar)</string>
-    <string name="premium_view_price_format">%1$s/maand • Inclusief btw\n• Op elk moment opzegbaar</string>
-    <string name="premium_view_title">Alle functies,\nZonder onderbrekingen.</string>
-    <string name="premium_view_message">Geen hoeveelheidlimiet, geen tijdslimiet.\nAlles is onbeperkt met Premium</string>
-    <string name="premium_view_description_azure">Vertaalt nauwkeurig de meeste talen wereldwijd.</string>
-    <string name="premium_view_description_deepl">Wij bieden verfijnde vertalingen die de betekenis goed overbrengen.</string>
-    <string name="premium_view_description_papago">Papago vertaalt automatisch via neurale machinevertaling talen naar de doeltaal.</string>
-    <string name="premium_view_description_google">Wij bieden de snelste vertaling. Onbeperkt en gratis voor altijd.</string>
-    <string name="premium_view_description_sentence_detection">Vertaal regels met je vingertoppen.</string>
+    <string name="premium_view_description_sentence_detection">Zinnen worden automatisch geselecteerd.</string>
     <string name="premium_view_description_paragraph_detection">Paragrafen worden automatisch herkend.</string>
     <string name="premium_view_description_select_detection">Je kunt ook zelf het bereik aangeven.</string>
-    <string name="premium_view_description_word_detection">Woord-voor-woord vertaling is altijd gratis en onbeperkt.</string>
+    <string name="premium_view_description_word_detection">Wijs een woord aan om het direct te vertalen.</string>
     <string name="premium_view_description_fixed_area_detection">Je kunt vaste gebieden, zoals filmondertitels, continu vertalen.</string>
-    <string name="premium_view_unsubscribe">Opzeggen</string>
+  <string name="say_here">Ik ben hier!</string>
+  <string name="hint_settings_reopen">Dubbeltik op de handgreep om de instellingen opnieuw te openen</string>
+  <string name="openai_key_guide">Voer je OpenAI API-sleutel in om te vertalen met OpenAI-modellen.</string>
+  <string name="openai_key_signup_guide">Maak een sleutel aan in het OpenAI-dashboard. Gebruik wordt in rekening gebracht op je OpenAI-account.</string>
+  <string name="openai_key_link_keys">Haal je API-sleutel op</string>
+  <string name="openai_key_link_billing">Facturering en gebruik</string>
+  <string name="openai_model_label">Model</string>
+  <string name="help_text_openai_own_key">Gebruikt je persoonlijke OpenAI API-sleutel</string>
 </resources>

@@ -8,14 +8,10 @@
     <!-- Overlay Permission -->
     <string name="message_permission_overlay">Kinakailangang pahintulot:\nIpakita sa ibabaw ng ibang apps</string>
     <string name="message_permission_overlay_detail">Upang simulan ang Screen Translator, kailangan mong pahintulutan ang pagpapakita sa ibabaw ng ibang apps.</string>
-    <string name="message_permission_overlay_denied">Tinanggihan ang overlay na pahintulot</string>
-    <string name="message_permission_overlay_denied_detail">Hindi nabigyan ng pahintulot ang overlay.\nIsasara ang app.</string>
 
     <!-- MediaProjection token 요청 -->
     <string name="message_media_projection">Kinakailangang pahintulot:\nPagre-record ng screen</string>
     <string name="message_media_projection_detail">Upang simulan ang Screen Translator, kailangan mong pahintulutan ang pagre-record ng screen.\n\nAng impormasyon sa screen ay gagamitin lamang para sa pagsasalin at hindi ito ise-save o ipapadala sa iba.</string>
-    <string name="message_media_projection_denied">Tinanggihan ang pahintulot sa pagre-record ng screen</string>
-    <string name="message_media_projection_denied_detail">Hindi nabigyan ng pahintulot sa pagre-record ng screen.\nIsasara ang app.</string>
 
     <!-- Foreground Service 시작 알림 -->
     <string name="notification_foreground_service">Ginagamit ang pagkuha ng screen para sa pagsasalin.</string>
@@ -23,7 +19,6 @@
     <string name="message_start_foreground_service">Ang app ay magsisimula ng Foreground Service para kunan at isalin ang nilalaman ng screen.\n\nAng mga kuhang imahe ay hindi ise-save o ipapadala sa labas.</string>
     <string name="label_confirm_start_foreground_service">Simulan</string>
     <string name="label_dismiss_start_foreground_service">Tapos</string>
-    <string name="snack_message_start_foreground_service">Ang app ay nagsimula ng Foreground Service para sa pagsasalin ng nilalaman ng screen.</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">Tapos</string>
@@ -36,18 +31,6 @@
     <string name="title_voice_list_view">Mga available na boses</string>
 
     <!-- Dialog -->
-    <string name="message_authentication_error">Error sa pagpapatotoo</string>
-    <string name="message_authentication_error_detail">Hindi tumutugon ang authentication server.\nPakisubukang muli mamaya.</string>
-    <string name="message_untrusted_environment">Hindi mapagkakatiwalaang kapaligiran</string>
-    <string name="message_untrusted_environment_detail">Mukhang hindi pumasa ang iyong app sa Google Play integrity check.</string>
-    <string name="message_unknown_device">Hindi kilalang device</string>
-    <string name="message_unknown_device_detail">Hindi suportado ang device na ito.</string>
-    <string name="message_authentication_required">Kinakailangan ang pagpapatotoo</string>
-    <string name="message_authentication_required_detail">Kailangan mong mag-login gamit ang Google.</string>
-    <string name="message_playstore_update_required">Kinakailangan ang update sa Play Store</string>
-    <string name="message_playstore_update_required_detail">Nabigo ang pagkonekta sa serbisyo ng Play Store.\nMaaaring luma na ang bersyon ng Play Store sa iyong device.</string>
-    <string name="message_unknown_source">Kunin ang app na ito mula sa Play</string>
-    <string name="message_unknown_source_detail">Upang magpatuloy sa paggamit ng app, kunin ito sa Google Play.</string>
     <string name="message_force_update">Kinakailangan ang update</string>
     <string name="message_force_update_detail">Hindi na sinusuportahan ang bersyong ito.\nPumunta sa Store.</string>
     <string name="message_service_unavailable">Hindi available ang serbisyo</string>
@@ -56,62 +39,58 @@
     <string name="message_network_unavailable_detail">Walang koneksyon sa network.\nPakisuri at subukang muli.</string>
     <string name="message_translate_fixedarea_warn">Babala sa baterya</string>
     <string name="message_translate_fixedarea_warn_detail">Maaaring mabilis maubos ang baterya.</string>
-    <string name="message_translate_fixedarea_promotion">Impormasyon sa pagbili ng produkto</string>
-    <string name="message_translate_fixedarea_promotion_detail">Isang magiliw na paalala tungkol sa aming mga premium na tampok ay lilitaw tuwing %1$s minuto.</string>
-    <string name="message_free_trial_ends">Natapos na ang iyong libreng trial.</string>
-    <string name="message_free_trial_ends_detail">Gusto mo bang manood ng ad para pahabain ang free trial?</string>
-    <string name="message_ad_reward">Nakakuha ka ng karagdagang %1$d minutong libreng pagsubok!</string>
-    <string name="message_ad_reward_detail">Gamitin ang lahat ng premium na tampok nang libre sa susunod na %1$d minuto.</string>
+    <string name="ad_gate_loading">Inihahanda ang ad…</string>
+    <string name="ad_gate_reward_notice">Panoorin ang ad hanggang matapos para magamit ang app nang walang ad hanggang isara mo ito.</string>
 
     <!-- SettingsActivity -->
     <string name="settings_title">Mga Setting</string>
     <string name="settings_menu_cat_pointer">Pointer</string>
     <string name="settings_menu_pointer_docking_delay">Delay ng Dock</string>
-    <string name="settings_menu_haptic_feedback_to_detection">Vibrate sa detect</string>
+    <string name="settings_menu_haptic_feedback_to_detection">Haptic feedback kapag natukoy</string>
     <string name="settings_menu_cat_menubar">Menu Bar</string>
     <string name="settings_menu_menubar_transparency">Menu Transparency</string>
     <string name="settings_menu_menubar_composition">Mga Gamit sa Menu</string>
-    <string name="settings_menu_cat_ai">AI Pagwawasto</string>
     <string name="settings_menu_cat_translation">Pagsasalin</string>
     <string name="settings_menu_translation_transparency">Labo ng Salin</string>
     <string name="settings_menu_translation_close_delay">Delay sa Pagsara</string>
-    <string name="settings_menu_automated_read_aloud">Auto Basa</string>
+    <string name="settings_menu_automated_read_aloud">Awtomatikong pagbasa ng salin</string>
     <string name="settings_menu_reply_transparency">Labo ng Sagot</string>
     <string name="settings_menu_cat_tts">Text-to-Speech</string>
+    <string name="settings_menu_tts_read_target">Babasahing teksto</string>
+    <string name="settings_tts_read_target_source">Orihinal</string>
+    <string name="settings_tts_read_target_target">Salin</string>
     <string name="settings_menu_tts_voices">Mga Boses</string>
     <string name="settings_menu_tts_rate">Bilis ng TTS</string>
     <string name="settings_menu_cat_about">Tungkol sa</string>
-    <string name="settings_menu_on_premium_free_trial">Gumagamit ng Premium trial</string>
-    <string name="settings_menu_premium_free_trial_remain">%1$d minuto na lang</string>
-    <string name="settings_menu_your_premium_benefits">Iyong mga Benepisyo</string>
-    <string name="settings_menu_your_premium_benefits_peding">Benepisyo (nakabinbin)</string>
     <string name="settings_menu_app_version">Bersyon ng App</string>
     <string name="settings_menu_app_version_latest">(Pinakabago)</string>
 
 
     <!-- HelpTextDetectModeView, HelpTranslationKitView -->
-    <string name="help_text_no_limit">Walang limitasyon kapag premium</string>
     <string name="help_text_no_limit_free">Walang limitasyon sa dami, walang limitasyon sa panahon</string>
-    <string name="help_text_no_limit_title">Gamitin ito nang walang limitasyon</string>
-    <string name="help_text_no_limit_free_title">Libre nang walang hadlang</string>
-    <string name="help_text_get_premium">Kumuha ng Premium</string>
+    <string name="help_text_deepl_own_key">Ginagamit ang iyong personal na DeepL API key</string>
+    <string name="deepl_key_guide">Ilagay ang iyong DeepL API key para gamitin ang pagsasalin ng DeepL.</string>
+    <string name="deepl_key_signup_guide">Mag-sign up sa DeepL at maaari kang mag-subscribe sa libreng plan.</string>
+    <string name="deepl_key_link_subscription">Mag-subscribe sa libreng plan</string>
+    <string name="deepl_key_link_keys">Tingnan ang iyong API key</string>
+    <string name="deepl_key_active">Aktibo na</string>
+    <string name="label_save">I-save</string>
+    <string name="deepl_key_invalid">Hindi wasto ang API key.</string>
+    <string name="deepl_key_validating">Bine-verify…</string>
+    <string name="deepl_key_network_error">Hindi ma-verify ang key dahil sa error sa network. Na-save ang key.</string>
 
     <!-- PremiumView -->
-    <string name="premium_view_get_premium">Kumuha ng Premium</string>
-    <string name="premium_view_get_premium_purchased">Ang iyong mga Premium na Benepisyo</string>
-    <string name="premium_view_get_premium_pending">Ang iyong mga Premium na Benepisyo (Naka-pending)</string>
-    <string name="premium_view_get_premium_not_available">Premium (Hindi available sa ngayon)</string>
-    <string name="premium_view_price_format">%1$s/buwan • Kasama ang VAT\n• Kanselahin kahit kailan</string>
-    <string name="premium_view_title">Lahat ng tampok,\nWalang istorbo.</string>
-    <string name="premium_view_message">Walang limitasyon sa dami, walang limitasyon sa panahon.\nLahat ay unlimited kapag premium</string>
-    <string name="premium_view_description_azure">Tumpak na isinasalin ang karamihan sa mga wika sa buong mundo.</string>
-    <string name="premium_view_description_deepl">Nagbibigay kami ng sopistikadong pagsasalin na malinaw ang kahulugan.</string>
-    <string name="premium_view_description_papago">Awtomatikong isinasalin ng Papago ang mga wika gamit ang Neural Machine Translation.</string>
-    <string name="premium_view_description_google">Pinakamabilis na pagsasalin. Libre magpakailanman.</string>
-    <string name="premium_view_description_sentence_detection">Gamitin ang iyong daliri upang isalin ang mga linya.</string>
+    <string name="premium_view_description_sentence_detection">Awtomatikong pipiliin ang mga pangungusap.</string>
     <string name="premium_view_description_paragraph_detection">Awtomatikong nakikilala ang mga talata.</string>
     <string name="premium_view_description_select_detection">Maaari mo ring tukuyin ang nais na saklaw.</string>
-    <string name="premium_view_description_word_detection">Ang salitang-salitang pagsasalin ay laging libre at walang limitasyon.</string>
+    <string name="premium_view_description_word_detection">Ituro ang isang salita para agad itong maisalin.</string>
     <string name="premium_view_description_fixed_area_detection">Maaari kang tuloy-tuloy na magsalin ng mga nakapirming lugar, tulad ng mga subtitle ng pelikula.</string>
-    <string name="premium_view_unsubscribe">Mag-unsubscribe</string>
+  <string name="say_here">Nandito ako!</string>
+  <string name="hint_settings_reopen">I-double tap ang hawakan para muling buksan ang mga setting</string>
+  <string name="openai_key_guide">Ilagay ang iyong OpenAI API key para magsalin gamit ang mga modelo ng OpenAI.</string>
+  <string name="openai_key_signup_guide">Gumawa ng key sa OpenAI dashboard. Ang paggamit ay sinisingil sa iyong OpenAI account.</string>
+  <string name="openai_key_link_keys">Kunin ang iyong API key</string>
+  <string name="openai_key_link_billing">Pagsingil at paggamit</string>
+  <string name="openai_model_label">Modelo</string>
+  <string name="help_text_openai_own_key">Ginagamit ang iyong personal na OpenAI API key</string>
 </resources>

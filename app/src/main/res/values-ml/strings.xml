@@ -8,14 +8,10 @@
     <!-- Overlay Permission -->
     <string name="message_permission_overlay">ആവശ്യമായ അനുമതി:\nമറ്റ് ആപ്പുകൾക്ക് മുകളിൽ പ്രദർശിപ്പിക്കുക</string>
     <string name="message_permission_overlay_detail">സ്ക്രീൻ ട്രാൻസ്ലേറ്റർ പ്രവർത്തിപ്പിക്കാൻ, മറ്റ് ആപ്പുകളുടെ മുകളിൽ പ്രദർശിപ്പിക്കാൻ അനുമതി നൽകേണ്ടതുണ്ട്.</string>
-    <string name="message_permission_overlay_denied">ഓവർലേ അനുമതി നിഷേധിച്ചു</string>
-    <string name="message_permission_overlay_denied_detail">ഓവർലേ അനുമതി ലഭിച്ചിട്ടില്ല.\nആപ്പ് പുറത്ത് പോകുന്നു.</string>
 
     <!-- MediaProjection token -->
     <string name="message_media_projection">ആവശ്യമായ അനുമതി:\nസ്ക്രീൻ റെക്കോർഡിംഗ്</string>
     <string name="message_media_projection_detail">സ്ക്രീൻ ട്രാൻസ്ലേറ്റർ പ്രവർത്തിപ്പിക്കാൻ, സ്ക്രീൻ റെക്കോർഡിംഗ് അനുമതി അനുവദിക്കേണ്ടതുണ്ട്.\n\nസ്ക്രീനിലെ വിവരങ്ങൾ പരിഭാഷയ്ക്ക് മാത്രം ഉപയോഗിക്കപ്പെടും, സംരക്ഷിക്കുകയോ അയക്കുകയോ ചെയ്യുകയില്ല.</string>
-    <string name="message_media_projection_denied">സ്ക്രീൻ റെക്കോർഡിംഗ് അനുമതി നിഷേധിച്ചു</string>
-    <string name="message_media_projection_denied_detail">സ്ക്രീൻ റെക്കോർഡിംഗ് അനുമതി ലഭിച്ചില്ല.\nആപ്പ് പുറത്ത് പോകുന്നു.</string>
 
     <!-- Foreground Service -->
     <string name="notification_foreground_service">പരിഭാഷയ്ക്കായി സ്ക്രീൻ ക്യാപ്ചർ സജ്ജീകരിച്ചിരിക്കുന്നു.</string>
@@ -23,7 +19,6 @@
     <string name="message_start_foreground_service">സ്ക്രീൻ ഉള്ളടക്കം പകര്‍ത്താനും പരിഭാഷ ചെയ്യാനും ആപ്പ് മുൻഭാഗ സേവനം ആരംഭിക്കുന്നു.\n\nപകര്‍ത്തിയ ചിത്രങ്ങള്‍ സംരക്ഷിക്കുകയോ അയക്കുകയോ ചെയ്യുന്നില്ല.</string>
     <string name="label_confirm_start_foreground_service">ആരംഭിക്കുക</string>
     <string name="label_dismiss_start_foreground_service">അവസാനിപ്പിക്കുക</string>
-    <string name="snack_message_start_foreground_service">സ്ക്രീൻ ഉള്ളടക്കം പകര്‍ത്താനും പരിഭാഷ ചെയ്യാനും ആപ്പ് മുൻഭാഗ സേവനം ആരംഭിക്കുന്നു.</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">അവസാനിപ്പിക്കുക</string>
@@ -36,18 +31,6 @@
     <string name="title_voice_list_view">ലഭ്യമായ ശബ്ദങ്ങൾ</string>
 
     <!-- Dialog -->
-    <string name="message_authentication_error">ആധികാരികത പിശക്</string>
-    <string name="message_authentication_error_detail">ആധികാരികത സെർവർ പ്രതികരിക്കുന്നില്ല.\nദയവായി പിന്നീട് വീണ്ടും ശ്രമിക്കുക.</string>
-    <string name="message_untrusted_environment">വിശ്വസിക്കാനാകാത്ത പരിസ്ഥിതി</string>
-    <string name="message_untrusted_environment_detail">നിങ്ങളുടെ ആപ്പ് Google Play ന്റെ ഇന്റഗ്രിറ്റി ചെക്കിൽ പരാജയപ്പെട്ടു.</string>
-    <string name="message_unknown_device">അപരിചിത ഉപകരണം</string>
-    <string name="message_unknown_device_detail">ഈ ഉപകരണം പിന്തുണയ്ക്കുന്നില്ല.</string>
-    <string name="message_authentication_required">ആധികാരികത ആവശ്യമാണ്</string>
-    <string name="message_authentication_required_detail">Google ഉപയോഗിച്ച് ലോഗിൻ ചെയ്യണം.</string>
-    <string name="message_playstore_update_required">Play Store അപ്‌ഡേറ്റ് ആവശ്യമാണ്</string>
-    <string name="message_playstore_update_required_detail">Play Store സേവനത്തിലേക്ക് കണക്റ്റ് ചെയ്യാൻ സാധിച്ചില്ല.\nപുരാതനമായ പതിപ്പ് ഉപയോഗിച്ചിരിക്കാം.</string>
-    <string name="message_unknown_source">ഈ ആപ്പ് Play Storeൽ നിന്ന് നേടുക</string>
-    <string name="message_unknown_source_detail">ഈ ആപ്പ് ഉപയോഗം തുടരാൻ Google Playൽ നിന്ന് ഡൗൺലോഡ് ചെയ്യുക.</string>
     <string name="message_force_update">അപ്‌ഡേറ്റ് ആവശ്യമാണ്</string>
     <string name="message_force_update_detail">ഈ പതിപ്പ് ഇനി പിന്തുണയ്ക്കുന്നില്ല.\nസ്റ്റോറിലേക്ക് പോവുക.</string>
     <string name="message_service_unavailable">സേവനം ലഭ്യമല്ല</string>
@@ -56,61 +39,57 @@
     <string name="message_network_unavailable_detail">നെറ്റ്വർക്ക് ലഭ്യമല്ല.\nദയവായി പരിശോധിച്ച് വീണ്ടും ശ്രമിക്കുക.</string>
     <string name="message_translate_fixedarea_warn">ബാറ്ററി മുന്നറിയിപ്പ്</string>
     <string name="message_translate_fixedarea_warn_detail">ബാറ്ററി വേഗത്തിൽ തീർന്നേക്കാം.</string>
-    <string name="message_translate_fixedarea_promotion">ഉൽപ്പന്നം വാങ്ങുന്നതിനുള്ള വിവരങ്ങൾ</string>
-    <string name="message_translate_fixedarea_promotion_detail">ഞങ്ങളുടെ പ്രീമിയം ഫീച്ചറുകൾക്കായുള്ള സൗഹൃദ റിമൈൻഡർ ഓരോ %1$s മിനിറ്റിന് ശേഷം പ്രത്യക്ഷപ്പെടും.</string>
-    <string name="message_free_trial_ends">നിങ്ങളുടെ സൗജന്യ ട്രയൽ അവസാനിച്ചു.</string>
-    <string name="message_free_trial_ends_detail">ട്രയൽ സമയമുദനപ്പെടുത്തി ഒരു പരസ്യം കാണണോ?</string>
-    <string name="message_ad_reward">നിങ്ങൾക്ക് %1$d കൂടുതൽ മിനിറ്റ് സൗജന്യ ട്രയൽ ലഭിച്ചിട്ടുണ്ട്!</string>
-    <string name="message_ad_reward_detail">അടുത്ത %1$d മിനിറ്റ് മുഴുവൻ പ്രീമിയം സവിശേഷതകൾ സൗജന്യമായി ആസ്വദിക്കുക.</string>
+    <string name="ad_gate_loading">പരസ്യം തയ്യാറാക്കുന്നു…</string>
+    <string name="ad_gate_reward_notice">പരസ്യം അവസാനം വരെ കാണുക, ആപ്പ് അടയ്ക്കുന്നതുവരെ പരസ്യമില്ലാതെ ഉപയോഗിക്കുക.</string>
 
     <!-- SettingsActivity -->
     <string name="settings_title">ക്രമീകരണം</string>
     <string name="settings_menu_cat_pointer">കാണിക</string>
     <string name="settings_menu_pointer_docking_delay">ഡോക്ക് വൈകിപ്പ്</string>
-    <string name="settings_menu_haptic_feedback_to_detection">കണ്ടാല്‍ വൈബ്രേഷന്‍</string>
+    <string name="settings_menu_haptic_feedback_to_detection">കണ്ടെത്തുമ്പോൾ ഹാപ്റ്റിക്</string>
     <string name="settings_menu_cat_menubar">മെനു പട്ട</string>
     <string name="settings_menu_menubar_transparency">മെനു പാരദര്‍ശിത്വം</string>
     <string name="settings_menu_menubar_composition">മെനു ഫംഗ്ഷനുകൾ</string>
-    <string name="settings_menu_cat_ai">AI തിരുത്തൽ</string>
     <string name="settings_menu_cat_translation">ഭാഷാന്തരം</string>
     <string name="settings_menu_translation_transparency">പരിഭാഷ പാരദര്‍ശിത്വം</string>
     <string name="settings_menu_translation_close_delay">അടയ്ക്കൽ വൈകിപ്പ്</string>
-    <string name="settings_menu_automated_read_aloud">സ്വയം വായനം</string>
+    <string name="settings_menu_automated_read_aloud">വിവർത്തനത്തിന്റെ സ്വയം വായന</string>
     <string name="settings_menu_reply_transparency">മറുപടി പാരദര്‍ശിത്വം</string>
     <string name="settings_menu_cat_tts">ടെക്സ്റ്റ് ടു സ്‌പീച്ച്</string>
+    <string name="settings_menu_tts_read_target">വായനാ ലക്ഷ്യം</string>
+    <string name="settings_tts_read_target_source">മൂലം</string>
+    <string name="settings_tts_read_target_target">വിവർത്തനം</string>
     <string name="settings_menu_tts_voices">TTS ശബ്ദങ്ങൾ</string>
     <string name="settings_menu_tts_rate">TTS വേഗം</string>
     <string name="settings_menu_cat_about">അറിയിക്കുക</string>
-    <string name="settings_menu_on_premium_free_trial">പ്രിമിയം ട്രയൽ പ്രവർത്തിക്കുന്നു</string>
-    <string name="settings_menu_premium_free_trial_remain">%1$d മിനിറ്റ് ശേഷിക്കുന്നു</string>
-    <string name="settings_menu_your_premium_benefits">നിങ്ങളുടെ പ്രയോജനങ്ങൾ</string>
-    <string name="settings_menu_your_premium_benefits_peding">നിങ്ങളുടെ പ്രയോജനങ്ങൾ</string>
     <string name="settings_menu_app_version">ആപ്പ് പതിപ്പ്</string>
     <string name="settings_menu_app_version_latest">(അടുത്തത്)</string>
 
     <!-- HelpTextDetectModeView, HelpTranslationKitView -->
-    <string name="help_text_no_limit">പ്രിമിയത്തിൽ എല്ലാം അതിജീവ്യമാണ്</string>
     <string name="help_text_no_limit_free">പരിമിതികളില്ല, സമയപരിധിയില്ല</string>
-    <string name="help_text_no_limit_title">പരിമിതികളില്ലാതെ ആസ്വദിക്കുക</string>
-    <string name="help_text_no_limit_free_title">പരിമിതികളില്ലാതെ സൗജന്യം</string>
-    <string name="help_text_get_premium">പ്രിമിയം നേടുക</string>
+    <string name="help_text_deepl_own_key">നിങ്ങളുടെ വ്യക്തിഗത DeepL API കീ ഉപയോഗിക്കുന്നു</string>
+    <string name="deepl_key_guide">DeepL വിവർത്തനം ഉപയോഗിക്കാൻ നിങ്ങളുടെ DeepL API കീ നൽകുക.</string>
+    <string name="deepl_key_signup_guide">DeepL-ൽ സൈൻ അപ്പ് ചെയ്യുക, നിങ്ങൾക്ക് സൗജന്യ പ്ലാൻ സബ്‌സ്‌ക്രൈബ് ചെയ്യാം.</string>
+    <string name="deepl_key_link_subscription">സൗജന്യ പ്ലാൻ സബ്‌സ്‌ക്രൈബ് ചെയ്യുക</string>
+    <string name="deepl_key_link_keys">നിങ്ങളുടെ API കീ പരിശോധിക്കുക</string>
+    <string name="deepl_key_active">സജീവമാക്കി</string>
+    <string name="label_save">സംരക്ഷിക്കുക</string>
+    <string name="deepl_key_invalid">API കീ സാധുവല്ല.</string>
+    <string name="deepl_key_validating">പരിശോധിക്കുന്നു…</string>
+    <string name="deepl_key_network_error">നെറ്റ്‌വർക്ക് പിശക് കാരണം കീ പരിശോധിക്കാനായില്ല. കീ സംരക്ഷിച്ചു.</string>
 
     <!-- PremiumView -->
-    <string name="premium_view_get_premium">പ്രിമിയം നേടുക</string>
-    <string name="premium_view_get_premium_purchased">നിങ്ങളുടെ പ്രിമിയം നേട്ടങ്ങൾ</string>
-    <string name="premium_view_get_premium_pending">നിങ്ങളുടെ പ്രിമിയം നേട്ടങ്ങൾ (കാത്തിരിക്കുന്നു)</string>
-    <string name="premium_view_get_premium_not_available">പ്രിമിയം ഇപ്പോൾ ലഭ്യമല്ല</string>
-    <string name="premium_view_price_format">%1$s/മാസം • ഉൾപ്പെടെ നികുതി\n• എപ്പോഴും റദ്ദാക്കാം</string>
-    <string name="premium_view_title">എല്ലാ ഫീച്ചറുകളും,\nതടസ്സങ്ങളില്ലാതെ.</string>
-    <string name="premium_view_message">പരിമിതികളില്ല, സമയപരിധിയില്ല.\nപ്രിമിയത്തിൽ എല്ലാം അതിജീവ്യമാണ്</string>
-    <string name="premium_view_description_azure">ലോകത്തെ മിക്ക ഭാഷകളും കൃത്യതയോടെ വിവർത്തനം ചെയ്യുന്നു.</string>
-    <string name="premium_view_description_deepl">വിവർത്തനത്തിന് അർത്ഥവത്തും നിഗൂഢവുമായ സംഭാഷണങ്ങൾ നൽകുന്നു.</string>
-    <string name="premium_view_description_papago">Papago നൂറൽ മെഷീൻ വിവർത്തനം ഉപയോഗിച്ച് നിരവധി ഭാഷകളിലേക്ക് വിവർത്തനം ചെയ്യുന്നു.</string>
-    <string name="premium_view_description_google">അതി വേഗത്തിൽ വിവർത്തനം ചെയ്യുന്നു. എല്ലാ സമയത്തും സൗജന്യവും പരിധിയില്ലാത്തതുമായ സേവനം.</string>
-    <string name="premium_view_description_sentence_detection">നിങ്ങളുടെ വിരൽ ഉപയോഗിച്ച് വരികൾ വിവർത്തനം ചെയ്യുക.</string>
+    <string name="premium_view_description_sentence_detection">വാക്യങ്ങൾ സ്വയമേവ തിരഞ്ഞെടുക്കപ്പെടും.</string>
     <string name="premium_view_description_paragraph_detection">പാരഗ്രാഫുകൾ സ്വയം തിരിച്ചറിയപ്പെടും.</string>
     <string name="premium_view_description_select_detection">നിങ്ങൾക്ക് വേണ്ടിയ ഭാഗം തിരഞ്ഞടുക്കാം.</string>
-    <string name="premium_view_description_word_detection">വാക്ക് തിരിച്ചുള്ള വിവർത്തനം എപ്പോഴും സൗജന്യവും പരിധിയില്ലാത്തതുമാണ്.</string>
+    <string name="premium_view_description_word_detection">ഒരു വാക്കിലേക്ക് ചൂണ്ടുക, അത് ഉടനടി വിവർത്തനം ചെയ്യപ്പെടും.</string>
     <string name="premium_view_description_fixed_area_detection">സിനിമ സബ്‌ടൈറ്റിലുകൾ പോലുള്ള സ്ഥിരമായ പ്രദേശങ്ങൾ നിങ്ങൾക്ക് തുടർച്ചയായി വിവർത്തനം ചെയ്യാൻ കഴിയും.</string>
-    <string name="premium_view_unsubscribe">സബ്സ്ക്രിപ്ഷൻ റദ്ദാക്കുക</string>
+  <string name="say_here">ഞാൻ ഇവിടെ!</string>
+  <string name="hint_settings_reopen">ക്രമീകരണം വീണ്ടും തുറക്കാൻ ഹാൻഡിലിൽ രണ്ടുതവണ ടാപ്പ് ചെയ്യുക</string>
+  <string name="openai_key_guide">OpenAI മോഡലുകൾ ഉപയോഗിച്ച് വിവർത്തനം ചെയ്യാൻ നിങ്ങളുടെ OpenAI API കീ നൽകുക.</string>
+  <string name="openai_key_signup_guide">OpenAI ഡാഷ്‌ബോർഡിൽ ഒരു കീ സൃഷ്ടിക്കുക. ഉപയോഗത്തിന് നിങ്ങളുടെ OpenAI അക്കൗണ്ടിലേക്ക് ബിൽ ചെയ്യപ്പെടും.</string>
+  <string name="openai_key_link_keys">നിങ്ങളുടെ API കീ നേടുക</string>
+  <string name="openai_key_link_billing">ബില്ലിംഗും ഉപയോഗവും</string>
+  <string name="openai_model_label">മോഡൽ</string>
+  <string name="help_text_openai_own_key">നിങ്ങളുടെ വ്യക്തിഗത OpenAI API കീ ഉപയോഗിക്കുന്നു</string>
 </resources>

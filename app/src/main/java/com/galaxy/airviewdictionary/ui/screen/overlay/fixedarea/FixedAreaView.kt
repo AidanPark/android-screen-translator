@@ -6,7 +6,6 @@ import android.content.Intent
 import android.graphics.PixelFormat
 import android.graphics.Point
 import android.graphics.Rect
-import android.os.Build
 import android.view.Gravity
 import android.view.WindowManager
 import androidx.compose.animation.core.Animatable
@@ -41,7 +40,6 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.android.billingclient.api.Purchase
 import com.galaxy.airviewdictionary.R
 import com.galaxy.airviewdictionary.core.OverlayService
 import com.galaxy.airviewdictionary.data.local.capture.CapturePreventedException
@@ -49,6 +47,7 @@ import com.galaxy.airviewdictionary.data.local.capture.CaptureResponse
 import com.galaxy.airviewdictionary.data.local.capture.NoMediaProjectionTokenException
 import com.galaxy.airviewdictionary.data.local.screen.ScreenInfo
 import com.galaxy.airviewdictionary.data.local.screen.ScreenInfoHolder
+import com.galaxy.airviewdictionary.data.local.ads.AdGateState
 import com.galaxy.airviewdictionary.data.local.secure.TrialLimitInfo
 import com.galaxy.airviewdictionary.data.local.vision.TextDetectMode
 import com.galaxy.airviewdictionary.data.local.vision.model.Transaction
@@ -364,25 +363,7 @@ open class FixedAreaView : OverlayView() {
                                         dialogText = context.getString(R.string.message_translate_fixedarea_warn_detail),
                                         onConfirm = {
                                             launchInOverlayViewCoroutineScope {
-                                                val purchaseState: Int = targetHandleViewModel.billingRepository.purchaseStateFlow.first()
-                                                if (purchaseState == Purchase.PurchaseState.PURCHASED) {
-                                                    start()
-                                                }
-                                                // 구매하지 않은 유저에게 구매유도 팝업 안내
-                                                else {
-                                                    DialogView.INSTANCE.cast(
-                                                        applicationContext = context,
-                                                        icon = Icons.Default.Campaign,
-                                                        dialogTitle = context.getString(R.string.message_translate_fixedarea_promotion),
-                                                        dialogText = context.getString(
-                                                            R.string.message_translate_fixedarea_promotion_detail,
-                                                            TrialLimitInfo.getFixedAreaViewCampaignPeriodMinute(context).toString()
-                                                        ),
-                                                        onConfirm = {
-                                                            start()
-                                                        }
-                                                    )
-                                                }
+                                                start()
                                             }
                                         }
                                     )
@@ -434,11 +415,7 @@ open class FixedAreaView : OverlayView() {
             1,
             startPosition.x,
             startPosition.y,
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
-            } else {
-                WindowManager.LayoutParams.TYPE_PHONE
-            },
+            WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
             WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN
                     or WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
                     or WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
@@ -480,16 +457,15 @@ open class FixedAreaView : OverlayView() {
         fixedAreaViewStateFlow.value = State.Translating
         translateJob = launchInOverlayViewCoroutineScope {
             val campaignPeriodMinute = TrialLimitInfo.getFixedAreaViewCampaignPeriodMinute(context)
-            val purchaseState: Int = targetHandleViewModel.billingRepository.purchaseStateFlow.first()
             val startTime = System.nanoTime()
             while (fixedAreaViewStateFlow.value == State.Translating || fixedAreaViewStateFlow.value == State.TranslatingHandling) {
                 // 0.1초 간격
                 delay(100)
                 val elapsedTimeMillis = (System.nanoTime() - startTime) / 1_000_000 // 나노초를 밀리초로 변환
 //                Timber.tag(TAG).d("==== $campaignPeriodMinute, $purchaseState,  $elapsedTimeMillis")
-                // campaignPeriodMinute 가 지나면 구매 유도
-                if (purchaseState != Purchase.PurchaseState.PURCHASED && elapsedTimeMillis > (60000 * campaignPeriodMinute)) {
-                    targetHandleViewModel.inducePurchase()
+                // 사용권이 없고 campaignPeriodMinute 가 지나면 광고 표시
+                if (!AdGateState.isUsable() && elapsedTimeMillis > (60000 * campaignPeriodMinute)) {
+                    targetHandleViewModel.showAdGate()
                     clear()
                 }
                 // 화면 캡처 + OCR 요청
@@ -526,7 +502,6 @@ open class FixedAreaView : OverlayView() {
         val selectedAreaBitmap = createOverlaidBitmap(captureResponse.bitmap, selectedArea)
 
         // Test 캡처 이미지 확인
-        // TestCapturedActivity.start(context, selectedAreaBitmap)
 
         val sourceLanguageCode: String = targetHandleViewModel.preferenceRepository.sourceLanguageCodeFlow.first()
         val visionResponse: VisionResponse = targetHandleViewModel.visionRepository.request(
@@ -562,7 +537,6 @@ open class FixedAreaView : OverlayView() {
                 sourceLanguageCode = sourceLanguageCode,
                 targetLanguageCode = targetLanguageCode,
                 sourceText = sourceText,
-                correctedText = null,
             ).also {
                 when (it) {
                     is TranslationResponse.Success -> {
@@ -572,8 +546,6 @@ open class FixedAreaView : OverlayView() {
                             sourceText = sourceText,
                             translationKitType = it.result.translationKitType,
                             detectedLanguageCode = it.result.detectedLanguageCode,
-                            correctionKitType = null,
-                            correctedText = null,
                             resultText = it.result.resultText,
                         )
                         Timber.tag(TAG).d("===== $translationKitType ${it.result.resultText}")

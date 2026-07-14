@@ -8,14 +8,10 @@
     <!-- Overlay Permission -->
     <string name="message_permission_overlay">Leje e nevojshme:\nShfaq mbi aplikacione të tjera</string>
     <string name="message_permission_overlay_detail">Për të nisur Përkthyesin e Ekranit, duhet të jepni leje për shfaqje mbi aplikacione të tjera.</string>
-    <string name="message_permission_overlay_denied">Leja për mbivendosje u refuzua</string>
-    <string name="message_permission_overlay_denied_detail">Leja për mbivendosje nuk u dha.\nAplikacioni do të mbyllet.</string>
 
     <!-- MediaProjection token 요청 -->
     <string name="message_media_projection">Leje e nevojshme:\nRegjistrimi i ekranit</string>
     <string name="message_media_projection_detail">Për të nisur Përkthyesin e Ekranit, duhet të jepni leje për regjistrimin e ekranit.\n\nInformacioni në ekran përdoret vetëm për përkthim dhe nuk ruhet apo dërgohet askund.</string>
-    <string name="message_media_projection_denied">Leja për regjistrim të ekranit u refuzua</string>
-    <string name="message_media_projection_denied_detail">Leja për regjistrim të ekranit nuk u dha.\nAplikacioni do të mbyllet.</string>
 
     <!-- Foreground Service 시작 알림 -->
     <string name="notification_foreground_service">Funksioni i kapjes së ekranit po përdoret për përkthim.</string>
@@ -23,7 +19,6 @@
     <string name="message_start_foreground_service">Aplikacioni nis një shërbim në sfond për të kapur dhe përkthyer përmbajtjen e ekranit.\n\nImazhet e kapura nuk ruhen dhe nuk transmetohen jashtë.</string>
     <string name="label_confirm_start_foreground_service">Nis</string>
     <string name="label_dismiss_start_foreground_service">Mbyll</string>
-    <string name="snack_message_start_foreground_service">Shërbimi në sfond për përkthimin e përmbajtjes së ekranit është nisur.</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">Mbaro</string>
@@ -36,18 +31,6 @@
     <string name="title_voice_list_view">Zërat në dispozicion</string>
 
     <!-- Dialog -->
-    <string name="message_authentication_error">Gabim në autentifikim</string>
-    <string name="message_authentication_error_detail">Serveri i autentifikimit nuk po përgjigjet.\nJu lutem provoni përsëri më vonë.</string>
-    <string name="message_untrusted_environment">Mjedis i pasigurtë</string>
-    <string name="message_untrusted_environment_detail">Duket se aplikacioni juaj nuk e ka kaluar verifikimin e integritetit të Google Play.</string>
-    <string name="message_unknown_device">Pajisje e panjohur</string>
-    <string name="message_unknown_device_detail">Kjo pajisje nuk mbështetet.</string>
-    <string name="message_authentication_required">Kërkohet autentifikim</string>
-    <string name="message_authentication_required_detail">Duhet të jeni i kyçur me një llogari Google.</string>
-    <string name="message_playstore_update_required">Kërkohet përditësim i Play Store</string>
-    <string name="message_playstore_update_required_detail">Lidhja me shërbimin e Play Store dështoi.\nMund të jetë për shkak të një versioni të vjetër të instaluar.</string>
-    <string name="message_unknown_source">Shkarkoni këtë aplikacion nga Play</string>
-    <string name="message_unknown_source_detail">Për të vazhduar përdorimin, shkarkoni aplikacionin nga Google Play.</string>
     <string name="message_force_update">Përditësim i nevojshëm</string>
     <string name="message_force_update_detail">Kjo version nuk mbështetet më.\nShkoni te Dyqani.</string>
     <string name="message_service_unavailable">Shërbimi nuk është i disponueshëm</string>
@@ -56,61 +39,57 @@
     <string name="message_network_unavailable_detail">Rrjeti nuk është i disponueshëm.\nJu lutem kontrolloni dhe provoni përsëri.</string>
     <string name="message_translate_fixedarea_warn">Paralajmërim për baterinë</string>
     <string name="message_translate_fixedarea_warn_detail">Bateria mund të shkarkohet shpejt.</string>
-    <string name="message_translate_fixedarea_promotion">Informacion mbi blerjen e produktit</string>
-    <string name="message_translate_fixedarea_promotion_detail">Një kujtesë miqësore për veçoritë tona premium do të shfaqet çdo %1$s minuta.</string>
-    <string name="message_free_trial_ends">Prova juaj falas ka përfunduar.</string>
-    <string name="message_free_trial_ends_detail">Dëshironi të shikoni një reklamë për të zgjatur provën falas?</string>
-    <string name="message_ad_reward">Keni marrë %1$d minuta shtesë provë falas!</string>
-    <string name="message_ad_reward_detail">Shijoni të gjitha funksionet premium falas për %1$d minutat e ardhshme.</string>
+    <string name="ad_gate_loading">Reklama po përgatitet…</string>
+    <string name="ad_gate_reward_notice">Shikojeni reklamën deri në fund që ta përdorni aplikacionin pa reklama derisa ta mbyllni.</string>
 
     <!-- SettingsActivity -->
     <string name="settings_title">Cilësimet</string>
     <string name="settings_menu_cat_pointer">Tregues</string>
     <string name="settings_menu_pointer_docking_delay">Vonese lidhjeje</string>
-    <string name="settings_menu_haptic_feedback_to_detection">Vibrim kur zbulohet</string>
+    <string name="settings_menu_haptic_feedback_to_detection">Përgjigje haptike kur zbulohet</string>
     <string name="settings_menu_cat_menubar">Shirit menu</string>
     <string name="settings_menu_menubar_transparency">Përshkueshmëria e menusë</string>
     <string name="settings_menu_menubar_composition">Funksionet e menusë</string>
-    <string name="settings_menu_cat_ai">Korrigjim AI</string>
     <string name="settings_menu_cat_translation">Përkthim</string>
     <string name="settings_menu_translation_transparency">Përshkueshmëria e përkthimit</string>
     <string name="settings_menu_translation_close_delay">Vonese mbylljeje</string>
-    <string name="settings_menu_automated_read_aloud">Lexim automatik</string>
+    <string name="settings_menu_automated_read_aloud">Lexim automatik i përkthimit</string>
     <string name="settings_menu_reply_transparency">Përshkueshmëria e përgjigjes</string>
     <string name="settings_menu_cat_tts">Tekst në të folur</string>
+    <string name="settings_menu_tts_read_target">Teksti që lexohet</string>
+    <string name="settings_tts_read_target_source">Origjinali</string>
+    <string name="settings_tts_read_target_target">Përkthimi</string>
     <string name="settings_menu_tts_voices">Zëra TTS</string>
     <string name="settings_menu_tts_rate">Shpejtësia TTS</string>
     <string name="settings_menu_cat_about">Rreth</string>
-    <string name="settings_menu_on_premium_free_trial">Provë Premium aktive</string>
-    <string name="settings_menu_premium_free_trial_remain">%1$d minuta të mbetura</string>
-    <string name="settings_menu_your_premium_benefits">Përfitimet tuaja</string>
-    <string name="settings_menu_your_premium_benefits_peding">Përfitime (në pritje)</string>
     <string name="settings_menu_app_version">Versioni i aplikacionit</string>
     <string name="settings_menu_app_version_latest">(Më i fundit)</string>
 
     <!-- HelpTextDetectModeView, HelpTranslationKitView -->
-    <string name="help_text_no_limit">Çdo gjë e pakufizuar me Premium</string>
     <string name="help_text_no_limit_free">Pa kufizime në sasi, pa kufizime në kohë</string>
-    <string name="help_text_no_limit_title">Shijo pa kufizime</string>
-    <string name="help_text_no_limit_free_title">Falas pa kufizime</string>
-    <string name="help_text_get_premium">Merr Premium</string>
+    <string name="help_text_deepl_own_key">Përdor çelësin tuaj personal API të DeepL</string>
+    <string name="deepl_key_guide">Vendosni çelësin tuaj API të DeepL për të përdorur përkthimin e DeepL.</string>
+    <string name="deepl_key_signup_guide">Regjistrohuni në DeepL dhe mund të abonoheni në planin falas.</string>
+    <string name="deepl_key_link_subscription">Abonohuni në planin falas</string>
+    <string name="deepl_key_link_keys">Kontrolloni çelësin tuaj API</string>
+    <string name="deepl_key_active">Aktivizuar</string>
+    <string name="label_save">Ruaj</string>
+    <string name="deepl_key_invalid">Çelësi API nuk është i vlefshëm.</string>
+    <string name="deepl_key_validating">Po verifikohet…</string>
+    <string name="deepl_key_network_error">Çelësi nuk mund të verifikohej për shkak të një gabimi rrjeti. Çelësi u ruajt.</string>
 
     <!-- PremiumView -->
-    <string name="premium_view_get_premium">Merr Premium</string>
-    <string name="premium_view_get_premium_purchased">Përfitimet tuaja Premium</string>
-    <string name="premium_view_get_premium_pending">Përfitimet tuaja Premium (në pritje)</string>
-    <string name="premium_view_get_premium_not_available">Premium (aktualisht i padisponueshëm)</string>
-    <string name="premium_view_price_format">%1$s/muaj • TVSH e përfshirë\n• Anulo në çdo kohë</string>
-    <string name="premium_view_title">Të gjitha funksionet,\npa ndërprerje.</string>
-    <string name="premium_view_message">Pa kufizime në sasi apo kohë.\nÇdo gjë e përfshirë me Premium.</string>
-    <string name="premium_view_description_azure">Përkthen saktë shumicën e gjuhëve botërore.</string>
-    <string name="premium_view_description_deepl">Përkthime të sakta dhe të rafinuara që ruajnë kuptimin.</string>
-    <string name="premium_view_description_papago">Papago përkthen automatikisht përmes algoritmit të përkthimit me rrjet nervor.</string>
-    <string name="premium_view_description_google">Përkthimi më i shpejtë. Pa kufizime, falas përgjithmonë.</string>
-    <string name="premium_view_description_sentence_detection">Përdor gishtin për të përkthyer rreshta.</string>
+    <string name="premium_view_description_sentence_detection">Fjalitë zgjidhen automatikisht.</string>
     <string name="premium_view_description_paragraph_detection">Paragrafët njihen automatikisht.</string>
     <string name="premium_view_description_select_detection">Mund të përzgjedhësh zonën që dëshiron.</string>
-    <string name="premium_view_description_word_detection">Përkthimi fjalë për fjalë është gjithmonë falas dhe i pakufizuar.</string>
+    <string name="premium_view_description_word_detection">Drejtojeni te një fjalë që të përkthehet menjëherë.</string>
     <string name="premium_view_description_fixed_area_detection">Mund të përktheni vazhdimisht zona fikse, si p.sh. titrat e filmave.</string>
-    <string name="premium_view_unsubscribe">Anulo abonimin</string>
+  <string name="say_here">Jam këtu!</string>
+  <string name="hint_settings_reopen">Trokitni dy herë mbi dorezën për të hapur sërish cilësimet</string>
+  <string name="openai_key_guide">Vendosni çelësin tuaj OpenAI API për të përkthyer me modelet e OpenAI.</string>
+  <string name="openai_key_signup_guide">Krijoni një çelës në panelin e OpenAI. Përdorimi faturohet në llogarinë tuaj OpenAI.</string>
+  <string name="openai_key_link_keys">Merrni çelësin tuaj API</string>
+  <string name="openai_key_link_billing">Faturimi dhe përdorimi</string>
+  <string name="openai_model_label">Modeli</string>
+  <string name="help_text_openai_own_key">Përdor çelësin tuaj personal API të OpenAI</string>
 </resources>

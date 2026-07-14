@@ -8,14 +8,10 @@
   <!-- Overlay Permission -->
   <string name="message_permission_overlay">Gerekli izin:\nDiğer uygulamaların üzerinde göster</string>
   <string name="message_permission_overlay_detail">Screen Translator uygulamasını başlatmak için diğer uygulamaların üzerinde gösterme izni vermelisiniz.</string>
-  <string name="message_permission_overlay_denied">Yer paylaşımı izni reddedildi</string>
-  <string name="message_permission_overlay_denied_detail">Yer paylaşımı izni verilmedi.\nUygulama kapatılıyor.</string>
 
   <!-- MediaProjection token 요청 -->
   <string name="message_media_projection">Gerekli izin:\nEkran Kaydı</string>
   <string name="message_media_projection_detail">Screen Translator uygulamasını başlatmak için ekran kaydı izni vermelisiniz.\n\nEkrandaki bilgiler yalnızca çeviri amacıyla kullanılacaktır ve başka bir yere aktarılmayacak veya saklanmayacaktır.</string>
-  <string name="message_media_projection_denied">Ekran Kaydı izni reddedildi</string>
-  <string name="message_media_projection_denied_detail">Ekran kaydı izni verilmedi.\nUygulama kapatılıyor.</string>
 
   <!-- Foreground Service 시작 알림 -->
   <string name="notification_foreground_service">Çeviri için ekran görüntüleme özelliği kullanılıyor.</string>
@@ -23,7 +19,6 @@
   <string name="message_start_foreground_service">Uygulama ekran içeriğini yakalamak ve çevirmek için bir ön plan servisi başlatır.\n\nYakalanan görüntüler kaydedilmez veya dışa aktarılmaz.</string>
   <string name="label_confirm_start_foreground_service">Başlat</string>
   <string name="label_dismiss_start_foreground_service">Bitir</string>
-  <string name="snack_message_start_foreground_service">Uygulama ekran içeriğini yakalamak ve çevirmek için bir ön plan servisi başlatır.</string>
 
   <!-- OverlayService -->
   <string name="service_menu_finish">Bitir</string>
@@ -36,18 +31,6 @@
   <string name="title_voice_list_view">Mevcut sesler</string>
 
   <!-- Dialog -->
-  <string name="message_authentication_error">Kimlik doğrulama hatası</string>
-  <string name="message_authentication_error_detail">Kimlik doğrulama sunucusu yanıt vermiyor.\nLütfen daha sonra tekrar deneyin.</string>
-  <string name="message_untrusted_environment">Güvenilmeyen ortam</string>
-  <string name="message_untrusted_environment_detail">Uygulamanız Google Play bütünlük kontrolünden geçmemiş görünüyor.</string>
-  <string name="message_unknown_device">Bilinmeyen cihaz</string>
-  <string name="message_unknown_device_detail">Bu cihaz desteklenmiyor.</string>
-  <string name="message_authentication_required">Kimlik doğrulama gerekli</string>
-  <string name="message_authentication_required_detail">Google hesabınızla giriş yapmalısınız.</string>
-  <string name="message_playstore_update_required">Play Store güncellemesi gerekli</string>
-  <string name="message_playstore_update_required_detail">Play Store hizmetine bağlanılamadı.\nBu, cihazınızda eski bir Play Store sürümü olmasından kaynaklanıyor olabilir.</string>
-  <string name="message_unknown_source">Bu uygulamayı Play’den edinin</string>
-  <string name="message_unknown_source_detail">Bu harika uygulamayı kullanmaya devam etmek için lütfen Google Play’den indirin.</string>
   <string name="message_force_update">Güncelleme gerekli</string>
   <string name="message_force_update_detail">Bu sürüm artık desteklenmiyor.\nMağazaya gidin.</string>
   <string name="message_service_unavailable">Hizmet kullanılamıyor</string>
@@ -56,61 +39,57 @@
   <string name="message_network_unavailable_detail">Ağ kullanılamıyor.\nLütfen kontrol edip tekrar deneyin.</string>
   <string name="message_translate_fixedarea_warn">Batarya uyarısı</string>
   <string name="message_translate_fixedarea_warn_detail">Batarya hızlı bir şekilde tükenebilir.</string>
-  <string name="message_translate_fixedarea_promotion">Ürün satın alma bilgisi</string>
-  <string name="message_translate_fixedarea_promotion_detail">Premium özelliklerimizle ilgili dostça bir hatırlatma her %1$s dakikada bir görünecektir.</string>
-  <string name="message_free_trial_ends">Ücretsiz deneme süreniz sona erdi.</string>
-  <string name="message_free_trial_ends_detail">Ücretsiz denemeyi uzatmak için bir reklam izlemek ister misiniz?</string>
-  <string name="message_ad_reward">%1$d dakika daha ücretsiz deneme süresi kazandınız!</string>
-  <string name="message_ad_reward_detail">Sonraki %1$d dakika boyunca tüm premium özelliklerden ücretsiz yararlanın.</string>
+  <string name="ad_gate_loading">Reklam hazırlanıyor…</string>
+  <string name="ad_gate_reward_notice">Reklamı sonuna kadar izleyin, uygulamayı kapatana dek reklamsız kullanın.</string>
 
   <!-- SettingsActivity -->
   <string name="settings_title">Ayarlar</string>
   <string name="settings_menu_cat_pointer">İmleç</string>
   <string name="settings_menu_pointer_docking_delay">Bağlantı gecikmesi</string>
-  <string name="settings_menu_haptic_feedback_to_detection">Tespit edildiğinde titreşim</string>
+  <string name="settings_menu_haptic_feedback_to_detection">Tespitte dokunsal geri bildirim</string>
   <string name="settings_menu_cat_menubar">Menü Çubuğu</string>
   <string name="settings_menu_menubar_transparency">Menü Şeffaflığı</string>
   <string name="settings_menu_menubar_composition">Menü Fonksiyonları</string>
-  <string name="settings_menu_cat_ai">AI Düzenlemesi</string>
   <string name="settings_menu_cat_translation">Çeviri</string>
   <string name="settings_menu_translation_transparency">Çeviri Şeffaflığı</string>
   <string name="settings_menu_translation_close_delay">Kapanma Gecikmesi</string>
-  <string name="settings_menu_automated_read_aloud">Otomatik Okuma</string>
+  <string name="settings_menu_automated_read_aloud">Çeviriyi Otomatik Okuma</string>
   <string name="settings_menu_reply_transparency">Yanıt Şeffaflığı</string>
   <string name="settings_menu_cat_tts">Metin Konuşmaya</string>
+  <string name="settings_menu_tts_read_target">Okuma hedefi</string>
+  <string name="settings_tts_read_target_source">Kaynak</string>
+  <string name="settings_tts_read_target_target">Çeviri</string>
   <string name="settings_menu_tts_voices">TTS Sesleri</string>
   <string name="settings_menu_tts_rate">TTS Hızı</string>
   <string name="settings_menu_cat_about">Hakkında</string>
-  <string name="settings_menu_on_premium_free_trial">Premium deneme aktif</string>
-  <string name="settings_menu_premium_free_trial_remain">%1$d dakika kaldı</string>
-  <string name="settings_menu_your_premium_benefits">Premium Avantajlarınız</string>
-  <string name="settings_menu_your_premium_benefits_peding">Avantajlar (Beklemede)</string>
   <string name="settings_menu_app_version">Uygulama Sürümü</string>
   <string name="settings_menu_app_version_latest">(Son)</string>
 
   <!-- HelpTextDetectModeView, HelpTranslationKitView -->
-  <string name="help_text_no_limit">Premium ile her şey sınırsız</string>
   <string name="help_text_no_limit_free">Miktar veya süre sınırlaması yok</string>
-  <string name="help_text_no_limit_title">Sınırsızca keyfini çıkarın</string>
-  <string name="help_text_no_limit_free_title">Sınırsız ve ücretsiz</string>
-  <string name="help_text_get_premium">Premium Al</string>
+  <string name="help_text_deepl_own_key">Kişisel DeepL API anahtarınızı kullanır</string>
+  <string name="deepl_key_guide">DeepL çevirisini kullanmak için DeepL API anahtarınızı girin.</string>
+  <string name="deepl_key_signup_guide">DeepL\'e kaydolun ve ücretsiz plana abone olabilirsiniz.</string>
+  <string name="deepl_key_link_subscription">Ücretsiz plana abone ol</string>
+  <string name="deepl_key_link_keys">API anahtarınızı kontrol edin</string>
+  <string name="deepl_key_active">Etkinleştirildi</string>
+  <string name="label_save">Kaydet</string>
+  <string name="deepl_key_invalid">API anahtarı geçerli değil.</string>
+  <string name="deepl_key_validating">Doğrulanıyor…</string>
+  <string name="deepl_key_network_error">Ağ hatası nedeniyle anahtar doğrulanamadı. Anahtar kaydedildi.</string>
 
   <!-- PremiumView -->
-  <string name="premium_view_get_premium">Premium Al</string>
-  <string name="premium_view_get_premium_purchased">Premium Avantajların</string>
-  <string name="premium_view_get_premium_pending">Premium Avantajların (Beklemede)</string>
-  <string name="premium_view_get_premium_not_available">Premium Al (Şu anda mevcut değil)</string>
-  <string name="premium_view_price_format">%1$s/ay • KDV dahil\n• İstediğin zaman iptal et</string>
-  <string name="premium_view_title">Tüm Özellikler,\nKesintisiz Kullanım.</string>
-  <string name="premium_view_message">Miktar sınırı yok, süre sınırı yok.\nPremium ile her şey sınırsız.</string>
-  <string name="premium_view_description_azure">Dünya çapındaki dillerin çoğunu doğru şekilde çevirir.</string>
-  <string name="premium_view_description_deepl">Anlamı iyi yansıtan gelişmiş çeviriler sunarız.</string>
-  <string name="premium_view_description_papago">Papago, sinir ağı algoritmasıyla birçok dili hedef dile otomatik olarak çevirir.</string>
-  <string name="premium_view_description_google">En hızlı çeviri. Sınırsız ve sonsuza dek ücretsiz.</string>
-  <string name="premium_view_description_sentence_detection">Çizgileri çevirmek için parmağınızı kullanın.</string>
+  <string name="premium_view_description_sentence_detection">Cümleler otomatik olarak seçilir.</string>
   <string name="premium_view_description_paragraph_detection">Paragraf birimleri otomatik olarak algılanır.</string>
   <string name="premium_view_description_select_detection">İstediğiniz alanı manuel olarak seçebilirsiniz.</string>
-  <string name="premium_view_description_word_detection">Kelime bazlı çeviri her zaman ücretsiz ve sınırsızdır.</string>
+  <string name="premium_view_description_word_detection">Bir kelimeyi gösterin, anında çevrilsin.</string>
   <string name="premium_view_description_fixed_area_detection">Film altyazıları gibi sabit alanları sürekli olarak çevirebilirsiniz.</string>
-  <string name="premium_view_unsubscribe">Aboneliği iptal et</string>
+  <string name="say_here">Buradayım!</string>
+  <string name="hint_settings_reopen">Ayarları yeniden açmak için tutamağa iki kez dokunun</string>
+  <string name="openai_key_guide">OpenAI modelleriyle çeviri yapmak için OpenAI API anahtarınızı girin.</string>
+  <string name="openai_key_signup_guide">OpenAI kontrol panelinde bir anahtar oluşturun. Kullanım OpenAI hesabınıza faturalandırılır.</string>
+  <string name="openai_key_link_keys">API anahtarınızı alın</string>
+  <string name="openai_key_link_billing">Faturalandırma ve kullanım</string>
+  <string name="openai_model_label">Model</string>
+  <string name="help_text_openai_own_key">Kişisel OpenAI API anahtarınızı kullanır</string>
 </resources>

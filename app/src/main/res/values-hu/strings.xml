@@ -8,14 +8,10 @@
     <!-- Overlay Permission -->
     <string name="message_permission_overlay">Szükséges engedély:\nMegjelenítés más alkalmazások fölött</string>
     <string name="message_permission_overlay_detail">A Képernyőfordító elindításához engedélyeznie kell az alkalmazások fölötti megjelenítést.</string>
-    <string name="message_permission_overlay_denied">Átfedési engedély megtagadva</string>
-    <string name="message_permission_overlay_denied_detail">Az átfedési engedély nem lett megadva.\nAz alkalmazás bezár.</string>
 
     <!-- MediaProjection token 요청 -->
     <string name="message_media_projection">Szükséges engedély:\nKépernyő rögzítése</string>
     <string name="message_media_projection_detail">A Képernyőfordító elindításához engedélyeznie kell a képernyő rögzítését.\n\nA képernyőn megjelenő információkat kizárólag fordítási célokra használjuk, és nem kerülnek mentésre vagy megosztásra.</string>
-    <string name="message_media_projection_denied">Képernyőrögzítési engedély megtagadva</string>
-    <string name="message_media_projection_denied_detail">A képernyőrögzítési engedély nem lett megadva.\nAz alkalmazás bezár.</string>
 
     <!-- Foreground Service 시작 알림 -->
     <string name="notification_foreground_service">A képernyő rögzítése folyamatban van fordítás céljából.</string>
@@ -23,7 +19,6 @@
     <string name="message_start_foreground_service">Az alkalmazás egy előtérben futó szolgáltatást indít a képernyő tartalmának rögzítésére és fordítására.\n\nA rögzített képek nem kerülnek mentésre vagy továbbításra.</string>
     <string name="label_confirm_start_foreground_service">Indítás</string>
     <string name="label_dismiss_start_foreground_service">Bezárás</string>
-    <string name="snack_message_start_foreground_service">Az alkalmazás egy előtérben futó szolgáltatást indított a képernyő tartalmának rögzítésére és fordítására.</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">Bezárás</string>
@@ -36,18 +31,6 @@
     <string name="title_voice_list_view">Elérhető hangok</string>
 
     <!-- Dialog -->
-    <string name="message_authentication_error">Hitelesítési hiba</string>
-    <string name="message_authentication_error_detail">A hitelesítési szerver nem válaszol.\nKérjük, próbálja meg később újra.</string>
-    <string name="message_untrusted_environment">Nem megbízható környezet</string>
-    <string name="message_untrusted_environment_detail">Úgy tűnik, hogy az alkalmazás nem ment át a Google Play integritásellenőrzésén.</string>
-    <string name="message_unknown_device">Ismeretlen eszköz</string>
-    <string name="message_unknown_device_detail">Ez az eszköz nem támogatott.</string>
-    <string name="message_authentication_required">Hitelesítés szükséges</string>
-    <string name="message_authentication_required_detail">Be kell jelentkeznie Google-fiókjával.</string>
-    <string name="message_playstore_update_required">Play Áruház frissítése szükséges</string>
-    <string name="message_playstore_update_required_detail">Nem sikerült csatlakozni a Play Áruház szolgáltatáshoz.\nEz lehet az eszközön telepített elavult Play Áruház verziója miatt.</string>
-    <string name="message_unknown_source">Szerezze be ezt az alkalmazást a Google Playről</string>
-    <string name="message_unknown_source_detail">A folytatáshoz töltse le ezt az alkalmazást a Google Playről.</string>
     <string name="message_force_update">Frissítés szükséges</string>
     <string name="message_force_update_detail">Ez a verzió már nem támogatott.\nLátogasson el az Áruházba.</string>
     <string name="message_service_unavailable">Szolgáltatás nem elérhető</string>
@@ -56,63 +39,59 @@
     <string name="message_network_unavailable_detail">A hálózat nem elérhető.\nKérjük, ellenőrizze a kapcsolatot, és próbálja meg újra.</string>
     <string name="message_translate_fixedarea_warn">Akkumulátor figyelmeztetés</string>
     <string name="message_translate_fixedarea_warn_detail">Az akkumulátor gyorsan lemerülhet.</string>
-    <string name="message_translate_fixedarea_promotion">Termékvásárlási információ</string>
-    <string name="message_translate_fixedarea_promotion_detail">Barátságos emlékeztető prémium funkcióinkról minden %1$s percben megjelenik.</string>
-    <string name="message_free_trial_ends">Az ingyenes próbaidőszak lejárt.</string>
-    <string name="message_free_trial_ends_detail">Szeretnél egy hirdetést nézni a próbaidő meghosszabbításához?</string>
-    <string name="message_ad_reward">Még %1$d perc ingyenes próbaverziót kaptál!</string>
-    <string name="message_ad_reward_detail">Élvezd az összes prémium funkciót ingyen a következő %1$d percben.</string>
+    <string name="ad_gate_loading">Hirdetés előkészítése…</string>
+    <string name="ad_gate_reward_notice">Nézze végig a hirdetést, és az alkalmazás bezárásáig hirdetések nélkül használhatja.</string>
 
     <!-- SettingsActivity -->
     <string name="settings_title">Beállítások</string>
     <string name="settings_menu_cat_pointer">Mutató</string>
     <string name="settings_menu_pointer_docking_delay">Dokkolás késleltetése</string>
-    <string name="settings_menu_haptic_feedback_to_detection">Rezgés észleléskor</string>
+    <string name="settings_menu_haptic_feedback_to_detection">Haptikus visszajelzés észleléskor</string>
     <string name="settings_menu_cat_menubar">Menüsor</string>
     <string name="settings_menu_menubar_transparency">Menü átlátszóság</string>
     <string name="settings_menu_menubar_composition">Menüfunkciók</string>
-    <string name="settings_menu_cat_ai">AI javítás</string>
     <string name="settings_menu_cat_translation">Fordítás</string>
     <string name="settings_menu_translation_transparency">Fordítás átlátszóság</string>
     <string name="settings_menu_translation_close_delay">Zárás késleltetése</string>
-    <string name="settings_menu_automated_read_aloud">Automatikus felolvasás</string>
+    <string name="settings_menu_automated_read_aloud">Fordítás automatikus felolvasása</string>
     <string name="settings_menu_reply_transparency">Válasz átlátszóság</string>
     <string name="settings_menu_cat_tts">Szövegfelolvasó</string>
+    <string name="settings_menu_tts_read_target">Felolvasandó szöveg</string>
+    <string name="settings_tts_read_target_source">Eredeti</string>
+    <string name="settings_tts_read_target_target">Fordítás</string>
     <string name="settings_menu_tts_voices">TTS hangok</string>
     <string name="settings_menu_tts_rate">TTS sebesség</string>
     <string name="settings_menu_cat_about">Névjegy</string>
-    <string name="settings_menu_on_premium_free_trial">Prémium próba aktív</string>
-    <string name="settings_menu_premium_free_trial_remain">Még %1$d perc van hátra</string>
-    <string name="settings_menu_your_premium_benefits">Prémium előnyök</string>
-    <string name="settings_menu_your_premium_benefits_peding">Előnyök (függőben)</string>
     <string name="settings_menu_app_version">Alkalmazás verziója</string>
     <string name="settings_menu_app_version_latest">(Legújabb)</string>
 
     <!-- HelpTextDetectModeView, HelpTranslationKitView -->
-    <string name="help_text_no_limit">A Premium előfizetéssel minden korlátlan</string>
     <string name="help_text_no_limit_free">Nincs mennyiségi vagy időkorlát</string>
-    <string name="help_text_no_limit_title">Használja korlátok nélkül</string>
-    <string name="help_text_no_limit_free_title">Ingyenes és korlátozásmentes</string>
-    <string name="help_text_get_premium">Premium előfizetés</string>
+    <string name="help_text_deepl_own_key">A személyes DeepL API-kulcsát használja</string>
+    <string name="deepl_key_guide">Adja meg a DeepL API-kulcsát a DeepL fordítás használatához.</string>
+    <string name="deepl_key_signup_guide">Regisztráljon a DeepL-re, és előfizethet az ingyenes csomagra.</string>
+    <string name="deepl_key_link_subscription">Előfizetés az ingyenes csomagra</string>
+    <string name="deepl_key_link_keys">API-kulcs ellenőrzése</string>
+    <string name="deepl_key_active">Aktiválva</string>
+    <string name="label_save">Mentés</string>
+    <string name="deepl_key_invalid">Az API-kulcs érvénytelen.</string>
+    <string name="deepl_key_validating">Ellenőrzés…</string>
+    <string name="deepl_key_network_error">A kulcsot hálózati hiba miatt nem sikerült ellenőrizni. A kulcs mentve.</string>
 
     <!-- PremiumView -->
-    <string name="premium_view_get_premium">Premium előfizetés</string>
-    <string name="premium_view_get_premium_purchased">Premium előnyeid</string>
-    <string name="premium_view_get_premium_pending">Premium előnyeid (függőben)</string>
-    <string name="premium_view_get_premium_not_available">Premium nem elérhető jelenleg</string>
-    <string name="premium_view_price_format">%1$s/hó • ÁFA-t tartalmaz\n• Bármikor lemondható</string>
-    <string name="premium_view_title">Minden funkció,\nmegszakítás nélkül.</string>
-    <string name="premium_view_message">Nincs mennyiségi vagy időkorlát.\nA Premium előfizetéssel minden elérhető.</string>
-    <string name="premium_view_description_azure">A világ legtöbb nyelvét pontosan lefordítja.</string>
-    <string name="premium_view_description_deepl">Magas szintű, a jelentést pontosan visszaadó fordításokat biztosít.</string>
-    <string name="premium_view_description_papago">A Papago neurális gépi fordítással automatikusan fordít több nyelvről a célnyelvre.</string>
-    <string name="premium_view_description_google">A leggyorsabb fordítás. Korlátlan, örökre ingyenes.</string>
-    <string name="premium_view_description_sentence_detection">Fordítás soronként, ujjmozdulattal.</string>
+    <string name="premium_view_description_sentence_detection">A mondatok automatikusan kijelölődnek.</string>
     <string name="premium_view_description_paragraph_detection">A bekezdéseket automatikusan felismeri.</string>
     <string name="premium_view_description_select_detection">Kijelölheted a kívánt területet is.</string>
-    <string name="premium_view_description_word_detection">A szó szerinti fordítás mindig ingyenes és korlátlan.</string>
+    <string name="premium_view_description_word_detection">Mutasson egy szóra, és azonnal lefordul.</string>
     <string name="premium_view_description_fixed_area_detection">Folyamatosan fordíthatsz rögzített területeket, például filmfeliratokat.</string>
-    <string name="premium_view_unsubscribe">Előfizetés lemondása</string>
+  <string name="say_here">Itt vagyok!</string>
+  <string name="hint_settings_reopen">Koppintson duplán a fogantyúra a beállítások újbóli megnyitásához</string>
+  <string name="openai_key_guide">Adja meg az OpenAI API-kulcsát, hogy OpenAI-modellekkel fordíthasson.</string>
+  <string name="openai_key_signup_guide">Hozzon létre egy kulcsot az OpenAI irányítópultján. A használatot az OpenAI-fiókjára számlázzuk.</string>
+  <string name="openai_key_link_keys">Szerezze meg az API-kulcsát</string>
+  <string name="openai_key_link_billing">Számlázás és használat</string>
+  <string name="openai_model_label">Modell</string>
+  <string name="help_text_openai_own_key">A személyes OpenAI API-kulcsát használja</string>
 </resources>
 
 

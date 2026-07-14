@@ -8,14 +8,10 @@
     <!-- Overlay Permission -->
     <string name="message_permission_overlay">Požadované oprávnění:\nZobrazit nad ostatními aplikacemi</string>
     <string name="message_permission_overlay_detail">Pro spuštění Překladače Obrazovky je nutné povolit překrytí nad ostatními aplikacemi.</string>
-    <string name="message_permission_overlay_denied">Oprávnění pro překrytí bylo odmítnuto</string>
-    <string name="message_permission_overlay_denied_detail">Oprávnění pro překrytí nebylo uděleno.\nAplikace bude ukončena.</string>
 
     <!-- MediaProjection token 요청 -->
     <string name="message_media_projection">Požadované oprávnění:\nZáznam obrazovky</string>
     <string name="message_media_projection_detail">Pro spuštění Překladače Obrazovky je nutné povolit záznam obrazovky.\n\nZachycený obsah slouží pouze k překladům a nebude nikde uložen ani odeslán.</string>
-    <string name="message_media_projection_denied">Oprávnění pro záznam obrazovky bylo odmítnuto</string>
-    <string name="message_media_projection_denied_detail">Oprávnění pro záznam obrazovky nebylo uděleno.\nAplikace bude ukončena.</string>
 
     <!-- Foreground Service 시작 알림 -->
     <string name="notification_foreground_service">Funkce snímání obrazovky je využívána pro překlad.</string>
@@ -23,7 +19,6 @@
     <string name="message_start_foreground_service">Aplikace spustí popřední službu pro snímání a překlad obsahu obrazovky.\n\nZachycené obrázky nejsou ukládány ani odesílány.</string>
     <string name="label_confirm_start_foreground_service">Spustit</string>
     <string name="label_dismiss_start_foreground_service">Ukončit</string>
-    <string name="snack_message_start_foreground_service">Aplikace spustila popřední službu pro snímání a překlad obrazovky.</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">Ukončit</string>
@@ -36,18 +31,6 @@
     <string name="title_voice_list_view">Dostupné hlasy</string>
 
     <!-- Dialog -->
-    <string name="message_authentication_error">Chyba ověření</string>
-    <string name="message_authentication_error_detail">Server pro ověření nereaguje.\nZkuste to prosím později.</string>
-    <string name="message_untrusted_environment">Nedůvěryhodné prostředí</string>
-    <string name="message_untrusted_environment_detail">Zdá se, že vaše aplikace neprošla kontrolou integrity Google Play.</string>
-    <string name="message_unknown_device">Neznámé zařízení</string>
-    <string name="message_unknown_device_detail">Toto zařízení není podporováno.</string>
-    <string name="message_authentication_required">Vyžadováno ověření</string>
-    <string name="message_authentication_required_detail">Musíte být přihlášeni pomocí Google účtu.</string>
-    <string name="message_playstore_update_required">Je vyžadována aktualizace Obchodu Play</string>
-    <string name="message_playstore_update_required_detail">Připojení ke službě Obchodu Play se nezdařilo.\nMůže být nainstalována zastaralá verze Obchodu Play.</string>
-    <string name="message_unknown_source">Získejte tuto aplikaci z Play</string>
-    <string name="message_unknown_source_detail">Pro další používání aplikace si ji stáhněte z Google Play.</string>
     <string name="message_force_update">Je vyžadována aktualizace</string>
     <string name="message_force_update_detail">Tato verze již není podporována.\nPřejděte do obchodu.</string>
     <string name="message_service_unavailable">Služba není dostupná</string>
@@ -56,61 +39,57 @@
     <string name="message_network_unavailable_detail">Síť není dostupná.\nZkontrolujte připojení a zkuste to znovu.</string>
     <string name="message_translate_fixedarea_warn">Upozornění na baterii</string>
     <string name="message_translate_fixedarea_warn_detail">Baterie se může rychle vybít.</string>
-    <string name="message_translate_fixedarea_promotion">Informace o koupi produktu</string>
-    <string name="message_translate_fixedarea_promotion_detail">Připomenutí našich prémiových funkcí se zobrazí každých %1$s minut.</string>
-    <string name="message_free_trial_ends">Vaše bezplatná zkušební verze skončila.</string>
-    <string name="message_free_trial_ends_detail">Chcete sledovat reklamu pro prodloužení zkušební verze?</string>
-    <string name="message_ad_reward">Obdrželi jste dalších %1$d minut bezplatné zkušební verze!</string>
-    <string name="message_ad_reward_detail">Využijte všechny prémiové funkce zdarma po následujících %1$d minut.</string>
+    <string name="ad_gate_loading">Připravuje se reklama…</string>
+    <string name="ad_gate_reward_notice">Sledujte reklamu až do konce a používejte aplikaci bez reklam, dokud ji nezavřete.</string>
 
     <!-- SettingsActivity -->
     <string name="settings_title">Nastavení</string>
     <string name="settings_menu_cat_pointer">Ukazatel</string>
     <string name="settings_menu_pointer_docking_delay">Zpoždění dokování</string>
-    <string name="settings_menu_haptic_feedback_to_detection">Vibrace při detekci</string>
+    <string name="settings_menu_haptic_feedback_to_detection">Haptická odezva při detekci</string>
     <string name="settings_menu_cat_menubar">Panel menu</string>
     <string name="settings_menu_menubar_transparency">Průhlednost menu</string>
     <string name="settings_menu_menubar_composition">Funkce menu</string>
-    <string name="settings_menu_cat_ai">Oprava pomocí AI</string>
     <string name="settings_menu_cat_translation">Překlad</string>
     <string name="settings_menu_translation_transparency">Průhlednost překladu</string>
     <string name="settings_menu_translation_close_delay">Zpoždění zavření</string>
-    <string name="settings_menu_automated_read_aloud">Automatické čtení</string>
+    <string name="settings_menu_automated_read_aloud">Automatické čtení překladu</string>
     <string name="settings_menu_reply_transparency">Průhlednost odpovědi</string>
     <string name="settings_menu_cat_tts">Převod textu</string>
+    <string name="settings_menu_tts_read_target">Čtený text</string>
+    <string name="settings_tts_read_target_source">Originál</string>
+    <string name="settings_tts_read_target_target">Překlad</string>
     <string name="settings_menu_tts_voices">Hlasy TTS</string>
     <string name="settings_menu_tts_rate">Rychlost TTS</string>
     <string name="settings_menu_cat_about">O aplikaci</string>
-    <string name="settings_menu_on_premium_free_trial">Prémiová zkouška běží</string>
-    <string name="settings_menu_premium_free_trial_remain">Zbývá %1$d minut</string>
-    <string name="settings_menu_your_premium_benefits">Vaše výhody</string>
-    <string name="settings_menu_your_premium_benefits_peding">Výhody (čeká)</string>
     <string name="settings_menu_app_version">Verze aplikace</string>
     <string name="settings_menu_app_version_latest">(Nejnovější)</string>
 
     <!-- HelpTextDetectModeView, HelpTranslationKitView -->
-    <string name="help_text_no_limit">S Premium je vše neomezené</string>
     <string name="help_text_no_limit_free">Bez omezení množství, bez časového omezení</string>
-    <string name="help_text_no_limit_title">Užívejte si bez omezení</string>
-    <string name="help_text_no_limit_free_title">Zdarma a bez omezení</string>
-    <string name="help_text_get_premium">Získat Premium</string>
+    <string name="help_text_deepl_own_key">Používá váš osobní klíč API DeepL</string>
+    <string name="deepl_key_guide">Zadejte svůj klíč API DeepL a používejte překlad DeepL.</string>
+    <string name="deepl_key_signup_guide">Zaregistrujte se u DeepL a můžete si předplatit bezplatný plán.</string>
+    <string name="deepl_key_link_subscription">Předplatit bezplatný plán</string>
+    <string name="deepl_key_link_keys">Zkontrolovat váš klíč API</string>
+    <string name="deepl_key_active">Aktivováno</string>
+    <string name="label_save">Uložit</string>
+    <string name="deepl_key_invalid">Klíč API není platný.</string>
+    <string name="deepl_key_validating">Ověřování…</string>
+    <string name="deepl_key_network_error">Klíč se nepodařilo ověřit kvůli chybě sítě. Klíč byl uložen.</string>
 
     <!-- PremiumView -->
-    <string name="premium_view_get_premium">Získat Premium</string>
-    <string name="premium_view_get_premium_purchased">Vaše výhody Premium</string>
-    <string name="premium_view_get_premium_pending">Vaše výhody Premium (čeká se)</string>
-    <string name="premium_view_get_premium_not_available">Premium (momentálně nedostupné)</string>
-    <string name="premium_view_price_format">%1$s/měsíc • Včetně DPH\n• Možno kdykoli zrušit</string>
-    <string name="premium_view_title">Všechny funkce,\nBez přerušení.</string>
-    <string name="premium_view_message">Bez omezení množství i času.\nS Premium máte vše neomezeně</string>
-    <string name="premium_view_description_azure">Přesně překládá většinu jazyků na světě.</string>
-    <string name="premium_view_description_deepl">Poskytuje přesné a významově věrné překlady.</string>
-    <string name="premium_view_description_papago">Papago automaticky překládá více jazyků pomocí algoritmu neuronového překladu.</string>
-    <string name="premium_view_description_google">Nejrychlejší překlad. Neomezený a navždy zdarma.</string>
-    <string name="premium_view_description_sentence_detection">Překládejte celé řádky prstem.</string>
+    <string name="premium_view_description_sentence_detection">Věty se vybírají automaticky.</string>
     <string name="premium_view_description_paragraph_detection">Odstavce jsou rozpoznány automaticky.</string>
     <string name="premium_view_description_select_detection">Můžete také vybrat konkrétní oblast pro překlad.</string>
-    <string name="premium_view_description_word_detection">Překlad po jednotlivých slovech je vždy zdarma a neomezený.</string>
+    <string name="premium_view_description_word_detection">Ukažte na slovo a ihned se přeloží.</string>
     <string name="premium_view_description_fixed_area_detection">Můžete nepřetržitě překládat pevné oblasti, jako jsou filmové titulky.</string>
-    <string name="premium_view_unsubscribe">Zrušit předplatné</string>
+  <string name="say_here">Jsem tady!</string>
+  <string name="hint_settings_reopen">Dvojitým klepnutím na úchyt znovu otevřete nastavení</string>
+  <string name="openai_key_guide">Zadejte svůj klíč OpenAI API pro překlad pomocí modelů OpenAI.</string>
+  <string name="openai_key_signup_guide">Vytvořte klíč na řídicím panelu OpenAI. Používání se účtuje na váš účet OpenAI.</string>
+  <string name="openai_key_link_keys">Získejte svůj klíč API</string>
+  <string name="openai_key_link_billing">Fakturace a využití</string>
+  <string name="openai_model_label">Model</string>
+  <string name="help_text_openai_own_key">Používá váš osobní klíč API OpenAI</string>
 </resources>

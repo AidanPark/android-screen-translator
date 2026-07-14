@@ -8,14 +8,10 @@
     <!-- Overlay Permission -->
     <string name="message_permission_overlay">دسترسی لازم:\nنمایش روی سایر برنامه‌ها</string>
     <string name="message_permission_overlay_detail">برای اجرای مترجم صفحه‌نمایش، باید اجازه نمایش روی برنامه‌های دیگر را بدهید.</string>
-    <string name="message_permission_overlay_denied">دسترسی پوشش‌دهی رد شد</string>
-    <string name="message_permission_overlay_denied_detail">دسترسی پوشش‌دهی ارائه نشده است.\nبرنامه بسته خواهد شد.</string>
 
     <!-- MediaProjection token 요청 -->
     <string name="message_media_projection">دسترسی لازم:\nضبط صفحه‌نمایش</string>
     <string name="message_media_projection_detail">برای اجرای مترجم صفحه‌نمایش، باید اجازه ضبط صفحه را بدهید.\n\nاطلاعات صفحه فقط برای اهداف ترجمه استفاده می‌شوند و ذخیره یا منتقل نمی‌شوند.</string>
-    <string name="message_media_projection_denied">دسترسی ضبط صفحه رد شد</string>
-    <string name="message_media_projection_denied_detail">دسترسی ضبط صفحه ارائه نشده است.\nبرنامه بسته خواهد شد.</string>
 
     <!-- Foreground Service 시작 알림 -->
     <string name="notification_foreground_service">عملکرد ضبط صفحه برای ترجمه در حال استفاده است.</string>
@@ -23,7 +19,6 @@
     <string name="message_start_foreground_service">برنامه یک سرویس پیش‌زمینه را برای ضبط و ترجمه محتوای صفحه آغاز می‌کند.\n\nتصاویر ضبط‌شده ذخیره یا به بیرون ارسال نمی‌شوند.</string>
     <string name="label_confirm_start_foreground_service">شروع</string>
     <string name="label_dismiss_start_foreground_service">پایان</string>
-    <string name="snack_message_start_foreground_service">برنامه یک سرویس پیش‌زمینه را برای ضبط و ترجمه محتوای صفحه آغاز می‌کند.</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">پایان</string>
@@ -36,18 +31,6 @@
     <string name="title_voice_list_view">صداهای موجود</string>
 
     <!-- Dialog -->
-    <string name="message_authentication_error">خطای احراز هویت</string>
-    <string name="message_authentication_error_detail">سرور احراز هویت پاسخ نمی‌دهد.\nلطفاً بعداً دوباره امتحان کنید.</string>
-    <string name="message_untrusted_environment">محیط نامطمئن</string>
-    <string name="message_untrusted_environment_detail">به نظر می‌رسد برنامه شما بررسی یکپارچگی Google Play را پاس نکرده است.</string>
-    <string name="message_unknown_device">دستگاه ناشناخته</string>
-    <string name="message_unknown_device_detail">این دستگاه پشتیبانی نمی‌شود.</string>
-    <string name="message_authentication_required">نیاز به احراز هویت</string>
-    <string name="message_authentication_required_detail">باید با حساب Google وارد شوید.</string>
-    <string name="message_playstore_update_required">نیاز به به‌روزرسانی Play Store</string>
-    <string name="message_playstore_update_required_detail">اتصال به سرویس Play Store ناموفق بود.\nممکن است نسخه قدیمی Play Store نصب باشد.</string>
-    <string name="message_unknown_source">این برنامه را از Play دریافت کنید</string>
-    <string name="message_unknown_source_detail">برای ادامه استفاده از این برنامه عالی، آن را از Google Play دریافت کنید.</string>
     <string name="message_force_update">نیاز به به‌روزرسانی</string>
     <string name="message_force_update_detail">این نسخه دیگر پشتیبانی نمی‌شود.\nبه فروشگاه بروید.</string>
     <string name="message_service_unavailable">سرویس در دسترس نیست</string>
@@ -56,61 +39,57 @@
     <string name="message_network_unavailable_detail">شبکه در دسترس نیست.\nلطفاً بررسی کرده و دوباره تلاش کنید.</string>
     <string name="message_translate_fixedarea_warn">هشدار باتری</string>
     <string name="message_translate_fixedarea_warn_detail">ممکن است باتری به‌سرعت خالی شود.</string>
-    <string name="message_translate_fixedarea_promotion">اطلاعات خرید محصول</string>
-    <string name="message_translate_fixedarea_promotion_detail">یادآوری دوستانه‌ای درباره قابلیت‌های ویژه ما هر %1$s دقیقه نمایش داده می‌شود.</string>
-    <string name="message_free_trial_ends">دوره آزمایشی رایگان شما به پایان رسید.</string>
-    <string name="message_free_trial_ends_detail">آیا می‌خواهید برای تمدید دوره آزمایشی یک تبلیغ تماشا کنید؟</string>
-    <string name="message_ad_reward">%1$d دقیقه بیشتر از دوره آزمایشی رایگان دریافت کردید!</string>
-    <string name="message_ad_reward_detail">از همه امکانات ویژه به مدت %1$d دقیقه آینده رایگان استفاده کنید.</string>
+    <string name="ad_gate_loading">در حال آماده‌سازی آگهی…</string>
+    <string name="ad_gate_reward_notice">آگهی را تا پایان تماشا کنید تا هنگام بستن برنامه بدون آگهی از آن استفاده کنید.</string>
 
     <!-- SettingsActivity -->
     <string name="settings_title">تنظیمات</string>
     <string name="settings_menu_cat_pointer">نشانگر</string>
     <string name="settings_menu_pointer_docking_delay">تأخیر اتصال</string>
-    <string name="settings_menu_haptic_feedback_to_detection">ویبره هنگام شناسایی</string>
+    <string name="settings_menu_haptic_feedback_to_detection">بازخورد لمسی هنگام شناسایی</string>
     <string name="settings_menu_cat_menubar">نوار منو</string>
     <string name="settings_menu_menubar_transparency">شفافیت منو</string>
     <string name="settings_menu_menubar_composition">عملکردهای منو</string>
-    <string name="settings_menu_cat_ai">اصلاح با هوش مصنوعی</string>
     <string name="settings_menu_cat_translation">ترجمه</string>
     <string name="settings_menu_translation_transparency">شفافیت ترجمه</string>
     <string name="settings_menu_translation_close_delay">تأخیر بستن</string>
-    <string name="settings_menu_automated_read_aloud">خواندن خودکار</string>
+    <string name="settings_menu_automated_read_aloud">خواندن خودکار ترجمه</string>
     <string name="settings_menu_reply_transparency">شفافیت پاسخ</string>
     <string name="settings_menu_cat_tts">متن به گفتار</string>
+    <string name="settings_menu_tts_read_target">هدف خواندن</string>
+    <string name="settings_tts_read_target_source">اصل</string>
+    <string name="settings_tts_read_target_target">ترجمه</string>
     <string name="settings_menu_tts_voices">صداهای TTS</string>
     <string name="settings_menu_tts_rate">سرعت TTS</string>
     <string name="settings_menu_cat_about">درباره</string>
-    <string name="settings_menu_on_premium_free_trial">نسخه آزمایشی فعال است</string>
-    <string name="settings_menu_premium_free_trial_remain">%1$d دقیقه باقی‌مانده</string>
-    <string name="settings_menu_your_premium_benefits">مزایای شما</string>
-    <string name="settings_menu_your_premium_benefits_peding">مزایا (در انتظار)</string>
     <string name="settings_menu_app_version">نسخه برنامه</string>
     <string name="settings_menu_app_version_latest">(جدیدترین)</string>
 
     <!-- HelpTextDetectModeView, HelpTranslationKitView -->
-    <string name="help_text_no_limit">با پریمیوم، همه چیز نامحدود است</string>
     <string name="help_text_no_limit_free">بدون محدودیت در مقدار یا زمان</string>
-    <string name="help_text_no_limit_title">از آن بدون محدودیت لذت ببرید</string>
-    <string name="help_text_no_limit_free_title">رایگان و بدون محدودیت</string>
-    <string name="help_text_get_premium">دریافت پریمیوم</string>
+    <string name="help_text_deepl_own_key">از کلید API شخصی DeepL شما استفاده می‌کند</string>
+    <string name="deepl_key_guide">برای استفاده از ترجمه DeepL، کلید API DeepL خود را وارد کنید.</string>
+    <string name="deepl_key_signup_guide">در DeepL ثبت‌نام کنید تا بتوانید در طرح رایگان مشترک شوید.</string>
+    <string name="deepl_key_link_subscription">اشتراک در طرح رایگان</string>
+    <string name="deepl_key_link_keys">کلید API خود را بررسی کنید</string>
+    <string name="deepl_key_active">فعال شد</string>
+    <string name="label_save">ذخیره</string>
+    <string name="deepl_key_invalid">کلید API معتبر نیست.</string>
+    <string name="deepl_key_validating">در حال بررسی…</string>
+    <string name="deepl_key_network_error">به دلیل خطای شبکه نمی‌توان کلید را تأیید کرد. کلید ذخیره شد.</string>
 
     <!-- PremiumView -->
-    <string name="premium_view_get_premium">دریافت پریمیوم</string>
-    <string name="premium_view_get_premium_purchased">مزایای پریمیوم شما</string>
-    <string name="premium_view_get_premium_pending">مزایای پریمیوم شما (در انتظار)</string>
-    <string name="premium_view_get_premium_not_available">دریافت پریمیوم (در حال حاضر در دسترس نیست)</string>
-    <string name="premium_view_price_format">%1$s/ماه • شامل مالیات\n• قابل لغو در هر زمان</string>
-    <string name="premium_view_title">همه ویژگی‌ها،\nبدون وقفه.</string>
-    <string name="premium_view_message">بدون محدودیت در مقدار یا مدت زمان.\nبا پریمیوم، همه چیز نامحدود است.</string>
-    <string name="premium_view_description_azure">اکثر زبان‌های دنیا را به‌درستی ترجمه می‌کند.</string>
-    <string name="premium_view_description_deepl">ترجمه‌هایی دقیق و با درک معنایی ارائه می‌دهد.</string>
-    <string name="premium_view_description_papago">Papago زبان‌های مختلف را با الگوریتم ترجمه عصبی به زبان مقصد ترجمه می‌کند.</string>
-    <string name="premium_view_description_google">سریع‌ترین ترجمه را ارائه می‌دهد. رایگان و نامحدود برای همیشه.</string>
-    <string name="premium_view_description_sentence_detection">با انگشت خود خطوط را برای ترجمه انتخاب کنید.</string>
+    <string name="premium_view_description_sentence_detection">جملات به‌طور خودکار انتخاب می‌شوند.</string>
     <string name="premium_view_description_paragraph_detection">واحدهای پاراگراف به‌صورت خودکار شناسایی می‌شوند.</string>
     <string name="premium_view_description_select_detection">می‌توانید محدوده دلخواه را نیز انتخاب کنید.</string>
-    <string name="premium_view_description_word_detection">ترجمه کلمه‌به‌کلمه همیشه رایگان و نامحدود است.</string>
+    <string name="premium_view_description_word_detection">به یک کلمه اشاره کنید تا فوراً ترجمه شود.</string>
     <string name="premium_view_description_fixed_area_detection">می‌توانید بخش‌های ثابت مانند زیرنویس فیلم را به‌صورت مداوم ترجمه کنید.</string>
-    <string name="premium_view_unsubscribe">لغو اشتراک</string>
+  <string name="say_here">من اینجا هستم!</string>
+  <string name="hint_settings_reopen">برای باز کردن دوباره تنظیمات، دو بار روی دستگیره ضربه بزنید</string>
+  <string name="openai_key_guide">برای ترجمه با مدل‌های OpenAI، کلید OpenAI API خود را وارد کنید.</string>
+  <string name="openai_key_signup_guide">کلیدی در داشبورد OpenAI بسازید. هزینه استفاده به حساب OpenAI شما منظور می‌شود.</string>
+  <string name="openai_key_link_keys">کلید API خود را دریافت کنید</string>
+  <string name="openai_key_link_billing">صورت‌حساب و استفاده</string>
+  <string name="openai_model_label">مدل</string>
+  <string name="help_text_openai_own_key">از کلید API شخصی OpenAI شما استفاده می‌کند</string>
 </resources>

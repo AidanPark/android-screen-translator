@@ -17,24 +17,16 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.android.billingclient.api.Purchase
 import com.galaxy.airviewdictionary.R
 import com.galaxy.airviewdictionary.data.local.capture.CapturePreventedException
 import com.galaxy.airviewdictionary.data.local.capture.CaptureRepository
 import com.galaxy.airviewdictionary.data.local.capture.CaptureResponse
 import com.galaxy.airviewdictionary.data.local.capture.NoMediaProjectionTokenException
 import com.galaxy.airviewdictionary.data.local.preference.PreferenceRepository
-import com.galaxy.airviewdictionary.data.local.secure.ApiKeyInfo
-import com.galaxy.airviewdictionary.data.local.secure.DeviceActivityLevel
-import com.galaxy.airviewdictionary.data.local.secure.DeviceInspection
-import com.galaxy.airviewdictionary.data.local.secure.IntegrityResponse
-import com.galaxy.airviewdictionary.data.local.secure.SecureAssessmentInfo
+import com.galaxy.airviewdictionary.data.local.ads.AdGateState
 import com.galaxy.airviewdictionary.data.local.secure.SecureRepository
 import com.galaxy.airviewdictionary.data.local.secure.TrialLimitInfo
-import com.galaxy.airviewdictionary.data.local.secure.VerdictAppLicensing
-import com.galaxy.airviewdictionary.data.local.secure.VerdictAppRecognition
-import com.galaxy.airviewdictionary.data.local.secure.VerdictDeviceRecognition
-import com.galaxy.airviewdictionary.data.local.secure.VerdictPlayProtect
+import com.galaxy.airviewdictionary.data.local.tts.TTSReadTarget
 import com.galaxy.airviewdictionary.data.local.tts.TTSRepository
 import com.galaxy.airviewdictionary.data.local.vision.TextDetectMode
 import com.galaxy.airviewdictionary.data.local.vision.VisionRepository
@@ -43,9 +35,6 @@ import com.galaxy.airviewdictionary.data.local.vision.model.Paragraph
 import com.galaxy.airviewdictionary.data.local.vision.model.VisionResponse
 import com.galaxy.airviewdictionary.data.local.vision.model.VisionText
 import com.galaxy.airviewdictionary.data.local.vision.model.Word
-import com.galaxy.airviewdictionary.data.remote.ai.CorrectionKitType
-import com.galaxy.airviewdictionary.data.remote.ai.CorrectionRepository
-import com.galaxy.airviewdictionary.data.remote.billing.BillingRepository
 import com.galaxy.airviewdictionary.data.remote.firebase.AnalyticsRepository
 import com.galaxy.airviewdictionary.data.remote.firebase.RemoteConfigRepository
 import com.galaxy.airviewdictionary.data.remote.translation.Transaction
@@ -53,9 +42,11 @@ import com.galaxy.airviewdictionary.data.remote.translation.TranslationKitType
 import com.galaxy.airviewdictionary.data.remote.translation.TranslationRepository
 import com.galaxy.airviewdictionary.data.remote.translation.TranslationResponse
 import com.galaxy.airviewdictionary.extensions.finishService
+import com.galaxy.airviewdictionary.extensions.voiceNameMatchesLanguage
 import com.galaxy.airviewdictionary.extensions.gotoStore
 import com.galaxy.airviewdictionary.extensions.openGoogleApp
 import com.galaxy.airviewdictionary.extensions.toPx
+import com.galaxy.airviewdictionary.ui.screen.ads.AdGateActivity
 import com.galaxy.airviewdictionary.ui.screen.main.SettingsActivity
 import com.galaxy.airviewdictionary.ui.screen.overlay.dialog.DialogView
 import com.galaxy.airviewdictionary.ui.screen.overlay.menubar.MenuBarView
@@ -94,11 +85,9 @@ class TargetHandleViewModelFactory(
     private val applicationContext: Context,
     private val secureRepository: SecureRepository,
     private val remoteConfigRepository: RemoteConfigRepository,
-    private val billingRepository: BillingRepository,
     private val preferenceRepository: PreferenceRepository,
     private val captureRepository: CaptureRepository,
     private val visionRepository: VisionRepository,
-    private val correctionRepository: CorrectionRepository,
     private val translationRepository: TranslationRepository,
     private val ttsRepository: TTSRepository,
     private val analyticsRepository: AnalyticsRepository,
@@ -109,11 +98,9 @@ class TargetHandleViewModelFactory(
                 applicationContext = applicationContext,
                 secureRepository = secureRepository,
                 remoteConfigRepository = remoteConfigRepository,
-                billingRepository = billingRepository,
                 preferenceRepository = preferenceRepository,
                 captureRepository = captureRepository,
                 visionRepository = visionRepository,
-                correctionRepository = correctionRepository,
                 translationRepository = translationRepository,
                 ttsRepository = ttsRepository,
                 analyticsRepository = analyticsRepository,
@@ -127,11 +114,9 @@ class TargetHandleViewModel(
     private val applicationContext: Context,
     private val secureRepository: SecureRepository,
     val remoteConfigRepository: RemoteConfigRepository,
-    val billingRepository: BillingRepository,
     val preferenceRepository: PreferenceRepository,
     val captureRepository: CaptureRepository,
     val visionRepository: VisionRepository,
-    private val correctionRepository: CorrectionRepository,
     val translationRepository: TranslationRepository,
     val ttsRepository: TTSRepository,
     val analyticsRepository: AnalyticsRepository,
@@ -186,180 +171,6 @@ class TargetHandleViewModel(
     //                                                                                            //
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
-    private val warnDelay = 2000L
-
-    private fun collectSecureStateFlow() {
-        viewModelScope.launch {
-            secureRepository.secureAssessmentInfoFlow
-                .filterNotNull()
-                .collect { secureAssessmentInfo: SecureAssessmentInfo ->
-                    Timber.tag(TAG).d("========= secureAssessmentInfo: $secureAssessmentInfo")
-
-                    /**
-                     * 신뢰할수 없는 기기. 앱 재실행 시 Play Integrity API 재요청 하지 않음.
-                     */
-                    if (
-                        secureAssessmentInfo.deviceInspection == DeviceInspection.KEYSTORE_NOT_AVAILABLE
-                        || secureAssessmentInfo.integrityResponse == IntegrityResponse.UNKNOWN_PACKAGE
-                        || secureAssessmentInfo.verdictAppRecognition == VerdictAppRecognition.UNEVALUATED
-                        || secureAssessmentInfo.verdictAppRecognition == VerdictAppRecognition.UNRECOGNIZED_VERSION
-                        || secureAssessmentInfo.verdictDeviceRecognition == VerdictDeviceRecognition.UNEVALUATED
-                        || secureAssessmentInfo.verdictAppLicensing == VerdictAppLicensing.UNEVALUATED
-                    ) {
-                        Timber.tag(TAG).e("신뢰할수 없는 기기. 앱 재실행 시 Play Integrity API 재요청 하지 않음.")
-                        Timber.tag(TAG).i("secureAssessmentInfo.deviceInspection ${secureAssessmentInfo.deviceInspection}")
-                        Timber.tag(TAG).i("secureAssessmentInfo.integrityResponse ${secureAssessmentInfo.integrityResponse}")
-                        Timber.tag(TAG).i("secureAssessmentInfo.verdictAppRecognition ${secureAssessmentInfo.verdictAppRecognition}")
-                        Timber.tag(TAG).i("secureAssessmentInfo.verdictAppRecognition ${secureAssessmentInfo.verdictAppRecognition}")
-                        Timber.tag(TAG).i("secureAssessmentInfo.verdictDeviceRecognition ${secureAssessmentInfo.verdictDeviceRecognition}")
-                        Timber.tag(TAG).i("secureAssessmentInfo.verdictAppLicensing ${secureAssessmentInfo.verdictAppLicensing}")
-
-                        sendSecureAnalytics(secureAssessmentInfo)
-                        SecureRepository.VERDICT_APP_RECOGNITION_FAILED = true
-                        delay(warnDelay)
-                        MenuBarView.INSTANCE.clear()
-                        TargetHandleView.INSTANCE.clear()
-                        DialogView.INSTANCE.cast(
-                            applicationContext = applicationContext,
-                            isGlobalAlerts = true,
-                            icon = Icons.Default.DeviceUnknown,
-                            dialogTitle = applicationContext.getString(R.string.message_unknown_device),
-                            dialogText = applicationContext.getString(R.string.message_unknown_device_detail),
-                            onConfirm = { applicationContext.finishService() },
-                        )
-                    }
-                    /**
-                     * 통신오류. 앱 재실행 시 Play Integrity API 재요청.
-                     */
-                    else if (
-                        secureAssessmentInfo.integrityResponse == IntegrityResponse.HTTP_ERROR
-                        || secureAssessmentInfo.integrityResponse == IntegrityResponse.FAILED
-                    ) {
-                        Timber.tag(TAG).e("통신오류. 앱 재실행 시 Play Integrity API 재요청.")
-                        sendSecureAnalytics(secureAssessmentInfo)
-                        delay(warnDelay)
-                        MenuBarView.INSTANCE.clear()
-                        TargetHandleView.INSTANCE.clear()
-                        DialogView.INSTANCE.cast(
-                            applicationContext = applicationContext,
-                            isGlobalAlerts = true,
-                            icon = Icons.Default.GppMaybe,
-                            dialogTitle = applicationContext.getString(R.string.message_authentication_error),
-                            dialogText = applicationContext.getString(R.string.message_authentication_error_detail),
-                            onConfirm = { applicationContext.finishService() },
-                        )
-                    }
-                    /**
-                     * 신뢰할수 없는 환경. 앱 재실행 시 Play Integrity API 재요청.
-                     */
-                    else if (
-                        secureAssessmentInfo.deviceInspection == DeviceInspection.INTEGRITY_FAILURES_EXCEEDED
-                        || secureAssessmentInfo.verdictDeviceRecognition == VerdictDeviceRecognition.MEETS_BASIC_INTEGRITY
-                        || secureAssessmentInfo.deviceActivityLevel == DeviceActivityLevel.LEVEL_3
-                        || secureAssessmentInfo.deviceActivityLevel == DeviceActivityLevel.LEVEL_4
-                        || secureAssessmentInfo.deviceActivityLevel == DeviceActivityLevel.UNEVALUATED
-//                        || secureAssessmentInfo.verdictPlayProtect == VerdictPlayProtect.UNEVALUATED
-                    ) {
-                        Timber.tag(TAG).e("신뢰할수 없는 환경. 앱 재실행 시 Play Integrity API 재요청.")
-                        sendSecureAnalytics(secureAssessmentInfo)
-                        delay(warnDelay)
-                        MenuBarView.INSTANCE.clear()
-                        TargetHandleView.INSTANCE.clear()
-                        DialogView.INSTANCE.cast(
-                            applicationContext = applicationContext,
-                            isGlobalAlerts = true,
-                            icon = Icons.Default.VpnKey,
-                            dialogTitle = applicationContext.getString(R.string.message_untrusted_environment),
-                            dialogText = applicationContext.getString(R.string.message_untrusted_environment_detail),
-                            onConfirm = {
-                                applicationContext.openGoogleApp()
-                                applicationContext.finishService()
-                            },
-                        )
-                    }
-                    /**
-                     * 플레이 스토어 업데이트가 필요합니다.
-                     */
-//                    else if (secureAssessmentInfo.deviceInspection == DeviceInspection.PLAYSTORE_UPDATE_REQUIRED) {
-//                        Timber.tag(TAG).e("플레이 스토어 업데이트가 필요합니다.")
-//                        sendSecureAnalytics(secureAssessmentInfo)
-//                        delay(warnDelay)
-//                        MenuBarView.INSTANCE.clear()
-//                        TargetHandleView.INSTANCE.clear()
-//                        DialogView.INSTANCE.cast(
-//                            applicationContext = applicationContext,
-//                            isGlobalAlerts = true,
-//                            icon = Icons.Default.Upgrade,
-//                            dialogTitle = applicationContext.getString(R.string.message_playstore_update_required),
-//                            dialogText = applicationContext.getString(R.string.message_playstore_update_required_detail),
-//                            onConfirm = {
-//                                applicationContext.playStoreUpdate()
-//                                applicationContext.finish()
-//                            },
-//                        )
-//                    }
-                    /**
-                     * 알수 없는 앱 출처. 앱 재실행 시 Play Integrity API 재요청.
-                     */
-                    else if (secureAssessmentInfo.verdictAppLicensing == VerdictAppLicensing.UNLICENSED) {
-                        Timber.tag(TAG).e("알수 없는 앱 출처. 앱 재실행 시 Play Integrity API 재요청.")
-                        sendSecureAnalytics(secureAssessmentInfo)
-                        delay(warnDelay)
-                        MenuBarView.INSTANCE.clear()
-                        TargetHandleView.INSTANCE.clear()
-                        DialogView.INSTANCE.cast(
-                            applicationContext = applicationContext,
-                            isGlobalAlerts = true,
-                            painterResource = R.drawable.outline_translate_white_24,
-                            dialogTitle = applicationContext.getString(R.string.message_unknown_source),
-                            dialogText = applicationContext.getString(R.string.message_unknown_source_detail),
-                            onConfirm = {
-                                applicationContext.gotoStore(
-                                    newTask = true,
-                                    finishService = true
-                                )
-                            },
-                        )
-                    }
-                }
-        }
-    }
-
-    private fun sendSecureAnalytics(secureAssessmentInfo: SecureAssessmentInfo) {
-        if (secureAssessmentInfo.integrityResponse == IntegrityResponse.UNKNOWN_PACKAGE) {
-            analyticsRepository.secureReport("IntegrityResponse.UNKNOWN_PACKAGE")
-        } else if (secureAssessmentInfo.deviceInspection == DeviceInspection.KEYSTORE_NOT_AVAILABLE) {
-            analyticsRepository.secureReport("DeviceInspection.KEYSTORE_NOT_AVAILABLE")
-        } else if (secureAssessmentInfo.deviceInspection == DeviceInspection.PLAYSTORE_UPDATE_REQUIRED) {
-            analyticsRepository.secureReport("DeviceInspection.PLAYSTORE_UPDATE_REQUIRED")
-        } else if (secureAssessmentInfo.deviceInspection == DeviceInspection.INTEGRITY_FAILURES_EXCEEDED) {
-            analyticsRepository.secureReport("DeviceInspection.INTEGRITY_FAILURES_EXCEEDED")
-        } else if (secureAssessmentInfo.verdictAppRecognition == VerdictAppRecognition.UNEVALUATED) {
-            analyticsRepository.secureReport("VerdictAppRecognition.UNEVALUATED")
-        } else if (secureAssessmentInfo.verdictAppRecognition == VerdictAppRecognition.UNRECOGNIZED_VERSION) {
-            analyticsRepository.secureReport("VerdictAppRecognition.UNRECOGNIZED_VERSION")
-        } else if (secureAssessmentInfo.verdictDeviceRecognition == VerdictDeviceRecognition.UNEVALUATED) {
-            analyticsRepository.secureReport("VerdictDeviceRecognition.UNEVALUATED")
-        } else if (secureAssessmentInfo.verdictAppLicensing == VerdictAppLicensing.UNEVALUATED) {
-            analyticsRepository.secureReport("VerdictAppLicensing.UNEVALUATED")
-        } else if (secureAssessmentInfo.integrityResponse == IntegrityResponse.HTTP_ERROR) {
-            analyticsRepository.secureReport("IntegrityResponse.HTTP_ERROR")
-        } else if (secureAssessmentInfo.integrityResponse == IntegrityResponse.FAILED) {
-            analyticsRepository.secureReport("IntegrityResponse.FAILED")
-        } else if (secureAssessmentInfo.verdictDeviceRecognition == VerdictDeviceRecognition.MEETS_BASIC_INTEGRITY) {
-            analyticsRepository.secureReport("VerdictDeviceRecognition.MEETS_BASIC_INTEGRITY")
-        } else if (secureAssessmentInfo.deviceActivityLevel == DeviceActivityLevel.LEVEL_3) {
-            analyticsRepository.secureReport("DeviceActivityLevel.LEVEL_3")
-        } else if (secureAssessmentInfo.deviceActivityLevel == DeviceActivityLevel.LEVEL_4) {
-            analyticsRepository.secureReport("DeviceActivityLevel.LEVEL_4")
-        } else if (secureAssessmentInfo.deviceActivityLevel == DeviceActivityLevel.UNEVALUATED) {
-            analyticsRepository.secureReport("DeviceActivityLevel.UNEVALUATED")
-        } else if (secureAssessmentInfo.verdictPlayProtect == VerdictPlayProtect.UNEVALUATED) {
-            analyticsRepository.secureReport("VerdictPlayProtect.UNEVALUATED")
-        } else if (secureAssessmentInfo.verdictAppLicensing == VerdictAppLicensing.UNLICENSED) {
-            analyticsRepository.secureReport("VerdictAppLicensing.UNLICENSED")
-        }
-    }
 
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -372,12 +183,6 @@ class TargetHandleViewModel(
         val serviceAvailable: Boolean,
         val latestVersionCode: Long,
         val forceUpdate: Boolean,
-        val forceUpdateApiKey: Boolean,
-        val apiKeyVersionAzure: Int,
-        val apiKeyVersionDeepl: Int,
-        val apiKeyVersionPapago: Int,
-        val apiKeyVersionYandex: Int,
-        val apiKeyVersionChatgpt: Int,
     )
 
     private val serviceOperationInfoFlow: Flow<RemoteConfig> =
@@ -404,39 +209,10 @@ class TargetHandleViewModel(
                 Timber.tag(TAG).i("versionCode: $versionCode")
                 val forceUpdateVersionCode = remoteConfig[RemoteConfigRepository.FORCE_UPDATE_VERSION_CODE_KEY]?.asLong() ?: 0
 
-                val remoteConfigApiKeyVersionAzure = remoteConfig[RemoteConfigRepository.API_KEY_VERSION_AZURE]?.asLong() ?: 0
-                val forceUpdateApiKeyAzure = (ApiKeyInfo.getApiKeyVersionAzure(applicationContext) ?: 1) < remoteConfigApiKeyVersionAzure && ApiKeyInfo.getApiKeyAzure(applicationContext) != null
-                val remoteConfigApiKeyVersionDeepl = remoteConfig[RemoteConfigRepository.API_KEY_VERSION_DEEPL]?.asLong() ?: 0
-                val forceUpdateApiKeyDeepl = (ApiKeyInfo.getApiKeyVersionDeepl(applicationContext) ?: 1) < remoteConfigApiKeyVersionDeepl && ApiKeyInfo.getApiKeyDeepl(applicationContext) != null
-                val remoteConfigApiKeyVersionPapago = remoteConfig[RemoteConfigRepository.API_KEY_VERSION_PAPAGO]?.asLong() ?: 0
-                val forceUpdateApiKeyPapago = (ApiKeyInfo.getApiKeyVersionPapago(applicationContext) ?: 1) < remoteConfigApiKeyVersionPapago && ApiKeyInfo.getApiKeyPapago(applicationContext) != null
-                val remoteConfigApiKeyVersionYandex = remoteConfig[RemoteConfigRepository.API_KEY_VERSION_YANDEX]?.asLong() ?: 0
-                val forceUpdateApiKeyYandex = (ApiKeyInfo.getApiKeyVersionYandex(applicationContext) ?: 1) < remoteConfigApiKeyVersionYandex && ApiKeyInfo.getApiKeyYandex(applicationContext) != null
-                val remoteConfigApiKeyVersionChatgpt = remoteConfig[RemoteConfigRepository.API_KEY_VERSION_CHATGPT]?.asLong() ?: 0
-                val forceUpdateApiKeyChatgpt =
-                    (ApiKeyInfo.getApiKeyVersionChatgpt(applicationContext) ?: 1) < remoteConfigApiKeyVersionChatgpt && ApiKeyInfo.getApiKeyChatgpt(applicationContext) != null
-
-                Timber.tag(TAG).d("remoteConfigApiKeyVersionAzure: $remoteConfigApiKeyVersionAzure")
-                Timber.tag(TAG).d("forceUpdateApiKeyAzure: $forceUpdateApiKeyAzure")
-                Timber.tag(TAG).d("remoteConfigApiKeyVersionDeepl: $remoteConfigApiKeyVersionDeepl")
-                Timber.tag(TAG).d("forceUpdateApiKeyDeepl: $forceUpdateApiKeyDeepl")
-                Timber.tag(TAG).d("remoteConfigApiKeyVersionPapago: $remoteConfigApiKeyVersionPapago")
-                Timber.tag(TAG).d("forceUpdateApiKeyPapago: $forceUpdateApiKeyPapago")
-                Timber.tag(TAG).d("remoteConfigApiKeyVersionYandex: $remoteConfigApiKeyVersionYandex")
-                Timber.tag(TAG).d("forceUpdateApiKeyYandex: $forceUpdateApiKeyYandex")
-                Timber.tag(TAG).d("remoteConfigApiKeyVersionChatgpt: $remoteConfigApiKeyVersionChatgpt")
-                Timber.tag(TAG).d("forceUpdateApiKeyChatgpt: $forceUpdateApiKeyChatgpt")
-
                 RemoteConfig(
                     serviceAvailable = serviceAvailable,
                     latestVersionCode = remoteConfig[RemoteConfigRepository.LATEST_VERSION_CODE_KEY]?.asLong() ?: 0,
                     forceUpdate = versionCode < forceUpdateVersionCode,
-                    forceUpdateApiKey = forceUpdateApiKeyAzure || forceUpdateApiKeyDeepl || forceUpdateApiKeyPapago || forceUpdateApiKeyYandex || forceUpdateApiKeyChatgpt,
-                    apiKeyVersionAzure = remoteConfigApiKeyVersionAzure.toInt(),
-                    apiKeyVersionDeepl = remoteConfigApiKeyVersionDeepl.toInt(),
-                    apiKeyVersionPapago = remoteConfigApiKeyVersionPapago.toInt(),
-                    apiKeyVersionYandex = remoteConfigApiKeyVersionYandex.toInt(),
-                    apiKeyVersionChatgpt = remoteConfigApiKeyVersionChatgpt.toInt(),
                 )
             }
             .distinctUntilChanged()
@@ -468,22 +244,6 @@ class TargetHandleViewModel(
                             onConfirm = { applicationContext.gotoStore(finishService = true) },
                         )
                     }
-                    // api 버전 업데이트
-                    else if (remoteConfig.forceUpdateApiKey) {
-                        ApiKeyInfo.setApiKeyAzure(applicationContext, "")
-                        ApiKeyInfo.setApiKeyDeepl(applicationContext, "")
-                        ApiKeyInfo.setApiKeyPapago(applicationContext, "")
-                        ApiKeyInfo.setApiKeyYandex(applicationContext, "")
-                        ApiKeyInfo.setApiKeyChatgpt(applicationContext, "")
-                        secureRepository.playIntegrity(
-                            apiKeyVersionAzure = remoteConfig.apiKeyVersionAzure,
-                            apiKeyVersionDeepl = remoteConfig.apiKeyVersionDeepl,
-                            apiKeyVersionPapago = remoteConfig.apiKeyVersionPapago,
-                            apiKeyVersionYandex = remoteConfig.apiKeyVersionYandex,
-                            apiKeyVersionChatgpt = remoteConfig.apiKeyVersionChatgpt,
-                            retry = false
-                        )
-                    }
                 }
         }
     }
@@ -512,6 +272,8 @@ class TargetHandleViewModel(
 
     private var ttsSpeechRate = 1.0f
 
+    private var ttsReadTarget = TTSReadTarget.SOURCE
+
     private fun collectPreference() {
         viewModelScope.launch {
             preferenceRepository.textDetectModeFlow.collect { newValue ->
@@ -535,6 +297,13 @@ class TargetHandleViewModel(
             preferenceRepository.ttsSpeechRateFlow
                 .collect { ttsSpeechRate_ ->
                     ttsSpeechRate = ttsSpeechRate_
+                }
+        }
+
+        viewModelScope.launch {
+            preferenceRepository.ttsReadTargetFlow
+                .collect { ttsReadTarget_ ->
+                    ttsReadTarget = ttsReadTarget_
                 }
         }
     }
@@ -601,9 +370,6 @@ class TargetHandleViewModel(
 
                 Timber.tag(TAG).d("captureResponse.bitmap ${captureResponse.bitmap.width} ${captureResponse.bitmap.height}")
 
-//                 Test 캡처 이미지 확인
-//                 TestCapturedActivity.start(applicationContext, captureResponse.bitmap)
-
                 val motionEventState = motionEventFlow.first()
                 Timber.tag(TAG).d("requestCapture motionEventState $motionEventState")
                 if (motionEventState == MotionEvent.ACTION_DOWN || motionEventState == MotionEvent.ACTION_MOVE) {
@@ -668,15 +434,6 @@ class TargetHandleViewModel(
             endTime = System.nanoTime()
             val duration = (endTime - startTime) / 1_000_000 // 나노초를 밀리초로 변환
             // Timber.tag(TAG).d("visionRepository.request() 실행 시간: $duration 밀리초")
-
-            // test VisionText 확인
-//            TestVisionTextActivity.start(
-//                applicationContext = applicationContext,
-//                capturedBitmap = capturedBitmap,
-//                analyzedText = visionResponse.analyzed.first,
-//                analyzedParagraphs = visionResponse.analyzed.second,
-//                textDetectMode = textDetectMode,
-//            )
 
             val motionEventState = motionEventFlow.first()
             if (motionEventState == MotionEvent.ACTION_DOWN || motionEventState == MotionEvent.ACTION_MOVE) {
@@ -878,34 +635,28 @@ class TargetHandleViewModel(
                             translateStatusFlow.value = TranslateStatus.Requested
 
                             Timber.tag(TAG).d("sourceText ${pointerPositionedVisionText.representation}")
-
-                            var correctedText: String? = null
-                            val useCorrectionKit: Boolean = preferenceRepository.useCorrectionKitFlow.first()
-                            val correctionKitType: CorrectionKitType = preferenceRepository.correctionKitTypeFlow.first()
-                            val textDetectMode: TextDetectMode = preferenceRepository.textDetectModeFlow.first()
-                            // TextDetectMode.WORD 이거나 TranslationKitType.DEEPL 인 경우 AI 보정 하지 않음
-                            Timber.tag(TAG).d("useCorrectionKit $useCorrectionKit")
-                            Timber.tag(TAG).d("correctionKitType $correctionKitType")
-                            Timber.tag(TAG).d("textDetectMode $textDetectMode")
                             Timber.tag(TAG).d("translationKitType $translationKitType")
-                            if (useCorrectionKit && textDetectMode != TextDetectMode.WORD && translationKitType != TranslationKitType.DEEPL) {
-                                correctedText = correctionRepository.request(
-                                    sourceLanguageCode = visionResultTransaction.detectedLanguageCode,
-                                    sourceText = pointerPositionedVisionText.representation,
-                                    correctionKitType = correctionKitType,
-                                )
-                                Timber.tag(TAG).d("correctionResponse correctedText $correctedText")
+
+                            // 자동 감지(auto)일 때는 화면 전체 OCR 텍스트가 아니라 실제 번역할 문장으로 언어를 감지한다.
+                            // 화면에 앱 오버레이("Auto → 한국어" 등)나 브라우저의 다른 언어 UI 가 섞여 있으면
+                            // 전체 텍스트 기반 감지가 엉뚱한 언어를 반환해(예: 영어 문장을 ko 로) 원문→원문 무번역이 되기 때문.
+                            val sourceLanguagePref = preferenceRepository.sourceLanguageCodeFlow.first()
+                            val sourceLanguageCode = if (sourceLanguagePref.equals("auto", ignoreCase = true)) {
+                                val perTextCode = visionRepository.identifyLanguage(pointerPositionedVisionText.representation)
+                                if (perTextCode == "und") visionResultTransaction.detectedLanguageCode else perTextCode
+                            } else {
+                                visionResultTransaction.detectedLanguageCode
                             }
+                            Timber.tag(TAG).d("sourceLanguageCode $sourceLanguageCode (pref $sourceLanguagePref)")
 
                             val motionEventState = motionEventFlow.first()
-                            Timber.tag(TAG).d("correctionResponse motionEventState $motionEventState")
+                            Timber.tag(TAG).d("motionEventState $motionEventState")
                             if (motionEventState == MotionEvent.ACTION_DOWN || motionEventState == MotionEvent.ACTION_MOVE) {
                                 translationRepository.request(
                                     translationKitType,
-                                    visionResultTransaction.detectedLanguageCode,
+                                    sourceLanguageCode,
                                     targetLanguageCode,
                                     pointerPositionedVisionText.representation,
-                                    correctedText
                                 )
                                     .also {
                                         val motionEventState = motionEventFlow.first()
@@ -920,8 +671,6 @@ class TargetHandleViewModel(
                                                         sourceText = pointerPositionedVisionText.representation,
                                                         translationKitType = it.result.translationKitType,
                                                         detectedLanguageCode = it.result.detectedLanguageCode,
-                                                        correctionKitType = correctionKitType,
-                                                        correctedText = correctedText,
                                                         resultText = it.result.resultText,
                                                     )
                                                     Timber.tag(TAG).d("translationRepository Translated transaction $transaction")
@@ -1085,30 +834,33 @@ class TargetHandleViewModel(
     //                                                                                            //
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
-    private val pointerPositionDetectedLanguageCodeFlow = pointerPositionedTranslationFlow
-        .map { it?.detectedLanguageCode }
-        .distinctUntilChanged()
+    // 읽기 대상 설정에 따라 목소리를 맞출 언어. (소스: 번역 시 감지된 언어, 타겟: 번역 대상 언어)
+    private val pointerPositionReadLanguageCodeFlow = combine(
+        pointerPositionedTranslationFlow,
+        preferenceRepository.ttsReadTargetFlow,
+    ) { translation, readTarget ->
+        when (readTarget) {
+            TTSReadTarget.SOURCE -> translation?.detectedLanguageCode
+            TTSReadTarget.TARGET -> translation?.targetLanguageCode
+        }
+    }.distinctUntilChanged()
 
     private fun collectTranslationVoiceFlow() {
         viewModelScope.launch {
             combine(
                 preferenceRepository.ttsOrderedVoiceNamesFlow.distinctUntilChanged(),
-                pointerPositionDetectedLanguageCodeFlow.filterNotNull().distinctUntilChanged()
-            ) { orderedVoiceNames, detectedLanguageCode ->
-                Pair(orderedVoiceNames, detectedLanguageCode)
+                pointerPositionReadLanguageCodeFlow.filterNotNull().distinctUntilChanged()
+            ) { orderedVoiceNames, readLanguageCode ->
+                Pair(orderedVoiceNames, readLanguageCode)
             }
-                .collect { (orderedVoiceNames, detectedLanguageCode) ->
+                .collect { (orderedVoiceNames, readLanguageCode) ->
                     Timber.tag(TAG).i("Ordered Voice Names: $orderedVoiceNames")
-                    Timber.tag(TAG).i("Detected Language Code: $detectedLanguageCode")
-                    val matchingVoiceName = if (orderedVoiceNames.isEmpty()) {
-                        val availableVoices = ttsRepository.availableVoicesFlow.filterNotNull().first()
-                        availableVoices.map { voice -> voice.name }.firstOrNull { voiceName ->
-                            voiceName.startsWith(detectedLanguageCode)
-                        }
-                    } else {
-                        orderedVoiceNames.firstOrNull { voiceName ->
-                            voiceName.startsWith(detectedLanguageCode)
-                        }
+                    Timber.tag(TAG).i("Read Language Code: $readLanguageCode")
+                    // 우선순위 목록에서 먼저 찾고, 목록에 해당 언어의 목소리가 없으면 기기 목소리 전체에서 찾는다
+                    val matchingVoiceName = orderedVoiceNames.firstOrNull { voiceName ->
+                        voiceNameMatchesLanguage(voiceName, readLanguageCode)
+                    } ?: ttsRepository.availableVoicesFlow.filterNotNull().first().map { voice -> voice.name }.firstOrNull { voiceName ->
+                        voiceNameMatchesLanguage(voiceName, readLanguageCode)
                     }
                     Timber.tag(TAG).i("matchingVoiceName: $matchingVoiceName")
                     matchingVoiceName?.let {
@@ -1118,8 +870,18 @@ class TargetHandleViewModel(
         }
     }
 
-    fun playTTS(text: String) {
-        ttsRepository.playTTS(text, ttsSpeechRate)
+    /**
+     * 읽기 대상 설정에 따라 번역의 소스 또는 타겟 텍스트를,
+     * 그 텍스트의 언어에 맞는 목소리로 읽는다.
+     * (소스 언어가 auto 면 번역 시 감지된 언어를 사용한다)
+     */
+    fun playTTS(translation: Transaction) {
+        val (text, languageCode) = when (ttsReadTarget) {
+            TTSReadTarget.SOURCE -> translation.sourceText to (translation.detectedLanguageCode ?: translation.sourceLanguageCode)
+            TTSReadTarget.TARGET -> translation.resultText to translation.targetLanguageCode
+        }
+        if (text == null) return
+        ttsRepository.playTTSForLanguage(text, languageCode?.takeIf { it != "auto" }, ttsSpeechRate)
     }
 
 
@@ -1133,7 +895,7 @@ class TargetHandleViewModel(
         return secureRepository.increaseTrialCount()
     }
 
-    private fun collectPurchaseInducementInfo() {
+    private fun collectAdGateInfo() {
         /*
             remote config 에서 TRIAL_TIME_LIMIT_MINUTE 값을 수신,
             TrialLimitInfo 에 무료체험 시간제한 정보를 저장
@@ -1155,32 +917,14 @@ class TargetHandleViewModel(
                 }
         }
 
-        // 번역 카운트 통계
+        // 번역 카운트 통계 (앱 리뷰 유도 및 사용량 통계용)
         viewModelScope.launch {
-            combine(
-                pointerPositionedTranslationFlow
-                    .filterNotNull()
-                    .filter { translation -> translation.resultText != null }
-                    .distinctUntilChanged { old, new ->
-                        old.sourceText == new.sourceText
-                    },
-                billingRepository.purchaseStateFlow, // 구매 상태 flow
-            ) { _, purchaseState ->
-                var trialCount = false
-                if (purchaseState != Purchase.PurchaseState.PURCHASED) {
-                    val textDetectMode: TextDetectMode = preferenceRepository.textDetectModeFlow.first()
-                    val translationKitType: TranslationKitType = preferenceRepository.translationKitTypeFlow.first()
-                    Timber.tag(TAG).d("==== textDetectMode $textDetectMode translationKitType $translationKitType ")
-                    if (textDetectMode != TextDetectMode.WORD || translationKitType != TranslationKitType.GOOGLE) {
-                        trialCount = true
-                    }
-                }
-                trialCount
-            }.collect { trialCount: Boolean ->
-                if (trialCount) {
-                    // 비구매자 번역 카운트
+            pointerPositionedTranslationFlow
+                .filterNotNull()
+                .filter { translation -> translation.resultText != null }
+                .distinctUntilChanged { old, new -> old.sourceText == new.sourceText }
+                .collect {
                     val trialCount = increaseTrialCount()
-                    // 비구매자 번역 카운트 통계
                     if (
                         trialCount == 100
                         || trialCount == 200
@@ -1194,56 +938,37 @@ class TargetHandleViewModel(
                         analyticsRepository.daysTakenReport(trialCount, daysTaken)
                     }
                 }
-            }
         }
 
         /**
-         * 구매유도:
-         *      번역 수행시 구매 상태 정보를 참조하여 구매유도가 필요한지의 여부를 flow 한다.
-         *      구매상태 에서는 구매유도 하지 않음
-         *      SettingsActivity 화면 상태에서는 구매유도 하지 않음
-         *      TextDetectMode.WORD && TranslationKitType.GOOGLE 상태 에서는 구매유도 하지 않음
-         *      그 외 TrialLimitInfo.isTrialAvailable 값이 false 이면 구매유도
+         * 광고 게이트:
+         *   번역 수행 시, 광고 시청/5분 사용권으로 사용 가능한 상태가 아니고(AdGateState.isUsable() == false)
+         *   설정 화면 상태가 아니면 리워드 광고를 띄운다.
+         *   광고를 끝까지 보면 이번 세션 동안, 스킵/실패하면 5분 동안 다시 뜨지 않는다.
          */
         viewModelScope.launch {
-            combine(
-                pointerPositionedTranslationFlow // 번역 수행 flow
-                    .filterNotNull()
-                    .filter { translation -> translation.resultText != null }
-                    .distinctUntilChanged { old, new ->
-                        old.sourceText == new.sourceText
-                    },
-                billingRepository.purchaseStateFlow, // 구매 상태 flow
-            ) { _, purchaseState ->
-                var purchaseInducement = false
-                Timber.tag(TAG).d("Admob ================ purchaseState: $purchaseState ${SettingsActivity.liveStateFlow.value}")
-                if (purchaseState != Purchase.PurchaseState.PURCHASED && !SettingsActivity.liveStateFlow.value) {
-                    val textDetectMode: TextDetectMode = preferenceRepository.textDetectModeFlow.first()
-                    val translationKitType: TranslationKitType = preferenceRepository.translationKitTypeFlow.first()
-                    if (textDetectMode != TextDetectMode.WORD || translationKitType != TranslationKitType.GOOGLE) {
-                        Timber.tag(TAG).i("TrialLimitInfo ${TrialLimitInfo.toString(applicationContext)}")
-                        if (!TrialLimitInfo.isTrialAvailable(applicationContext)) {
-                            purchaseInducement = true
+            pointerPositionedTranslationFlow
+                .filterNotNull()
+                .filter { translation -> translation.resultText != null }
+                .distinctUntilChanged { old, new -> old.sourceText == new.sourceText }
+                .collect {
+                    if (!AdGateState.isUsable() && !SettingsActivity.liveStateFlow.value && !AdGateActivity.liveStateFlow.value) {
+                        // 일정 시간 후가 아니라, 핸들에서 손가락을 떼어(ACTION_UP) 번역이 종료된 시점에 광고 게이트를 연다.
+                        // (결과 수신 전에 이미 손을 뗀 상태라면 즉시 연다)
+                        motionEventFlow.first { motionEvent ->
+                            motionEvent == MotionEvent.ACTION_UP
+                                    || motionEvent == MotionEvent.ACTION_CANCEL
+                                    || motionEvent == MotionEvent.INVALID_POINTER_ID
                         }
+                        showAdGate()
                     }
                 }
-                purchaseInducement
-            }.collect { purchaseInducement: Boolean ->
-                Timber.tag(TAG).d("Admob ================ purchaseInducement : ${purchaseInducement}")
-                if (purchaseInducement) {
-                    delay(1000)
-                    inducePurchase()
-                }
-            }
         }
     }
 
-    fun inducePurchase() {
-        // 구매안내 페이지 이동
-        SettingsActivity.purchaseInduce(applicationContext)
-        // TextDetectMode 와 TranslationKitType 를 기본값으로 전환
-//        updateTextDetectMode(TextDetectMode.WORD)
-//        updateTranslationKitType(TranslationKitType.GOOGLE)
+    fun showAdGate() {
+        // 리워드 광고 표시를 위해 투명 광고 게이트 액티비티를 연다.
+        AdGateActivity.start(applicationContext)
     }
 
     init {
@@ -1252,10 +977,8 @@ class TargetHandleViewModel(
         captureRepository.acquire()
         translationRepository.acquire()
         ttsRepository.acquire()
-        billingRepository.acquire()
-        collectSecureStateFlow()
         collectServiceOperationInfoFlow()
-        collectPurchaseInducementInfo()
+        collectAdGateInfo()
         collectPreference()
         collectTargetHandleMotionEvent()
         collectVisionTextForTranslationView()
@@ -1267,7 +990,6 @@ class TargetHandleViewModel(
         captureRepository.release()
         translationRepository.release()
         ttsRepository.release()
-        billingRepository.release()
         super.onCleared()
     }
 }

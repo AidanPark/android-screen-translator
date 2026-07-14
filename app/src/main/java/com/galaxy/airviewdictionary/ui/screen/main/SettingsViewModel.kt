@@ -5,9 +5,8 @@ import androidx.compose.foundation.ScrollState
 import androidx.lifecycle.ViewModel
 import com.galaxy.airviewdictionary.data.local.preference.PreferenceRepository
 import com.galaxy.airviewdictionary.data.local.secure.SecureRepository
+import com.galaxy.airviewdictionary.data.local.tts.TTSReadTarget
 import com.galaxy.airviewdictionary.data.local.tts.TTSRepository
-import com.galaxy.airviewdictionary.data.remote.ai.CorrectionKitType
-import com.galaxy.airviewdictionary.data.remote.billing.BillingRepository
 import com.galaxy.airviewdictionary.data.remote.firebase.AnalyticsRepository
 import com.galaxy.airviewdictionary.data.remote.firebase.RemoteConfigRepository
 import com.galaxy.airviewdictionary.data.remote.translation.TranslationKitType
@@ -26,8 +25,7 @@ class SettingsViewModel @Inject constructor(
     val preferenceRepository: PreferenceRepository,
     val translationRepository: TranslationRepository,
     val ttsRepository: TTSRepository,
-    val analyticsRepository: AnalyticsRepository,
-    val billingRepository: BillingRepository
+    val analyticsRepository: AnalyticsRepository
 ) : ViewModel() {
 
     private val TAG = javaClass.simpleName
@@ -74,20 +72,16 @@ class SettingsViewModel @Inject constructor(
         preferenceRepository.update(PreferenceRepository.REPLY_TRANSPARENCY, transparency)
     }
 
-    fun updateUseCorrectionKit(useCorrectionKit: Boolean) {
-        preferenceRepository.update(PreferenceRepository.USE_CORRECTION_KIT, useCorrectionKit)
-    }
-
-    fun updateCorrectionKitType(correctionKitType: CorrectionKitType) {
-        preferenceRepository.update(PreferenceRepository.CORRECTION_KIT_TYPE, correctionKitType.name)
-    }
-
     fun updateAutomaticTranslationPlayback(automaticTranslationPlayback: Boolean) {
         preferenceRepository.update(PreferenceRepository.AUTOMATIC_TRANSLATION_PLAYBACK, automaticTranslationPlayback)
     }
 
     fun updateTtsSpeechRate(speechRate: Float) {
         preferenceRepository.update(PreferenceRepository.TTS_SPEECH_RATE, speechRate)
+    }
+
+    fun updateTtsReadTarget(readTarget: TTSReadTarget) {
+        preferenceRepository.update(PreferenceRepository.TTS_READ_TARGET, readTarget.name)
     }
 
     fun isLanguageSwappable(sourceLanguageCode: String, targetLanguageCode: String, kitType: TranslationKitType): Boolean {
@@ -100,21 +94,15 @@ class SettingsViewModel @Inject constructor(
                 remoteConfig[RemoteConfigRepository.LATEST_VERSION_CODE_KEY]?.asLong() ?: 0
             }
 
-    fun launchBillingFlow(activity: Activity) {
-        billingRepository.launchBillingFlow(activity)
-    }
-
     init {
         Timber.tag(TAG).i("#### init ####")
         translationRepository.acquire()
         ttsRepository.acquire()
-        billingRepository.acquire()
     }
 
     override fun onCleared() {
         translationRepository.release()
         ttsRepository.release()
-        billingRepository.release()
         super.onCleared()
     }
 }

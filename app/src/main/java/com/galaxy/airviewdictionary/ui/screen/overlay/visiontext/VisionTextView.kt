@@ -2,7 +2,6 @@ package com.galaxy.airviewdictionary.ui.screen.overlay.visiontext
 
 import android.content.Context
 import android.graphics.PixelFormat
-import android.os.Build
 import android.view.Gravity
 import android.view.MotionEvent
 import android.view.WindowManager
@@ -112,11 +111,7 @@ class VisionTextView private constructor() : OverlayView() {
             visionText.height + paragraphFrameMargin * 2,
             visionText.boundingBox.left - paragraphFrameMargin,
             visionText.boundingBox.top - paragraphFrameMargin,
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
-            } else {
-                WindowManager.LayoutParams.TYPE_PHONE
-            },
+            WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
             WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
 //                    or WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE 이 옵션을 사용하면 배경에 강제로 alpha 가 추가됨
                     or WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN

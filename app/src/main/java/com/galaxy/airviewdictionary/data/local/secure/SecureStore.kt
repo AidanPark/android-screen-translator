@@ -1,7 +1,7 @@
 package com.galaxy.airviewdictionary.data.local.secure
 
 import android.content.Context
-import android.os.Build
+import androidx.core.content.edit
 import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties
 import android.util.Base64
@@ -17,16 +17,9 @@ import javax.crypto.spec.GCMParameterSpec
 object SecureStoreKey {
     const val TRANSLATE_TRIAL_COUNT = "translate_trial_count"
 
-    const val API_KEY_AZURE = "api_key_azure"
-    const val API_KEY_VERSION_AZURE = "api_key_version_azure"
-    const val API_KEY_DEEPL = "api_key_deepl"
-    const val API_KEY_VERSION_DEEPL = "api_key_version_deepl"
-    const val API_KEY_PAPAGO = "api_key_papago"
-    const val API_KEY_VERSION_PAPAGO = "api_key_version_papago"
-    const val API_KEY_YANDEX = "api_key_yandex"
-    const val API_KEY_VERSION_YANDEX = "api_key_version_yandex"
-    const val API_KEY_CHATGPT = "api_key_chatgpt"
-    const val API_KEY_VERSION_CHATGPT = "api_key_version_chatgpt"
+    const val DEEPL_API_KEY = "deepl_api_key"
+
+    const val OPENAI_API_KEY = "openai_api_key"
 
     const val TRIAL_START_TIME = "trial_start_time"
     const val TRIAL_TIME_LIMIT_MINUTE = "trial_time_limit_minute"
@@ -85,17 +78,12 @@ object SecureStore {
         val encryptedData = cipher.doFinal(plainText.toByteArray())
         val iv = cipher.iv
 
-        val targetContext =
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                context.createDeviceProtectedStorageContext()
-            } else {
-                context
-            }
+        val targetContext = context.createDeviceProtectedStorageContext()
         val prefs = targetContext.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-        prefs.edit()
-            .putString(key, Base64.encodeToString(encryptedData, Base64.DEFAULT))
-            .putString(key + IV_SUFFIX, Base64.encodeToString(iv, Base64.DEFAULT))
-            .apply()
+        prefs.edit {
+            putString(key, Base64.encodeToString(encryptedData, Base64.DEFAULT))
+            putString(key + IV_SUFFIX, Base64.encodeToString(iv, Base64.DEFAULT))
+        }
     }
 
     fun set(context: Context, key: String, plainText: SecureString) {
@@ -104,12 +92,7 @@ object SecureStore {
 
     // retrieve plainText
     fun get(context: Context, key: String): SecureString? {
-        val targetContext =
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                context.createDeviceProtectedStorageContext()
-            } else {
-                context
-            }
+        val targetContext = context.createDeviceProtectedStorageContext()
         val prefs = targetContext.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
         val encryptedData = prefs.getString(key, null)?.let { Base64.decode(it, Base64.DEFAULT) }
         val iv = prefs.getString(key + IV_SUFFIX, null)?.let { Base64.decode(it, Base64.DEFAULT) }
@@ -130,12 +113,7 @@ object SecureStore {
 
     // Check if a key exists in the direct boot storage
     fun containsKey(context: Context, key: String): Boolean {
-        val targetContext =
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                context.createDeviceProtectedStorageContext()
-            } else {
-                context
-            }
+        val targetContext = context.createDeviceProtectedStorageContext()
         val prefs = targetContext.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
         return prefs.contains(key) && prefs.contains(key + IV_SUFFIX)
     }

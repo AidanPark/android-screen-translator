@@ -127,19 +127,9 @@ class VoiceListViewModel(
 
     fun addOrUpdateOrderedVoiceNames(orderedVoices: List<Triple<Int, Voice, Language>>) {
         viewModelScope.launch {
-            // orderedVoiceNames 업데이트
+            // orderedVoiceNames 업데이트.
+            // 활성 목소리 재적용은 TTSRepository.collectSourceLanguageVoice 가 (소스 언어 기준으로) 처리한다.
             preferenceRepository.addOrUpdateOrderedVoiceNames(orderedVoices.map { triple -> triple.second })
-            val currentVoice: Voice? = ttsRepository.currentVoiceFlow.first()
-            if(currentVoice != null ) {
-                val matchingVoiceItem = orderedVoices.firstOrNull { triple ->
-                    // 현재 tts voice 의 국가코드와 같은 것을 orderedVoices 에서 탐색
-                    triple.second.name.startsWith(currentVoice.language.code)
-                }
-                matchingVoiceItem?.let {
-                    // orderedVoices 에서 찾은 우선순위 voice 를 tts 에 설정
-                    ttsRepository.setVoice(matchingVoiceItem.second.name)
-                }
-            }
         }
     }
 

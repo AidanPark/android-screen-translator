@@ -4,12 +4,10 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.PixelFormat
 import android.graphics.Point
-import android.os.Build
 import android.view.Gravity
 import android.view.MotionEvent
 import android.view.View
 import android.view.WindowManager
-import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -23,14 +21,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.asAndroidPath
+import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
 import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.galaxy.airviewdictionary.R
 import com.galaxy.airviewdictionary.core.OverlayService
@@ -84,11 +85,7 @@ open class SayHereView : OverlayView() {
             WindowManager.LayoutParams.WRAP_CONTENT,
             if (start) position.x else screenInfo.width,
             position.y + 38.dp.toPx(applicationContext),
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
-            } else {
-                WindowManager.LayoutParams.TYPE_PHONE
-            },
+            WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
             WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
                     or WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN,
             PixelFormat.TRANSLUCENT
@@ -118,232 +115,173 @@ open class SayHereView : OverlayView() {
 
 
 @Composable
-fun SayHereR() {
+fun SayHereR() = SayHereBubble(tailOnRight = true)
+
+@Composable
+fun SayHereL() = SayHereBubble(tailOnRight = false)
+
+/**
+ * 텍스트 길이에 맞춰 폭이 늘어나는 말풍선.
+ * 고정 크기 Canvas 대신, 콘텐츠(핸들 아이콘 + 문구) 크기에 맞춰 [drawBehind] 로 말풍선을 그린다.
+ * 꼬리는 [tailOnRight] 에 따라 오른쪽/왼쪽 변에 붙는다.
+ */
+@Composable
+private fun SayHereBubble(tailOnRight: Boolean) {
+    // 꼬리가 차지하는 가로 폭. 이 폭만큼 꼬리 쪽에 여백을 더 둬서 몸통과 겹치지 않게 한다.
+    val tailWidth = 12.dp
+    // 몸통 안쪽 여백(문구가 말풍선 테두리에 닿지 않도록).
+    val bodyPaddingH = 14.dp
+    val bodyPaddingV = 10.dp
+
     Box(
         modifier = Modifier
-            .padding(16.dp)
+            .padding(16.dp) // 그림자와 화면 가장자리 여유
             .wrapContentSize(),
     ) {
-        Canvas(
-            modifier = Modifier.size(140.dp, 50.dp)
-        ) {
-            val width = size.width
-            val height = size.height
-            val cornerRadius = 16.dp.toPx() // Radius for rounded corners
-            val tailWidth = 36f
-            val tailHeight = 24f
-            val tailYOffset = 14.dp.toPx() // Shift the tail downward by 10.dp
-
-            // Create the path for the speech bubble
-            val bubblePath = Path().apply {
-                // Top-left corner
-                moveTo(cornerRadius, 0f)
-                arcTo(
-                    rect = Rect(0f, 0f, cornerRadius * 2, cornerRadius * 2),
-                    startAngleDegrees = 180f,
-                    sweepAngleDegrees = 90f,
-                    forceMoveTo = false
-                )
-                lineTo(width - tailWidth - cornerRadius, 0f) // Top edge before top-right corner
-
-                // Top-right corner
-                arcTo(
-                    rect = Rect(
-                        width - tailWidth - cornerRadius * 2,
-                        0f,
-                        width - tailWidth,
-                        cornerRadius * 2
-                    ),
-                    startAngleDegrees = 270f,
-                    sweepAngleDegrees = 90f,
-                    forceMoveTo = false
-                )
-                lineTo(width - tailWidth, tailHeight + tailYOffset) // Top of the tail
-                lineTo(width, tailHeight * 1.0f + tailYOffset) // Tip of the tail
-                lineTo(width - tailWidth, tailHeight * 2 + tailYOffset) // Bottom of the tail
-                lineTo(width - tailWidth, height - cornerRadius) // Right edge before bottom-right corner
-
-                // Bottom-right corner
-                arcTo(
-                    rect = Rect(
-                        width - tailWidth - cornerRadius * 2,
-                        height - cornerRadius * 2,
-                        width - tailWidth,
-                        height
-                    ),
-                    startAngleDegrees = 0f,
-                    sweepAngleDegrees = 90f,
-                    forceMoveTo = false
-                )
-                lineTo(cornerRadius, height) // Bottom edge before bottom-left corner
-
-                // Bottom-left corner
-                arcTo(
-                    rect = Rect(0f, height - cornerRadius * 2, cornerRadius * 2, height),
-                    startAngleDegrees = 90f,
-                    sweepAngleDegrees = 90f,
-                    forceMoveTo = false
-                )
-                lineTo(0f, cornerRadius) // Left edge before top-left corner
-
-                close() // Complete the path
-            }
-
-            // Draw shadow
-            drawIntoCanvas { canvas ->
-                val shadowPaint = android.graphics.Paint().apply {
-                    color = android.graphics.Color.GRAY // Gray shadow
-                    setShadowLayer(8f, 4f, 4f, android.graphics.Color.GRAY) // Reduced thickness and offset
-                }
-                canvas.nativeCanvas.drawPath(bubblePath.asAndroidPath(), shadowPaint)
-            }
-
-            // Draw the bubble
-            drawPath(
-                path = bubblePath,
-                color = Color.White
-            )
-        }
-
         Row(
             modifier = Modifier
                 .wrapContentSize()
-                .align(Alignment.Center),
-            verticalAlignment = Alignment.CenterVertically
+                .drawBehind { drawSpeechBubble(tailOnRight, tailWidth.toPx()) }
+                .padding(
+                    start = if (tailOnRight) bodyPaddingH else bodyPaddingH + tailWidth,
+                    end = if (tailOnRight) bodyPaddingH + tailWidth else bodyPaddingH,
+                    top = bodyPaddingV,
+                    bottom = bodyPaddingV,
+                ),
+            verticalAlignment = Alignment.CenterVertically,
         ) {
             Image(
                 painter = painterResource(id = R.drawable.ic_drag_handle),
                 contentDescription = null,
                 modifier = Modifier.size(22.dp),
-                colorFilter = ColorFilter.tint(Color(0xFF6a91b2))
+                colorFilter = ColorFilter.tint(Color(0xFF6a91b2)),
             )
 
             Spacer(modifier = Modifier.width(6.dp))
 
             Text(
-                text = "I'm here !",
+                text = stringResource(id = R.string.say_here),
                 color = Color.Black,
             )
-            Spacer(modifier = Modifier.width(11.dp))
         }
     }
 }
 
-@Composable
-fun SayHereL() {
-    Box(
-        modifier = Modifier
-            .padding(16.dp)
-            .wrapContentSize(),
-    ) {
-        Canvas(
-            modifier = Modifier.size(140.dp, 50.dp)
-        ) {
-            val width = size.width
-            val height = size.height
-            val cornerRadius = 16.dp.toPx() // Radius for rounded corners
-            val tailWidth = 36f
-            val tailHeight = 24f
-            val tailYOffset = 14.dp.toPx() // Shift the tail downward by 10.dp
+/**
+ * 현재 draw 영역([size]) 전체를 채우는 말풍선 경로를 그린다.
+ * 몸통은 둥근 사각형이고, [tailOnRight] 쪽 변에 세로 중앙을 가리키는 삼각형 꼬리가 붙는다.
+ */
+private fun DrawScope.drawSpeechBubble(tailOnRight: Boolean, tailWidthPx: Float) {
+    val width = size.width
+    val height = size.height
+    val cornerRadius = 16.dp.toPx()
+    val tailHeight = 16.dp.toPx()
+    val tailCenterY = height / 2f
 
-            // Create the path for the speech bubble with the tail on the left
-            val bubblePath = Path().apply {
-                // Top-left corner
-                moveTo(tailWidth, 0f)
-                arcTo(
-                    rect = Rect(tailWidth, 0f, tailWidth + cornerRadius * 2, cornerRadius * 2),
-                    startAngleDegrees = 180f,
-                    sweepAngleDegrees = 90f,
-                    forceMoveTo = false
-                )
-                lineTo(width - cornerRadius, 0f) // Top edge before top-right corner
+    val bubblePath = Path().apply {
+        if (tailOnRight) {
+            val right = width - tailWidthPx // 몸통 오른쪽 변(꼬리 시작점)
 
-                // Top-right corner
-                arcTo(
-                    rect = Rect(
-                        width - cornerRadius * 2,
-                        0f,
-                        width,
-                        cornerRadius * 2
-                    ),
-                    startAngleDegrees = 270f,
-                    sweepAngleDegrees = 90f,
-                    forceMoveTo = false
-                )
-                lineTo(width, height - cornerRadius) // Right edge before bottom-right corner
-
-                // Bottom-right corner
-                arcTo(
-                    rect = Rect(
-                        width - cornerRadius * 2,
-                        height - cornerRadius * 2,
-                        width,
-                        height
-                    ),
-                    startAngleDegrees = 0f,
-                    sweepAngleDegrees = 90f,
-                    forceMoveTo = false
-                )
-                lineTo(tailWidth + cornerRadius, height) // Bottom edge before bottom-left corner
-
-                // Bottom-left corner
-                arcTo(
-                    rect = Rect(
-                        tailWidth,
-                        height - cornerRadius * 2,
-                        tailWidth + cornerRadius * 2,
-                        height
-                    ),
-                    startAngleDegrees = 90f,
-                    sweepAngleDegrees = 90f,
-                    forceMoveTo = false
-                )
-                lineTo(tailWidth, tailHeight * 2 + tailYOffset) // Bottom of the tail
-                lineTo(0f, tailHeight * 1.0f + tailYOffset) // Tip of the tail
-                lineTo(tailWidth, tailHeight + tailYOffset) // Top of the tail
-
-                close() // Complete the path
-            }
-
-            // Draw shadow
-            drawIntoCanvas { canvas ->
-                val shadowPaint = android.graphics.Paint().apply {
-                    color = android.graphics.Color.GRAY // Gray shadow
-                    setShadowLayer(8f, 4f, 4f, android.graphics.Color.GRAY) // Reduced thickness and offset
-                }
-                canvas.nativeCanvas.drawPath(bubblePath.asAndroidPath(), shadowPaint)
-            }
-
-            // Draw the bubble
-            drawPath(
-                path = bubblePath,
-                color = Color.White
+            // Top-left corner
+            moveTo(cornerRadius, 0f)
+            arcTo(
+                rect = Rect(0f, 0f, cornerRadius * 2, cornerRadius * 2),
+                startAngleDegrees = 180f,
+                sweepAngleDegrees = 90f,
+                forceMoveTo = false
             )
-        }
+            lineTo(right - cornerRadius, 0f)
 
-        Row(
-            modifier = Modifier
-                .wrapContentSize()
-                .align(Alignment.Center),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Spacer(modifier = Modifier.width(12.dp))
-
-            Image(
-                painter = painterResource(id = R.drawable.ic_drag_handle),
-                contentDescription = null,
-                modifier = Modifier.size(22.dp),
-                colorFilter = ColorFilter.tint(Color(0xFF6a91b2))
+            // Top-right corner
+            arcTo(
+                rect = Rect(right - cornerRadius * 2, 0f, right, cornerRadius * 2),
+                startAngleDegrees = 270f,
+                sweepAngleDegrees = 90f,
+                forceMoveTo = false
             )
 
-            Spacer(modifier = Modifier.width(6.dp))
+            // Tail (points right, vertically centered)
+            lineTo(right, tailCenterY - tailHeight / 2f)
+            lineTo(width, tailCenterY)
+            lineTo(right, tailCenterY + tailHeight / 2f)
+            lineTo(right, height - cornerRadius)
 
-            Text(
-                text = "I'm here !",
-                color = Color.Black,
+            // Bottom-right corner
+            arcTo(
+                rect = Rect(right - cornerRadius * 2, height - cornerRadius * 2, right, height),
+                startAngleDegrees = 0f,
+                sweepAngleDegrees = 90f,
+                forceMoveTo = false
             )
+            lineTo(cornerRadius, height)
+
+            // Bottom-left corner
+            arcTo(
+                rect = Rect(0f, height - cornerRadius * 2, cornerRadius * 2, height),
+                startAngleDegrees = 90f,
+                sweepAngleDegrees = 90f,
+                forceMoveTo = false
+            )
+            lineTo(0f, cornerRadius)
+            close()
+        } else {
+            val left = tailWidthPx // 몸통 왼쪽 변(꼬리 시작점)
+
+            // Top-left corner
+            moveTo(left, 0f)
+            arcTo(
+                rect = Rect(left, 0f, left + cornerRadius * 2, cornerRadius * 2),
+                startAngleDegrees = 180f,
+                sweepAngleDegrees = 90f,
+                forceMoveTo = false
+            )
+            lineTo(width - cornerRadius, 0f)
+
+            // Top-right corner
+            arcTo(
+                rect = Rect(width - cornerRadius * 2, 0f, width, cornerRadius * 2),
+                startAngleDegrees = 270f,
+                sweepAngleDegrees = 90f,
+                forceMoveTo = false
+            )
+            lineTo(width, height - cornerRadius)
+
+            // Bottom-right corner
+            arcTo(
+                rect = Rect(width - cornerRadius * 2, height - cornerRadius * 2, width, height),
+                startAngleDegrees = 0f,
+                sweepAngleDegrees = 90f,
+                forceMoveTo = false
+            )
+            lineTo(left + cornerRadius, height)
+
+            // Bottom-left corner
+            arcTo(
+                rect = Rect(left, height - cornerRadius * 2, left + cornerRadius * 2, height),
+                startAngleDegrees = 90f,
+                sweepAngleDegrees = 90f,
+                forceMoveTo = false
+            )
+
+            // Tail (points left, vertically centered)
+            lineTo(left, tailCenterY + tailHeight / 2f)
+            lineTo(0f, tailCenterY)
+            lineTo(left, tailCenterY - tailHeight / 2f)
+            close()
         }
     }
+
+    // Draw shadow
+    drawIntoCanvas { canvas ->
+        val shadowPaint = android.graphics.Paint().apply {
+            color = android.graphics.Color.GRAY
+            setShadowLayer(8f, 4f, 4f, android.graphics.Color.GRAY)
+        }
+        canvas.nativeCanvas.drawPath(bubblePath.asAndroidPath(), shadowPaint)
+    }
+
+    // Draw the bubble
+    drawPath(path = bubblePath, color = Color.White)
 }
 
 

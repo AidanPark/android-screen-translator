@@ -1,30 +1,32 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.google.services)
     alias(libs.plugins.google.firebase.crashlytics)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.serialization)
-    alias(libs.plugins.kapt)
+    alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
     alias(libs.plugins.compose.compiler)
 }
 
 val admobAppId = if (gradle.startParameter.taskNames.any { it.contains("Debug") }) {
-    "" // TODO: Set your AdMob App ID for debug
+    "ca-app-pub-3940256099942544~3347511713"
 } else {
     "ca-app-pub-xxxxxxxxxxxxxxxx~xxxxxxxxxx"
 }
 
 android {
     namespace = "com.galaxy.airviewdictionary"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.galaxy.airviewdictionary"
-        minSdk = 23
-        targetSdk = 35
-        versionCode = 20402
-        versionName = "2.4.2"
+        minSdk = 26
+        targetSdk = 36
+        versionCode = 20501
+        versionName = "2.5.1"
         manifestPlaceholders["ADMOB_APP_ID"] = admobAppId
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -64,9 +66,6 @@ android {
         checkReleaseBuilds = false
         abortOnError = false
     }
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_17.toString()
-    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -88,10 +87,14 @@ android {
     }
 }
 
+kotlin {
+    compilerOptions {
+        jvmTarget.set(JvmTarget.JVM_17)
+    }
+}
+
 dependencies {
-    implementation(libs.billingclient)
     implementation(libs.admob)
-    implementation(libs.integrity)
     implementation(libs.app.review)
 //    implementation(libs.app.update)
 
@@ -122,7 +125,7 @@ dependencies {
 
     // Hilt
     implementation(libs.dagger.hilt.android)
-    kapt(libs.dagger.hilt.android.compiler)
+    ksp(libs.dagger.hilt.android.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
 
     implementation(libs.kotlinx.coroutines.core)
@@ -177,10 +180,6 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.androidx.monitor)
-}
-
-kapt {
-    correctErrorTypes = true
 }
 
 

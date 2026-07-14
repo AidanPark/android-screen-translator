@@ -1,6 +1,7 @@
 package com.galaxy.airviewdictionary.ui.common
 
 import android.net.Uri
+import androidx.core.net.toUri
 import android.widget.VideoView
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.height
@@ -30,7 +31,7 @@ fun MP4Player(resourceId: Int, width: Dp = 300.dp, height: Dp = 300.dp, modifier
 
     try {
         // 비디오 URI 설정
-        val resourceUri = Uri.parse("android.resource://${context.packageName}/$resourceId")
+        val resourceUri = "android.resource://${context.packageName}/$resourceId".toUri()
         // 올바른 resourceId일 경우 videoUri 설정
         videoUri = resourceUri
     } catch (e: Exception) {

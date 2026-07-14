@@ -8,14 +8,10 @@
     <!-- Overlay Permission -->
     <string name="message_permission_overlay">Қажетті рұқсат:\nБасқа қолданбалардың үстінен көрсету</string>
     <string name="message_permission_overlay_detail">Screen Translator қосымшасын іске қосу үшін басқа қолданбалардың үстінен көрсетуге рұқсат беруіңіз керек.</string>
-    <string name="message_permission_overlay_denied">Қабаттасуға рұқсат берілмеді</string>
-    <string name="message_permission_overlay_denied_detail">Қабаттасуға рұқсат берілмеген.\nҚосымша жабылады.</string>
 
     <!-- MediaProjection token 요청 -->
     <string name="message_media_projection">Қажетті рұқсат:\nЭкранды жазу</string>
     <string name="message_media_projection_detail">Screen Translator қосымшасын іске қосу үшін экранды жазуға рұқсат беруіңіз керек.\n\nЭкрандағы ақпарат тек аударма үшін пайдаланылады және ешқайда сақталмайды немесе жіберілмейді.</string>
-    <string name="message_media_projection_denied">Экранды жазуға рұқсат берілмеді</string>
-    <string name="message_media_projection_denied_detail">Экранды жазуға рұқсат берілмеген.\nҚосымша жабылады.</string>
 
     <!-- Foreground Service 시작 알림 -->
     <string name="notification_foreground_service">Экран мазмұнын аудару үшін түсіру функциясы қолданылады.</string>
@@ -23,7 +19,6 @@
     <string name="message_start_foreground_service">Қосымша экран мазмұнын түсіру және аудару үшін алдыңғы жоспардағы қызметті іске қосады.\n\nТүсірілген кескіндер сақталмайды және сыртқа жіберілмейді.</string>
     <string name="label_confirm_start_foreground_service">Бастау</string>
     <string name="label_dismiss_start_foreground_service">Аяқтау</string>
-    <string name="snack_message_start_foreground_service">Экран мазмұнын аудару үшін қызмет іске қосылды.</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">Аяқтау</string>
@@ -36,18 +31,6 @@
     <string name="title_voice_list_view">Қол жетімді дауыстар</string>
 
     <!-- Dialog -->
-    <string name="message_authentication_error">Аутентификация қатесі</string>
-    <string name="message_authentication_error_detail">Аутентификация сервері жауап бермейді.\nКейінірек қайталап көріңіз.</string>
-    <string name="message_untrusted_environment">Сенімсіз орта</string>
-    <string name="message_untrusted_environment_detail">Қосымшаңыз Google Play тұтастық тексерісінен өтпеген сияқты.</string>
-    <string name="message_unknown_device">Белгісіз құрылғы</string>
-    <string name="message_unknown_device_detail">Бұл құрылғы қолдау көрсетілмейді.</string>
-    <string name="message_authentication_required">Аутентификация қажет</string>
-    <string name="message_authentication_required_detail">Google аккаунтымен кіру қажет.</string>
-    <string name="message_playstore_update_required">Play Store жаңарту қажет</string>
-    <string name="message_playstore_update_required_detail">Play Store қызметіне қосыла алмады.\nҚұрылғыда ескі нұсқа орнатылған болуы мүмкін.</string>
-    <string name="message_unknown_source">Осы қолданбаны Play дүкенінен алыңыз</string>
-    <string name="message_unknown_source_detail">Қолданбаны пайдалану үшін оны Google Play дүкенінен жүктеп алыңыз.</string>
     <string name="message_force_update">Жаңарту қажет</string>
     <string name="message_force_update_detail">Бұл нұсқа енді қолдау көрсетілмейді.\nДүкенге өтіңіз.</string>
     <string name="message_service_unavailable">Қызмет қол жетімді емес</string>
@@ -56,62 +39,58 @@
     <string name="message_network_unavailable_detail">Желі жоқ.\nТексеріп, қайталап көріңіз.</string>
     <string name="message_translate_fixedarea_warn">Батарея туралы ескерту</string>
     <string name="message_translate_fixedarea_warn_detail">Батарея тез таусылуы мүмкін.</string>
-    <string name="message_translate_fixedarea_promotion">Өнімді сатып алу туралы ақпарат</string>
-    <string name="message_translate_fixedarea_promotion_detail">Біздің премиум мүмкіндіктеріміз туралы ескерту әр %1$s минут сайын көрсетіледі.</string>
-    <string name="message_free_trial_ends">Тегін сынақ мерзімі аяқталды.</string>
-    <string name="message_free_trial_ends_detail">Тегін сынақты ұзарту үшін жарнаманы көргіңіз келе ме?</string>
-    <string name="message_ad_reward">Сізге қосымша %1$d минут тегін сынақ берілді!</string>
-    <string name="message_ad_reward_detail">Келесі %1$d минутта барлық премиум функцияларды тегін пайдаланыңыз.</string>
+    <string name="ad_gate_loading">Жарнама дайындалуда…</string>
+    <string name="ad_gate_reward_notice">Жарнаманы соңына дейін көріп, қолданбаны жапқанша жарнамасыз пайдаланыңыз.</string>
 
     <!-- SettingsActivity -->
     <string name="settings_title">Параметрлер</string>
     <string name="settings_menu_cat_pointer">Көрсеткіш</string>
     <string name="settings_menu_pointer_docking_delay">Тіру кідірісі</string>
-    <string name="settings_menu_haptic_feedback_to_detection">Анықтауда діріл</string>
+    <string name="settings_menu_haptic_feedback_to_detection">Анықтау кезінде хаптика</string>
     <string name="settings_menu_cat_menubar">Мәзір жолағы</string>
     <string name="settings_menu_menubar_transparency">Мәзір мөлдірлігі</string>
     <string name="settings_menu_menubar_composition">Мәзір мүмкіндіктері</string>
-    <string name="settings_menu_cat_ai">AI түзетуі</string>
     <string name="settings_menu_cat_translation">Аударма</string>
     <string name="settings_menu_translation_transparency">Аударма мөлдірлігі</string>
     <string name="settings_menu_translation_close_delay">Жабу кідірісі</string>
-    <string name="settings_menu_automated_read_aloud">Авто оқу</string>
+    <string name="settings_menu_automated_read_aloud">Аударманы авто оқу</string>
     <string name="settings_menu_reply_transparency">Жауап мөлдірлігі</string>
     <string name="settings_menu_cat_tts">Мәтін дауыспен</string>
+    <string name="settings_menu_tts_read_target">Оқу нысаны</string>
+    <string name="settings_tts_read_target_source">Түпнұсқа</string>
+    <string name="settings_tts_read_target_target">Аударма</string>
     <string name="settings_menu_tts_voices">TTS дауыстар</string>
     <string name="settings_menu_tts_rate">TTS жылдамдығы</string>
     <string name="settings_menu_cat_about">Қосымша туралы</string>
-    <string name="settings_menu_on_premium_free_trial">Premium сынақ белсенді</string>
-    <string name="settings_menu_premium_free_trial_remain">%1$d минут қалды</string>
-    <string name="settings_menu_your_premium_benefits">Сіздің артықшылықтарыңыз</string>
-    <string name="settings_menu_your_premium_benefits_peding">Артықш. (күтілуде)</string>
     <string name="settings_menu_app_version">Қосымша нұсқасы</string>
     <string name="settings_menu_app_version_latest">(Соңғы)</string>
 
 
     <!-- HelpTextDetectModeView, HelpTranslationKitView -->
-    <string name="help_text_no_limit">Премиум нұсқада ешқандай шектеу жоқ</string>
     <string name="help_text_no_limit_free">Шектеусіз мөлшер, шектеусіз уақыт</string>
-    <string name="help_text_no_limit_title">Шектеусіз пайдаланыңыз</string>
-    <string name="help_text_no_limit_free_title">Тегін және шектеусіз</string>
-    <string name="help_text_get_premium">Премиум алыңыз</string>
+    <string name="help_text_deepl_own_key">Жеке DeepL API кілтіңізді пайдаланады</string>
+    <string name="deepl_key_guide">DeepL аудармасын пайдалану үшін DeepL API кілтіңізді енгізіңіз.</string>
+    <string name="deepl_key_signup_guide">DeepL-де тіркеліп, тегін жоспарға жазыла аласыз.</string>
+    <string name="deepl_key_link_subscription">Тегін жоспарға жазылу</string>
+    <string name="deepl_key_link_keys">API кілтіңізді тексеру</string>
+    <string name="deepl_key_active">Белсендірілді</string>
+    <string name="label_save">Сақтау</string>
+    <string name="deepl_key_invalid">API кілті жарамсыз.</string>
+    <string name="deepl_key_validating">Тексерілуде…</string>
+    <string name="deepl_key_network_error">Желі қатесіне байланысты кілтті тексеру мүмкін болмады. Кілт сақталды.</string>
 
     <!-- PremiumView -->
-    <string name="premium_view_get_premium">Премиум алыңыз</string>
-    <string name="premium_view_get_premium_purchased">Сіздің премиум артықшылықтарыңыз</string>
-    <string name="premium_view_get_premium_pending">Сіздің премиум артықшылықтарыңыз (күтуде)</string>
-    <string name="premium_view_get_premium_not_available">Премиум (қазіргі уақытта қол жетімді емес)</string>
-    <string name="premium_view_price_format">%1$s/ай • ҚҚС қосылған\n• Кез келген уақытта болдырмауға болады</string>
-    <string name="premium_view_title">Барлық мүмкіндіктер,\nешқандай үзіліссіз.</string>
-    <string name="premium_view_message">Шектеусіз қолдану.\nПремиумда бәрі ашық.</string>
-    <string name="premium_view_description_azure">Дүние жүзі бойынша көптеген тілдерді дәл аударады.</string>
-    <string name="premium_view_description_deepl">Мән-мағынасын жоғалтпай сапалы аударма ұсынады.</string>
-    <string name="premium_view_description_papago">Papago нейрондық аударма арқылы бірнеше тілдерді автоматты түрде аударады.</string>
-    <string name="premium_view_description_google">Ең жылдам аударма. Шексіз және әрқашан тегін.</string>
-    <string name="premium_view_description_sentence_detection">Сызықтарды саусақпен түртіп аударыңыз.</string>
+    <string name="premium_view_description_sentence_detection">Сөйлемдер автоматты түрде таңдалады.</string>
     <string name="premium_view_description_paragraph_detection">Параграфтар автоматты түрде танылады.</string>
     <string name="premium_view_description_select_detection">Қалаған аймақты өзіңіз таңдаңыз.</string>
-    <string name="premium_view_description_word_detection">Сөзбе-сөз аударма әрқашан тегін және шектеусіз.</string>
+    <string name="premium_view_description_word_detection">Сөзді көрсетіңіз, ол бірден аударылады.</string>
     <string name="premium_view_description_fixed_area_detection">Сіз фильм субтитрлері сияқты тіркелген аймақтарды үздіксіз аудара аласыз.</string>
-    <string name="premium_view_unsubscribe">Жазылымнан бас тарту</string>
+  <string name="say_here">Мен мұндамын!</string>
+  <string name="hint_settings_reopen">Параметрлерді қайта ашу үшін тұтқаны екі рет түртіңіз</string>
+  <string name="openai_key_guide">OpenAI үлгілерімен аудару үшін OpenAI API кілтіңізді енгізіңіз.</string>
+  <string name="openai_key_signup_guide">OpenAI басқару тақтасында кілт жасаңыз. Пайдалану OpenAI тіркелгіңізге есептеледі.</string>
+  <string name="openai_key_link_keys">API кілтіңізді алыңыз</string>
+  <string name="openai_key_link_billing">Төлем және пайдалану</string>
+  <string name="openai_model_label">Үлгі</string>
+  <string name="help_text_openai_own_key">Жеке OpenAI API кілтіңізді пайдаланады</string>
 </resources>

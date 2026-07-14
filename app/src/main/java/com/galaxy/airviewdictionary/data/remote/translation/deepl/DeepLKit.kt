@@ -1,27 +1,51 @@
 package com.galaxy.airviewdictionary.data.remote.translation.deepl
 
 import android.content.Context
+import com.deepl.api.AuthorizationException
 import com.deepl.api.TextResult
 import com.deepl.api.Translator
-import com.galaxy.airviewdictionary.data.local.secure.ApiKeyInfo
-import com.galaxy.airviewdictionary.data.remote.translation.TranslationKit
-import com.galaxy.airviewdictionary.data.remote.translation.TranslationKitType
+import com.galaxy.airviewdictionary.data.local.secure.SecureStore
+import com.galaxy.airviewdictionary.data.local.secure.SecureStoreKey
 import com.galaxy.airviewdictionary.data.remote.translation.Language
 import com.galaxy.airviewdictionary.data.remote.translation.Transaction
+import com.galaxy.airviewdictionary.data.remote.translation.TranslationKit
+import com.galaxy.airviewdictionary.data.remote.translation.TranslationKitType
 import com.galaxy.airviewdictionary.data.remote.translation.TranslationResponse
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.withContext
+import timber.log.Timber
 import javax.inject.Inject
 import javax.inject.Singleton
 
+/**
+ * DeepL 번역 엔진. 사용자가 직접 발급받은 개인 API 키로 동작한다.
+ * 키는 설정 > API Key > DeepL 에서 입력받아 [SecureStore] 에 암호화 저장된다.
+ * 저장된 키가 없으면 엔진은 비활성 상태이며 엔진 전환기에 노출되지 않는다.
+ */
 @Singleton
-class DeepLKit @Inject constructor(@ApplicationContext val context: Context) : TranslationKit() {
+class DeepLKit @Inject constructor(
+    @ApplicationContext private val context: Context,
+) : TranslationKit() {
 
-    private lateinit var translator: Translator
+    private var translator: Translator? = null
+
+    // translator 가 어떤 키로 생성됐는지 기억해서, 키가 바뀌면 재생성한다
+    private var translatorApiKey: String? = null
+
+    private fun resolveApiKey(): String? {
+        return getStoredApiKey(context)
+    }
 
     override fun available(): Boolean {
-        return ApiKeyInfo.apiKeyAvailable(context)
+        return resolveApiKey() != null
+    }
+
+    init {
+        refreshAvailability(context)
     }
 
     override val supportedLanguagesAsSource: List<Language> by lazy {
@@ -44,6 +68,10 @@ class DeepLKit @Inject constructor(@ApplicationContext val context: Context) : T
         return isSupportedAsSource(targetLanguageCode, sourceLanguageCode) && isSupportedAsTarget(sourceLanguageCode, targetLanguageCode)
     }
 
+    /**
+     * 공용 언어 코드를 DeepL 고유 타겟 코드로 변환한다.
+     * (DeepL 은 EN/PT/ZH 의 변형 지정을 요구한다)
+     */
     private fun getOwnTargetLanguageCode(languageCode: String): String {
         return when (languageCode) {
             "en" -> "EN-US"
@@ -60,11 +88,15 @@ class DeepLKit @Inject constructor(@ApplicationContext val context: Context) : T
         sourceText: String
     ): TranslationResponse {
         return try {
-            if (!::translator.isInitialized) {
-                if (available()) {
-                    translator = Translator(ApiKeyInfo.getApiKeyDeepl(context))
+            val apiKey = resolveApiKey() ?: throw IllegalStateException("DeepL API key is not set.")
+            val translator = translator.let { current ->
+                if (current == null || translatorApiKey != apiKey) {
+                    Translator(apiKey).also {
+                        translator = it
+                        translatorApiKey = apiKey
+                    }
                 } else {
-                    throw IllegalStateException("api key might not have been initialized.")
+                    current
                 }
             }
             val textResult: TextResult = withContext(Dispatchers.IO) {
@@ -74,7 +106,7 @@ class DeepLKit @Inject constructor(@ApplicationContext val context: Context) : T
                     getOwnTargetLanguageCode(targetLanguageCode),
                 )
             }
-            return TranslationResponse.Success(
+            TranslationResponse.Success(
                 Transaction(
                     sourceLanguageCode = sourceLanguageCode,
                     targetLanguageCode = targetLanguageCode,
@@ -89,7 +121,64 @@ class DeepLKit @Inject constructor(@ApplicationContext val context: Context) : T
         }
     }
 
+    /**
+     * API 키 검증 결과.
+     * 네트워크 오류는 키 자체의 문제가 아니므로 무효와 구분한다.
+     */
+    enum class KeyValidationResult {
+        VALID,
+        INVALID,
+        NETWORK_ERROR,
+    }
+
     companion object {
+        // DeepL 계정 안내 링크
+        const val URL_SUBSCRIPTION = "https://www.deepl.com/ko/your-account/subscription"
+        const val URL_API_KEYS = "https://www.deepl.com/ko/your-account/keys"
+
+        /**
+         * 사용량 조회([Translator.getUsage])로 키 유효성을 검증한다. 글자 쿼터를 소모하지 않는다.
+         */
+        suspend fun validateApiKey(apiKey: String): KeyValidationResult = withContext(Dispatchers.IO) {
+            try {
+                Translator(apiKey).usage
+                KeyValidationResult.VALID
+            } catch (e: AuthorizationException) {
+                Timber.tag("DeepLKit").w("validateApiKey invalid: $e")
+                KeyValidationResult.INVALID
+            } catch (e: Exception) {
+                Timber.tag("DeepLKit").w("validateApiKey network error: $e")
+                KeyValidationResult.NETWORK_ERROR
+            }
+        }
+
+        /**
+         * 저장된 API 키 존재 여부. 엔진 전환기 노출과 설정의 활성 표시가 이 값을 따른다.
+         * (SecureStore 는 flow 를 제공하지 않으므로, 키 저장/조회 시점에 갱신한다)
+         */
+        private val _keyActivatedStateFlow = MutableStateFlow(false)
+        val keyActivatedStateFlow: StateFlow<Boolean> = _keyActivatedStateFlow.asStateFlow()
+
+        fun refreshAvailability(context: Context) {
+            _keyActivatedStateFlow.value = getStoredApiKey(context) != null
+        }
+
+        /**
+         * 설정에서 저장한 API 키. 없거나 공백이면 null.
+         */
+        fun getStoredApiKey(context: Context): String? {
+            return SecureStore.get(context, SecureStoreKey.DEEPL_API_KEY)?.get()?.takeIf { it.isNotBlank() }
+        }
+
+        /**
+         * 설정에서 입력한 API 키를 암호화 저장한다. 빈 문자열 저장은 키 삭제로 동작한다.
+         */
+        fun storeApiKey(context: Context, apiKey: String) {
+            SecureStore.set(context, SecureStoreKey.DEEPL_API_KEY, apiKey.trim())
+            refreshAvailability(context)
+            Timber.tag("DeepLKit").i("storeApiKey saved (${apiKey.trim().length} chars)")
+        }
+
         val supportedSourceLanguageCodes = arrayOf(
             "auto", // Auto
             "AR", // Arabic
@@ -131,7 +220,6 @@ class DeepLKit @Inject constructor(@ApplicationContext val context: Context) : T
             "DA", // Danish
             "DE", // German
             "EL", // Greek
-//            "EN", // English
             "EN-GB", // en-gb --------------- English (British)
             "en", // en-us --------------- English (American)
             "ES", // Spanish
@@ -148,7 +236,6 @@ class DeepLKit @Inject constructor(@ApplicationContext val context: Context) : T
             "NB", // Norwegian Bokmål
             "NL", // Dutch
             "PL", // Polish
-//            "PT", // Portuguese  (unspecified variant for backward compatibility; please select PT-BR or PT-PT instead)
             "PT-BR", // pt-br --------------- Portuguese (Brazilian)
             "pt", // pt-pt --------------- Portuguese (excluding Brazilian)
             "RO", // Romanian
@@ -158,7 +245,6 @@ class DeepLKit @Inject constructor(@ApplicationContext val context: Context) : T
             "SV", // Swedish
             "TR", // Turkish
             "UK", // Ukrainian
-//            "ZH", // Chinese  Chinese (unspecified variant for backward compatibility; please select ZH-HANS or ZH-HANT instead)
             "zh-CN", // zh-hans --------------- Chinese (simplified)
             "zh-TW", // zh-hant --------------- Chinese (traditional)
         )

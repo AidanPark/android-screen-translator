@@ -8,14 +8,10 @@
     <!-- Overlay Permission -->
     <string name="message_permission_overlay">Պահանջվող թույլտվություն:\nՑուցադրել այլ հավելվածների վրա</string>
     <string name="message_permission_overlay_detail">Էկրան թարգմանիչը գործարկելու համար անհրաժեշտ է թույլատրել ցուցադրումը այլ հավելվածների վրա։</string>
-    <string name="message_permission_overlay_denied">Հրապարակման թույլտվությունը մերժվել է</string>
-    <string name="message_permission_overlay_denied_detail">Հրապարակման թույլտվությունը չի տրամադրվել։\nՀավելվածը կփակվի։</string>
 
     <!-- MediaProjection token -->
     <string name="message_media_projection">Պահանջվող թույլտվություն:\nԷկրանի ձայնագրում</string>
     <string name="message_media_projection_detail">Էկրան թարգմանիչը գործարկելու համար անհրաժեշտ է թույլատրել էկրանի ձայնագրումը։\n\nԷկրանից ստացված տեղեկատվությունը կօգտագործվի միայն թարգմանության համար և չի պահվելու կամ տարածվելու։</string>
-    <string name="message_media_projection_denied">Էկրանի ձայնագրման թույլտվությունը մերժվել է</string>
-    <string name="message_media_projection_denied_detail">Էկրանի ձայնագրման թույլտվությունը չի տրամադրվել։\nՀավելվածը կփակվի։</string>
 
     <!-- Foreground Service -->
     <string name="notification_foreground_service">Էկրանի գրավման ֆունկցիան օգտագործվում է թարգմանության համար։</string>
@@ -23,7 +19,6 @@
     <string name="message_start_foreground_service">Հավելվածը գործարկում է առաջնային ծառայություն՝ էկրանի բովանդակությունը գրավելու և թարգմանելու համար։\n\nԳրավված պատկերները չեն պահպանվելու կամ ուղարկվելու։</string>
     <string name="label_confirm_start_foreground_service">Գործարկել</string>
     <string name="label_dismiss_start_foreground_service">Փակել</string>
-    <string name="snack_message_start_foreground_service">Հավելվածը գործարկում է առաջնային ծառայություն՝ էկրանի բովանդակությունը գրավելու և թարգմանելու համար։</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">Ավարտել</string>
@@ -36,18 +31,6 @@
     <string name="title_voice_list_view">Հասանելի ձայներ</string>
 
     <!-- Dialog -->
-    <string name="message_authentication_error">Նույնականացման սխալ</string>
-    <string name="message_authentication_error_detail">Նույնականացման սերվերը չի արձագանքում։\nԽնդրում ենք փորձել ավելի ուշ։</string>
-    <string name="message_untrusted_environment">Անվստահելի միջավայր</string>
-    <string name="message_untrusted_environment_detail">Ձեր հավելվածը չի անցել Google Play-ի ամբողջականության ստուգումը։</string>
-    <string name="message_unknown_device">Անհայտ սարք</string>
-    <string name="message_unknown_device_detail">Այս սարքը չի աջակցվում։</string>
-    <string name="message_authentication_required">Պահանջվում է նույնականացում</string>
-    <string name="message_authentication_required_detail">Պետք է մուտք գործեք Google հաշիվով։</string>
-    <string name="message_playstore_update_required">Պահանջվում է Play Store-ի թարմացում</string>
-    <string name="message_playstore_update_required_detail">Չհաջողվեց միանալ Play Store ծառայությանը։\nՀնարավոր է, որ օգտագործում եք հին տարբերակ։</string>
-    <string name="message_unknown_source">Ներբեռնեք հավելվածը Play Store-ից</string>
-    <string name="message_unknown_source_detail">Հավելվածը շարունակելու համար ներբեռնեք այն Google Play-ից։</string>
     <string name="message_force_update">Պահանջվում է թարմացում</string>
     <string name="message_force_update_detail">Այս տարբերակը այլևս չի աջակցվում։\nԽնդրում ենք անցնել խանութ։</string>
     <string name="message_service_unavailable">Ծառայությունը ժամանակավորապես անհասանելի է</string>
@@ -56,63 +39,59 @@
     <string name="message_network_unavailable_detail">Ցանցը անհասանելի է։\nԽնդրում ենք ստուգել կապը և կրկին փորձել։</string>
     <string name="message_translate_fixedarea_warn">Մարտկոցի նախազգուշացում</string>
     <string name="message_translate_fixedarea_warn_detail">Մարտկոցը կարող է արագ լիցքաթափվել։</string>
-    <string name="message_translate_fixedarea_promotion">Արտադրանքի գնումների մասին տեղեկություն</string>
-    <string name="message_translate_fixedarea_promotion_detail">Մեր պրեմիում հնարավորությունների մասին բարեկամական հիշեցում կհայտնվի յուրաքանչյուր %1$s րոպեն մեկ։</string>
-    <string name="message_free_trial_ends">Ձեր անվճար փորձաշրջանը ավարտվել է։</string>
-    <string name="message_free_trial_ends_detail">Ցանկանու՞մ եք դիտել գովազդ՝ փորձաշրջանը երկարացնելու համար։</string>
-    <string name="message_ad_reward">Դուք ստացել եք %1$d րոպե լրացուցիչ անվճար փորձաշրջան:</string>
-    <string name="message_ad_reward_detail">Վայելեք բոլոր պրեմիում գործառույթները անվճար հաջորդ %1$d րոպեների ընթացքում:</string>
+    <string name="ad_gate_loading">Գովազդը պատրաստվում է…</string>
+    <string name="ad_gate_reward_notice">Դիտեք գովազդը մինչև վերջ և օգտագործեք հավելվածն առանց գովազդի մինչև այն փակելը։</string>
 
     <!-- SettingsActivity -->
     <string name="settings_title">Կարգավորումներ</string>
     <string name="settings_menu_cat_pointer">Ցուցիչ</string>
     <string name="settings_menu_pointer_docking_delay">Հապաղում միացման</string>
-    <string name="settings_menu_haptic_feedback_to_detection">Ցնցում հայտնաբերման դեպքում</string>
+    <string name="settings_menu_haptic_feedback_to_detection">Հպման արձագանք հայտնաբերելիս</string>
     <string name="settings_menu_cat_menubar">Մենյուի գիծ</string>
     <string name="settings_menu_menubar_transparency">Մենյուի թափանցիկություն</string>
     <string name="settings_menu_menubar_composition">Մենյուի գործառույթներ</string>
-    <string name="settings_menu_cat_ai">ԱԲ շտկում</string>
     <string name="settings_menu_cat_translation">Թարգմանություն</string>
     <string name="settings_menu_translation_transparency">Թարգմանության թափանցիկություն</string>
     <string name="settings_menu_translation_close_delay">Փակման հապաղում</string>
-    <string name="settings_menu_automated_read_aloud">Ինքն. ընթերցում</string>
+    <string name="settings_menu_automated_read_aloud">Թարգմանության ինքն. ընթերցում</string>
     <string name="settings_menu_reply_transparency">Պատասխանի թափանցիկություն</string>
     <string name="settings_menu_cat_tts">Տեքստից խոսք</string>
+    <string name="settings_menu_tts_read_target">Ընթերցման թիրախ</string>
+    <string name="settings_tts_read_target_source">Բնագիր</string>
+    <string name="settings_tts_read_target_target">Թարգմանություն</string>
     <string name="settings_menu_tts_voices">TTS ձայներ</string>
     <string name="settings_menu_tts_rate">TTS արագություն</string>
     <string name="settings_menu_cat_about">Մասին</string>
-    <string name="settings_menu_on_premium_free_trial">Premium փորձարկում ակտիվ</string>
-    <string name="settings_menu_premium_free_trial_remain">Մնացել է %1$d րոպե</string>
-    <string name="settings_menu_your_premium_benefits">Ձեր առավելությունները</string>
-    <string name="settings_menu_your_premium_benefits_peding">Առավելությունները (սպասում)</string>
     <string name="settings_menu_app_version">Հավելվածի տարբերակ</string>
     <string name="settings_menu_app_version_latest">(Վերջին)</string>
 
     <!-- HelpTextDetectModeView, HelpTranslationKitView -->
-    <string name="help_text_no_limit">Ամեն ինչ անսահմանափակ է Premium-ի դեպքում</string>
     <string name="help_text_no_limit_free">Առանց քանակական կամ ժամանակային սահմանափակումների</string>
-    <string name="help_text_no_limit_title">Վայելեք առանց սահմանափակումների</string>
-    <string name="help_text_no_limit_free_title">Անվճար՝ առանց սահմանափակումների</string>
-    <string name="help_text_get_premium">Ստանալ Premium</string>
+    <string name="help_text_deepl_own_key">Օգտագործում է ձեր անձնական DeepL API բանալին</string>
+    <string name="deepl_key_guide">Մուտքագրեք ձեր DeepL API բանալին՝ DeepL թարգմանությունն օգտագործելու համար։</string>
+    <string name="deepl_key_signup_guide">Գրանցվեք DeepL-ում և կարող եք բաժանորդագրվել անվճար պլանին։</string>
+    <string name="deepl_key_link_subscription">Բաժանորդագրվել անվճար պլանին</string>
+    <string name="deepl_key_link_keys">Ստուգեք ձեր API բանալին</string>
+    <string name="deepl_key_active">Ակտիվացված է</string>
+    <string name="label_save">Պահպանել</string>
+    <string name="deepl_key_invalid">API բանալին վավեր չէ։</string>
+    <string name="deepl_key_validating">Ստուգվում է…</string>
+    <string name="deepl_key_network_error">Ցանցի սխալի պատճառով բանալին չհաջողվեց ստուգել։ Բանալին պահպանվեց։</string>
 
     <!-- PremiumView -->
-    <string name="premium_view_get_premium">Ստանալ Premium</string>
-    <string name="premium_view_get_premium_purchased">Ձեր Premium արտոնությունները</string>
-    <string name="premium_view_get_premium_pending">Ձեր Premium արտոնությունները (Սպասում է)</string>
-    <string name="premium_view_get_premium_not_available">Premium-ն այս պահին հասանելի չէ</string>
-    <string name="premium_view_price_format">%1$s/ամիս • Ներառում է ԱԱՀ\n• Կարող եք չեղարկել ցանկացած պահի</string>
-    <string name="premium_view_title">Բոլոր ֆունկցիաները,\nԱռանց ընդհատումների։</string>
-    <string name="premium_view_message">Անսահմանափակ քանակ և ժամանակ։\nԱմեն ինչ հասանելի է Premium-ով</string>
-    <string name="premium_view_description_azure">Ճշգրիտ թարգմանություններ աշխարհի բազմաթիվ լեզուների համար։</string>
-    <string name="premium_view_description_deepl">Բովանդակալից և իմաստալից թարգմանություններ բարձր որակով։</string>
-    <string name="premium_view_description_papago">Papago-ն ավտոմատ կերպով թարգմանում է տարբեր լեզուներ նեյրոնային ալգորիթմների միջոցով։</string>
-    <string name="premium_view_description_google">Ամենաարագ թարգմանությունը։ Անվճար և անվերջ՝ միշտ։</string>
-    <string name="premium_view_description_sentence_detection">Օգտագործեք ձեր մատը՝ տողերը թարգմանելու համար։</string>
+    <string name="premium_view_description_sentence_detection">Նախադասություններն ընտրվում են ավտոմատ։</string>
     <string name="premium_view_description_paragraph_detection">Պարբերությունները հայտնաբերվում են ավտոմատ կերպով։</string>
     <string name="premium_view_description_select_detection">Դուք կարող եք նաև նշել ձեր ուզած հատվածը։</string>
-    <string name="premium_view_description_word_detection">Բառ առ բառ թարգմանությունը միշտ անվճար և անսահմանափակ է։</string>
+    <string name="premium_view_description_word_detection">Ցույց տվեք բառը, և այն անմիջապես կթարգմանվի։</string>
     <string name="premium_view_description_fixed_area_detection">Դուք կարող եք շարունակաբար թարգմանել ֆիքսված տարածքները, օրինակ՝ ֆիլմերի ենթագրերը։</string>
-    <string name="premium_view_unsubscribe">Չեղարկել բաժանորդագրությունը</string>
+  <string name="say_here">Ես այստեղ եմ!</string>
+  <string name="hint_settings_reopen">Կրկնակի հպեք բռնակին՝ կարգավորումները նորից բացելու համար</string>
+  <string name="openai_key_guide">Մուտքագրեք ձեր OpenAI API բանալին՝ OpenAI մոդելներով թարգմանելու համար։</string>
+  <string name="openai_key_signup_guide">Ստեղծեք բանալի OpenAI վահանակում։ Օգտագործումը գանձվում է ձեր OpenAI հաշվից։</string>
+  <string name="openai_key_link_keys">Ստացեք ձեր API բանալին</string>
+  <string name="openai_key_link_billing">Վճարում և օգտագործում</string>
+  <string name="openai_model_label">Մոդել</string>
+  <string name="help_text_openai_own_key">Օգտագործում է ձեր անձնական OpenAI API բանալին</string>
 </resources>
 
 

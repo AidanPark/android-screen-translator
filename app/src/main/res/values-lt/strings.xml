@@ -8,14 +8,10 @@
     <!-- Overlay Permission -->
     <string name="message_permission_overlay">Reikalingas leidimas:\nRodyti virš kitų programų</string>
     <string name="message_permission_overlay_detail">Norėdami paleisti Ekrano vertėją, turite suteikti leidimą rodyti virš kitų programų.</string>
-    <string name="message_permission_overlay_denied">Perdangos leidimas atmestas</string>
-    <string name="message_permission_overlay_denied_detail">Perdangos leidimas nesuteiktas.\nPrograma bus uždaryta.</string>
 
     <!-- MediaProjection token -->
     <string name="message_media_projection">Reikalingas leidimas:\nEkrano įrašymas</string>
     <string name="message_media_projection_detail">Norėdami paleisti Ekrano vertėją, turite suteikti leidimą įrašyti ekraną.\n\nInformacija ekrane bus naudojama tik vertimui ir nebus saugoma ar perduodama.</string>
-    <string name="message_media_projection_denied">Ekrano įrašymo leidimas atmestas</string>
-    <string name="message_media_projection_denied_detail">Ekrano įrašymo leidimas nesuteiktas.\nPrograma bus uždaryta.</string>
 
     <!-- Foreground Service -->
     <string name="notification_foreground_service">Ekrano fiksavimo funkcija naudojama vertimui.</string>
@@ -23,7 +19,6 @@
     <string name="message_start_foreground_service">Programa pradeda pirmojo plano paslaugą ekrano turiniui fiksuoti ir versti.\n\nUžfiksuoti vaizdai nėra saugomi ar siunčiami išorėn.</string>
     <string name="label_confirm_start_foreground_service">Pradėti</string>
     <string name="label_dismiss_start_foreground_service">Uždaryti</string>
-    <string name="snack_message_start_foreground_service">Programa pradeda pirmojo plano paslaugą ekrano turiniui fiksuoti ir versti.</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">Uždaryti</string>
@@ -36,18 +31,6 @@
     <string name="title_voice_list_view">Galimi balsai</string>
 
     <!-- Dialog -->
-    <string name="message_authentication_error">Autentifikavimo klaida</string>
-    <string name="message_authentication_error_detail">Autentifikavimo serveris neatsako.\nBandykite vėliau.</string>
-    <string name="message_untrusted_environment">Nesaugi aplinka</string>
-    <string name="message_untrusted_environment_detail">Panašu, kad jūsų programa nepraėjo Google Play patikimumo patikros.</string>
-    <string name="message_unknown_device">Nežinomas įrenginys</string>
-    <string name="message_unknown_device_detail">Šis įrenginys nepalaikomas.</string>
-    <string name="message_authentication_required">Reikalingas autentifikavimas</string>
-    <string name="message_authentication_required_detail">Turite būti prisijungę per „Google“ paskyrą.</string>
-    <string name="message_playstore_update_required">Būtinas Play Store atnaujinimas</string>
-    <string name="message_playstore_update_required_detail">Nepavyko prisijungti prie Play Store paslaugos.\nGali būti, kad įdiegta sena versija.</string>
-    <string name="message_unknown_source">Atsisiųskite šią programą iš „Play“</string>
-    <string name="message_unknown_source_detail">Norėdami toliau naudotis šia puikia programa, atsisiųskite ją iš Google Play.</string>
     <string name="message_force_update">Būtinas atnaujinimas</string>
     <string name="message_force_update_detail">Ši versija nebepalaikoma.\nEikite į parduotuvę.</string>
     <string name="message_service_unavailable">Paslauga nepasiekiama</string>
@@ -56,61 +39,57 @@
     <string name="message_network_unavailable_detail">Tinklas nepasiekiamas.\nPatikrinkite ir bandykite dar kartą.</string>
     <string name="message_translate_fixedarea_warn">Baterijos įspėjimas</string>
     <string name="message_translate_fixedarea_warn_detail">Baterija gali greitai išsikrauti.</string>
-    <string name="message_translate_fixedarea_promotion">Informacija apie produkto pirkimą</string>
-    <string name="message_translate_fixedarea_promotion_detail">Draugiškas priminimas apie mūsų aukščiausios kokybės funkcijas pasirodys kas %1$s minučių.</string>
-    <string name="message_free_trial_ends">Jūsų nemokamas bandomasis laikotarpis baigėsi.</string>
-    <string name="message_free_trial_ends_detail">Ar norite žiūrėti reklamą, kad pratęstumėte nemokamą bandomąjį laikotarpį?</string>
-    <string name="message_ad_reward">Gavote dar %1$d minučių nemokamos bandomosios versijos!</string>
-    <string name="message_ad_reward_detail">Mėgaukitės visomis premium funkcijomis nemokamai artimiausias %1$d minutes.</string>
+    <string name="ad_gate_loading">Ruošiama reklama…</string>
+    <string name="ad_gate_reward_notice">Žiūrėkite reklamą iki galo ir naudokitės programa be reklamų, kol ją uždarysite.</string>
 
     <!-- SettingsActivity -->
     <string name="settings_title">Nustatymai</string>
     <string name="settings_menu_cat_pointer">Žymeklis</string>
     <string name="settings_menu_pointer_docking_delay">Prijungimo delsimas</string>
-    <string name="settings_menu_haptic_feedback_to_detection">Vibracija aptikus</string>
+    <string name="settings_menu_haptic_feedback_to_detection">Haptinis atsakas aptikus</string>
     <string name="settings_menu_cat_menubar">Meniu juosta</string>
     <string name="settings_menu_menubar_transparency">Meniu skaidrumas</string>
     <string name="settings_menu_menubar_composition">Meniu funkcijos</string>
-    <string name="settings_menu_cat_ai">AI taisymas</string>
     <string name="settings_menu_cat_translation">Vertimas</string>
     <string name="settings_menu_translation_transparency">Vertimo skaidrumas</string>
     <string name="settings_menu_translation_close_delay">Uždarymo delsimas</string>
-    <string name="settings_menu_automated_read_aloud">Automatinis skaitymas</string>
+    <string name="settings_menu_automated_read_aloud">Automatinis vertimo skaitymas</string>
     <string name="settings_menu_reply_transparency">Atsakymo skaidrumas</string>
     <string name="settings_menu_cat_tts">Tekstas į kalbą</string>
+    <string name="settings_menu_tts_read_target">Skaitomas tekstas</string>
+    <string name="settings_tts_read_target_source">Originalas</string>
+    <string name="settings_tts_read_target_target">Vertimas</string>
     <string name="settings_menu_tts_voices">TTS balsai</string>
     <string name="settings_menu_tts_rate">TTS greitis</string>
     <string name="settings_menu_cat_about">Apie</string>
-    <string name="settings_menu_on_premium_free_trial">Premium bandomasis veikia</string>
-    <string name="settings_menu_premium_free_trial_remain">Liko %1$d minučių</string>
-    <string name="settings_menu_your_premium_benefits">Jūsų privilegijos</string>
-    <string name="settings_menu_your_premium_benefits_peding">Privilegijos (laukia)</string>
     <string name="settings_menu_app_version">Programos versija</string>
     <string name="settings_menu_app_version_latest">(Naujausia)</string>
 
     <!-- HelpTextDetectModeView, HelpTranslationKitView -->
-    <string name="help_text_no_limit">Su Premium viskas neribota</string>
     <string name="help_text_no_limit_free">Nėra kiekio ar laiko apribojimų</string>
-    <string name="help_text_no_limit_title">Naudokitės be apribojimų</string>
-    <string name="help_text_no_limit_free_title">Nemokamai be apribojimų</string>
-    <string name="help_text_get_premium">Gauti Premium</string>
+    <string name="help_text_deepl_own_key">Naudoja jūsų asmeninį DeepL API raktą</string>
+    <string name="deepl_key_guide">Įveskite savo DeepL API raktą, kad galėtumėte naudoti DeepL vertimą.</string>
+    <string name="deepl_key_signup_guide">Užsiregistruokite DeepL ir galėsite užsiprenumeruoti nemokamą planą.</string>
+    <string name="deepl_key_link_subscription">Užsiprenumeruoti nemokamą planą</string>
+    <string name="deepl_key_link_keys">Patikrinkite savo API raktą</string>
+    <string name="deepl_key_active">Aktyvuota</string>
+    <string name="label_save">Išsaugoti</string>
+    <string name="deepl_key_invalid">API raktas netinkamas.</string>
+    <string name="deepl_key_validating">Tikrinama…</string>
+    <string name="deepl_key_network_error">Nepavyko patikrinti rakto dėl tinklo klaidos. Raktas išsaugotas.</string>
 
     <!-- PremiumView -->
-    <string name="premium_view_get_premium">Gauti Premium</string>
-    <string name="premium_view_get_premium_purchased">Jūsų Premium privalumai</string>
-    <string name="premium_view_get_premium_pending">Jūsų Premium privalumai (laukia)</string>
-    <string name="premium_view_get_premium_not_available">Premium šiuo metu nepasiekiamas</string>
-    <string name="premium_view_price_format">%1$s/mėn • Su PVM\n• Atšaukti bet kada</string>
-    <string name="premium_view_title">Visos funkcijos,\nBe pertraukų.</string>
-    <string name="premium_view_message">Neribotas kiekis ir laikas.\nViskas įtraukta su Premium</string>
-    <string name="premium_view_description_azure">Tiksliai verčia daugumą pasaulio kalbų.</string>
-    <string name="premium_view_description_deepl">Teikia kokybiškus ir tikslius vertimus.</string>
-    <string name="premium_view_description_papago">Papago naudoja neuroninius tinklus automatiniam kalbų vertimui.</string>
-    <string name="premium_view_description_google">Greitas vertimas. Neribotai, visam laikui nemokamai.</string>
-    <string name="premium_view_description_sentence_detection">Naudokite pirštą eilutėms versti.</string>
+    <string name="premium_view_description_sentence_detection">Sakiniai parenkami automatiškai.</string>
     <string name="premium_view_description_paragraph_detection">Pastraipos aptinkamos automatiškai.</string>
     <string name="premium_view_description_select_detection">Galite pasirinkti norimą sritį rankiniu būdu.</string>
-    <string name="premium_view_description_word_detection">Vertimas žodis po žodžio visada nemokamas ir neribotas.</string>
+    <string name="premium_view_description_word_detection">Nurodykite žodį ir jis bus iškart išverstas.</string>
     <string name="premium_view_description_fixed_area_detection">Galite nuolat versti fiksuotas sritis, tokias kaip filmų subtitrai.</string>
-    <string name="premium_view_unsubscribe">Atsisakyti prenumeratos</string>
+  <string name="say_here">Aš čia!</string>
+  <string name="hint_settings_reopen">Dukart bakstelėkite rankenėlę, kad vėl atidarytumėte nustatymus</string>
+  <string name="openai_key_guide">Įveskite savo OpenAI API raktą, kad galėtumėte versti su OpenAI modeliais.</string>
+  <string name="openai_key_signup_guide">Sukurkite raktą OpenAI valdymo skydelyje. Naudojimas apmokestinamas jūsų OpenAI paskyroje.</string>
+  <string name="openai_key_link_keys">Gaukite savo API raktą</string>
+  <string name="openai_key_link_billing">Atsiskaitymas ir naudojimas</string>
+  <string name="openai_model_label">Modelis</string>
+  <string name="help_text_openai_own_key">Naudoja jūsų asmeninį OpenAI API raktą</string>
 </resources>
