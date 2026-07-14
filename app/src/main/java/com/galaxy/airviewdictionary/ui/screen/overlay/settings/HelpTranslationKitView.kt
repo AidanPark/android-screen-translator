@@ -136,6 +136,7 @@ class HelpTranslationKitView private constructor() : OverlayView() {
                             descriptionResId = when (translationKitType.value) {
                                 TranslationKitType.DEEPL -> R.string.help_text_deepl_own_key
                                 TranslationKitType.OPENAI -> R.string.help_text_openai_own_key
+                                TranslationKitType.GEMINI -> R.string.help_text_gemini_own_key
                                 else -> R.string.help_text_no_limit_free
                             }
                         )
@@ -178,6 +179,7 @@ class HelpTranslationKitView private constructor() : OverlayView() {
                             descriptionResId = when (translationKitType.value) {
                                 TranslationKitType.DEEPL -> R.string.help_text_deepl_own_key
                                 TranslationKitType.OPENAI -> R.string.help_text_openai_own_key
+                                TranslationKitType.GEMINI -> R.string.help_text_gemini_own_key
                                 else -> R.string.help_text_no_limit_free
                             }
                         )

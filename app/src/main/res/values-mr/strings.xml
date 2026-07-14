@@ -92,4 +92,7 @@
   <string name="openai_key_link_billing">बिलिंग आणि वापर</string>
   <string name="openai_model_label">मॉडेल</string>
   <string name="help_text_openai_own_key">तुमची वैयक्तिक OpenAI API की वापरते</string>
+  <string name="gemini_key_guide">Gemini मॉडेल्ससह भाषांतर करण्यासाठी तुमची Gemini API की प्रविष्ट करा.</string>
+  <string name="help_text_gemini_own_key">तुमची वैयक्तिक Gemini API की वापरते</string>
+  <string name="gemini_key_signup_guide">Google AI Studio मध्ये API की तयार करा. विनामूल्य स्तर उपलब्ध आहे.</string>
 </resources>

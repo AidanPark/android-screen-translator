@@ -92,6 +92,9 @@
   <string name="openai_key_link_billing">Arveldus ja kasutus</string>
   <string name="openai_model_label">Mudel</string>
   <string name="help_text_openai_own_key">Kasutab teie isiklikku OpenAI-i API-võtit</string>
+  <string name="gemini_key_guide">Sisestage oma Gemini API-võti, et tõlkida Gemini mudelitega.</string>
+  <string name="help_text_gemini_own_key">Kasutab teie isiklikku Gemini-i API-võtit</string>
+  <string name="gemini_key_signup_guide">Looge Google AI Studios API-võti. Saadaval on tasuta tase.</string>
 </resources>
 
 

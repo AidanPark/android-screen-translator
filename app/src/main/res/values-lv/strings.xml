@@ -92,4 +92,7 @@
   <string name="openai_key_link_billing">Norēķini un lietojums</string>
   <string name="openai_model_label">Modelis</string>
   <string name="help_text_openai_own_key">Izmanto jūsu personīgo OpenAI API atslēgu</string>
+  <string name="gemini_key_guide">Ievadiet savu Gemini API atslēgu, lai tulkotu ar Gemini modeļiem.</string>
+  <string name="help_text_gemini_own_key">Izmanto jūsu personīgo Gemini API atslēgu</string>
+  <string name="gemini_key_signup_guide">Izveidojiet API atslēgu vietnē Google AI Studio. Ir pieejams bezmaksas līmenis.</string>
 </resources>

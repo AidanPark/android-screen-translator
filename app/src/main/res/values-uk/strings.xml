@@ -92,4 +92,7 @@
   <string name="openai_key_link_billing">Оплата та використання</string>
   <string name="openai_model_label">Модель</string>
   <string name="help_text_openai_own_key">Використовує ваш особистий ключ API OpenAI</string>
+  <string name="gemini_key_guide">Введіть свій ключ Gemini API, щоб перекладати за допомогою моделей Gemini.</string>
+  <string name="help_text_gemini_own_key">Використовує ваш особистий ключ API Gemini</string>
+  <string name="gemini_key_signup_guide">Створіть ключ API у Google AI Studio. Доступний безкоштовний рівень.</string>
 </resources>

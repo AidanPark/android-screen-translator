@@ -92,4 +92,7 @@
   <string name="openai_key_link_billing">صورت‌حساب و استفاده</string>
   <string name="openai_model_label">مدل</string>
   <string name="help_text_openai_own_key">از کلید API شخصی OpenAI شما استفاده می‌کند</string>
+  <string name="gemini_key_guide">برای ترجمه با مدل‌های Gemini، کلید Gemini API خود را وارد کنید.</string>
+  <string name="help_text_gemini_own_key">از کلید API شخصی Gemini شما استفاده می‌کند</string>
+  <string name="gemini_key_signup_guide">یک کلید API در Google AI Studio بسازید. یک سطح رایگان در دسترس است.</string>
 </resources>

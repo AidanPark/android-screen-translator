@@ -93,4 +93,7 @@
   <string name="openai_key_link_billing">Pagsingil at paggamit</string>
   <string name="openai_model_label">Modelo</string>
   <string name="help_text_openai_own_key">Ginagamit ang iyong personal na OpenAI API key</string>
+  <string name="gemini_key_guide">Ilagay ang iyong Gemini API key para magsalin gamit ang mga modelo ng Gemini.</string>
+  <string name="help_text_gemini_own_key">Ginagamit ang iyong personal na Gemini API key</string>
+  <string name="gemini_key_signup_guide">Gumawa ng API key sa Google AI Studio. May available na libreng tier.</string>
 </resources>

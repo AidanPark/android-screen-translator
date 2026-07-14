@@ -92,6 +92,9 @@
   <string name="openai_key_link_billing">Bili na matumizi</string>
   <string name="openai_model_label">Muundo</string>
   <string name="help_text_openai_own_key">Hutumia ufunguo wako wa kibinafsi wa OpenAI API</string>
+  <string name="gemini_key_guide">Weka ufunguo wako wa Gemini API ili kutafsiri kwa miundo ya Gemini.</string>
+  <string name="help_text_gemini_own_key">Hutumia ufunguo wako wa kibinafsi wa Gemini API</string>
+  <string name="gemini_key_signup_guide">Unda ufunguo wa API katika Google AI Studio. Kiwango cha bila malipo kinapatikana.</string>
 </resources>
 
 

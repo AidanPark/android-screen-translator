@@ -92,4 +92,7 @@
   <string name="openai_key_link_billing">பில்லிங் மற்றும் பயன்பாடு</string>
   <string name="openai_model_label">மாதிரி</string>
   <string name="help_text_openai_own_key">உங்கள் தனிப்பட்ட OpenAI API விசையைப் பயன்படுத்துகிறது</string>
+  <string name="gemini_key_guide">Gemini மாதிரிகளுடன் மொழிபெயர்க்க உங்கள் Gemini API விசையை உள்ளிடவும்.</string>
+  <string name="help_text_gemini_own_key">உங்கள் தனிப்பட்ட Gemini API விசையைப் பயன்படுத்துகிறது</string>
+  <string name="gemini_key_signup_guide">Google AI Studio இல் ஒரு API விசையை உருவாக்கவும். இலவசக் கட்டம் கிடைக்கிறது.</string>
 </resources>

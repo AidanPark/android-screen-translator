@@ -85,6 +85,7 @@ import com.galaxy.airviewdictionary.data.local.vision.TextDetectMode
 import com.galaxy.airviewdictionary.data.remote.translation.Language
 import com.galaxy.airviewdictionary.data.remote.translation.TranslationKitType
 import com.galaxy.airviewdictionary.data.remote.translation.deepl.DeepLKit
+import com.galaxy.airviewdictionary.data.remote.translation.gemini.GeminiKit
 import com.galaxy.airviewdictionary.data.remote.translation.openai.OpenAiKit
 import com.galaxy.airviewdictionary.ui.screen.ads.AdGateActivity
 import com.galaxy.airviewdictionary.ui.screen.main.SettingsActivity
@@ -1155,12 +1156,14 @@ fun TranslationKitIconButton(
     val context = LocalContext.current
     val currentKitType = remember { mutableStateOf(translationKitType) }
 
-    // 키 기반 엔진(DeepL / OpenAI)은 사용자 API 키가 저장된 경우에만 전환 대상에 노출한다
+    // 키 기반 엔진(DeepL / OpenAI / Gemini)은 사용자 API 키가 저장된 경우에만 전환 대상에 노출한다
     val deepLActivated by DeepLKit.keyActivatedStateFlow.collectAsStateWithLifecycle()
     val openAIActivated by OpenAiKit.keyActivatedStateFlow.collectAsStateWithLifecycle()
+    val geminiActivated by GeminiKit.keyActivatedStateFlow.collectAsStateWithLifecycle()
     LaunchedEffect(Unit) {
         DeepLKit.refreshAvailability(context)
         OpenAiKit.refreshAvailability(context)
+        GeminiKit.refreshAvailability(context)
     }
 
     LaunchedEffect(translationKitType) {
@@ -1201,13 +1204,14 @@ fun TranslationKitIconButton(
 
     var nextKitType by remember { mutableStateOf<TranslationKitType?>(null) }
 
-    LaunchedEffect(sourceLanguage, targetLanguage, translationKitType, deepLActivated, openAIActivated) {
+    LaunchedEffect(sourceLanguage, targetLanguage, translationKitType, deepLActivated, openAIActivated, geminiActivated) {
         // 키 기반 엔진은 활성화된 경우에만 후보에 포함한다 (GOOGLE 은 항상 사용 가능)
         val activated: (TranslationKitType) -> Boolean = { kit ->
             when (kit) {
                 TranslationKitType.GOOGLE -> true
                 TranslationKitType.DEEPL -> deepLActivated
                 TranslationKitType.OPENAI -> openAIActivated
+                TranslationKitType.GEMINI -> geminiActivated
             }
         }
         // 언어쌍을 아직 모르면 활성 엔진 전체, 알면 두 언어가 공통으로 지원하는 엔진으로 후보를 좁힌다

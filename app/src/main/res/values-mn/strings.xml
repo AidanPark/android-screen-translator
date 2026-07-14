@@ -92,4 +92,7 @@
   <string name="openai_key_link_billing">Төлбөр ба ашиглалт</string>
   <string name="openai_model_label">Загвар</string>
   <string name="help_text_openai_own_key">Таны хувийн OpenAI API түлхүүрийг ашигладаг</string>
+  <string name="gemini_key_guide">Gemini загваруудаар орчуулахын тулд Gemini API түлхүүрээ оруулна уу.</string>
+  <string name="help_text_gemini_own_key">Таны хувийн Gemini API түлхүүрийг ашигладаг</string>
+  <string name="gemini_key_signup_guide">Google AI Studio-д API түлхүүр үүсгэнэ үү. Үнэгүй түвшин боломжтой.</string>
 </resources>

@@ -92,6 +92,9 @@
   <string name="openai_key_link_billing">Obračun in uporaba</string>
   <string name="openai_model_label">Model</string>
   <string name="help_text_openai_own_key">Uporablja vaš osebni ključ API OpenAI</string>
+  <string name="gemini_key_guide">Vnesite svoj ključ Gemini API za prevajanje z modeli Gemini.</string>
+  <string name="help_text_gemini_own_key">Uporablja vaš osebni ključ API Gemini</string>
+  <string name="gemini_key_signup_guide">Ustvarite ključ API v storitvi Google AI Studio. Na voljo je brezplačna raven.</string>
 </resources>
 
 

@@ -672,6 +672,7 @@ class TargetHandleViewModel(
                                                         translationKitType = it.result.translationKitType,
                                                         detectedLanguageCode = it.result.detectedLanguageCode,
                                                         resultText = it.result.resultText,
+                                                        modelName = it.result.modelName,
                                                     )
                                                     Timber.tag(TAG).d("translationRepository Translated transaction $transaction")
 

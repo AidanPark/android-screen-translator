@@ -92,4 +92,7 @@
   <string name="openai_key_link_billing">Төлөм жана колдонуу</string>
   <string name="openai_model_label">Модель</string>
   <string name="help_text_openai_own_key">Жеке OpenAI API ачкычыңызды колдонот</string>
+  <string name="gemini_key_guide">Gemini моделдери менен которуу үчүн Gemini API ачкычыңызды киргизиңиз.</string>
+  <string name="help_text_gemini_own_key">Жеке Gemini API ачкычыңызды колдонот</string>
+  <string name="gemini_key_signup_guide">Google AI Studio-до API ачкычын түзүңүз. Акысыз деңгээл жеткиликтүү.</string>
 </resources>

@@ -547,6 +547,7 @@ open class FixedAreaView : OverlayView() {
                             translationKitType = it.result.translationKitType,
                             detectedLanguageCode = it.result.detectedLanguageCode,
                             resultText = it.result.resultText,
+                            modelName = it.result.modelName,
                         )
                         Timber.tag(TAG).d("===== $translationKitType ${it.result.resultText}")
                         translationFlow.value = it.result.resultText ?: ""

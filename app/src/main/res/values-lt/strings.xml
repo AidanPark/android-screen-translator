@@ -92,4 +92,7 @@
   <string name="openai_key_link_billing">Atsiskaitymas ir naudojimas</string>
   <string name="openai_model_label">Modelis</string>
   <string name="help_text_openai_own_key">Naudoja jūsų asmeninį OpenAI API raktą</string>
+  <string name="gemini_key_guide">Įveskite savo Gemini API raktą, kad galėtumėte versti su Gemini modeliais.</string>
+  <string name="help_text_gemini_own_key">Naudoja jūsų asmeninį Gemini API raktą</string>
+  <string name="gemini_key_signup_guide">Sukurkite API raktą sistemoje Google AI Studio. Galimas nemokamas lygis.</string>
 </resources>

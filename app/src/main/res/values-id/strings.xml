@@ -92,4 +92,7 @@
   <string name="openai_key_link_billing">Penagihan dan penggunaan</string>
   <string name="openai_model_label">Model</string>
   <string name="help_text_openai_own_key">Menggunakan kunci API OpenAI pribadi Anda</string>
+  <string name="gemini_key_guide">Masukkan kunci Gemini API Anda untuk menerjemahkan dengan model Gemini.</string>
+  <string name="help_text_gemini_own_key">Menggunakan kunci API Gemini pribadi Anda</string>
+  <string name="gemini_key_signup_guide">Buat kunci API di Google AI Studio. Tersedia paket gratis.</string>
 </resources>

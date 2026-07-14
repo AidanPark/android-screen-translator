@@ -92,4 +92,7 @@
   <string name="openai_key_link_billing">Facturació i ús</string>
   <string name="openai_model_label">Model</string>
   <string name="help_text_openai_own_key">Utilitza la teva clau API personal de OpenAI</string>
+  <string name="gemini_key_guide">Introduïu la vostra clau API d’Gemini per traduir amb els models d’Gemini.</string>
+  <string name="help_text_gemini_own_key">Utilitza la teva clau API personal de Gemini</string>
+  <string name="gemini_key_signup_guide">Crea una clau API a Google AI Studio. Hi ha disponible un nivell gratuït.</string>
 </resources>

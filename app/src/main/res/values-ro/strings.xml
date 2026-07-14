@@ -92,4 +92,7 @@
   <string name="openai_key_link_billing">Facturare și utilizare</string>
   <string name="openai_model_label">Model</string>
   <string name="help_text_openai_own_key">Utilizează cheia API OpenAI personală</string>
+  <string name="gemini_key_guide">Introduceți cheia dvs. Gemini API pentru a traduce cu modele Gemini.</string>
+  <string name="help_text_gemini_own_key">Utilizează cheia API Gemini personală</string>
+  <string name="gemini_key_signup_guide">Creați o cheie API în Google AI Studio. Este disponibil un nivel gratuit.</string>
 </resources>

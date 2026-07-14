@@ -80,7 +80,8 @@ class ReplyViewModel @Inject constructor(
                         _translationFlow.update {
                             it.copy(
                                 detectedLanguageCode = translationResponse.result.detectedLanguageCode,
-                                resultText = translationResponse.result.resultText
+                                resultText = translationResponse.result.resultText,
+                                modelName = translationResponse.result.modelName,
                             )
                         }
                     } else if (translationResponse is TranslationResponse.Error) {

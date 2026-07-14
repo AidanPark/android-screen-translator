@@ -2,6 +2,8 @@ package com.galaxy.airviewdictionary.di
 
 import com.galaxy.airviewdictionary.data.remote.translation.goolge.GoogleWebKit
 import com.galaxy.airviewdictionary.data.remote.translation.goolge.GoogleWebService
+import com.galaxy.airviewdictionary.data.remote.translation.gemini.GeminiKit
+import com.galaxy.airviewdictionary.data.remote.translation.gemini.GeminiService
 import com.galaxy.airviewdictionary.data.remote.translation.openai.OpenAiKit
 import com.galaxy.airviewdictionary.data.remote.translation.openai.OpenAiService
 import dagger.Module
@@ -26,6 +28,10 @@ annotation class GoogleWebRetrofit
 @Qualifier
 @Retention(AnnotationRetention.BINARY)
 annotation class OpenAiRetrofit
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class GeminiRetrofit
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -71,6 +77,22 @@ object NetworkModule {
     @Singleton
     fun provideOpenAiService(@OpenAiRetrofit retrofit: Retrofit): OpenAiService {
         return retrofit.create(OpenAiService::class.java)
+    }
+
+    @GeminiRetrofit
+    @Provides
+    @Singleton
+    fun provideGeminiRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
+        .baseUrl(GeminiKit.BASE_URL)
+        .client(okHttpClient)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+
+    @GeminiRetrofit
+    @Provides
+    @Singleton
+    fun provideGeminiService(@GeminiRetrofit retrofit: Retrofit): GeminiService {
+        return retrofit.create(GeminiService::class.java)
     }
 }
 

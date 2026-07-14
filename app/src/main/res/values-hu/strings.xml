@@ -92,6 +92,9 @@
   <string name="openai_key_link_billing">Számlázás és használat</string>
   <string name="openai_model_label">Modell</string>
   <string name="help_text_openai_own_key">A személyes OpenAI API-kulcsát használja</string>
+  <string name="gemini_key_guide">Adja meg az Gemini API-kulcsát, hogy Gemini-modellekkel fordíthasson.</string>
+  <string name="help_text_gemini_own_key">A személyes Gemini API-kulcsát használja</string>
+  <string name="gemini_key_signup_guide">Hozzon létre egy API-kulcsot a Google AI Studio szolgáltatásban. Ingyenes szint is elérhető.</string>
 </resources>
 
 

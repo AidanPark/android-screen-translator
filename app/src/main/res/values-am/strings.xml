@@ -92,5 +92,8 @@
   <string name="openai_key_link_billing">ክፍያ እና አጠቃቀም</string>
   <string name="openai_model_label">ሞዴል</string>
   <string name="help_text_openai_own_key">የግል የOpenAI API ቁልፍዎን ይጠቀማል</string>
+  <string name="gemini_key_guide">በGemini ሞዴሎች ለመተርጎም የGemini API ቁልፍዎን ያስገቡ።</string>
+  <string name="help_text_gemini_own_key">የግል የGemini API ቁልፍዎን ይጠቀማል</string>
+  <string name="gemini_key_signup_guide">በGoogle AI Studio ውስጥ የAPI ቁልፍ ይፍጠሩ። ነጻ ደረጃ ይገኛል።</string>
 </resources>
 

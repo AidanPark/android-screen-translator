@@ -92,4 +92,7 @@
   <string name="openai_key_link_billing">Faturação e utilização</string>
   <string name="openai_model_label">Modelo</string>
   <string name="help_text_openai_own_key">Usa a sua chave de API pessoal do OpenAI</string>
+  <string name="gemini_key_guide">Introduza a sua chave de API da Gemini para traduzir com modelos da Gemini.</string>
+  <string name="help_text_gemini_own_key">Usa a sua chave de API pessoal do Gemini</string>
+  <string name="gemini_key_signup_guide">Crie uma chave de API no Google AI Studio. Está disponível um nível gratuito.</string>
 </resources>

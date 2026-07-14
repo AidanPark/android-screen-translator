@@ -92,6 +92,9 @@
   <string name="openai_key_link_billing">Χρέωση και χρήση</string>
   <string name="openai_model_label">Μοντέλο</string>
   <string name="help_text_openai_own_key">Χρησιμοποιεί το προσωπικό σας κλειδί API του OpenAI</string>
+  <string name="gemini_key_guide">Εισαγάγετε το κλειδί Gemini API σας για μετάφραση με μοντέλα Gemini.</string>
+  <string name="help_text_gemini_own_key">Χρησιμοποιεί το προσωπικό σας κλειδί API του Gemini</string>
+  <string name="gemini_key_signup_guide">Δημιουργήστε ένα κλειδί API στο Google AI Studio. Διατίθεται δωρεάν επίπεδο.</string>
 </resources>
 
 

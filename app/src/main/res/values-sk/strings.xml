@@ -92,6 +92,9 @@
   <string name="openai_key_link_billing">Fakturácia a používanie</string>
   <string name="openai_model_label">Model</string>
   <string name="help_text_openai_own_key">Používa váš osobný kľúč API OpenAI</string>
+  <string name="gemini_key_guide">Zadajte svoj kľúč Gemini API na preklad pomocou modelov Gemini.</string>
+  <string name="help_text_gemini_own_key">Používa váš osobný kľúč API Gemini</string>
+  <string name="gemini_key_signup_guide">Vytvorte kľúč API v službe Google AI Studio. K dispozícii je bezplatná úroveň.</string>
 </resources>
 
 

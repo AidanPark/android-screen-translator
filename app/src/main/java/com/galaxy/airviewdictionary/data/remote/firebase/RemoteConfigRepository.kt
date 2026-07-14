@@ -34,6 +34,9 @@ class RemoteConfigRepository @Inject constructor(@ApplicationContext val context
 
         // OpenAI 번역에서 고를 수 있는 모델 후보 (쉼표 구분). 설정 UI 가 이 목록을 노출한다.
         const val OPENAI_TRANSLATE_MODELS = "openai_translate_models"
+
+        // Gemini 번역에서 고를 수 있는 모델 후보 (쉼표 구분).
+        const val GEMINI_TRANSLATE_MODELS = "gemini_translate_models"
     }
 
     /**
@@ -42,6 +45,16 @@ class RemoteConfigRepository @Inject constructor(@ApplicationContext val context
      */
     fun getOpenAiTranslateModels(): List<String> {
         return remoteConfig[OPENAI_TRANSLATE_MODELS].asString()
+            .split(",")
+            .map { it.trim() }
+            .filter { it.isNotBlank() }
+    }
+
+    /**
+     * Gemini 번역 모델 후보 목록. Remote Config 의 쉼표 구분 문자열을 파싱한다.
+     */
+    fun getGeminiTranslateModels(): List<String> {
+        return remoteConfig[GEMINI_TRANSLATE_MODELS].asString()
             .split(",")
             .map { it.trim() }
             .filter { it.isNotBlank() }

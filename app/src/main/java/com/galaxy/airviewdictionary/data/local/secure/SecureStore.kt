@@ -21,6 +21,8 @@ object SecureStoreKey {
 
     const val OPENAI_API_KEY = "openai_api_key"
 
+    const val GEMINI_API_KEY = "gemini_api_key"
+
     const val TRIAL_START_TIME = "trial_start_time"
     const val TRIAL_TIME_LIMIT_MINUTE = "trial_time_limit_minute"
     const val FIXED_AREA_VIEW_CAMPAIGN_PERIOD_MINUTE = "fixed_area_view_campaign_period_minute"

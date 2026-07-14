@@ -92,4 +92,7 @@
   <string name="openai_key_link_billing">බිල්පත් කිරීම සහ භාවිතය</string>
   <string name="openai_model_label">ආකෘතිය</string>
   <string name="help_text_openai_own_key">ඔබේ පෞද්ගලික OpenAI API යතුර භාවිත කරයි</string>
+  <string name="gemini_key_guide">Gemini ආකෘති සමඟ පරිවර්තනය කිරීමට ඔබගේ Gemini API යතුර ඇතුළත් කරන්න.</string>
+  <string name="help_text_gemini_own_key">ඔබේ පෞද්ගලික Gemini API යතුර භාවිත කරයි</string>
+  <string name="gemini_key_signup_guide">Google AI Studio හි API යතුරක් සාදන්න. නොමිලේ මට්ටමක් තිබේ.</string>
 </resources>

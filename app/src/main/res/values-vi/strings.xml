@@ -92,4 +92,7 @@
   <string name="openai_key_link_billing">Thanh toán và mức sử dụng</string>
   <string name="openai_model_label">Mô hình</string>
   <string name="help_text_openai_own_key">Sử dụng khóa API OpenAI cá nhân của bạn</string>
+  <string name="gemini_key_guide">Nhập khóa Gemini API của bạn để dịch bằng các mô hình Gemini.</string>
+  <string name="help_text_gemini_own_key">Sử dụng khóa API Gemini cá nhân của bạn</string>
+  <string name="gemini_key_signup_guide">Tạo khóa API trong Google AI Studio. Có sẵn bậc miễn phí.</string>
 </resources>

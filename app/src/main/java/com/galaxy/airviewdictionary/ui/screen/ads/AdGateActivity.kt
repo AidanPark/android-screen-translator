@@ -313,7 +313,7 @@ class AdGateActivity : ComponentActivity() {
 
         val adUnitId =
             if (BuildConfig.DEBUG) {
-                "ca-app-pub-3940256099942544/5224354917" // Test ad unit ID
+                "ca-app-pub-xxxxxxxxxxxxxxxx/xxxxxxxxxx" // Test ad unit ID
             } else {
                 FirebaseRemoteConfig.getInstance().getString(RemoteConfigRepository.AD_UNIT_ID)
             }

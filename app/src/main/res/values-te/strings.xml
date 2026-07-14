@@ -92,4 +92,7 @@
   <string name="openai_key_link_billing">బిల్లింగ్ మరియు వినియోగం</string>
   <string name="openai_model_label">మోడల్</string>
   <string name="help_text_openai_own_key">మీ వ్యక్తిగత OpenAI API కీని ఉపయోగిస్తుంది</string>
+  <string name="gemini_key_guide">Gemini మోడల్‌లతో అనువదించడానికి మీ Gemini API కీని నమోదు చేయండి.</string>
+  <string name="help_text_gemini_own_key">మీ వ్యక్తిగత Gemini API కీని ఉపయోగిస్తుంది</string>
+  <string name="gemini_key_signup_guide">Google AI Studio లో API కీని సృష్టించండి. ఉచిత శ్రేణి అందుబాటులో ఉంది.</string>
 </resources>

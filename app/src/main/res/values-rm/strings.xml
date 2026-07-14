@@ -92,4 +92,7 @@
   <string name="openai_key_link_billing">Facturaziun ed utilisaziun</string>
   <string name="openai_model_label">Model</string>
   <string name="help_text_openai_own_key">Utilisescha tia clav API persunala da OpenAI</string>
+  <string name="gemini_key_guide">Endatai vossa clav API Gemini per translatar cun models Gemini.</string>
+  <string name="help_text_gemini_own_key">Utilisescha tia clav API persunala da Gemini</string>
+  <string name="gemini_key_signup_guide">Creai ina clav API en Google AI Studio. Ina rchecla gratuita è disponibla.</string>
 </resources>

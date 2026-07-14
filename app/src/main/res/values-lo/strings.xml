@@ -92,4 +92,7 @@
   <string name="openai_key_link_billing">ການເກັບເງິນ ແລະ ການນຳໃຊ້</string>
   <string name="openai_model_label">ໂມເດວ</string>
   <string name="help_text_openai_own_key">ໃຊ້ກະແຈ OpenAI API ສ່ວນຕົວຂອງທ່ານ</string>
+  <string name="gemini_key_guide">ໃສ່ກະແຈ Gemini API ຂອງທ່ານເພື່ອແປດ້ວຍໂມເດວ Gemini.</string>
+  <string name="help_text_gemini_own_key">ໃຊ້ກະແຈ Gemini API ສ່ວນຕົວຂອງທ່ານ</string>
+  <string name="gemini_key_signup_guide">ສ້າງກະແຈ API ໃນ Google AI Studio. ມີລະດັບຟຣີໃຫ້ນຳໃຊ້.</string>
 </resources>

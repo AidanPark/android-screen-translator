@@ -92,4 +92,7 @@
   <string name="openai_key_link_billing">ബില്ലിംഗും ഉപയോഗവും</string>
   <string name="openai_model_label">മോഡൽ</string>
   <string name="help_text_openai_own_key">നിങ്ങളുടെ വ്യക്തിഗത OpenAI API കീ ഉപയോഗിക്കുന്നു</string>
+  <string name="gemini_key_guide">Gemini മോഡലുകൾ ഉപയോഗിച്ച് വിവർത്തനം ചെയ്യാൻ നിങ്ങളുടെ Gemini API കീ നൽകുക.</string>
+  <string name="help_text_gemini_own_key">നിങ്ങളുടെ വ്യക്തിഗത Gemini API കീ ഉപയോഗിക്കുന്നു</string>
+  <string name="gemini_key_signup_guide">Google AI Studio-യിൽ ഒരു API കീ സൃഷ്ടിക്കുക. സൗജന്യ ടയർ ലഭ്യമാണ്.</string>
 </resources>

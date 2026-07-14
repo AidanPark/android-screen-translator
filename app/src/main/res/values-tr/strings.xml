@@ -92,4 +92,7 @@
   <string name="openai_key_link_billing">Faturalandırma ve kullanım</string>
   <string name="openai_model_label">Model</string>
   <string name="help_text_openai_own_key">Kişisel OpenAI API anahtarınızı kullanır</string>
+  <string name="gemini_key_guide">Gemini modelleriyle çeviri yapmak için Gemini API anahtarınızı girin.</string>
+  <string name="help_text_gemini_own_key">Kişisel Gemini API anahtarınızı kullanır</string>
+  <string name="gemini_key_signup_guide">Google AI Studio içinde bir API anahtarı oluşturun. Ücretsiz bir katman mevcuttur.</string>
 </resources>

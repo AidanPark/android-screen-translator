@@ -92,6 +92,9 @@
   <string name="openai_key_link_billing">الفوترة والاستخدام</string>
   <string name="openai_model_label">النموذج</string>
   <string name="help_text_openai_own_key">يستخدم مفتاح OpenAI API الخاص بك</string>
+  <string name="gemini_key_guide">أدخل مفتاح Gemini API الخاص بك للترجمة باستخدام نماذج Gemini.</string>
+  <string name="help_text_gemini_own_key">يستخدم مفتاح Gemini API الخاص بك</string>
+  <string name="gemini_key_signup_guide">أنشئ مفتاح API في Google AI Studio. تتوفر فئة مجانية.</string>
 </resources>
 
 

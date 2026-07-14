@@ -92,4 +92,7 @@
   <string name="openai_key_link_billing">გადახდა და გამოყენება</string>
   <string name="openai_model_label">მოდელი</string>
   <string name="help_text_openai_own_key">იყენებს თქვენს პირად OpenAI API გასაღებს</string>
+  <string name="gemini_key_guide">შეიყვანეთ თქვენი Gemini API გასაღები Gemini მოდელებით სათარგმნად.</string>
+  <string name="help_text_gemini_own_key">იყენებს თქვენს პირად Gemini API გასაღებს</string>
+  <string name="gemini_key_signup_guide">შექმენით API გასაღები Google AI Studio-ში. ხელმისაწვდომია უფასო დონე.</string>
 </resources>

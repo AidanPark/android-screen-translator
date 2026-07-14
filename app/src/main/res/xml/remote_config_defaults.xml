@@ -68,5 +68,17 @@
         <value>gpt-4o-mini,gpt-4o,gpt-4.1-mini</value>
     </entry>
 
+    <!--
+        2.6.0 ~ Gemini 번역 모델 후보 (쉼표 구분).
+    -->
+    <!--
+        롤링 별칭(-latest) 위주로 두어 모델이 은퇴해도 깨지지 않게 한다.
+        flash-lite 를 앞에 두는 이유: 무료 등급 한도가 더 높고(429 완화) 응답이 더 빠르다.
+    -->
+    <entry>
+        <key>gemini_translate_models</key>
+        <value>gemini-flash-lite-latest,gemini-flash-latest,gemini-2.0-flash</value>
+    </entry>
+
 </defaultsMap>
     <!-- END xml_defaults -->

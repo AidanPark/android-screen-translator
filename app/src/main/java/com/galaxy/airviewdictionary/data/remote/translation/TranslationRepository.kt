@@ -2,6 +2,7 @@ package com.galaxy.airviewdictionary.data.remote.translation
 
 import com.galaxy.airviewdictionary.data.AVDRepository
 import com.galaxy.airviewdictionary.data.remote.translation.deepl.DeepLKit
+import com.galaxy.airviewdictionary.data.remote.translation.gemini.GeminiKit
 import com.galaxy.airviewdictionary.data.remote.translation.goolge.GoogleWebKit
 import com.galaxy.airviewdictionary.data.remote.translation.openai.OpenAiKit
 import com.galaxy.airviewdictionary.data.remote.translation.Language
@@ -20,6 +21,7 @@ class TranslationRepository @Inject constructor(
     private val googleWebKit: GoogleWebKit,
     private val deepLKit: DeepLKit,
     private val openAiKit: OpenAiKit,
+    private val geminiKit: GeminiKit,
 ) : AVDRepository() {
 
     // 라틴 문자를 사용하는 언어 코드 리스트
@@ -30,6 +32,7 @@ class TranslationRepository @Inject constructor(
             googleWebKit.supportedLanguagesAsSource,
             deepLKit.supportedLanguagesAsSource,
             openAiKit.supportedLanguagesAsSource,
+            geminiKit.supportedLanguagesAsSource,
         ).partition { it.code.equals("auto", ignoreCase = true) }
 
         val userLanguageCode = Locale.getDefault().language
@@ -48,6 +51,7 @@ class TranslationRepository @Inject constructor(
             googleWebKit.supportedLanguagesAsTarget,
             deepLKit.supportedLanguagesAsTarget,
             openAiKit.supportedLanguagesAsTarget,
+            geminiKit.supportedLanguagesAsTarget,
         )
 
         val userLanguageCode = Locale.getDefault().language
@@ -87,6 +91,7 @@ class TranslationRepository @Inject constructor(
             TranslationKitType.GOOGLE -> googleWebKit.supportedLanguagesAsSource + googleWebKit.supportedLanguagesAsTarget
             TranslationKitType.DEEPL -> deepLKit.supportedLanguagesAsSource + deepLKit.supportedLanguagesAsTarget
             TranslationKitType.OPENAI -> openAiKit.supportedLanguagesAsSource + openAiKit.supportedLanguagesAsTarget
+            TranslationKitType.GEMINI -> geminiKit.supportedLanguagesAsSource + geminiKit.supportedLanguagesAsTarget
         }
         return languages
             .distinctBy { it.code.uppercase() }
@@ -106,6 +111,7 @@ class TranslationRepository @Inject constructor(
             TranslationKitType.GOOGLE -> googleWebKit
             TranslationKitType.DEEPL -> deepLKit
             TranslationKitType.OPENAI -> openAiKit
+            TranslationKitType.GEMINI -> geminiKit
         }
     }
 

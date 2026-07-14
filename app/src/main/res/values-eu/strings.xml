@@ -92,4 +92,7 @@
   <string name="openai_key_link_billing">Fakturazioa eta erabilera</string>
   <string name="openai_model_label">Eredua</string>
   <string name="help_text_openai_own_key">Zure OpenAI API gako pertsonala erabiltzen du</string>
+  <string name="gemini_key_guide">Sartu zure Gemini API gakoa Gemini ereduekin itzultzeko.</string>
+  <string name="help_text_gemini_own_key">Zure Gemini API gako pertsonala erabiltzen du</string>
+  <string name="gemini_key_signup_guide">Sortu API gako bat Google AI Studion. Doako maila bat eskuragarri dago.</string>
 </resources>

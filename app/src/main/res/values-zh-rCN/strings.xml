@@ -92,4 +92,7 @@
   <string name="openai_key_link_billing">账单与用量</string>
   <string name="openai_model_label">模型</string>
   <string name="help_text_openai_own_key">使用您的个人 OpenAI API 密钥</string>
+  <string name="gemini_key_guide">输入您的 Gemini API 密钥即可使用 Gemini 模型进行翻译。</string>
+  <string name="help_text_gemini_own_key">使用您的个人 Gemini API 密钥</string>
+  <string name="gemini_key_signup_guide">在 Google AI Studio 中创建 API 密钥。可使用免费层级。</string>
 </resources>

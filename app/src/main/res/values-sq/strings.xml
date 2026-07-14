@@ -92,4 +92,7 @@
   <string name="openai_key_link_billing">Faturimi dhe përdorimi</string>
   <string name="openai_model_label">Modeli</string>
   <string name="help_text_openai_own_key">Përdor çelësin tuaj personal API të OpenAI</string>
+  <string name="gemini_key_guide">Vendosni çelësin tuaj Gemini API për të përkthyer me modelet e Gemini.</string>
+  <string name="help_text_gemini_own_key">Përdor çelësin tuaj personal API të Gemini</string>
+  <string name="gemini_key_signup_guide">Krijoni një çelës API në Google AI Studio. Ofrohet një nivel falas.</string>
 </resources>

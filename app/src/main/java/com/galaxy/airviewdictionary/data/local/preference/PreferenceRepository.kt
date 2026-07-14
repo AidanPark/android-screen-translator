@@ -57,6 +57,8 @@ class PreferenceRepository @Inject constructor(@ApplicationContext val context: 
         val TRANSLATION_KIT_TYPE = stringPreferencesKey("translation_kit_type")
         // OpenAI 번역에 사용할 모델. 미설정이면 OpenAiKit 이 Remote Config 후보의 첫 번째로 폴백한다.
         val OPENAI_MODEL = stringPreferencesKey("openai_model")
+        // Gemini 번역에 사용할 모델. 미설정이면 GeminiKit 이 Remote Config 후보의 첫 번째로 폴백한다.
+        val GEMINI_MODEL = stringPreferencesKey("gemini_model")
 
         val DRAG_HANDLE_DOCKING = booleanPreferencesKey("drag_handle_docking")
         val DOCKING_DELAY = longPreferencesKey("docking_delay")
@@ -155,6 +157,11 @@ class PreferenceRepository @Inject constructor(@ApplicationContext val context: 
     // OpenAI 번역 모델 선택값. 미설정이면 null (OpenAiKit 이 Remote Config 후보로 폴백).
     val openAiModelFlow: Flow<String?> = preferenceFlow.map { preferences ->
         preferences[OPENAI_MODEL]
+    }
+
+    // Gemini 번역 모델 선택값. 미설정이면 null (GeminiKit 이 Remote Config 후보로 폴백).
+    val geminiModelFlow: Flow<String?> = preferenceFlow.map { preferences ->
+        preferences[GEMINI_MODEL]
     }
 
     val dragHandleDockingFlow: Flow<Boolean> = preferenceFlow.map { preferences ->

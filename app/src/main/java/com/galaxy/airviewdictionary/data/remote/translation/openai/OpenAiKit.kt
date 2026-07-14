@@ -138,6 +138,7 @@ class OpenAiKit @Inject constructor(
                     translationKitType = TranslationKitType.OPENAI,
                     detectedLanguageCode = if (sourceLanguageCode == "auto") null else sourceLanguageCode,
                     resultText = resultText,
+                    modelName = model,
                 )
             )
         } catch (e: Exception) {

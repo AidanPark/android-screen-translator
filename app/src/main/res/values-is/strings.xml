@@ -92,6 +92,9 @@
   <string name="openai_key_link_billing">Reikningagerð og notkun</string>
   <string name="openai_model_label">Líkan</string>
   <string name="help_text_openai_own_key">Notar persónulega OpenAI API-lykilinn þinn</string>
+  <string name="gemini_key_guide">Sláðu inn Gemini API-lykilinn þinn til að þýða með Gemini-líkönum.</string>
+  <string name="help_text_gemini_own_key">Notar persónulega Gemini API-lykilinn þinn</string>
+  <string name="gemini_key_signup_guide">Búðu til API-lykil í Google AI Studio. Ókeypis þrep er í boði.</string>
 </resources>
 
 

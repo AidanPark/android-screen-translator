@@ -12,7 +12,7 @@ plugins {
 }
 
 val admobAppId = if (gradle.startParameter.taskNames.any { it.contains("Debug") }) {
-    "ca-app-pub-3940256099942544~3347511713"
+    "ca-app-pub-xxxxxxxxxxxxxxxx~xxxxxxxxxx"
 } else {
     "ca-app-pub-xxxxxxxxxxxxxxxx~xxxxxxxxxx"
 }

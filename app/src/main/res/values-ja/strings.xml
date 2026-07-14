@@ -92,4 +92,7 @@
   <string name="openai_key_link_billing">請求と使用状況</string>
   <string name="openai_model_label">モデル</string>
   <string name="help_text_openai_own_key">個人のOpenAI APIキーを使用します</string>
+  <string name="gemini_key_guide">Geminiモデルで翻訳するには、Gemini APIキーを入力してください。</string>
+  <string name="help_text_gemini_own_key">個人のGemini APIキーを使用します</string>
+  <string name="gemini_key_signup_guide">Google AI Studio で API キーを作成します。無料枠を利用できます。</string>
 </resources>

@@ -54,4 +54,17 @@ enum class TranslationKitType(
         brandFatResourceId = R.drawable.translate_openai_fat,
         providersUrl = "https://platform.openai.com/",
     ),
+    GEMINI(
+        text = "Gemini",
+        logoResourceId = R.drawable.logo_engine_gemini,
+        ciResourceId = R.drawable.ci_gemini,
+        ciOddResourceId = R.drawable.ci_gemini_odd,
+        ciGrayResourceId = R.drawable.ci_gemini_gray,
+        ciGrayOddResourceId = R.drawable.ci_gemini_gray_odd,
+        ciGrayDarkResourceId = R.drawable.ci_gemini_gray_dark,
+        ciGrayOddDarkResourceId = R.drawable.ci_gemini_gray_odd_dark,
+        brandResourceId = R.drawable.translate_gemini,
+        brandFatResourceId = R.drawable.translate_gemini_fat,
+        providersUrl = "https://ai.google.dev/",
+    ),
 }

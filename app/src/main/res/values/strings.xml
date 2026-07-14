@@ -68,6 +68,9 @@
     <string name="openai_key_link_keys">Get your API key</string>
     <string name="openai_key_link_billing">Billing and usage</string>
     <string name="openai_model_label">Model</string>
+    <string name="settings_menu_gemini_api_key" translatable="false">Gemini</string>
+    <string name="gemini_key_guide">Enter your Gemini API key to translate with Gemini models.</string>
+    <string name="gemini_key_signup_guide">Create an API key in Google AI Studio. A free tier is available.</string>
     <string name="label_save">Save</string>
     <string name="settings_menu_cat_translation">Translation</string>
     <string name="settings_menu_translation_transparency">Translation Transparency</string>
@@ -90,6 +93,7 @@
     <string name="help_text_no_limit_free">No quantity limit, no period limit</string>
     <string name="help_text_deepl_own_key">Uses your personal DeepL API key</string>
     <string name="help_text_openai_own_key">Uses your personal OpenAI API key</string>
+    <string name="help_text_gemini_own_key">Uses your personal Gemini API key</string>
 
     <!-- PremiumView -->
     <string name="premium_view_description_sentence_detection">Sentences are selected automatically.</string>

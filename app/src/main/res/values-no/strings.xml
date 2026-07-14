@@ -92,4 +92,7 @@
   <string name="openai_key_link_billing">Fakturering og bruk</string>
   <string name="openai_model_label">Modell</string>
   <string name="help_text_openai_own_key">Bruker din personlige OpenAI API-nøkkel</string>
+  <string name="gemini_key_guide">Skriv inn Gemini API-nøkkelen din for å oversette med Gemini-modeller.</string>
+  <string name="help_text_gemini_own_key">Bruker din personlige Gemini API-nøkkel</string>
+  <string name="gemini_key_signup_guide">Opprett en API-nøkkel i Google AI Studio. Et gratis nivå er tilgjengelig.</string>
 </resources>

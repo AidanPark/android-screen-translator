@@ -28,6 +28,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.sizeIn
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -36,6 +37,7 @@ import androidx.compose.material.icons.automirrored.outlined.VolumeUp
 import androidx.compose.material.icons.filled.ContentCopy
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.Text
 import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -598,6 +600,17 @@ open class TranslationView : OverlayView() {
                                     ),
                                 contentScale = ContentScale.Fit,
                             )
+
+                            // OpenAI/Gemini 는 로고에 이름이 없으므로 실제 사용한 모델명을 텍스트로 함께 표시
+                            translation.modelName?.let { modelName ->
+                                Spacer(modifier = Modifier.width(5.dp))
+                                Text(
+                                    text = modelName,
+                                    color = Color(0xFF747278),
+                                    fontSize = 11.sp,
+                                    maxLines = 1,
+                                )
+                            }
 
                             Spacer(modifier = Modifier.weight(1f)) // 로고 이미지와 IconButton 사이에 공간을 추가
 

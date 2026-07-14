@@ -92,4 +92,7 @@
   <string name="openai_key_link_billing">Ukukhokhisa nokusetshenziswa</string>
   <string name="openai_model_label">Imodeli</string>
   <string name="help_text_openai_own_key">Isebenzisa ukhiye wakho we-OpenAI API womuntu siqu</string>
+  <string name="gemini_key_guide">Faka ukhiye wakho we-Gemini API ukuze uhumushe ngezimodeli ze-Gemini.</string>
+  <string name="help_text_gemini_own_key">Isebenzisa ukhiye wakho we-Gemini API womuntu siqu</string>
+  <string name="gemini_key_signup_guide">Dala ukhiye we-API ku-Google AI Studio. Kunezinga lamahhala elitholakalayo.</string>
 </resources>

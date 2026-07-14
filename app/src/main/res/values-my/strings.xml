@@ -92,4 +92,7 @@
   <string name="openai_key_link_billing">ငွေတောင်းခံခြင်းနှင့် အသုံးပြုမှု</string>
   <string name="openai_model_label">မော်ဒယ်</string>
   <string name="help_text_openai_own_key">သင့်ကိုယ်ပိုင် OpenAI API သော့ကို အသုံးပြုသည်</string>
+  <string name="gemini_key_guide">Gemini မော်ဒယ်များဖြင့် ဘာသာပြန်ရန် သင့် Gemini API သော့ကို ထည့်သွင်းပါ။</string>
+  <string name="help_text_gemini_own_key">သင့်ကိုယ်ပိုင် Gemini API သော့ကို အသုံးပြုသည်</string>
+  <string name="gemini_key_signup_guide">Google AI Studio တွင် API key တစ်ခု ဖန်တီးပါ။ အခမဲ့ အဆင့် ရရှိနိုင်ပါသည်။</string>
 </resources>

@@ -132,6 +132,7 @@ import com.galaxy.airviewdictionary.data.local.tts.TTSReadTarget
 import com.galaxy.airviewdictionary.data.local.vision.TextDetectMode
 import com.galaxy.airviewdictionary.data.remote.translation.TranslationKitType
 import com.galaxy.airviewdictionary.data.remote.translation.deepl.DeepLKit
+import com.galaxy.airviewdictionary.data.remote.translation.gemini.GeminiKit
 import com.galaxy.airviewdictionary.data.remote.translation.openai.OpenAiKit
 import com.galaxy.airviewdictionary.extensions.finishService
 import com.galaxy.airviewdictionary.extensions.gotoStore
@@ -1077,6 +1078,8 @@ class SettingsActivity : AVDActivity() {
                             var deepLKeyActivated by remember { mutableStateOf(DeepLKit.getStoredApiKey(context) != null) }
                             var showOpenAiApiKeyDialog by remember { mutableStateOf(false) }
                             var openAiKeyActivated by remember { mutableStateOf(OpenAiKit.getStoredApiKey(context) != null) }
+                            var showGeminiApiKeyDialog by remember { mutableStateOf(false) }
+                            var geminiKeyActivated by remember { mutableStateOf(GeminiKit.getStoredApiKey(context) != null) }
 
                             MenuTextItem(
                                 menuItemPosition = MenuItemPosition.Top,
@@ -1089,12 +1092,22 @@ class SettingsActivity : AVDActivity() {
                             )
 
                             MenuTextItem(
-                                menuItemPosition = MenuItemPosition.Bottom,
+                                menuItemPosition = MenuItemPosition.Middle,
                                 text = getString(R.string.settings_menu_openai_api_key),
                                 paddingValues = paddingValues,
                                 subText = if (openAiKeyActivated) getString(R.string.deepl_key_active) else null,
                                 onClick = {
                                     showOpenAiApiKeyDialog = true
+                                }
+                            )
+
+                            MenuTextItem(
+                                menuItemPosition = MenuItemPosition.Bottom,
+                                text = getString(R.string.settings_menu_gemini_api_key),
+                                paddingValues = paddingValues,
+                                subText = if (geminiKeyActivated) getString(R.string.deepl_key_active) else null,
+                                onClick = {
+                                    showGeminiApiKeyDialog = true
                                 }
                             )
 
@@ -1112,6 +1125,15 @@ class SettingsActivity : AVDActivity() {
                                     onDismissRequest = {
                                         showOpenAiApiKeyDialog = false
                                         openAiKeyActivated = OpenAiKit.getStoredApiKey(context) != null
+                                    }
+                                )
+                            }
+
+                            if (showGeminiApiKeyDialog) {
+                                GeminiApiKeyDialog(
+                                    onDismissRequest = {
+                                        showGeminiApiKeyDialog = false
+                                        geminiKeyActivated = GeminiKit.getStoredApiKey(context) != null
                                     }
                                 )
                             }
@@ -1993,6 +2015,241 @@ class SettingsActivity : AVDActivity() {
                 LinkText(
                     text = getString(R.string.openai_key_link_billing),
                     url = OpenAiKit.URL_BILLING,
+                )
+
+                Spacer(modifier = Modifier.height(14.dp))
+
+                OutlinedTextField(
+                    value = apiKeyInput,
+                    onValueChange = {
+                        apiKeyInput = it
+                        showInvalidKeyError = false
+                    },
+                    label = { Text(text = "API Key") },
+                    singleLine = true,
+                    enabled = !isValidating,
+                    isError = showInvalidKeyError,
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = OutlinedTextFieldDefaults.colors(
+                        focusedTextColor = contentColor,
+                        unfocusedTextColor = contentColor,
+                        focusedBorderColor = linkColor,
+                        focusedLabelColor = linkColor,
+                        cursorColor = linkColor,
+                    ),
+                )
+
+                if (showInvalidKeyError) {
+                    Spacer(modifier = Modifier.height(6.dp))
+                    Text(
+                        text = getString(R.string.deepl_key_invalid),
+                        color = Color(0xFFB3261E),
+                        style = MaterialTheme.typography.bodySmall.copy(fontSize = 13.sp),
+                    )
+                }
+
+                // 번역 모델 선택
+                if (models.isNotEmpty()) {
+                    Spacer(modifier = Modifier.height(16.dp))
+                    Text(
+                        text = getString(R.string.openai_model_label),
+                        color = titleColor,
+                        style = MaterialTheme.typography.titleMedium.copy(fontSize = 14.sp, fontWeight = FontWeight.Bold),
+                    )
+                    Spacer(modifier = Modifier.height(4.dp))
+                    models.forEach { model ->
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clickable(enabled = !isValidating) { selectedModel = model }
+                                .padding(vertical = 2.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                        ) {
+                            RadioButton(
+                                selected = selectedModel == model,
+                                onClick = { selectedModel = model },
+                                enabled = !isValidating,
+                                colors = RadioButtonDefaults.colors(selectedColor = linkColor),
+                            )
+                            Text(
+                                text = model,
+                                color = contentColor,
+                                style = MaterialTheme.typography.bodyMedium.copy(fontSize = 14.sp),
+                            )
+                        }
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(10.dp))
+
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.End,
+                ) {
+                    TextButton(
+                        onClick = onDismissRequest,
+                        enabled = !isValidating,
+                    ) {
+                        Text(
+                            text = stringResource(id = android.R.string.cancel),
+                            color = contentColor,
+                            fontSize = 15.sp,
+                        )
+                    }
+                    TextButton(
+                        onClick = { saveApiKey() },
+                        enabled = !isValidating,
+                    ) {
+                        Text(
+                            text = if (isValidating) getString(R.string.deepl_key_validating) else getString(R.string.label_save),
+                            color = linkColor,
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 15.sp,
+                        )
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * Gemini API 키 입력 + 번역 모델 선택 팝업. OpenAI 다이얼로그와 같은 카드 스타일.
+     * 모델 후보는 Remote Config([RemoteConfigRepository.GEMINI_TRANSLATE_MODELS])에서 온다.
+     */
+    @Composable
+    fun GeminiApiKeyDialog(
+        onDismissRequest: () -> Unit,
+    ) {
+        val context = LocalContext.current
+        val isDarkMode = isSystemInDarkTheme()
+        val backgroundColor = if (isDarkMode) Color(0xFF1F1F1F) else Color(0xFFFEFEFE)
+        val titleColor = if (isDarkMode) Color(0xFFFFFFFF) else Color(0xFF000000)
+        val contentColor = if (isDarkMode) Color(0xFFFDFDFD) else Color(0xFF232323)
+        val linkColor = if (isDarkMode) Color(0xFF6A91B2) else Color(0xFF446987)
+
+        var apiKeyInput by remember { mutableStateOf(GeminiKit.getStoredApiKey(context) ?: "") }
+        var isValidating by remember { mutableStateOf(false) }
+        var showInvalidKeyError by remember { mutableStateOf(false) }
+        val coroutineScope = rememberCoroutineScope()
+
+        // 번역 모델 후보(Remote Config)와 현재 선택값
+        val models = remember { viewModel.remoteConfigRepository.getGeminiTranslateModels() }
+        var selectedModel by remember { mutableStateOf<String?>(null) }
+        LaunchedEffect(Unit) {
+            val saved = viewModel.preferenceRepository.geminiModelFlow.first()
+            selectedModel = saved?.takeIf { it in models } ?: models.firstOrNull()
+        }
+
+        fun persistModel() {
+            selectedModel?.let { model ->
+                coroutineScope.launch {
+                    viewModel.preferenceRepository.update(PreferenceRepository.GEMINI_MODEL, model)
+                }
+            }
+        }
+
+        fun saveApiKey() {
+            persistModel()
+            val trimmedKey = apiKeyInput.trim()
+            if (trimmedKey.isEmpty()) {
+                GeminiKit.storeApiKey(context, "")
+                coroutineScope.launch {
+                    if (viewModel.preferenceRepository.translationKitTypeFlow.first() == TranslationKitType.GEMINI) {
+                        viewModel.preferenceRepository.update(PreferenceRepository.TRANSLATION_KIT_TYPE, TranslationKitType.GOOGLE.name)
+                    }
+                }
+                onDismissRequest()
+                return
+            }
+
+            isValidating = true
+            showInvalidKeyError = false
+            coroutineScope.launch {
+                when (GeminiKit.validateApiKey(trimmedKey)) {
+                    GeminiKit.KeyValidationResult.VALID -> {
+                        GeminiKit.storeApiKey(context, trimmedKey)
+                        onDismissRequest()
+                    }
+
+                    GeminiKit.KeyValidationResult.INVALID -> {
+                        isValidating = false
+                        showInvalidKeyError = true
+                    }
+
+                    GeminiKit.KeyValidationResult.NETWORK_ERROR -> {
+                        GeminiKit.storeApiKey(context, trimmedKey)
+                        Toast.makeText(context, getString(R.string.deepl_key_network_error), Toast.LENGTH_LONG).show()
+                        onDismissRequest()
+                    }
+                }
+            }
+        }
+
+        @Composable
+        fun LinkText(text: String, url: String) {
+            Text(
+                text = text,
+                color = linkColor,
+                textDecoration = TextDecoration.Underline,
+                style = MaterialTheme.typography.bodySmall.copy(fontSize = 13.sp),
+                modifier = Modifier
+                    .clickable {
+                        context.startActivity(Intent(Intent.ACTION_VIEW, url.toUri()))
+                    }
+                    .padding(vertical = 6.dp),
+            )
+        }
+
+        Dialog(onDismissRequest = onDismissRequest) {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(
+                        color = backgroundColor,
+                        shape = RoundedCornerShape(24.dp)
+                    )
+                    .padding(horizontal = 24.dp, vertical = 22.dp)
+            ) {
+                // 로고 + 타이틀
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Image(
+                        painter = painterResource(id = R.drawable.ci_gemini),
+                        contentDescription = "Gemini logo",
+                        modifier = Modifier.size(26.dp),
+                    )
+                    Spacer(modifier = Modifier.width(10.dp))
+                    Text(
+                        text = TranslationKitType.GEMINI.text,
+                        color = titleColor,
+                        style = MaterialTheme.typography.titleLarge.copy(fontSize = 16.sp, fontWeight = FontWeight.Bold),
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(18.dp))
+
+                Text(
+                    text = getString(R.string.gemini_key_guide),
+                    color = contentColor,
+                    style = MaterialTheme.typography.bodySmall.copy(fontSize = 13.sp),
+                )
+
+                Spacer(modifier = Modifier.height(8.dp))
+
+                Text(
+                    text = getString(R.string.gemini_key_signup_guide),
+                    color = contentColor,
+                    style = MaterialTheme.typography.bodySmall.copy(fontSize = 13.sp),
+                )
+
+                Spacer(modifier = Modifier.height(10.dp))
+
+                LinkText(
+                    text = getString(R.string.openai_key_link_keys),
+                    url = GeminiKit.URL_API_KEYS,
+                )
+                LinkText(
+                    text = getString(R.string.openai_key_link_billing),
+                    url = GeminiKit.URL_BILLING,
                 )
 
                 Spacer(modifier = Modifier.height(14.dp))

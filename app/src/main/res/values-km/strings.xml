@@ -92,4 +92,7 @@
   <string name="openai_key_link_billing">ការចេញវិក្កយបត្រ និងការប្រើប្រាស់</string>
   <string name="openai_model_label">ម៉ូដែល</string>
   <string name="help_text_openai_own_key">ប្រើកូនសោ API OpenAI ផ្ទាល់ខ្លួនរបស់អ្នក</string>
+  <string name="gemini_key_guide">បញ្ចូលសោ Gemini API របស់អ្នក ដើម្បីបកប្រែជាមួយម៉ូដែល Gemini។</string>
+  <string name="help_text_gemini_own_key">ប្រើកូនសោ API Gemini ផ្ទាល់ខ្លួនរបស់អ្នក</string>
+  <string name="gemini_key_signup_guide">បង្កើតកូនសោ API នៅក្នុង Google AI Studio។ មានកម្រិតឥតគិតថ្លៃ។</string>
 </resources>

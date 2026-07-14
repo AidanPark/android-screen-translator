@@ -92,4 +92,7 @@
   <string name="openai_key_link_billing">Laskutus ja käyttö</string>
   <string name="openai_model_label">Malli</string>
   <string name="help_text_openai_own_key">Käyttää henkilökohtaista OpenAI API -avaintasi</string>
+  <string name="gemini_key_guide">Anna Gemini API -avaimesi kääntääksesi Gemini-malleilla.</string>
+  <string name="help_text_gemini_own_key">Käyttää henkilökohtaista Gemini API -avaintasi</string>
+  <string name="gemini_key_signup_guide">Luo API-avain Google AI Studiossa. Maksuton taso on käytettävissä.</string>
 </resources>

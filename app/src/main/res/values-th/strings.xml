@@ -92,4 +92,7 @@
   <string name="openai_key_link_billing">การเรียกเก็บเงินและการใช้งาน</string>
   <string name="openai_model_label">โมเดล</string>
   <string name="help_text_openai_own_key">ใช้คีย์ OpenAI API ส่วนตัวของคุณ</string>
+  <string name="gemini_key_guide">ป้อนคีย์ Gemini API ของคุณเพื่อแปลด้วยโมเดล Gemini</string>
+  <string name="help_text_gemini_own_key">ใช้คีย์ Gemini API ส่วนตัวของคุณ</string>
+  <string name="gemini_key_signup_guide">สร้างคีย์ API ใน Google AI Studio มีระดับใช้งานฟรีให้บริการ</string>
 </resources>

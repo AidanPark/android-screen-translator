@@ -92,4 +92,7 @@
   <string name="openai_key_link_billing">Facturering en gebruik</string>
   <string name="openai_model_label">Model</string>
   <string name="help_text_openai_own_key">Gebruikt je persoonlijke OpenAI API-sleutel</string>
+  <string name="gemini_key_guide">Voer je Gemini API-sleutel in om te vertalen met Gemini-modellen.</string>
+  <string name="help_text_gemini_own_key">Gebruikt je persoonlijke Gemini API-sleutel</string>
+  <string name="gemini_key_signup_guide">Maak een API-sleutel in Google AI Studio. Er is een gratis niveau beschikbaar.</string>
 </resources>

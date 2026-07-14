@@ -92,4 +92,7 @@
   <string name="openai_key_link_billing">Abrechnung und Nutzung</string>
   <string name="openai_model_label">Modell</string>
   <string name="help_text_openai_own_key">Verwendet Ihren persönlichen OpenAI-API-Schlüssel</string>
+  <string name="gemini_key_guide">Geben Sie Ihren Gemini API-Schlüssel ein, um mit Gemini-Modellen zu übersetzen.</string>
+  <string name="help_text_gemini_own_key">Verwendet Ihren persönlichen Gemini-API-Schlüssel</string>
+  <string name="gemini_key_signup_guide">Erstellen Sie einen API-Schlüssel in Google AI Studio. Ein kostenloses Kontingent ist verfügbar.</string>
 </resources>

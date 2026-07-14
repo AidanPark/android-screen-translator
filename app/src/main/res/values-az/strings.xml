@@ -92,6 +92,9 @@
   <string name="openai_key_link_billing">Ödəniş və istifadə</string>
   <string name="openai_model_label">Model</string>
   <string name="help_text_openai_own_key">Şəxsi OpenAI API açarınızı istifadə edir</string>
+  <string name="gemini_key_guide">Gemini modelləri ilə tərcümə etmək üçün Gemini API açarınızı daxil edin.</string>
+  <string name="help_text_gemini_own_key">Şəxsi Gemini API açarınızı istifadə edir</string>
+  <string name="gemini_key_signup_guide">Google AI Studio-da API açarı yaradın. Pulsuz səviyyə mövcuddur.</string>
 </resources>
 
 
