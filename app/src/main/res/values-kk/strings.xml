@@ -15,10 +15,6 @@
 
     <!-- Foreground Service 시작 알림 -->
     <string name="notification_foreground_service">Экран мазмұнын аудару үшін түсіру функциясы қолданылады.</string>
-    <string name="title_start_foreground_service">Алдыңғы жоспардағы қызмет іске қосылды</string>
-    <string name="message_start_foreground_service">Қосымша экран мазмұнын түсіру және аудару үшін алдыңғы жоспардағы қызметті іске қосады.\n\nТүсірілген кескіндер сақталмайды және сыртқа жіберілмейді.</string>
-    <string name="label_confirm_start_foreground_service">Бастау</string>
-    <string name="label_dismiss_start_foreground_service">Аяқтау</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">Аяқтау</string>
@@ -48,6 +44,7 @@
     <string name="settings_menu_pointer_docking_delay">Тіру кідірісі</string>
     <string name="settings_menu_haptic_feedback_to_detection">Анықтау кезінде хаптика</string>
     <string name="settings_menu_cat_menubar">Мәзір жолағы</string>
+    <string name="settings_menu_menubar_visible">Мәзір жолағын көрсету</string>
     <string name="settings_menu_menubar_transparency">Мәзір мөлдірлігі</string>
     <string name="settings_menu_menubar_composition">Мәзір мүмкіндіктері</string>
     <string name="settings_menu_cat_translation">Аударма</string>
@@ -96,4 +93,7 @@
   <string name="gemini_key_guide">Gemini үлгілерімен аудару үшін Gemini API кілтіңізді енгізіңіз.</string>
   <string name="help_text_gemini_own_key">Жеке Gemini API кілтіңізді пайдаланады</string>
   <string name="gemini_key_signup_guide">Google AI Studio-да API кілтін жасаңыз. Тегін деңгей қолжетімді.</string>
+  <string name="claude_key_guide">Claude үлгілерімен аудару үшін Claude API кілтіңізді енгізіңіз.</string>
+  <string name="help_text_claude_own_key">Жеке Claude API кілтіңізді пайдаланады</string>
+  <string name="claude_key_signup_guide">Anthropic Console-де API кілтін жасаңыз. Пайдалану Anthropic есептік жазбаңызға есептеледі.</string>
 </resources>

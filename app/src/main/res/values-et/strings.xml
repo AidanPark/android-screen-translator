@@ -15,10 +15,6 @@
 
     <!-- Foreground Service -->
     <string name="notification_foreground_service">Ekraani salvestamise funktsioon on tõlkimiseks aktiivne.</string>
-    <string name="title_start_foreground_service">Käivita esiplaaniteenus</string>
-    <string name="message_start_foreground_service">Rakendus käivitab esiplaaniteenuse ekraani sisu jäädvustamiseks ja tõlkimiseks.\n\nJäädvustatud pilte ei salvestata ega saadeta.</string>
-    <string name="label_confirm_start_foreground_service">Käivita</string>
-    <string name="label_dismiss_start_foreground_service">Sulge</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">Lõpeta</string>
@@ -48,6 +44,7 @@
     <string name="settings_menu_pointer_docking_delay">Dokkimise viivitus</string>
     <string name="settings_menu_haptic_feedback_to_detection">Haptiline tagasiside tuvastusel</string>
     <string name="settings_menu_cat_menubar">Menüüriba</string>
+    <string name="settings_menu_menubar_visible">Kuva menüüriba</string>
     <string name="settings_menu_menubar_transparency">Menüü läbipaistvus</string>
     <string name="settings_menu_menubar_composition">Menüü funktsioonid</string>
     <string name="settings_menu_cat_translation">Tõlge</string>
@@ -95,6 +92,9 @@
   <string name="gemini_key_guide">Sisestage oma Gemini API-võti, et tõlkida Gemini mudelitega.</string>
   <string name="help_text_gemini_own_key">Kasutab teie isiklikku Gemini-i API-võtit</string>
   <string name="gemini_key_signup_guide">Looge Google AI Studios API-võti. Saadaval on tasuta tase.</string>
+  <string name="claude_key_guide">Sisestage oma Claude API-võti, et tõlkida Claude mudelitega.</string>
+  <string name="help_text_claude_own_key">Kasutab teie isiklikku Claude-i API-võtit</string>
+  <string name="claude_key_signup_guide">Looge API-võti keskkonnas Anthropic Console. Kasutuse eest esitatakse arve teie Anthropic kontole.</string>
 </resources>
 
 

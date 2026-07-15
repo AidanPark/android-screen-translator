@@ -15,10 +15,6 @@
 
     <!-- Foreground Service 시작 알림 -->
     <string name="notification_foreground_service">පරිවර්තනය සඳහා තිර පටිගත කිරීම ක්‍රියාත්මක වේ.</string>
-    <string name="title_start_foreground_service">අග්‍රභාග සේවාව ආරම්භ විය</string>
-    <string name="message_start_foreground_service">තිර අන්තර්ගතය ලබාගෙන පරිවර්තනය කිරීම සඳහා යෙදුම අග්‍රභාග සේවාවක් ආරම්භ කරයි.\n\nලබාගත් පින්තූර ගබඩා නොකරනු ලබන අතර පිටතට යැවීම සිදු නොවේ.</string>
-    <string name="label_confirm_start_foreground_service">ආරම්භ කරන්න</string>
-    <string name="label_dismiss_start_foreground_service">අවසන් කරන්න</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">අවසන්</string>
@@ -48,6 +44,7 @@
     <string name="settings_menu_pointer_docking_delay">ඩොක් විලම්බය</string>
     <string name="settings_menu_haptic_feedback_to_detection">හඳුනාගත් විට හැප්ටික්</string>
     <string name="settings_menu_cat_menubar">මෙනු තීරුව</string>
+    <string name="settings_menu_menubar_visible">මෙනු තීරුව පෙන්වන්න</string>
     <string name="settings_menu_menubar_transparency">මෙනු පැහැදිලිභාවය</string>
     <string name="settings_menu_menubar_composition">මෙනු ක්‍රියාකාරිත්වය</string>
     <string name="settings_menu_cat_translation">පරිවර්තනය</string>
@@ -95,4 +92,7 @@
   <string name="gemini_key_guide">Gemini ආකෘති සමඟ පරිවර්තනය කිරීමට ඔබගේ Gemini API යතුර ඇතුළත් කරන්න.</string>
   <string name="help_text_gemini_own_key">ඔබේ පෞද්ගලික Gemini API යතුර භාවිත කරයි</string>
   <string name="gemini_key_signup_guide">Google AI Studio හි API යතුරක් සාදන්න. නොමිලේ මට්ටමක් තිබේ.</string>
+  <string name="claude_key_guide">Claude ආකෘති සමඟ පරිවර්තනය කිරීමට ඔබගේ Claude API යතුර ඇතුළත් කරන්න.</string>
+  <string name="help_text_claude_own_key">ඔබේ පෞද්ගලික Claude API යතුර භාවිත කරයි</string>
+  <string name="claude_key_signup_guide">Anthropic Console හි API යතුරක් සාදන්න. භාවිතය ඔබගේ Anthropic ගිණුමට බිල් කෙරේ.</string>
 </resources>

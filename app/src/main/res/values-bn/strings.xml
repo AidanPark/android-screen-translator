@@ -15,10 +15,6 @@
 
     <!-- Foreground Service -->
     <string name="notification_foreground_service">অনুবাদের জন্য স্ক্রিন ক্যাপচার ফাংশন ব্যবহার করা হচ্ছে।</string>
-    <string name="title_start_foreground_service">ফোরগ্রাউন্ড পরিষেবা শুরু হয়েছে</string>
-    <string name="message_start_foreground_service">অ্যাপটি স্ক্রিনের বিষয়বস্তু ক্যাপচার এবং অনুবাদ করার জন্য একটি ফোরগ্রাউন্ড পরিষেবা শুরু করছে।\n\nক্যাপচার করা ছবি সংরক্ষণ বা বাহ্যিকভাবে প্রেরণ করা হবে না।</string>
-    <string name="label_confirm_start_foreground_service">শুরু করুন</string>
-    <string name="label_dismiss_start_foreground_service">শেষ করুন</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">শেষ করুন</string>
@@ -48,6 +44,7 @@
     <string name="settings_menu_pointer_docking_delay">ডক বিলম্ব</string>
     <string name="settings_menu_haptic_feedback_to_detection">শনাক্তকরণে হ্যাপটিক</string>
     <string name="settings_menu_cat_menubar">মেনু বার</string>
+    <string name="settings_menu_menubar_visible">মেনু বার দেখান</string>
     <string name="settings_menu_menubar_transparency">মেনু স্বচ্ছতা</string>
     <string name="settings_menu_menubar_composition">মেনু বিকল্প</string>
     <string name="settings_menu_cat_translation">অনুবাদ</string>
@@ -95,4 +92,7 @@
   <string name="gemini_key_guide">Gemini মডেল দিয়ে অনুবাদ করতে আপনার Gemini API কী লিখুন।</string>
   <string name="help_text_gemini_own_key">আপনার ব্যক্তিগত Gemini API কী ব্যবহার করে</string>
   <string name="gemini_key_signup_guide">Google AI Studio-তে একটি API কী তৈরি করুন। একটি বিনামূল্যের স্তর উপলব্ধ।</string>
+  <string name="claude_key_guide">Claude মডেল দিয়ে অনুবাদ করতে আপনার Claude API কী লিখুন।</string>
+  <string name="help_text_claude_own_key">আপনার ব্যক্তিগত Claude API কী ব্যবহার করে</string>
+  <string name="claude_key_signup_guide">Anthropic Console-এ একটি API কী তৈরি করুন। ব্যবহারের বিল আপনার Anthropic অ্যাকাউন্টে করা হয়।</string>
 </resources>

@@ -80,5 +80,13 @@
         <value>gemini-flash-lite-latest,gemini-flash-latest,gemini-2.0-flash</value>
     </entry>
 
+    <!--
+        2.6.0 ~ Claude 번역 모델 후보 (쉼표 구분). 빠르고 저렴한 Haiku 를 앞에 둔다.
+    -->
+    <entry>
+        <key>claude_translate_models</key>
+        <value>claude-haiku-4-5-20251001,claude-sonnet-5,claude-opus-4-8</value>
+    </entry>
+
 </defaultsMap>
     <!-- END xml_defaults -->

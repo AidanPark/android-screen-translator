@@ -15,10 +15,6 @@
 
     <!-- Foreground Service 시작 알림 -->
     <string name="notification_foreground_service">Котормо иши үчүн экранды кармоо функциясы колдонулууда.</string>
-    <string name="title_start_foreground_service">Фон кызматын баштоо</string>
-    <string name="message_start_foreground_service">Колдонмо экран мазмунун кармоо жана которуу үчүн фон кызматын баштайт.\n\nКармалган сүрөттөр сакталбайт жана тышка жиберилбейт.</string>
-    <string name="label_confirm_start_foreground_service">Баштоо</string>
-    <string name="label_dismiss_start_foreground_service">Аяктоо</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">Аяктоо</string>
@@ -48,6 +44,7 @@
     <string name="settings_menu_pointer_docking_delay">Туташуу кечигүүсү</string>
     <string name="settings_menu_haptic_feedback_to_detection">Аныктоодо хаптика</string>
     <string name="settings_menu_cat_menubar">Меню тилкеси</string>
+    <string name="settings_menu_menubar_visible">Меню тилкесин көрсөтүү</string>
     <string name="settings_menu_menubar_transparency">Менюнун ачыктыгы</string>
     <string name="settings_menu_menubar_composition">Меню функциялары</string>
     <string name="settings_menu_cat_translation">Котормо</string>
@@ -95,4 +92,7 @@
   <string name="gemini_key_guide">Gemini моделдери менен которуу үчүн Gemini API ачкычыңызды киргизиңиз.</string>
   <string name="help_text_gemini_own_key">Жеке Gemini API ачкычыңызды колдонот</string>
   <string name="gemini_key_signup_guide">Google AI Studio-до API ачкычын түзүңүз. Акысыз деңгээл жеткиликтүү.</string>
+  <string name="claude_key_guide">Claude моделдери менен которуу үчүн Claude API ачкычыңызды киргизиңиз.</string>
+  <string name="help_text_claude_own_key">Жеке Claude API ачкычыңызды колдонот</string>
+  <string name="claude_key_signup_guide">Anthropic Console’до API ачкычын түзүңүз. Колдонуу Anthropic эсебиңизге эсептелет.</string>
 </resources>

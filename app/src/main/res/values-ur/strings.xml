@@ -15,10 +15,6 @@
 
     <!-- Foreground Service 시작 알림 -->
     <string name="notification_foreground_service">ترجمے کے لیے اسکرین کیپچر فنکشن استعمال کیا جا رہا ہے۔</string>
-    <string name="title_start_foreground_service">فور گراؤنڈ سروس شروع ہو گئی</string>
-    <string name="message_start_foreground_service">ایپ اسکرین کا مواد کیپچر اور ترجمہ کرنے کے لیے فور گراؤنڈ سروس شروع کرتی ہے۔\n\nکیپچر کردہ تصاویر کو محفوظ یا بیرونی طور پر بھیجا نہیں جائے گا۔</string>
-    <string name="label_confirm_start_foreground_service">شروع کریں</string>
-    <string name="label_dismiss_start_foreground_service">ختم کریں</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">ختم کریں</string>
@@ -48,6 +44,7 @@
     <string name="settings_menu_pointer_docking_delay">جوڑنے کی تاخیر</string>
     <string name="settings_menu_haptic_feedback_to_detection">پہچان پر ہیپٹک</string>
     <string name="settings_menu_cat_menubar">مینو بار</string>
+    <string name="settings_menu_menubar_visible">مینو بار دکھائیں</string>
     <string name="settings_menu_menubar_transparency">مینو کی شفافیت</string>
     <string name="settings_menu_menubar_composition">مینو کی خصوصیات</string>
     <string name="settings_menu_cat_translation">ترجمہ</string>
@@ -95,4 +92,7 @@
   <string name="gemini_key_guide">Gemini ماڈلز کے ساتھ ترجمہ کرنے کے لیے اپنی Gemini API کلید درج کریں۔</string>
   <string name="help_text_gemini_own_key">آپ کی ذاتی Gemini API کلید استعمال کرتا ہے</string>
   <string name="gemini_key_signup_guide">Google AI Studio میں ایک API کلید بنائیں۔ ایک مفت درجہ دستیاب ہے۔</string>
+  <string name="claude_key_guide">Claude ماڈلز کے ساتھ ترجمہ کرنے کے لیے اپنی Claude API کلید درج کریں۔</string>
+  <string name="help_text_claude_own_key">آپ کی ذاتی Claude API کلید استعمال کرتا ہے</string>
+  <string name="claude_key_signup_guide">Anthropic Console میں ایک API کلید بنائیں۔ استعمال آپ کے Anthropic اکاؤنٹ پر بل کیا جاتا ہے۔</string>
 </resources>

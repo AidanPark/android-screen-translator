@@ -15,10 +15,6 @@
 
     <!-- Foreground Service 시작 알림 -->
     <string name="notification_foreground_service">Функцията за заснемане на екрана се използва за превод.</string>
-    <string name="title_start_foreground_service">Стартиране на преден план</string>
-    <string name="message_start_foreground_service">Приложението стартира услуга на преден план за улавяне и превод на съдържанието на екрана.\n\nУловените изображения не се запазват или предават извън приложението.</string>
-    <string name="label_confirm_start_foreground_service">Стартиране</string>
-    <string name="label_dismiss_start_foreground_service">Край</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">Край</string>
@@ -48,6 +44,7 @@
     <string name="settings_menu_pointer_docking_delay">Закъснение на докинг</string>
     <string name="settings_menu_haptic_feedback_to_detection">Хаптична връзка при откриване</string>
     <string name="settings_menu_cat_menubar">Меню лента</string>
+    <string name="settings_menu_menubar_visible">Показване на лентата с менюта</string>
     <string name="settings_menu_menubar_transparency">Прозрачност на менюто</string>
     <string name="settings_menu_menubar_composition">Функции на менюто</string>
     <string name="settings_menu_cat_translation">Превод</string>
@@ -95,4 +92,7 @@
   <string name="gemini_key_guide">Въведете вашия Gemini API ключ, за да превеждате с моделите на Gemini.</string>
   <string name="help_text_gemini_own_key">Използва вашия личен Gemini API ключ</string>
   <string name="gemini_key_signup_guide">Създайте API ключ в Google AI Studio. Налично е безплатно ниво.</string>
+  <string name="claude_key_guide">Въведете вашия Claude API ключ, за да превеждате с моделите на Claude.</string>
+  <string name="help_text_claude_own_key">Използва вашия личен Claude API ключ</string>
+  <string name="claude_key_signup_guide">Създайте API ключ в Anthropic Console. Използването се таксува към вашия акаунт в Anthropic.</string>
 </resources>

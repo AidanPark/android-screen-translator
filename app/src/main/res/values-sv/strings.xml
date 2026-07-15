@@ -15,10 +15,6 @@
 
     <!-- Foreground Service -->
     <string name="notification_foreground_service">Skärmfångstfunktionen används för översättning.</string>
-    <string name="title_start_foreground_service">Förgrundstjänst startad</string>
-    <string name="message_start_foreground_service">Appen startar en förgrundstjänst för att fånga och översätta skärminnehåll.\n\nFångade bilder kommer inte att sparas eller skickas.</string>
-    <string name="label_confirm_start_foreground_service">Starta</string>
-    <string name="label_dismiss_start_foreground_service">Avsluta</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">Avsluta</string>
@@ -48,6 +44,7 @@
     <string name="settings_menu_pointer_docking_delay">Fördröjning vid anslutning</string>
     <string name="settings_menu_haptic_feedback_to_detection">Haptisk återkoppling vid upptäckt</string>
     <string name="settings_menu_cat_menubar">Menyrad</string>
+    <string name="settings_menu_menubar_visible">Visa menyraden</string>
     <string name="settings_menu_menubar_transparency">Menyns transparens</string>
     <string name="settings_menu_menubar_composition">Menyns funktioner</string>
     <string name="settings_menu_cat_translation">Översättning</string>
@@ -95,6 +92,9 @@
   <string name="gemini_key_guide">Ange din Gemini API-nyckel för att översätta med Gemini-modeller.</string>
   <string name="help_text_gemini_own_key">Använder din personliga Gemini API-nyckel</string>
   <string name="gemini_key_signup_guide">Skapa en API-nyckel i Google AI Studio. En kostnadsfri nivå är tillgänglig.</string>
+  <string name="claude_key_guide">Ange din Claude API-nyckel för att översätta med Claude-modeller.</string>
+  <string name="help_text_claude_own_key">Använder din personliga Claude API-nyckel</string>
+  <string name="claude_key_signup_guide">Skapa en API-nyckel i Anthropic Console. Användning faktureras till ditt Anthropic-konto.</string>
 </resources>
 
 

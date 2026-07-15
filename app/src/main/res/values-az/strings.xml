@@ -15,10 +15,6 @@
 
     <!-- Foreground Service -->
     <string name="notification_foreground_service">Tərcümə üçün ekran tutma funksiyası istifadə olunur.</string>
-    <string name="title_start_foreground_service">Ön planda xidmətə başla</string>
-    <string name="message_start_foreground_service">Tətbiq ekran məzmununu tutmaq və tərcümə etmək üçün ön planda xidmətə başlayır.\n\nTutulan görüntülər saxlanılmayacaq və ya göndərilməyəcək.</string>
-    <string name="label_confirm_start_foreground_service">Başla</string>
-    <string name="label_dismiss_start_foreground_service">Bağla</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">Bitir</string>
@@ -48,6 +44,7 @@
     <string name="settings_menu_pointer_docking_delay">Gecikmə vaxtı</string>
     <string name="settings_menu_haptic_feedback_to_detection">Aşkarlamada haptik</string>
     <string name="settings_menu_cat_menubar">Menyu paneli</string>
+    <string name="settings_menu_menubar_visible">Menyu panelini göstər</string>
     <string name="settings_menu_menubar_transparency">Menyu şəffaflığı</string>
     <string name="settings_menu_menubar_composition">Menyu funksiyaları</string>
     <string name="settings_menu_cat_translation">Tərcümə</string>
@@ -95,6 +92,9 @@
   <string name="gemini_key_guide">Gemini modelləri ilə tərcümə etmək üçün Gemini API açarınızı daxil edin.</string>
   <string name="help_text_gemini_own_key">Şəxsi Gemini API açarınızı istifadə edir</string>
   <string name="gemini_key_signup_guide">Google AI Studio-da API açarı yaradın. Pulsuz səviyyə mövcuddur.</string>
+  <string name="claude_key_guide">Claude modelləri ilə tərcümə etmək üçün Claude API açarınızı daxil edin.</string>
+  <string name="help_text_claude_own_key">Şəxsi Claude API açarınızı istifadə edir</string>
+  <string name="claude_key_signup_guide">Anthropic Console-da API açarı yaradın. İstifadə haqqı Anthropic hesabınıza yazılır.</string>
 </resources>
 
 

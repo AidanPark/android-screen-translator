@@ -15,10 +15,6 @@
 
     <!-- Foreground Service 시작 알림 -->
     <string name="notification_foreground_service">ಅನುುವಾದ ಕಾರ್ಯಕ್ಕಾಗಿ ಸ್ಕ್ರೀನ್ ಕ್ಯಾಪ್ಚರ್ ಕಾರ್ಯವನ್ನು ಬಳಸಲಾಗುತ್ತಿದೆ.</string>
-    <string name="title_start_foreground_service">ಮುಖ್ಯ ಸೇವೆ ಪ್ರಾರಂಭವಾಗಿದೆ</string>
-    <string name="message_start_foreground_service">ಅಪ್ಲಿಕೇಶನ್ ಸ್ಕ್ರೀನ್ ವಿಷಯವನ್ನು ಹಿಡಿದು ಅನುವಾದಿಸಲು ಪ್ರಮುಖ ಸೇವೆಯನ್ನು ಪ್ರಾರಂಭಿಸುತ್ತದೆ.\n\nಹಿಡಿದ ಚಿತ್ರಗಳನ್ನು ಸಂಗ್ರಹಿಸಿಲ್ಲ ಅಥವಾ ಹೊರಗೆ ಕಳುಹಿಸಲಾಗುವುದಿಲ್ಲ.</string>
-    <string name="label_confirm_start_foreground_service">ಪ್ರಾರಂಭಿಸಿ</string>
-    <string name="label_dismiss_start_foreground_service">ಮುಗಿಸು</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">ಮುಗಿಸು</string>
@@ -48,6 +44,7 @@
     <string name="settings_menu_pointer_docking_delay">ಡಾಕ್ ವಿಳಂಬ</string>
     <string name="settings_menu_haptic_feedback_to_detection">ಗುರುತಿಸಿದಾಗ ಹ್ಯಾಪ್ಟಿಕ್</string>
     <string name="settings_menu_cat_menubar">ಮೆನು ಪಟ್ಟಿಗೆ</string>
+    <string name="settings_menu_menubar_visible">ಮೆನು ಬಾರ್ ತೋರಿಸಿ</string>
     <string name="settings_menu_menubar_transparency">ಮೆನು ಪಾರದರ್ಶಕತೆ</string>
     <string name="settings_menu_menubar_composition">ಮೆನು ವೈಶಿಷ್ಟ್ಯಗಳು</string>
     <string name="settings_menu_cat_translation">ಅನುವಾದ</string>
@@ -95,4 +92,7 @@
   <string name="gemini_key_guide">Gemini ಮಾದರಿಗಳೊಂದಿಗೆ ಅನುವಾದಿಸಲು ನಿಮ್ಮ Gemini API ಕೀಲಿಯನ್ನು ನಮೂದಿಸಿ.</string>
   <string name="help_text_gemini_own_key">ನಿಮ್ಮ ವೈಯಕ್ತಿಕ Gemini API ಕೀಲಿಯನ್ನು ಬಳಸುತ್ತದೆ</string>
   <string name="gemini_key_signup_guide">Google AI Studio ನಲ್ಲಿ API ಕೀ ರಚಿಸಿ. ಉಚಿತ ಶ್ರೇಣಿ ಲಭ್ಯವಿದೆ.</string>
+  <string name="claude_key_guide">Claude ಮಾದರಿಗಳೊಂದಿಗೆ ಅನುವಾದಿಸಲು ನಿಮ್ಮ Claude API ಕೀಲಿಯನ್ನು ನಮೂದಿಸಿ.</string>
+  <string name="help_text_claude_own_key">ನಿಮ್ಮ ವೈಯಕ್ತಿಕ Claude API ಕೀಲಿಯನ್ನು ಬಳಸುತ್ತದೆ</string>
+  <string name="claude_key_signup_guide">Anthropic Console ನಲ್ಲಿ API ಕೀ ರಚಿಸಿ. ಬಳಕೆಯನ್ನು ನಿಮ್ಮ Anthropic ಖಾತೆಗೆ ಬಿಲ್ ಮಾಡಲಾಗುತ್ತದೆ.</string>
 </resources>

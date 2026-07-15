@@ -15,10 +15,6 @@
 
   <!-- Foreground Service 시작 알림 -->
   <string name="notification_foreground_service">פונקציית לכידת המסך בשימוש לצורכי תרגום.</string>
-  <string name="title_start_foreground_service">שירות רקע מופעל</string>
-  <string name="message_start_foreground_service">האפליקציה מפעילה שירות רקע ללכידת ותרגום תוכן מהמסך.\n\nהתמונות שנתפסות אינן נשמרות או מועברות החוצה.</string>
-  <string name="label_confirm_start_foreground_service">התחל</string>
-  <string name="label_dismiss_start_foreground_service">סיים</string>
 
   <!-- OverlayService -->
   <string name="service_menu_finish">סיום</string>
@@ -48,6 +44,7 @@
   <string name="settings_menu_pointer_docking_delay">עיכוב עגינה</string>
   <string name="settings_menu_haptic_feedback_to_detection">משוב מישושי בזיהוי</string>
   <string name="settings_menu_cat_menubar">תפריט עליון</string>
+    <string name="settings_menu_menubar_visible">הצג את שורת התפריטים</string>
   <string name="settings_menu_menubar_transparency">שקיפות תפריט</string>
   <string name="settings_menu_menubar_composition">אפשרויות תפריט</string>
   <string name="settings_menu_cat_translation">תרגום</string>
@@ -95,4 +92,7 @@
   <string name="gemini_key_guide">הזינו את מפתח Gemini API שלכם כדי לתרגם עם מודלים של Gemini.</string>
   <string name="help_text_gemini_own_key">משתמש במפתח ה-API האישי שלך ב-Gemini</string>
   <string name="gemini_key_signup_guide">צור מפתח API ב-Google AI Studio. זמינה רמה חינמית.</string>
+  <string name="claude_key_guide">הזינו את מפתח Claude API שלכם כדי לתרגם עם מודלים של Claude.</string>
+  <string name="help_text_claude_own_key">משתמש במפתח ה-API האישי שלך ב-Claude</string>
+  <string name="claude_key_signup_guide">צרו מפתח API ב-Anthropic Console. השימוש מחויב לחשבון ה-Anthropic שלכם.</string>
 </resources>

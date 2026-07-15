@@ -15,10 +15,6 @@
 
   <!-- Foreground Service -->
   <string name="notification_foreground_service">يتم استخدام وظيفة التقاط الشاشة للترجمة.</string>
-  <string name="title_start_foreground_service">بدء الخدمة في المقدمة</string>
-  <string name="message_start_foreground_service">يبدأ التطبيق خدمة في المقدمة لالتقاط محتوى الشاشة وترجمته.\n\nلن يتم حفظ أو إرسال اللقطات الملتقطة.</string>
-  <string name="label_confirm_start_foreground_service">ابدأ</string>
-  <string name="label_dismiss_start_foreground_service">إنهاء</string>
 
   <!-- OverlayService -->
   <string name="service_menu_finish">إنهاء</string>
@@ -48,6 +44,7 @@
   <string name="settings_menu_pointer_docking_delay">تأخير الإرساء</string>
   <string name="settings_menu_haptic_feedback_to_detection">استجابة لمسية عند الكشف</string>
   <string name="settings_menu_cat_menubar">شريط القوائم</string>
+    <string name="settings_menu_menubar_visible">إظهار شريط القائمة</string>
   <string name="settings_menu_menubar_transparency">شفافية القائمة</string>
   <string name="settings_menu_menubar_composition">خيارات القائمة</string>
   <string name="settings_menu_cat_translation">الترجمة</string>
@@ -95,6 +92,9 @@
   <string name="gemini_key_guide">أدخل مفتاح Gemini API الخاص بك للترجمة باستخدام نماذج Gemini.</string>
   <string name="help_text_gemini_own_key">يستخدم مفتاح Gemini API الخاص بك</string>
   <string name="gemini_key_signup_guide">أنشئ مفتاح API في Google AI Studio. تتوفر فئة مجانية.</string>
+  <string name="claude_key_guide">أدخل مفتاح Claude API الخاص بك للترجمة باستخدام نماذج Claude.</string>
+  <string name="help_text_claude_own_key">يستخدم مفتاح Claude API الخاص بك</string>
+  <string name="claude_key_signup_guide">أنشئ مفتاح API في Anthropic Console. تتم محاسبة الاستخدام على حساب Anthropic الخاص بك.</string>
 </resources>
 
 

@@ -2,6 +2,8 @@ package com.galaxy.airviewdictionary.di
 
 import com.galaxy.airviewdictionary.data.remote.translation.goolge.GoogleWebKit
 import com.galaxy.airviewdictionary.data.remote.translation.goolge.GoogleWebService
+import com.galaxy.airviewdictionary.data.remote.translation.claude.ClaudeKit
+import com.galaxy.airviewdictionary.data.remote.translation.claude.ClaudeService
 import com.galaxy.airviewdictionary.data.remote.translation.gemini.GeminiKit
 import com.galaxy.airviewdictionary.data.remote.translation.gemini.GeminiService
 import com.galaxy.airviewdictionary.data.remote.translation.openai.OpenAiKit
@@ -32,6 +34,10 @@ annotation class OpenAiRetrofit
 @Qualifier
 @Retention(AnnotationRetention.BINARY)
 annotation class GeminiRetrofit
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class ClaudeRetrofit
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -93,6 +99,22 @@ object NetworkModule {
     @Singleton
     fun provideGeminiService(@GeminiRetrofit retrofit: Retrofit): GeminiService {
         return retrofit.create(GeminiService::class.java)
+    }
+
+    @ClaudeRetrofit
+    @Provides
+    @Singleton
+    fun provideClaudeRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
+        .baseUrl(ClaudeKit.BASE_URL)
+        .client(okHttpClient)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+
+    @ClaudeRetrofit
+    @Provides
+    @Singleton
+    fun provideClaudeService(@ClaudeRetrofit retrofit: Retrofit): ClaudeService {
+        return retrofit.create(ClaudeService::class.java)
     }
 }
 

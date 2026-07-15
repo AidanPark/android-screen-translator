@@ -15,10 +15,6 @@
 
   <!-- Foreground Service 시작 알림 -->
   <string name="notification_foreground_service">화면 캡처 기능이 번역 작업을 위해 사용 중입니다.</string>
-  <string name="title_start_foreground_service">포그라운드 서비스 시작됨</string>
-  <string name="message_start_foreground_service">화면 내용을 캡처하고 번역하기 위해 포그라운드 서비스를 시작합니다.\n\n캡처된 이미지는 저장되거나 외부로 전송되지 않습니다.</string>
-  <string name="label_confirm_start_foreground_service">시작</string>
-  <string name="label_dismiss_start_foreground_service">종료</string>
 
   <!-- OverlayService -->
   <string name="service_menu_finish">종료</string>
@@ -48,6 +44,7 @@
   <string name="settings_menu_pointer_docking_delay">도킹 지연시간</string>
   <string name="settings_menu_haptic_feedback_to_detection">감지 시 햅틱</string>
   <string name="settings_menu_cat_menubar">메뉴바</string>
+    <string name="settings_menu_menubar_visible">메뉴바 보이기</string>
   <string name="settings_menu_menubar_transparency">메뉴바 투명도</string>
   <string name="settings_menu_menubar_composition">기능 조합</string>
   <string name="settings_menu_cat_translation">번역</string>
@@ -95,4 +92,7 @@
   <string name="gemini_key_guide">Gemini 모델로 번역하려면 Gemini API 키를 입력하세요.</string>
   <string name="help_text_gemini_own_key">개인 Gemini API 키로 동작합니다</string>
   <string name="gemini_key_signup_guide">Google AI Studio에서 API 키를 생성하세요. 무료 등급을 사용할 수 있습니다.</string>
+  <string name="claude_key_guide">Claude 모델로 번역하려면 Claude API 키를 입력하세요.</string>
+  <string name="help_text_claude_own_key">개인 Claude API 키로 동작합니다</string>
+  <string name="claude_key_signup_guide">Anthropic Console에서 API 키를 생성하세요. 사용량은 Anthropic 계정으로 청구됩니다.</string>
 </resources>

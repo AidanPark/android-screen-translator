@@ -9,9 +9,6 @@ import android.view.WindowManager
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.VisibilityOff
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -51,23 +48,12 @@ class SettingsMenuBarTransparencyView private constructor() : OverlayView() {
                 contentAlignment = Alignment.CenterEnd
             ) {
                 Box(contentAlignment = Alignment.CenterEnd) {
-                    if (text == "50%") {
-                        Icon(
-                            imageVector = Icons.Default.VisibilityOff,
-                            contentDescription = "Menu bar visibility",
-                            modifier = Modifier
-                                .size(32.dp)
-                                .padding(end = 8.dp),
-                            tint = Color.White
-                        )
-                    } else {
-                        Text(
-                            modifier = Modifier.padding(end = 6.dp),
-                            text = text,
-                            color = Color.White,
-                            style = MaterialTheme.typography.bodyMedium.copy(fontSize = fontDimensionResource(R.dimen.settings_menu_subtext_size)),
-                        )
-                    }
+                    Text(
+                        modifier = Modifier.padding(end = 6.dp),
+                        text = text,
+                        color = Color.White,
+                        style = MaterialTheme.typography.bodyMedium.copy(fontSize = fontDimensionResource(R.dimen.settings_menu_subtext_size)),
+                    )
                 }
 
             }

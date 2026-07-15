@@ -15,10 +15,6 @@
 
   <!-- Foreground Service 启动通知 -->
   <string name="notification_foreground_service">正在使用屏幕捕捉功能进行翻译。</string>
-  <string name="title_start_foreground_service">前台服务已启动</string>
-  <string name="message_start_foreground_service">应用将启动前台服务以捕捉并翻译屏幕内容。\n\n捕获的图像不会被保存或传输。</string>
-  <string name="label_confirm_start_foreground_service">开始</string>
-  <string name="label_dismiss_start_foreground_service">结束</string>
 
   <!-- OverlayService -->
   <string name="service_menu_finish">结束</string>
@@ -48,6 +44,7 @@
   <string name="settings_menu_pointer_docking_delay">连接延迟</string>
   <string name="settings_menu_haptic_feedback_to_detection">检测时触感反馈</string>
   <string name="settings_menu_cat_menubar">菜单栏</string>
+    <string name="settings_menu_menubar_visible">显示菜单栏</string>
   <string name="settings_menu_menubar_transparency">菜单透明度</string>
   <string name="settings_menu_menubar_composition">菜单功能</string>
   <string name="settings_menu_cat_translation">翻译</string>
@@ -95,4 +92,7 @@
   <string name="gemini_key_guide">输入您的 Gemini API 密钥即可使用 Gemini 模型进行翻译。</string>
   <string name="help_text_gemini_own_key">使用您的个人 Gemini API 密钥</string>
   <string name="gemini_key_signup_guide">在 Google AI Studio 中创建 API 密钥。可使用免费层级。</string>
+  <string name="claude_key_guide">输入您的 Claude API 密钥即可使用 Claude 模型进行翻译。</string>
+  <string name="help_text_claude_own_key">使用您的个人 Claude API 密钥</string>
+  <string name="claude_key_signup_guide">在 Anthropic Console 中创建 API 密钥。用量将计入您的 Anthropic 账户。</string>
 </resources>

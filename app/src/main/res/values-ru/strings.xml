@@ -15,10 +15,6 @@
 
     <!-- Foreground Service -->
     <string name="notification_foreground_service">Функция захвата экрана используется для перевода.</string>
-    <string name="title_start_foreground_service">Фоновый сервис запущен</string>
-    <string name="message_start_foreground_service">Приложение запускает фоновый сервис для захвата и перевода содержимого экрана.\n\nЗахваченные изображения не сохраняются и не передаются.</string>
-    <string name="label_confirm_start_foreground_service">Запустить</string>
-    <string name="label_dismiss_start_foreground_service">Завершить</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">Завершить</string>
@@ -48,6 +44,7 @@
     <string name="settings_menu_pointer_docking_delay">Задержка закрепления</string>
     <string name="settings_menu_haptic_feedback_to_detection">Тактильный отклик при обнаружении</string>
     <string name="settings_menu_cat_menubar">Панель меню</string>
+    <string name="settings_menu_menubar_visible">Показывать панель меню</string>
     <string name="settings_menu_menubar_transparency">Прозрачность меню</string>
     <string name="settings_menu_menubar_composition">Функции меню</string>
     <string name="settings_menu_cat_translation">Перевод</string>
@@ -95,4 +92,7 @@
   <string name="gemini_key_guide">Введите свой ключ Gemini API, чтобы переводить с помощью моделей Gemini.</string>
   <string name="help_text_gemini_own_key">Использует ваш личный API-ключ Gemini</string>
   <string name="gemini_key_signup_guide">Создайте ключ API в Google AI Studio. Доступен бесплатный уровень.</string>
+  <string name="claude_key_guide">Введите свой ключ Claude API, чтобы переводить с помощью моделей Claude.</string>
+  <string name="help_text_claude_own_key">Использует ваш личный API-ключ Claude</string>
+  <string name="claude_key_signup_guide">Создайте ключ API в Anthropic Console. Использование тарифицируется на вашем аккаунте Anthropic.</string>
 </resources>

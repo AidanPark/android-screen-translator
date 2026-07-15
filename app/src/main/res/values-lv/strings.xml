@@ -15,10 +15,6 @@
 
   <!-- Foreground Service -->
   <string name="notification_foreground_service">Ekrāna uztveršana tiek izmantota tulkošanai.</string>
-  <string name="title_start_foreground_service">Priekšplāna pakalpojums sācies</string>
-  <string name="message_start_foreground_service">Lietotne sāk priekšplāna pakalpojumu, lai uztvertu un tulkotu ekrāna saturu.\n\nUztvertie attēli netiek saglabāti vai sūtīti ārpus ierīces.</string>
-  <string name="label_confirm_start_foreground_service">Sākt</string>
-  <string name="label_dismiss_start_foreground_service">Beigt</string>
 
   <!-- OverlayService -->
   <string name="service_menu_finish">Beigt</string>
@@ -48,6 +44,7 @@
   <string name="settings_menu_pointer_docking_delay">Dok. aizkave</string>
   <string name="settings_menu_haptic_feedback_to_detection">Haptiskā atsauksme noteikšanā</string>
   <string name="settings_menu_cat_menubar">Izvēlnes josla</string>
+    <string name="settings_menu_menubar_visible">Rādīt izvēlnes joslu</string>
   <string name="settings_menu_menubar_transparency">Izvēlnes caurspīdīgums</string>
   <string name="settings_menu_menubar_composition">Izvēlnes funkcijas</string>
   <string name="settings_menu_cat_translation">Tulkot</string>
@@ -95,4 +92,7 @@
   <string name="gemini_key_guide">Ievadiet savu Gemini API atslēgu, lai tulkotu ar Gemini modeļiem.</string>
   <string name="help_text_gemini_own_key">Izmanto jūsu personīgo Gemini API atslēgu</string>
   <string name="gemini_key_signup_guide">Izveidojiet API atslēgu vietnē Google AI Studio. Ir pieejams bezmaksas līmenis.</string>
+  <string name="claude_key_guide">Ievadiet savu Claude API atslēgu, lai tulkotu ar Claude modeļiem.</string>
+  <string name="help_text_claude_own_key">Izmanto jūsu personīgo Claude API atslēgu</string>
+  <string name="claude_key_signup_guide">Izveidojiet API atslēgu Anthropic Console. Lietojums tiek rēķināts jūsu Anthropic kontā.</string>
 </resources>

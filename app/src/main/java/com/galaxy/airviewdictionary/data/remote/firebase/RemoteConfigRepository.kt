@@ -37,6 +37,9 @@ class RemoteConfigRepository @Inject constructor(@ApplicationContext val context
 
         // Gemini 번역에서 고를 수 있는 모델 후보 (쉼표 구분).
         const val GEMINI_TRANSLATE_MODELS = "gemini_translate_models"
+
+        // Claude 번역에서 고를 수 있는 모델 후보 (쉼표 구분).
+        const val CLAUDE_TRANSLATE_MODELS = "claude_translate_models"
     }
 
     /**
@@ -55,6 +58,16 @@ class RemoteConfigRepository @Inject constructor(@ApplicationContext val context
      */
     fun getGeminiTranslateModels(): List<String> {
         return remoteConfig[GEMINI_TRANSLATE_MODELS].asString()
+            .split(",")
+            .map { it.trim() }
+            .filter { it.isNotBlank() }
+    }
+
+    /**
+     * Claude 번역 모델 후보 목록. Remote Config 의 쉼표 구분 문자열을 파싱한다.
+     */
+    fun getClaudeTranslateModels(): List<String> {
+        return remoteConfig[CLAUDE_TRANSLATE_MODELS].asString()
             .split(",")
             .map { it.trim() }
             .filter { it.isNotBlank() }

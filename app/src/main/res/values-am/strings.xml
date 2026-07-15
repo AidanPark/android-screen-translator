@@ -15,10 +15,6 @@
 
     <!-- Foreground Service -->
     <string name="notification_foreground_service">የማያ መዝግብ ተግባር ለትርጉም ተጠቃሚ ነው።</string>
-    <string name="title_start_foreground_service">የፊት አገልግሎት መጀመሪያ</string>
-    <string name="message_start_foreground_service">መተግበሪያው የፊት አገልግሎትን ይጀምራል እንዲሁም የማያ ይዘትን ለመያዝ እና ለመተርጎም።\n\nየተያዙ ምስሎች አይቀመጡም ወይም አይላኩም።</string>
-    <string name="label_confirm_start_foreground_service">ጀምር</string>
-    <string name="label_dismiss_start_foreground_service">ዝጋ</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">ጨርስ</string>
@@ -48,6 +44,7 @@
     <string name="settings_menu_pointer_docking_delay">የመስቀቴ መዘግየት</string>
     <string name="settings_menu_haptic_feedback_to_detection">የመዳሰሻ ግብረ መልስ ሲገኝ</string>
     <string name="settings_menu_cat_menubar">ምናሌ</string>
+    <string name="settings_menu_menubar_visible">የምናሌ አሞሌ አሳይ</string>
     <string name="settings_menu_menubar_transparency">የምናሌ ትርፍና</string>
     <string name="settings_menu_menubar_composition">ምናሌ ባህሪዎች</string>
     <string name="settings_menu_cat_translation">ትርጉም</string>
@@ -95,5 +92,8 @@
   <string name="gemini_key_guide">በGemini ሞዴሎች ለመተርጎም የGemini API ቁልፍዎን ያስገቡ።</string>
   <string name="help_text_gemini_own_key">የግል የGemini API ቁልፍዎን ይጠቀማል</string>
   <string name="gemini_key_signup_guide">በGoogle AI Studio ውስጥ የAPI ቁልፍ ይፍጠሩ። ነጻ ደረጃ ይገኛል።</string>
+  <string name="claude_key_guide">በClaude ሞዴሎች ለመተርጎም የClaude API ቁልፍዎን ያስገቡ።</string>
+  <string name="help_text_claude_own_key">የግል የClaude API ቁልፍዎን ይጠቀማል</string>
+  <string name="claude_key_signup_guide">በAnthropic Console ውስጥ የAPI ቁልፍ ይፍጠሩ። አጠቃቀም ወደ Anthropic መለያዎ ይከፈላል።</string>
 </resources>
 

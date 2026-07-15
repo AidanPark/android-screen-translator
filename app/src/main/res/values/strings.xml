@@ -15,10 +15,6 @@
 
     <!-- Foreground Service 시작 알림 -->
     <string name="notification_foreground_service">The screen capture function is being used for translation work.</string>
-    <string name="title_start_foreground_service">Foreground Service starts</string>
-    <string name="message_start_foreground_service">The app starts a Foreground Service to capture and translate screen content.\n\nCaptured images are not saved or transmitted externally.</string>
-    <string name="label_confirm_start_foreground_service">Start</string>
-    <string name="label_dismiss_start_foreground_service">Finish</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">Finish</string>
@@ -50,6 +46,7 @@
     <string name="settings_menu_pointer_docking_delay">Pointer Docking Delay</string>
     <string name="settings_menu_haptic_feedback_to_detection">Haptic Feedback on Detection</string>
     <string name="settings_menu_cat_menubar">Menu Bar</string>
+    <string name="settings_menu_menubar_visible">Show the menu bar</string>
     <string name="settings_menu_menubar_transparency">Menu Bar Transparency</string>
     <string name="settings_menu_menubar_composition">Menu Functions</string>
     <string name="settings_menu_cat_api_key" translatable="false">API Key</string>
@@ -71,6 +68,9 @@
     <string name="settings_menu_gemini_api_key" translatable="false">Gemini</string>
     <string name="gemini_key_guide">Enter your Gemini API key to translate with Gemini models.</string>
     <string name="gemini_key_signup_guide">Create an API key in Google AI Studio. A free tier is available.</string>
+    <string name="settings_menu_claude_api_key" translatable="false">Claude</string>
+    <string name="claude_key_guide">Enter your Claude API key to translate with Claude models.</string>
+    <string name="claude_key_signup_guide">Create an API key in the Anthropic Console. Usage is billed to your Anthropic account.</string>
     <string name="label_save">Save</string>
     <string name="settings_menu_cat_translation">Translation</string>
     <string name="settings_menu_translation_transparency">Translation Transparency</string>
@@ -94,6 +94,7 @@
     <string name="help_text_deepl_own_key">Uses your personal DeepL API key</string>
     <string name="help_text_openai_own_key">Uses your personal OpenAI API key</string>
     <string name="help_text_gemini_own_key">Uses your personal Gemini API key</string>
+    <string name="help_text_claude_own_key">Uses your personal Claude API key</string>
 
     <!-- PremiumView -->
     <string name="premium_view_description_sentence_detection">Sentences are selected automatically.</string>

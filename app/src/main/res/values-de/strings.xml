@@ -15,10 +15,6 @@
 
   <!-- Foreground Service -->
   <string name="notification_foreground_service">Die Bildschirmaufnahme wird für Übersetzungszwecke verwendet.</string>
-  <string name="title_start_foreground_service">Vordergrunddienst gestartet</string>
-  <string name="message_start_foreground_service">Die App startet einen Vordergrunddienst, um Bildschirminhalte zu erfassen und zu übersetzen.\n\nAufgezeichnete Bilder werden nicht gespeichert oder extern weitergegeben.</string>
-  <string name="label_confirm_start_foreground_service">Starten</string>
-  <string name="label_dismiss_start_foreground_service">Beenden</string>
 
   <!-- OverlayService -->
   <string name="service_menu_finish">Beenden</string>
@@ -48,6 +44,7 @@
   <string name="settings_menu_pointer_docking_delay">Andockverzögerung</string>
   <string name="settings_menu_haptic_feedback_to_detection">Haptisches Feedback bei Erkennung</string>
   <string name="settings_menu_cat_menubar">Menüleiste</string>
+    <string name="settings_menu_menubar_visible">Menüleiste anzeigen</string>
   <string name="settings_menu_menubar_transparency">Menü-Transparenz</string>
   <string name="settings_menu_menubar_composition">Menüfunktionen</string>
   <string name="settings_menu_cat_translation">Übersetzung</string>
@@ -95,4 +92,7 @@
   <string name="gemini_key_guide">Geben Sie Ihren Gemini API-Schlüssel ein, um mit Gemini-Modellen zu übersetzen.</string>
   <string name="help_text_gemini_own_key">Verwendet Ihren persönlichen Gemini-API-Schlüssel</string>
   <string name="gemini_key_signup_guide">Erstellen Sie einen API-Schlüssel in Google AI Studio. Ein kostenloses Kontingent ist verfügbar.</string>
+  <string name="claude_key_guide">Geben Sie Ihren Claude API-Schlüssel ein, um mit Claude-Modellen zu übersetzen.</string>
+  <string name="help_text_claude_own_key">Verwendet Ihren persönlichen Claude-API-Schlüssel</string>
+  <string name="claude_key_signup_guide">Erstellen Sie einen API-Schlüssel in der Anthropic Console. Die Nutzung wird Ihrem Anthropic-Konto in Rechnung gestellt.</string>
 </resources>

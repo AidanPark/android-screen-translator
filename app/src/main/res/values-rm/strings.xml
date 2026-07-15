@@ -15,10 +15,6 @@
 
     <!-- Foreground Service 시작 알림 -->
     <string name="notification_foreground_service">La funcziun da capturar il scherm vegn utilisada per translaziun.</string>
-    <string name="title_start_foreground_service">Servetsch en prim plan lantschà</string>
-    <string name="message_start_foreground_service">L’app lantscha in servetsch en prim plan per capturar e translatar il cuntegn dal scherm.\n\nLas maletgs capturads na vegnan betg memorisads ni transmess.</string>
-    <string name="label_confirm_start_foreground_service">Cumenzar</string>
-    <string name="label_dismiss_start_foreground_service">Finir</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">Finir</string>
@@ -48,6 +44,7 @@
     <string name="settings_menu_pointer_docking_delay">Retard d\'acuplament</string>
     <string name="settings_menu_haptic_feedback_to_detection">Resposta haptica tar la detecziun</string>
     <string name="settings_menu_cat_menubar">Trav d’uschigliada</string>
+    <string name="settings_menu_menubar_visible">Mussar la barra da menu</string>
     <string name="settings_menu_menubar_transparency">Transparenza da menu</string>
     <string name="settings_menu_menubar_composition">Funcziuns dal menu</string>
     <string name="settings_menu_cat_translation">Translaziun</string>
@@ -95,4 +92,7 @@
   <string name="gemini_key_guide">Endatai vossa clav API Gemini per translatar cun models Gemini.</string>
   <string name="help_text_gemini_own_key">Utilisescha tia clav API persunala da Gemini</string>
   <string name="gemini_key_signup_guide">Creai ina clav API en Google AI Studio. Ina rchecla gratuita è disponibla.</string>
+  <string name="claude_key_guide">Endatai vossa clav API Claude per translatar cun models Claude.</string>
+  <string name="help_text_claude_own_key">Utilisescha tia clav API persunala da Claude</string>
+  <string name="claude_key_signup_guide">Creescha ina clav API en l’Anthropic Console. L’utilisaziun vegn fatgurada a tes conto Anthropic.</string>
 </resources>

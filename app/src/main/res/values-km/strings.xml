@@ -15,10 +15,6 @@
 
     <!-- Foreground Service 시작 알림 -->
     <string name="notification_foreground_service">មុខងារ ការចាប់អេក្រង់ កំពុងត្រូវបានប្រើសម្រាប់ការបកប្រែ។</string>
-    <string name="title_start_foreground_service">បានចាប់ផ្ដើមសេវាកម្មនៅផ្នែកមុខ</string>
-    <string name="message_start_foreground_service">កម្មវិធីបានចាប់ផ្ដើមសេវាកម្មនៅផ្នែកមុខដើម្បីចាប់ និងបកប្រែមាតិកាអេក្រង់។\n\nរូបភាពដែលបានចាប់មិនត្រូវបានរក្សាទុក ឬបញ្ជូនចេញក្រៅឡើយ។</string>
-    <string name="label_confirm_start_foreground_service">ចាប់ផ្ដើម</string>
-    <string name="label_dismiss_start_foreground_service">បញ្ចប់</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">បញ្ចប់</string>
@@ -48,6 +44,7 @@
     <string name="settings_menu_pointer_docking_delay">ពេលយឺតភ្ជាប់</string>
     <string name="settings_menu_haptic_feedback_to_detection">ការឆ្លើយតបប៉ះ ពេលរកឃើញ</string>
     <string name="settings_menu_cat_menubar">របារមេនុយ</string>
+    <string name="settings_menu_menubar_visible">បង្ហាញរបារម៉ឺនុយ</string>
     <string name="settings_menu_menubar_transparency">តម្លាភាពមេនុយ</string>
     <string name="settings_menu_menubar_composition">មុខងារមេនុយ</string>
     <string name="settings_menu_cat_translation">ការបកប្រែ</string>
@@ -95,4 +92,7 @@
   <string name="gemini_key_guide">បញ្ចូលសោ Gemini API របស់អ្នក ដើម្បីបកប្រែជាមួយម៉ូដែល Gemini។</string>
   <string name="help_text_gemini_own_key">ប្រើកូនសោ API Gemini ផ្ទាល់ខ្លួនរបស់អ្នក</string>
   <string name="gemini_key_signup_guide">បង្កើតកូនសោ API នៅក្នុង Google AI Studio។ មានកម្រិតឥតគិតថ្លៃ។</string>
+  <string name="claude_key_guide">បញ្ចូលសោ Claude API របស់អ្នក ដើម្បីបកប្រែជាមួយម៉ូដែល Claude។</string>
+  <string name="help_text_claude_own_key">ប្រើកូនសោ API Claude ផ្ទាល់ខ្លួនរបស់អ្នក</string>
+  <string name="claude_key_signup_guide">បង្កើតសោ API នៅក្នុង Anthropic Console។ ការប្រើប្រាស់ត្រូវបានគិតថ្លៃទៅគណនី Anthropic របស់អ្នក។</string>
 </resources>

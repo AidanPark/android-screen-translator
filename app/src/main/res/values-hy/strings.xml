@@ -15,10 +15,6 @@
 
     <!-- Foreground Service -->
     <string name="notification_foreground_service">Էկրանի գրավման ֆունկցիան օգտագործվում է թարգմանության համար։</string>
-    <string name="title_start_foreground_service">Գործարկվել է առաջնային ծառայությունը</string>
-    <string name="message_start_foreground_service">Հավելվածը գործարկում է առաջնային ծառայություն՝ էկրանի բովանդակությունը գրավելու և թարգմանելու համար։\n\nԳրավված պատկերները չեն պահպանվելու կամ ուղարկվելու։</string>
-    <string name="label_confirm_start_foreground_service">Գործարկել</string>
-    <string name="label_dismiss_start_foreground_service">Փակել</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">Ավարտել</string>
@@ -48,6 +44,7 @@
     <string name="settings_menu_pointer_docking_delay">Հապաղում միացման</string>
     <string name="settings_menu_haptic_feedback_to_detection">Հպման արձագանք հայտնաբերելիս</string>
     <string name="settings_menu_cat_menubar">Մենյուի գիծ</string>
+    <string name="settings_menu_menubar_visible">Ցուցադրել ընտրացանկի գոտին</string>
     <string name="settings_menu_menubar_transparency">Մենյուի թափանցիկություն</string>
     <string name="settings_menu_menubar_composition">Մենյուի գործառույթներ</string>
     <string name="settings_menu_cat_translation">Թարգմանություն</string>
@@ -95,6 +92,9 @@
   <string name="gemini_key_guide">Մուտքագրեք ձեր Gemini API բանալին՝ Gemini մոդելներով թարգմանելու համար։</string>
   <string name="help_text_gemini_own_key">Օգտագործում է ձեր անձնական Gemini API բանալին</string>
   <string name="gemini_key_signup_guide">Ստեղծեք API բանալի Google AI Studio-ում։ Հասանելի է անվճար մակարդակ։</string>
+  <string name="claude_key_guide">Մուտքագրեք ձեր Claude API բանալին՝ Claude մոդելներով թարգմանելու համար։</string>
+  <string name="help_text_claude_own_key">Օգտագործում է ձեր անձնական Claude API բանալին</string>
+  <string name="claude_key_signup_guide">Ստեղծեք API բանալի Anthropic Console-ում։ Օգտագործումը գանձվում է ձեր Anthropic հաշվին։</string>
 </resources>
 
 

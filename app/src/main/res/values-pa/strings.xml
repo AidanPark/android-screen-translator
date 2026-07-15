@@ -15,10 +15,6 @@
 
     <!-- Foreground Service 시작 알림 -->
     <string name="notification_foreground_service">ਅਨੁਵਾਦ ਲਈ ਸਕਰੀਨ ਕੈਪਚਰ ਫੰਕਸ਼ਨ ਵਰਤੀ ਜਾ ਰਹੀ ਹੈ।</string>
-    <string name="title_start_foreground_service">ਫੋਰਗਰਾਊਂਡ ਸੇਵਾ ਸ਼ੁਰੂ ਕੀਤੀ ਗਈ</string>
-    <string name="message_start_foreground_service">ਐਪ ਸਕਰੀਨ ਸਮੱਗਰੀ ਨੂੰ ਕੈਪਚਰ ਅਤੇ ਅਨੁਵਾਦ ਕਰਨ ਲਈ ਫੋਰਗਰਾਊਂਡ ਸੇਵਾ ਸ਼ੁਰੂ ਕਰਦਾ ਹੈ।\n\nਕੈਪਚਰ ਕੀਤੀਆਂ ਚਿੱਤਰਾਂ ਨੂੰ ਨਾ ਸਟੋਰ ਕੀਤਾ ਜਾਂਦਾ ਹੈ ਅਤੇ ਨਾ ਹੀ ਕਿਤੇ ਭੇਜਿਆ ਜਾਂਦਾ ਹੈ।</string>
-    <string name="label_confirm_start_foreground_service">ਸ਼ੁਰੂ ਕਰੋ</string>
-    <string name="label_dismiss_start_foreground_service">ਮੁਕੰਮਲ</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">ਮੁਕੰਮਲ</string>
@@ -48,6 +44,7 @@
     <string name="settings_menu_pointer_docking_delay">ਡੌਕਿੰਗ ਦੀ ਦੇਰੀ</string>
     <string name="settings_menu_haptic_feedback_to_detection">ਖੋਜ ਵੇਲੇ ਹੈਪਟਿਕ</string>
     <string name="settings_menu_cat_menubar">ਮੇਨੂ ਪੱਟੀ</string>
+    <string name="settings_menu_menubar_visible">ਮੀਨੂ ਬਾਰ ਦਿਖਾਓ</string>
     <string name="settings_menu_menubar_transparency">ਮੇਨੂ ਪਾਰਦਰਸ਼ਤਾ</string>
     <string name="settings_menu_menubar_composition">ਮੇਨੂ ਫੰਕਸ਼ਨ</string>
     <string name="settings_menu_cat_translation">ਅਨੁਵਾਦ</string>
@@ -95,4 +92,7 @@
   <string name="gemini_key_guide">Gemini ਮਾਡਲਾਂ ਨਾਲ ਅਨੁਵਾਦ ਕਰਨ ਲਈ ਆਪਣੀ Gemini API ਕੁੰਜੀ ਦਾਖਲ ਕਰੋ।</string>
   <string name="help_text_gemini_own_key">ਤੁਹਾਡੀ ਨਿੱਜੀ Gemini API ਕੁੰਜੀ ਵਰਤਦਾ ਹੈ</string>
   <string name="gemini_key_signup_guide">Google AI Studio ਵਿੱਚ ਇੱਕ API ਕੁੰਜੀ ਬਣਾਓ। ਇੱਕ ਮੁਫ਼ਤ ਪੱਧਰ ਉਪਲਬਧ ਹੈ।</string>
+  <string name="claude_key_guide">Claude ਮਾਡਲਾਂ ਨਾਲ ਅਨੁਵਾਦ ਕਰਨ ਲਈ ਆਪਣੀ Claude API ਕੁੰਜੀ ਦਾਖਲ ਕਰੋ।</string>
+  <string name="help_text_claude_own_key">ਤੁਹਾਡੀ ਨਿੱਜੀ Claude API ਕੁੰਜੀ ਵਰਤਦਾ ਹੈ</string>
+  <string name="claude_key_signup_guide">Anthropic Console ਵਿੱਚ ਇੱਕ API ਕੁੰਜੀ ਬਣਾਓ। ਵਰਤੋਂ ਤੁਹਾਡੇ Anthropic ਖਾਤੇ ਵਿੱਚ ਬਿਲ ਕੀਤੀ ਜਾਂਦੀ ਹੈ।</string>
 </resources>

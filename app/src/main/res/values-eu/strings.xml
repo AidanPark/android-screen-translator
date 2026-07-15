@@ -15,10 +15,6 @@
 
     <!-- Foreground Service -->
     <string name="notification_foreground_service">Pantaila atzemateko funtzioa itzulpenarako erabiltzen ari da.</string>
-    <string name="title_start_foreground_service">Aurreko plano zerbitzua hasita</string>
-    <string name="message_start_foreground_service">Aplikazioak aurreko plano zerbitzua abiarazten du pantailako edukia atzeman eta itzultzeko.\n\nAtzemandako irudiak ez dira gordeko edo kanpora bidaliko.</string>
-    <string name="label_confirm_start_foreground_service">Hasi</string>
-    <string name="label_dismiss_start_foreground_service">Amaitu</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">Amaitu</string>
@@ -48,6 +44,7 @@
     <string name="settings_menu_pointer_docking_delay">Atzerapena</string>
     <string name="settings_menu_haptic_feedback_to_detection">Erantzun haptikoa detektatzean</string>
     <string name="settings_menu_cat_menubar">Menu-barra</string>
+    <string name="settings_menu_menubar_visible">Erakutsi menu-barra</string>
     <string name="settings_menu_menubar_transparency">Menuaren gardentasuna</string>
     <string name="settings_menu_menubar_composition">Menu-funtzioak</string>
     <string name="settings_menu_cat_translation">Itzulpena</string>
@@ -95,4 +92,7 @@
   <string name="gemini_key_guide">Sartu zure Gemini API gakoa Gemini ereduekin itzultzeko.</string>
   <string name="help_text_gemini_own_key">Zure Gemini API gako pertsonala erabiltzen du</string>
   <string name="gemini_key_signup_guide">Sortu API gako bat Google AI Studion. Doako maila bat eskuragarri dago.</string>
+  <string name="claude_key_guide">Sartu zure Claude API gakoa Claude ereduekin itzultzeko.</string>
+  <string name="help_text_claude_own_key">Zure Claude API gako pertsonala erabiltzen du</string>
+  <string name="claude_key_signup_guide">Sortu API gako bat Anthropic Console-n. Erabilera zure Anthropic kontuan fakturatzen da.</string>
 </resources>

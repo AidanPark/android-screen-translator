@@ -15,10 +15,6 @@
 
     <!-- Foreground Service 시작 알림 -->
     <string name="notification_foreground_service">Ginagamit ang pagkuha ng screen para sa pagsasalin.</string>
-    <string name="title_start_foreground_service">Sinimulan ang Foreground Service</string>
-    <string name="message_start_foreground_service">Ang app ay magsisimula ng Foreground Service para kunan at isalin ang nilalaman ng screen.\n\nAng mga kuhang imahe ay hindi ise-save o ipapadala sa labas.</string>
-    <string name="label_confirm_start_foreground_service">Simulan</string>
-    <string name="label_dismiss_start_foreground_service">Tapos</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">Tapos</string>
@@ -48,6 +44,7 @@
     <string name="settings_menu_pointer_docking_delay">Delay ng Dock</string>
     <string name="settings_menu_haptic_feedback_to_detection">Haptic feedback kapag natukoy</string>
     <string name="settings_menu_cat_menubar">Menu Bar</string>
+    <string name="settings_menu_menubar_visible">Ipakita ang menu bar</string>
     <string name="settings_menu_menubar_transparency">Menu Transparency</string>
     <string name="settings_menu_menubar_composition">Mga Gamit sa Menu</string>
     <string name="settings_menu_cat_translation">Pagsasalin</string>
@@ -96,4 +93,7 @@
   <string name="gemini_key_guide">Ilagay ang iyong Gemini API key para magsalin gamit ang mga modelo ng Gemini.</string>
   <string name="help_text_gemini_own_key">Ginagamit ang iyong personal na Gemini API key</string>
   <string name="gemini_key_signup_guide">Gumawa ng API key sa Google AI Studio. May available na libreng tier.</string>
+  <string name="claude_key_guide">Ilagay ang iyong Claude API key para magsalin gamit ang mga modelo ng Claude.</string>
+  <string name="help_text_claude_own_key">Ginagamit ang iyong personal na Claude API key</string>
+  <string name="claude_key_signup_guide">Gumawa ng API key sa Anthropic Console. Ang paggamit ay sinisingil sa iyong Anthropic account.</string>
 </resources>

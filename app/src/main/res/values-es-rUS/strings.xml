@@ -15,10 +15,6 @@
 
   <!-- Foreground Service -->
   <string name="notification_foreground_service">La función de captura de pantalla se utiliza para la traducción.</string>
-  <string name="title_start_foreground_service">Servicio en primer plano iniciado</string>
-  <string name="message_start_foreground_service">La aplicación inicia un servicio en primer plano para capturar y traducir el contenido de la pantalla.\n\nLas capturas no se guardarán ni enviarán.</string>
-  <string name="label_confirm_start_foreground_service">Iniciar</string>
-  <string name="label_dismiss_start_foreground_service">Finalizar</string>
 
   <!-- OverlayService -->
   <string name="service_menu_finish">Finalizar</string>
@@ -48,6 +44,7 @@
   <string name="settings_menu_pointer_docking_delay">Retraso acoplar</string>
   <string name="settings_menu_haptic_feedback_to_detection">Respuesta háptica al detectar</string>
   <string name="settings_menu_cat_menubar">Barra de menú</string>
+    <string name="settings_menu_menubar_visible">Mostrar la barra de menús</string>
   <string name="settings_menu_menubar_transparency">Transparencia menú</string>
   <string name="settings_menu_menubar_composition">Opciones menú</string>
   <string name="settings_menu_cat_translation">Traducción</string>
@@ -95,6 +92,9 @@
   <string name="gemini_key_guide">Ingresa tu clave de API de Gemini para traducir con modelos de Gemini.</string>
   <string name="help_text_gemini_own_key">Usa tu clave API personal de Gemini</string>
   <string name="gemini_key_signup_guide">Crea una clave de API en Google AI Studio. Hay un nivel gratuito disponible.</string>
+  <string name="claude_key_guide">Ingresa tu clave de API de Claude para traducir con modelos de Claude.</string>
+  <string name="help_text_claude_own_key">Usa tu clave API personal de Claude</string>
+  <string name="claude_key_signup_guide">Crea una clave API en Anthropic Console. El uso se factura a tu cuenta de Anthropic.</string>
 </resources>
 
 

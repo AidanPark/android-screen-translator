@@ -15,10 +15,6 @@
 
   <!-- Foreground Service -->
   <string name="notification_foreground_service">Tính năng chụp màn hình đang được sử dụng để dịch.</string>
-  <string name="title_start_foreground_service">Dịch vụ nền đã bắt đầu</string>
-  <string name="message_start_foreground_service">Ứng dụng khởi chạy dịch vụ nền để chụp và dịch nội dung màn hình.\n\nẢnh chụp sẽ không được lưu hay gửi đi.</string>
-  <string name="label_confirm_start_foreground_service">Bắt đầu</string>
-  <string name="label_dismiss_start_foreground_service">Kết thúc</string>
 
   <!-- OverlayService -->
   <string name="service_menu_finish">Kết thúc</string>
@@ -48,6 +44,7 @@
   <string name="settings_menu_pointer_docking_delay">Trễ kết nối</string>
   <string name="settings_menu_haptic_feedback_to_detection">Phản hồi xúc giác khi phát hiện</string>
   <string name="settings_menu_cat_menubar">Thanh menu</string>
+    <string name="settings_menu_menubar_visible">Hiển thị thanh menu</string>
   <string name="settings_menu_menubar_transparency">Độ trong suốt của menu</string>
   <string name="settings_menu_menubar_composition">Chức năng menu</string>
   <string name="settings_menu_cat_translation">Dịch</string>
@@ -95,4 +92,7 @@
   <string name="gemini_key_guide">Nhập khóa Gemini API của bạn để dịch bằng các mô hình Gemini.</string>
   <string name="help_text_gemini_own_key">Sử dụng khóa API Gemini cá nhân của bạn</string>
   <string name="gemini_key_signup_guide">Tạo khóa API trong Google AI Studio. Có sẵn bậc miễn phí.</string>
+  <string name="claude_key_guide">Nhập khóa Claude API của bạn để dịch bằng các mô hình Claude.</string>
+  <string name="help_text_claude_own_key">Sử dụng khóa API Claude cá nhân của bạn</string>
+  <string name="claude_key_signup_guide">Tạo khóa API trong Anthropic Console. Mức sử dụng được tính vào tài khoản Anthropic của bạn.</string>
 </resources>

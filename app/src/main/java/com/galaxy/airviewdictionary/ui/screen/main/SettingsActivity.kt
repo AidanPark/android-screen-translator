@@ -28,6 +28,7 @@ import androidx.compose.animation.expandVertically
 import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -49,10 +50,10 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AllInclusive
+import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.FiberNew
 import androidx.compose.material.icons.filled.PowerSettingsNew
 import androidx.compose.material.icons.filled.Share
-import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material.icons.filled.VoiceChat
 import androidx.compose.material.icons.outlined.Api
 import androidx.compose.material.icons.outlined.CardGiftcard
@@ -66,8 +67,8 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
-import androidx.compose.material3.RadioButton
-import androidx.compose.material3.RadioButtonDefaults
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHost
@@ -131,6 +132,7 @@ import com.galaxy.airviewdictionary.data.local.preference.PreferenceRepository
 import com.galaxy.airviewdictionary.data.local.tts.TTSReadTarget
 import com.galaxy.airviewdictionary.data.local.vision.TextDetectMode
 import com.galaxy.airviewdictionary.data.remote.translation.TranslationKitType
+import com.galaxy.airviewdictionary.data.remote.translation.claude.ClaudeKit
 import com.galaxy.airviewdictionary.data.remote.translation.deepl.DeepLKit
 import com.galaxy.airviewdictionary.data.remote.translation.gemini.GeminiKit
 import com.galaxy.airviewdictionary.data.remote.translation.openai.OpenAiKit
@@ -423,9 +425,6 @@ class SettingsActivity : AVDActivity() {
         val buttonColor = if (isDarkMode) Color(0xFFfafafa) else Color(0xFF171717)
 
         // Pointer docking delay
-        // 삼성 기기는 세로 중앙 가장자리의 '엣지 패널'과 도킹이 충돌하므로 도킹을 제공하지 않는다.
-        // 이 경우 도킹 지연시간 메뉴 자체를 숨긴다. (도킹 동작은 TargetHandleView 에서 비활성화)
-        val isSamsungDevice = Build.MANUFACTURER.equals("samsung", ignoreCase = true)
         val dockingDelayTextOffset = remember { mutableStateOf(Point(0, 0)) }
         val dockingDelaySubtextOffset = remember { mutableStateOf(Point(0, 0)) }
         val dockingDelay by viewModel.preferenceRepository.dockingDelayFlow.collectAsStateWithLifecycle(
@@ -704,7 +703,6 @@ class SettingsActivity : AVDActivity() {
                                 isRtl = isRtl,
                             )
 
-                            if (!isSamsungDevice) {
                             MenuItem(
                                 menuItemPosition = MenuItemPosition.Top,
                                 onClick = {
@@ -779,10 +777,9 @@ class SettingsActivity : AVDActivity() {
                                     }
                                 }
                             }
-                            } // if (!isSamsungDevice) — 삼성에서는 도킹 지연시간 메뉴 숨김
 
                             MenuItem(
-                                menuItemPosition = if (isSamsungDevice) MenuItemPosition.Single else MenuItemPosition.Bottom,
+                                menuItemPosition = MenuItemPosition.Bottom,
                                 onClick = {
                                     if (!dragHandleHaptic) {
                                         context.vibrate()
@@ -834,6 +831,48 @@ class SettingsActivity : AVDActivity() {
                             MenuItem(
                                 menuItemPosition = if (menuBarVisibility) MenuItemPosition.Top else MenuItemPosition.Single,
                                 onClick = {
+                                    viewModel.updateMenuBarVisibility(!menuBarVisibility)
+                                }
+                            ) {
+                                Row(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    horizontalArrangement = Arrangement.SpaceBetween
+                                ) {
+                                    MenuText(
+                                        text = getString(R.string.settings_menu_menubar_visible),
+                                    )
+                                    Switch(
+                                        checked = menuBarVisibility,
+                                        onCheckedChange = { value ->
+                                            viewModel.updateMenuBarVisibility(value)
+                                        },
+                                        colors = SwitchDefaults.colors(
+                                            checkedThumbColor = switchThumbColor,
+                                            checkedTrackColor = switchTrackColor
+                                        ),
+                                        modifier = Modifier
+                                            .scale(switchScale)
+                                            .align(Alignment.CenterVertically)
+                                            .semantics {
+                                                contentDescription = if (menuBarVisibility) {
+                                                    "Show menu bar on"
+                                                } else {
+                                                    "Show menu bar off"
+                                                }
+                                            }
+                                    )
+                                }
+                            }
+
+                            AnimatedVisibility(
+                                visible = menuBarVisibility,
+                                enter = expandVertically(animationSpec = tween(menuExpandAnimationDuration)),
+                                exit = shrinkVertically(animationSpec = tween(menuExpandAnimationDuration)),
+                            ) {
+                            MenuItem(
+                                menuItemPosition = MenuItemPosition.Middle,
+                                onClick = {
                                     coroutineScope.launch {
                                         settingStringFlow.value = getTransparencyValueText(menuBarTransparency)
                                         SliderDialogView.INSTANCE.cast(
@@ -843,7 +882,6 @@ class SettingsActivity : AVDActivity() {
                                             onValueChange = { value ->
                                                 Timber.tag(TAG).d("Menubar transparency onValueChange : $value")
                                                 viewModel.updateMenuBarTransparency(1.0f - value)
-                                                viewModel.updateMenuBarVisibility(value < 0.5f)
                                                 settingStringFlow.value = getTransparencyValueText(1.0f - value)
                                             },
                                             menuText = Pair(getString(R.string.settings_menu_menubar_transparency), menuBarTransparencyTextOffset.value),
@@ -882,25 +920,15 @@ class SettingsActivity : AVDActivity() {
                                             },
                                         contentAlignment = Alignment.CenterEnd
                                     ) {
-                                        if ((1.0f - menuBarTransparency) > 0.49f) {
-                                            Icon(
-                                                imageVector = Icons.Default.VisibilityOff,
-                                                contentDescription = "Menubar transparency",
-                                                modifier = Modifier
-                                                    .size(32.dp)
-                                                    .padding(end = 8.dp),
-                                                tint = subContentColor
-                                            )
-                                        } else {
-                                            Text(
-                                                modifier = Modifier.padding(end = 6.dp),
-                                                text = getTransparencyValueText(menuBarTransparency),
-                                                color = subContentColor,
-                                                style = MaterialTheme.typography.bodyMedium.copy(fontSize = fontDimensionResource(R.dimen.settings_menu_subtext_size)),
-                                            )
-                                        }
+                                        Text(
+                                            modifier = Modifier.padding(end = 6.dp),
+                                            text = getTransparencyValueText(menuBarTransparency),
+                                            color = subContentColor,
+                                            style = MaterialTheme.typography.bodyMedium.copy(fontSize = fontDimensionResource(R.dimen.settings_menu_subtext_size)),
+                                        )
                                     }
                                 }
+                            }
                             }
 
                             AnimatedVisibility(
@@ -1080,6 +1108,8 @@ class SettingsActivity : AVDActivity() {
                             var openAiKeyActivated by remember { mutableStateOf(OpenAiKit.getStoredApiKey(context) != null) }
                             var showGeminiApiKeyDialog by remember { mutableStateOf(false) }
                             var geminiKeyActivated by remember { mutableStateOf(GeminiKit.getStoredApiKey(context) != null) }
+                            var showClaudeApiKeyDialog by remember { mutableStateOf(false) }
+                            var claudeKeyActivated by remember { mutableStateOf(ClaudeKit.getStoredApiKey(context) != null) }
 
                             MenuTextItem(
                                 menuItemPosition = MenuItemPosition.Top,
@@ -1102,12 +1132,22 @@ class SettingsActivity : AVDActivity() {
                             )
 
                             MenuTextItem(
-                                menuItemPosition = MenuItemPosition.Bottom,
+                                menuItemPosition = MenuItemPosition.Middle,
                                 text = getString(R.string.settings_menu_gemini_api_key),
                                 paddingValues = paddingValues,
                                 subText = if (geminiKeyActivated) getString(R.string.deepl_key_active) else null,
                                 onClick = {
                                     showGeminiApiKeyDialog = true
+                                }
+                            )
+
+                            MenuTextItem(
+                                menuItemPosition = MenuItemPosition.Bottom,
+                                text = getString(R.string.settings_menu_claude_api_key),
+                                paddingValues = paddingValues,
+                                subText = if (claudeKeyActivated) getString(R.string.deepl_key_active) else null,
+                                onClick = {
+                                    showClaudeApiKeyDialog = true
                                 }
                             )
 
@@ -1134,6 +1174,15 @@ class SettingsActivity : AVDActivity() {
                                     onDismissRequest = {
                                         showGeminiApiKeyDialog = false
                                         geminiKeyActivated = GeminiKit.getStoredApiKey(context) != null
+                                    }
+                                )
+                            }
+
+                            if (showClaudeApiKeyDialog) {
+                                ClaudeApiKeyDialog(
+                                    onDismissRequest = {
+                                        showClaudeApiKeyDialog = false
+                                        claudeKeyActivated = ClaudeKit.getStoredApiKey(context) != null
                                     }
                                 )
                             }
@@ -1678,6 +1727,77 @@ class SettingsActivity : AVDActivity() {
     }
 
     /**
+     * API 키 다이얼로그의 번역 모델 선택 필드. 라디오 그룹 대신 드롭다운으로 처리해 팝업 높이를 줄여,
+     * 상단 오버레이 메뉴바에 가려지지 않도록 한다.
+     */
+    @Composable
+    private fun ModelDropdownField(
+        label: String,
+        models: List<String>,
+        selectedModel: String?,
+        enabled: Boolean,
+        titleColor: Color,
+        contentColor: Color,
+        linkColor: Color,
+        onModelSelected: (String) -> Unit,
+    ) {
+        Spacer(modifier = Modifier.height(16.dp))
+        Text(
+            text = label,
+            color = titleColor,
+            style = MaterialTheme.typography.titleMedium.copy(fontSize = 14.sp, fontWeight = FontWeight.Bold),
+        )
+        Spacer(modifier = Modifier.height(4.dp))
+        var expanded by remember { mutableStateOf(false) }
+        Box(modifier = Modifier.fillMaxWidth()) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .border(
+                        width = 1.dp,
+                        color = if (enabled) linkColor.copy(alpha = 0.6f) else contentColor.copy(alpha = 0.3f),
+                        shape = RoundedCornerShape(4.dp),
+                    )
+                    .clickable(enabled = enabled) { expanded = true }
+                    .padding(horizontal = 14.dp, vertical = 13.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Text(
+                    text = selectedModel ?: models.firstOrNull().orEmpty(),
+                    color = contentColor,
+                    style = MaterialTheme.typography.bodyMedium.copy(fontSize = 14.sp),
+                    modifier = Modifier.weight(1f),
+                )
+                Icon(
+                    imageVector = Icons.Default.ArrowDropDown,
+                    contentDescription = null,
+                    tint = contentColor,
+                )
+            }
+            DropdownMenu(
+                expanded = expanded,
+                onDismissRequest = { expanded = false },
+            ) {
+                models.forEach { model ->
+                    DropdownMenuItem(
+                        text = {
+                            Text(
+                                text = model,
+                                color = if (model == selectedModel) linkColor else contentColor,
+                                style = MaterialTheme.typography.bodyMedium.copy(fontSize = 14.sp),
+                            )
+                        },
+                        onClick = {
+                            onModelSelected(model)
+                            expanded = false
+                        },
+                    )
+                }
+            }
+        }
+    }
+
+    /**
      * DeepL API 키 입력 팝업.
      * 언어 선택 팝업과 같은 카드 스타일로, 로고/안내/계정 링크와 키 입력·저장을 제공한다.
      */
@@ -2050,34 +2170,16 @@ class SettingsActivity : AVDActivity() {
 
                 // 번역 모델 선택
                 if (models.isNotEmpty()) {
-                    Spacer(modifier = Modifier.height(16.dp))
-                    Text(
-                        text = getString(R.string.openai_model_label),
-                        color = titleColor,
-                        style = MaterialTheme.typography.titleMedium.copy(fontSize = 14.sp, fontWeight = FontWeight.Bold),
+                    ModelDropdownField(
+                        label = getString(R.string.openai_model_label),
+                        models = models,
+                        selectedModel = selectedModel,
+                        enabled = !isValidating,
+                        titleColor = titleColor,
+                        contentColor = contentColor,
+                        linkColor = linkColor,
+                        onModelSelected = { selectedModel = it },
                     )
-                    Spacer(modifier = Modifier.height(4.dp))
-                    models.forEach { model ->
-                        Row(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .clickable(enabled = !isValidating) { selectedModel = model }
-                                .padding(vertical = 2.dp),
-                            verticalAlignment = Alignment.CenterVertically,
-                        ) {
-                            RadioButton(
-                                selected = selectedModel == model,
-                                onClick = { selectedModel = model },
-                                enabled = !isValidating,
-                                colors = RadioButtonDefaults.colors(selectedColor = linkColor),
-                            )
-                            Text(
-                                text = model,
-                                color = contentColor,
-                                style = MaterialTheme.typography.bodyMedium.copy(fontSize = 14.sp),
-                            )
-                        }
-                    }
                 }
 
                 Spacer(modifier = Modifier.height(10.dp))
@@ -2285,34 +2387,233 @@ class SettingsActivity : AVDActivity() {
 
                 // 번역 모델 선택
                 if (models.isNotEmpty()) {
-                    Spacer(modifier = Modifier.height(16.dp))
-                    Text(
-                        text = getString(R.string.openai_model_label),
-                        color = titleColor,
-                        style = MaterialTheme.typography.titleMedium.copy(fontSize = 14.sp, fontWeight = FontWeight.Bold),
+                    ModelDropdownField(
+                        label = getString(R.string.openai_model_label),
+                        models = models,
+                        selectedModel = selectedModel,
+                        enabled = !isValidating,
+                        titleColor = titleColor,
+                        contentColor = contentColor,
+                        linkColor = linkColor,
+                        onModelSelected = { selectedModel = it },
                     )
-                    Spacer(modifier = Modifier.height(4.dp))
-                    models.forEach { model ->
-                        Row(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .clickable(enabled = !isValidating) { selectedModel = model }
-                                .padding(vertical = 2.dp),
-                            verticalAlignment = Alignment.CenterVertically,
-                        ) {
-                            RadioButton(
-                                selected = selectedModel == model,
-                                onClick = { selectedModel = model },
-                                enabled = !isValidating,
-                                colors = RadioButtonDefaults.colors(selectedColor = linkColor),
-                            )
-                            Text(
-                                text = model,
-                                color = contentColor,
-                                style = MaterialTheme.typography.bodyMedium.copy(fontSize = 14.sp),
-                            )
-                        }
+                }
+
+                Spacer(modifier = Modifier.height(10.dp))
+
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.End,
+                ) {
+                    TextButton(
+                        onClick = onDismissRequest,
+                        enabled = !isValidating,
+                    ) {
+                        Text(
+                            text = stringResource(id = android.R.string.cancel),
+                            color = contentColor,
+                            fontSize = 15.sp,
+                        )
                     }
+                    TextButton(
+                        onClick = { saveApiKey() },
+                        enabled = !isValidating,
+                    ) {
+                        Text(
+                            text = if (isValidating) getString(R.string.deepl_key_validating) else getString(R.string.label_save),
+                            color = linkColor,
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 15.sp,
+                        )
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * Claude API 키 입력 + 번역 모델 선택 팝업. OpenAI/Gemini 다이얼로그와 같은 카드 스타일.
+     * 모델 후보는 Remote Config([RemoteConfigRepository.CLAUDE_TRANSLATE_MODELS])에서 온다.
+     */
+    @Composable
+    fun ClaudeApiKeyDialog(
+        onDismissRequest: () -> Unit,
+    ) {
+        val context = LocalContext.current
+        val isDarkMode = isSystemInDarkTheme()
+        val backgroundColor = if (isDarkMode) Color(0xFF1F1F1F) else Color(0xFFFEFEFE)
+        val titleColor = if (isDarkMode) Color(0xFFFFFFFF) else Color(0xFF000000)
+        val contentColor = if (isDarkMode) Color(0xFFFDFDFD) else Color(0xFF232323)
+        val linkColor = if (isDarkMode) Color(0xFF6A91B2) else Color(0xFF446987)
+
+        var apiKeyInput by remember { mutableStateOf(ClaudeKit.getStoredApiKey(context) ?: "") }
+        var isValidating by remember { mutableStateOf(false) }
+        var showInvalidKeyError by remember { mutableStateOf(false) }
+        val coroutineScope = rememberCoroutineScope()
+
+        // 번역 모델 후보(Remote Config)와 현재 선택값
+        val models = remember { viewModel.remoteConfigRepository.getClaudeTranslateModels() }
+        var selectedModel by remember { mutableStateOf<String?>(null) }
+        LaunchedEffect(Unit) {
+            val saved = viewModel.preferenceRepository.claudeModelFlow.first()
+            selectedModel = saved?.takeIf { it in models } ?: models.firstOrNull()
+        }
+
+        fun persistModel() {
+            selectedModel?.let { model ->
+                coroutineScope.launch {
+                    viewModel.preferenceRepository.update(PreferenceRepository.CLAUDE_MODEL, model)
+                }
+            }
+        }
+
+        fun saveApiKey() {
+            persistModel()
+            val trimmedKey = apiKeyInput.trim()
+            if (trimmedKey.isEmpty()) {
+                ClaudeKit.storeApiKey(context, "")
+                coroutineScope.launch {
+                    if (viewModel.preferenceRepository.translationKitTypeFlow.first() == TranslationKitType.CLAUDE) {
+                        viewModel.preferenceRepository.update(PreferenceRepository.TRANSLATION_KIT_TYPE, TranslationKitType.GOOGLE.name)
+                    }
+                }
+                onDismissRequest()
+                return
+            }
+
+            isValidating = true
+            showInvalidKeyError = false
+            coroutineScope.launch {
+                when (ClaudeKit.validateApiKey(trimmedKey)) {
+                    ClaudeKit.KeyValidationResult.VALID -> {
+                        ClaudeKit.storeApiKey(context, trimmedKey)
+                        onDismissRequest()
+                    }
+
+                    ClaudeKit.KeyValidationResult.INVALID -> {
+                        isValidating = false
+                        showInvalidKeyError = true
+                    }
+
+                    ClaudeKit.KeyValidationResult.NETWORK_ERROR -> {
+                        ClaudeKit.storeApiKey(context, trimmedKey)
+                        Toast.makeText(context, getString(R.string.deepl_key_network_error), Toast.LENGTH_LONG).show()
+                        onDismissRequest()
+                    }
+                }
+            }
+        }
+
+        @Composable
+        fun LinkText(text: String, url: String) {
+            Text(
+                text = text,
+                color = linkColor,
+                textDecoration = TextDecoration.Underline,
+                style = MaterialTheme.typography.bodySmall.copy(fontSize = 13.sp),
+                modifier = Modifier
+                    .clickable {
+                        context.startActivity(Intent(Intent.ACTION_VIEW, url.toUri()))
+                    }
+                    .padding(vertical = 6.dp),
+            )
+        }
+
+        Dialog(onDismissRequest = onDismissRequest) {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(
+                        color = backgroundColor,
+                        shape = RoundedCornerShape(24.dp)
+                    )
+                    .padding(horizontal = 24.dp, vertical = 22.dp)
+            ) {
+                // 로고 + 타이틀
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Image(
+                        painter = painterResource(id = R.drawable.ci_claude),
+                        contentDescription = "Claude logo",
+                        modifier = Modifier.size(26.dp),
+                    )
+                    Spacer(modifier = Modifier.width(10.dp))
+                    Text(
+                        text = TranslationKitType.CLAUDE.text,
+                        color = titleColor,
+                        style = MaterialTheme.typography.titleLarge.copy(fontSize = 16.sp, fontWeight = FontWeight.Bold),
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(18.dp))
+
+                Text(
+                    text = getString(R.string.claude_key_guide),
+                    color = contentColor,
+                    style = MaterialTheme.typography.bodySmall.copy(fontSize = 13.sp),
+                )
+
+                Spacer(modifier = Modifier.height(8.dp))
+
+                Text(
+                    text = getString(R.string.claude_key_signup_guide),
+                    color = contentColor,
+                    style = MaterialTheme.typography.bodySmall.copy(fontSize = 13.sp),
+                )
+
+                Spacer(modifier = Modifier.height(10.dp))
+
+                LinkText(
+                    text = getString(R.string.openai_key_link_keys),
+                    url = ClaudeKit.URL_API_KEYS,
+                )
+                LinkText(
+                    text = getString(R.string.openai_key_link_billing),
+                    url = ClaudeKit.URL_BILLING,
+                )
+
+                Spacer(modifier = Modifier.height(14.dp))
+
+                OutlinedTextField(
+                    value = apiKeyInput,
+                    onValueChange = {
+                        apiKeyInput = it
+                        showInvalidKeyError = false
+                    },
+                    label = { Text(text = "API Key") },
+                    singleLine = true,
+                    enabled = !isValidating,
+                    isError = showInvalidKeyError,
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = OutlinedTextFieldDefaults.colors(
+                        focusedTextColor = contentColor,
+                        unfocusedTextColor = contentColor,
+                        focusedBorderColor = linkColor,
+                        focusedLabelColor = linkColor,
+                        cursorColor = linkColor,
+                    ),
+                )
+
+                if (showInvalidKeyError) {
+                    Spacer(modifier = Modifier.height(6.dp))
+                    Text(
+                        text = getString(R.string.deepl_key_invalid),
+                        color = Color(0xFFB3261E),
+                        style = MaterialTheme.typography.bodySmall.copy(fontSize = 13.sp),
+                    )
+                }
+
+                // 번역 모델 선택
+                if (models.isNotEmpty()) {
+                    ModelDropdownField(
+                        label = getString(R.string.openai_model_label),
+                        models = models,
+                        selectedModel = selectedModel,
+                        enabled = !isValidating,
+                        titleColor = titleColor,
+                        contentColor = contentColor,
+                        linkColor = linkColor,
+                        onModelSelected = { selectedModel = it },
+                    )
                 }
 
                 Spacer(modifier = Modifier.height(10.dp))

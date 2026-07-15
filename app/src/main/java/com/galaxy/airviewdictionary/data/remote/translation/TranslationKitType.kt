@@ -67,4 +67,17 @@ enum class TranslationKitType(
         brandFatResourceId = R.drawable.translate_gemini_fat,
         providersUrl = "https://ai.google.dev/",
     ),
+    CLAUDE(
+        text = "Claude",
+        logoResourceId = R.drawable.logo_engine_claude,
+        ciResourceId = R.drawable.ci_claude,
+        ciOddResourceId = R.drawable.ci_claude_odd,
+        ciGrayResourceId = R.drawable.ci_claude_gray,
+        ciGrayOddResourceId = R.drawable.ci_claude_gray_odd,
+        ciGrayDarkResourceId = R.drawable.ci_claude_gray_dark,
+        ciGrayOddDarkResourceId = R.drawable.ci_claude_gray_odd_dark,
+        brandResourceId = R.drawable.translate_claude,
+        brandFatResourceId = R.drawable.translate_claude_fat,
+        providersUrl = "https://www.anthropic.com/claude",
+    ),
 }

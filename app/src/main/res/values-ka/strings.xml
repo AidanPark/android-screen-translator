@@ -15,10 +15,6 @@
 
     <!-- Foreground Service 시작 알림 -->
     <string name="notification_foreground_service">ეკრანის გადაღების ფუნქცია გამოიყენება თარგმნისთვის.</string>
-    <string name="title_start_foreground_service">Foreground სერვისის დაწყება</string>
-    <string name="message_start_foreground_service">აპი იწყებს foreground სერვისს ეკრანის შინაარსის დასაფიქსირებლად და სათარგმნელად.\n\nგადაღებული გამოსახულებები არ ინახება და არც გადაიგზავნება.</string>
-    <string name="label_confirm_start_foreground_service">დაწყება</string>
-    <string name="label_dismiss_start_foreground_service">დასრულება</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">დასრულება</string>
@@ -48,6 +44,7 @@
     <string name="settings_menu_pointer_docking_delay">შენიშვნის დაყოვნება</string>
     <string name="settings_menu_haptic_feedback_to_detection">ჰაპტიკური გამოხმაურება აღმოჩენისას</string>
     <string name="settings_menu_cat_menubar">მენიუს ზოლი</string>
+    <string name="settings_menu_menubar_visible">მენიუს ზოლის ჩვენება</string>
     <string name="settings_menu_menubar_transparency">მენიუს გამჭვირვალობა</string>
     <string name="settings_menu_menubar_composition">მენიუს ფუნქციები</string>
     <string name="settings_menu_cat_translation">თარგმანი</string>
@@ -95,4 +92,7 @@
   <string name="gemini_key_guide">შეიყვანეთ თქვენი Gemini API გასაღები Gemini მოდელებით სათარგმნად.</string>
   <string name="help_text_gemini_own_key">იყენებს თქვენს პირად Gemini API გასაღებს</string>
   <string name="gemini_key_signup_guide">შექმენით API გასაღები Google AI Studio-ში. ხელმისაწვდომია უფასო დონე.</string>
+  <string name="claude_key_guide">შეიყვანეთ თქვენი Claude API გასაღები Claude მოდელებით სათარგმნად.</string>
+  <string name="help_text_claude_own_key">იყენებს თქვენს პირად Claude API გასაღებს</string>
+  <string name="claude_key_signup_guide">შექმენით API გასაღები Anthropic Console-ში. გამოყენება ერიცხება თქვენს Anthropic ანგარიშს.</string>
 </resources>

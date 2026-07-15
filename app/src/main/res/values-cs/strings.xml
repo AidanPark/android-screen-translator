@@ -15,10 +15,6 @@
 
     <!-- Foreground Service 시작 알림 -->
     <string name="notification_foreground_service">Funkce snímání obrazovky je využívána pro překlad.</string>
-    <string name="title_start_foreground_service">Spuštění popřední služby</string>
-    <string name="message_start_foreground_service">Aplikace spustí popřední službu pro snímání a překlad obsahu obrazovky.\n\nZachycené obrázky nejsou ukládány ani odesílány.</string>
-    <string name="label_confirm_start_foreground_service">Spustit</string>
-    <string name="label_dismiss_start_foreground_service">Ukončit</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">Ukončit</string>
@@ -48,6 +44,7 @@
     <string name="settings_menu_pointer_docking_delay">Zpoždění dokování</string>
     <string name="settings_menu_haptic_feedback_to_detection">Haptická odezva při detekci</string>
     <string name="settings_menu_cat_menubar">Panel menu</string>
+    <string name="settings_menu_menubar_visible">Zobraziť panel nabídek</string>
     <string name="settings_menu_menubar_transparency">Průhlednost menu</string>
     <string name="settings_menu_menubar_composition">Funkce menu</string>
     <string name="settings_menu_cat_translation">Překlad</string>
@@ -95,4 +92,7 @@
   <string name="gemini_key_guide">Zadejte svůj klíč Gemini API pro překlad pomocí modelů Gemini.</string>
   <string name="help_text_gemini_own_key">Používá váš osobní klíč API Gemini</string>
   <string name="gemini_key_signup_guide">Vytvořte klíč API v Google AI Studio. K dispozici je bezplatná úroveň.</string>
+  <string name="claude_key_guide">Zadejte svůj klíč Claude API pro překlad pomocí modelů Claude.</string>
+  <string name="help_text_claude_own_key">Používá váš osobní klíč API Claude</string>
+  <string name="claude_key_signup_guide">Vytvořte klíč API v Anthropic Console. Použití se účtuje na váš účet Anthropic.</string>
 </resources>

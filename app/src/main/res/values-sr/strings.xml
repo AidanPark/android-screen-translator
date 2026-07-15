@@ -15,10 +15,6 @@
 
     <!-- Foreground Service -->
     <string name="notification_foreground_service">Функција снимања екрана се користи за превођење.</string>
-    <string name="title_start_foreground_service">Покренута је услуга у првом плану</string>
-    <string name="message_start_foreground_service">Апликација покреће услугу у првом плану за снимање и превођење садржаја екрана.\n\nСнимци неће бити сачувани или послати.</string>
-    <string name="label_confirm_start_foreground_service">Почни</string>
-    <string name="label_dismiss_start_foreground_service">Заврши</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">Заврши</string>
@@ -48,6 +44,7 @@
     <string name="settings_menu_pointer_docking_delay">Kašnjenje dokovanja</string>
     <string name="settings_menu_haptic_feedback_to_detection">Хаптички одзив при детекцији</string>
     <string name="settings_menu_cat_menubar">Menijska traka</string>
+    <string name="settings_menu_menubar_visible">Прикажи траку менија</string>
     <string name="settings_menu_menubar_transparency">Prozirnost menija</string>
     <string name="settings_menu_menubar_composition">Funkcije menija</string>
     <string name="settings_menu_cat_translation">Prevod</string>
@@ -95,6 +92,9 @@
   <string name="gemini_key_guide">Унесите свој Gemini API кључ да бисте преводили помоћу Gemini модела.</string>
   <string name="help_text_gemini_own_key">Користи ваш лични Gemini API кључ</string>
   <string name="gemini_key_signup_guide">Направите API кључ у Google AI Studio. Доступан је бесплатан ниво.</string>
+  <string name="claude_key_guide">Унесите свој Claude API кључ да бисте преводили помоћу Claude модела.</string>
+  <string name="help_text_claude_own_key">Користи ваш лични Claude API кључ</string>
+  <string name="claude_key_signup_guide">Направите API кључ у Anthropic Console. Коришћење се наплаћује на ваш Anthropic налог.</string>
 </resources>
 
 

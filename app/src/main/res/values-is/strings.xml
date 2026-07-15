@@ -15,10 +15,6 @@
 
     <!-- Foreground Service -->
     <string name="notification_foreground_service">Skjáupptökuaðgerð er notuð til þýðingar.</string>
-    <string name="title_start_foreground_service">Ræsa forgrunnsþjónustu</string>
-    <string name="message_start_foreground_service">Forritið ræsir forgrunnsþjónustu til að fanga og þýða skjáefni.\n\nUpptökurnar verða ekki geymdar eða sendar.</string>
-    <string name="label_confirm_start_foreground_service">Ræsa</string>
-    <string name="label_dismiss_start_foreground_service">Loka</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">Ljúka</string>
@@ -48,6 +44,7 @@
     <string name="settings_menu_pointer_docking_delay">Töf við festingu</string>
     <string name="settings_menu_haptic_feedback_to_detection">Snertisvörun við greiningu</string>
     <string name="settings_menu_cat_menubar">Valmyndarslá</string>
+    <string name="settings_menu_menubar_visible">Sýna valmyndastikuna</string>
     <string name="settings_menu_menubar_transparency">Gegnsæi valmyndar</string>
     <string name="settings_menu_menubar_composition">Valmynda aðgerðir</string>
     <string name="settings_menu_cat_translation">Þýðing</string>
@@ -95,6 +92,9 @@
   <string name="gemini_key_guide">Sláðu inn Gemini API-lykilinn þinn til að þýða með Gemini-líkönum.</string>
   <string name="help_text_gemini_own_key">Notar persónulega Gemini API-lykilinn þinn</string>
   <string name="gemini_key_signup_guide">Búðu til API-lykil í Google AI Studio. Ókeypis þrep er í boði.</string>
+  <string name="claude_key_guide">Sláðu inn Claude API-lykilinn þinn til að þýða með Claude-líkönum.</string>
+  <string name="help_text_claude_own_key">Notar persónulega Claude API-lykilinn þinn</string>
+  <string name="claude_key_signup_guide">Búðu til API-lykil í Anthropic Console. Notkun er gjaldfærð á Anthropic-reikninginn þinn.</string>
 </resources>
 
 

@@ -539,6 +539,9 @@ class TargetHandleView private constructor() : OverlayView() {
      */
     private val isSamsungDevice: Boolean = Build.MANUFACTURER.equals("samsung", ignoreCase = true)
 
+    // 삼성 엣지 패널과 충돌하지 않도록, 삼성에서는 도킹 시 핸들 폭의 이 비율만큼만 화면 밖으로 얕게 숨긴다.
+    private val samsungDockHiddenRatio = 0.20
+
     private var dragHandleDockingJob: Job? = null
 
     private var dockAnimator: ValueAnimator? = null
@@ -651,13 +654,12 @@ class TargetHandleView private constructor() : OverlayView() {
     }
 
     private fun dockDragHandle(context: Context, start: Boolean) {
-        // 삼성 기기에서는 엣지 패널과의 충돌을 피하기 위해 도킹하지 않는다.
-        if (isSamsungDevice) return
         Timber.tag(TAG).d("#### dockDragHandle() ####")
         val screenInfo: ScreenInfo = ScreenInfoHolder.get()
-        val hideDepth = context.resources.getDimensionPixelSize(R.dimen.target_handle_width)
-        val targetX = (if (start) -hideDepth else screenInfo.width).toDouble()
-//        val targetX:Double =  -context.resources.getDimensionPixelSize(R.dimen.target_handle_width) * 0.94
+        val handleWidth = context.resources.getDimensionPixelSize(R.dimen.target_handle_width)
+        // 삼성은 엣지 패널과 충돌하므로 핸들의 20%만 얕게 숨긴다. 그 외 기기는 완전히 밀어 넣은 뒤 꼭지만 노출한다.
+        val hideDepth = if (isSamsungDevice) (handleWidth * samsungDockHiddenRatio).toInt() else handleWidth
+        val targetX = (if (start) -hideDepth else screenInfo.width - handleWidth + hideDepth).toDouble()
         // 도킹 세로 위치 비율. 0.5 = 화면 세로 중앙.
         // 삼성 엣지 패널 핸들(기본 중앙)과 겹치지 않도록 화면 높이의 3/4 지점으로 내린다. (조정 가능)
         val dockYRatio = 0.75
@@ -704,7 +706,12 @@ class TargetHandleView private constructor() : OverlayView() {
                 override fun onAnimationStart(animation: Animator) {}
 
                 override fun onAnimationEnd(animation: Animator) {
-                    exposeTargetHandleKnob(context, start)
+                    // 삼성은 이미 얕게(20%) 도킹돼 있으므로 꼭지 재노출 없이 힌트만 보여준다.
+                    if (isSamsungDevice) {
+                        showSayHereHintIfNeeded(context, start)
+                    } else {
+                        exposeTargetHandleKnob(context, start)
+                    }
                     viewModel.dockStateFlow.value = true
                     dockAnimator = null
                 }
@@ -749,21 +756,7 @@ class TargetHandleView private constructor() : OverlayView() {
                 override fun onAnimationStart(animation: Animator) {}
 
                 override fun onAnimationEnd(animation: Animator) {
-                    launchInAVDCoroutineScope {
-                        if (start && !viewModel.preferenceRepository.isSayHereLShownFlow.first()) {
-                            SayHereView.INSTANCE.cast(
-                                applicationContext = context,
-                                start = true,
-                                position = Point(layoutParams.x, layoutParams.y)
-                            )
-                        } else if (!start && !viewModel.preferenceRepository.isSayHereRShownFlow.first()) {
-                            SayHereView.INSTANCE.cast(
-                                applicationContext = context,
-                                start = false,
-                                position = Point(layoutParams.x, layoutParams.y)
-                            )
-                        }
-                    }
+                    showSayHereHintIfNeeded(context, start)
                 }
 
                 override fun onAnimationCancel(animation: Animator) {}
@@ -772,6 +765,27 @@ class TargetHandleView private constructor() : OverlayView() {
             })
 
             start() // 애니메이션 시작
+        }
+    }
+
+    /**
+     * 도킹이 끝난 뒤, 아직 안내한 적 없으면 핸들 위치에 "여기 있어요" 힌트를 띄운다.
+     */
+    private fun showSayHereHintIfNeeded(context: Context, start: Boolean) {
+        launchInAVDCoroutineScope {
+            if (start && !viewModel.preferenceRepository.isSayHereLShownFlow.first()) {
+                SayHereView.INSTANCE.cast(
+                    applicationContext = context,
+                    start = true,
+                    position = Point(layoutParams.x, layoutParams.y)
+                )
+            } else if (!start && !viewModel.preferenceRepository.isSayHereRShownFlow.first()) {
+                SayHereView.INSTANCE.cast(
+                    applicationContext = context,
+                    start = false,
+                    position = Point(layoutParams.x, layoutParams.y)
+                )
+            }
         }
     }
 

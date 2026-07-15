@@ -15,10 +15,6 @@
 
     <!-- Foreground Service 시작 알림 -->
     <string name="notification_foreground_service">Umsebenzi wokuqopha isikrini usetshenziswa ukuze kuhumusheke.</string>
-    <string name="title_start_foreground_service">Ukuqalwa Kwesevisi Engaphambili</string>
-    <string name="message_start_foreground_service">Uhlelo luqala isevisi engaphambili ukuze luthathe futhi luhumushe okuqukethwe esikrinini.\n\nIzithombe ezithathiwe azigcinwa noma zithunyelwe ngaphandle.</string>
-    <string name="label_confirm_start_foreground_service">Qala</string>
-    <string name="label_dismiss_start_foreground_service">Qeda</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">Qeda</string>
@@ -48,6 +44,7 @@
     <string name="settings_menu_pointer_docking_delay">Ukuhamba kancane kokuxhuma</string>
     <string name="settings_menu_haptic_feedback_to_detection">Impendulo yokuthinta lapho kutholakala</string>
     <string name="settings_menu_cat_menubar">Imenyu yeBar</string>
+    <string name="settings_menu_menubar_visible">Bonisa ibha yemenyu</string>
     <string name="settings_menu_menubar_transparency">Ukuvuleka kweMenyu</string>
     <string name="settings_menu_menubar_composition">Imisebenzi yeMenyu</string>
     <string name="settings_menu_cat_translation">Ukuguqula</string>
@@ -95,4 +92,7 @@
   <string name="gemini_key_guide">Faka ukhiye wakho we-Gemini API ukuze uhumushe ngezimodeli ze-Gemini.</string>
   <string name="help_text_gemini_own_key">Isebenzisa ukhiye wakho we-Gemini API womuntu siqu</string>
   <string name="gemini_key_signup_guide">Dala ukhiye we-API ku-Google AI Studio. Kunezinga lamahhala elitholakalayo.</string>
+  <string name="claude_key_guide">Faka ukhiye wakho we-Claude API ukuze uhumushe ngezimodeli ze-Claude.</string>
+  <string name="help_text_claude_own_key">Isebenzisa ukhiye wakho we-Claude API womuntu siqu</string>
+  <string name="claude_key_signup_guide">Dala ukhiye we-API ku-Anthropic Console. Ukusetshenziswa kukhokhiswa ku-akhawunti yakho ye-Anthropic.</string>
 </resources>

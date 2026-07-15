@@ -1,6 +1,7 @@
 package com.galaxy.airviewdictionary.data.remote.translation
 
 import com.galaxy.airviewdictionary.data.AVDRepository
+import com.galaxy.airviewdictionary.data.remote.translation.claude.ClaudeKit
 import com.galaxy.airviewdictionary.data.remote.translation.deepl.DeepLKit
 import com.galaxy.airviewdictionary.data.remote.translation.gemini.GeminiKit
 import com.galaxy.airviewdictionary.data.remote.translation.goolge.GoogleWebKit
@@ -22,6 +23,7 @@ class TranslationRepository @Inject constructor(
     private val deepLKit: DeepLKit,
     private val openAiKit: OpenAiKit,
     private val geminiKit: GeminiKit,
+    private val claudeKit: ClaudeKit,
 ) : AVDRepository() {
 
     // 라틴 문자를 사용하는 언어 코드 리스트
@@ -33,6 +35,7 @@ class TranslationRepository @Inject constructor(
             deepLKit.supportedLanguagesAsSource,
             openAiKit.supportedLanguagesAsSource,
             geminiKit.supportedLanguagesAsSource,
+            claudeKit.supportedLanguagesAsSource,
         ).partition { it.code.equals("auto", ignoreCase = true) }
 
         val userLanguageCode = Locale.getDefault().language
@@ -52,6 +55,7 @@ class TranslationRepository @Inject constructor(
             deepLKit.supportedLanguagesAsTarget,
             openAiKit.supportedLanguagesAsTarget,
             geminiKit.supportedLanguagesAsTarget,
+            claudeKit.supportedLanguagesAsTarget,
         )
 
         val userLanguageCode = Locale.getDefault().language
@@ -92,6 +96,7 @@ class TranslationRepository @Inject constructor(
             TranslationKitType.DEEPL -> deepLKit.supportedLanguagesAsSource + deepLKit.supportedLanguagesAsTarget
             TranslationKitType.OPENAI -> openAiKit.supportedLanguagesAsSource + openAiKit.supportedLanguagesAsTarget
             TranslationKitType.GEMINI -> geminiKit.supportedLanguagesAsSource + geminiKit.supportedLanguagesAsTarget
+            TranslationKitType.CLAUDE -> claudeKit.supportedLanguagesAsSource + claudeKit.supportedLanguagesAsTarget
         }
         return languages
             .distinctBy { it.code.uppercase() }
@@ -112,6 +117,7 @@ class TranslationRepository @Inject constructor(
             TranslationKitType.DEEPL -> deepLKit
             TranslationKitType.OPENAI -> openAiKit
             TranslationKitType.GEMINI -> geminiKit
+            TranslationKitType.CLAUDE -> claudeKit
         }
     }
 

@@ -15,10 +15,6 @@
 
     <!-- Foreground Service -->
     <string name="notification_foreground_service">Skermopnamefunksie word gebruik vir vertaling.</string>
-    <string name="title_start_foreground_service">Begin voorgronddiens</string>
-    <string name="message_start_foreground_service">Die toepassing begin \'n voorgronddiens om skerminhoud vas te vang en te vertaal.\n\nOpgevangde beelde sal nie gestoor of gestuur word nie.</string>
-    <string name="label_confirm_start_foreground_service">Begin</string>
-    <string name="label_dismiss_start_foreground_service">Sluit</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">Voltooi</string>
@@ -48,6 +44,7 @@
     <string name="settings_menu_pointer_docking_delay">Hegtydvertraging</string>
     <string name="settings_menu_haptic_feedback_to_detection">Haptiese terugvoer by opsporing</string>
     <string name="settings_menu_cat_menubar">Kieslysbalke</string>
+    <string name="settings_menu_menubar_visible">Wys die kieslysbalk</string>
     <string name="settings_menu_menubar_transparency">Kieslysdeursigtigheid</string>
     <string name="settings_menu_menubar_composition">Kieslysfunksies</string>
     <string name="settings_menu_cat_translation">Vertaling</string>
@@ -95,6 +92,9 @@
   <string name="gemini_key_guide">Voer jou Gemini API-sleutel in om met Gemini-modelle te vertaal.</string>
   <string name="help_text_gemini_own_key">Gebruik jou persoonlike Gemini API-sleutel</string>
   <string name="gemini_key_signup_guide">Skep ’n API-sleutel in Google AI Studio. ’n Gratis vlak is beskikbaar.</string>
+  <string name="claude_key_guide">Voer jou Claude API-sleutel in om met Claude-modelle te vertaal.</string>
+  <string name="help_text_claude_own_key">Gebruik jou persoonlike Claude API-sleutel</string>
+  <string name="claude_key_signup_guide">Skep ’n API-sleutel in die Anthropic Console. Gebruik word aan jou Anthropic-rekening gefaktureer.</string>
 </resources>
 
 

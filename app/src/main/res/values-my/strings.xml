@@ -15,10 +15,6 @@
 
     <!-- Foreground Service 시작 알림 -->
     <string name="notification_foreground_service">ဘာသာပြန်လုပ်ငန်းအတွက် ဖန်သားပြင်ဖမ်းယူမှုကို အသုံးပြုနေသည်။</string>
-    <string name="title_start_foreground_service">Foreground Service စတင်ခြင်း</string>
-    <string name="message_start_foreground_service">အက်ပ်သည် ဖန်သားပြင်အကြောင်းအရာ ဖမ်းယူပြီး ဘာသာပြန်ရန်အတွက် Foreground Service ကိုစတင်ပါသည်။\n\nဖမ်းယူထားသောပုံများကို မသိမ်းဆည်းပါ၊ မပို့ပါ။</string>
-    <string name="label_confirm_start_foreground_service">စတင်မည်</string>
-    <string name="label_dismiss_start_foreground_service">ပြီးဆုံးမည်</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">ပြီးဆုံးမည်</string>
@@ -48,6 +44,7 @@
     <string name="settings_menu_pointer_docking_delay">တွဲဆက်နောက်ကျချိန်</string>
     <string name="settings_menu_haptic_feedback_to_detection">တွေ့ရှိချိန် ဟက်ပတစ်</string>
     <string name="settings_menu_cat_menubar">မီနူးဘား</string>
+    <string name="settings_menu_menubar_visible">မီနူးဘားကို ပြရန်</string>
     <string name="settings_menu_menubar_transparency">မီနူး အထင်ကြည်မှု</string>
     <string name="settings_menu_menubar_composition">မီနူး လုပ်ဆောင်ချက်များ</string>
     <string name="settings_menu_cat_translation">ဘာသာပြန်</string>
@@ -95,4 +92,7 @@
   <string name="gemini_key_guide">Gemini မော်ဒယ်များဖြင့် ဘာသာပြန်ရန် သင့် Gemini API သော့ကို ထည့်သွင်းပါ။</string>
   <string name="help_text_gemini_own_key">သင့်ကိုယ်ပိုင် Gemini API သော့ကို အသုံးပြုသည်</string>
   <string name="gemini_key_signup_guide">Google AI Studio တွင် API key တစ်ခု ဖန်တီးပါ။ အခမဲ့ အဆင့် ရရှိနိုင်ပါသည်။</string>
+  <string name="claude_key_guide">Claude မော်ဒယ်များဖြင့် ဘာသာပြန်ရန် သင့် Claude API သော့ကို ထည့်သွင်းပါ။</string>
+  <string name="help_text_claude_own_key">သင့်ကိုယ်ပိုင် Claude API သော့ကို အသုံးပြုသည်</string>
+  <string name="claude_key_signup_guide">Anthropic Console တွင် API key တစ်ခု ဖန်တီးပါ။ အသုံးပြုမှုကို သင့် Anthropic အကောင့်သို့ ငွေတောင်းခံပါသည်။</string>
 </resources>

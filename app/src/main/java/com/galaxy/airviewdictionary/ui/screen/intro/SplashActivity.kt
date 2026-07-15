@@ -35,7 +35,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -132,7 +131,6 @@ class SplashActivity : AVDActivity() {
     @Composable
     fun Splash(viewModel: SplashViewModel = hiltViewModel()) {
         val context = LocalContext.current
-        val coroutineScope = rememberCoroutineScope()
 
         val dialogAnimDuration = 200
 
@@ -385,8 +383,7 @@ class SplashActivity : AVDActivity() {
 
         LaunchedEffect(notificationPermissionState_0, notificationPermissionState_1, overlayPermissionState, mediaProjectionState) {
             if (
-                isTargetHandleRunning
-                && (notificationPermissionState_0 == PermissionStatus.Granted || notificationPermissionState_1 == PermissionStatus.Granted)
+                (notificationPermissionState_0 == PermissionStatus.Granted || notificationPermissionState_1 == PermissionStatus.Granted)
                 && overlayPermissionState == PermissionStatus.Granted
                 && mediaProjectionState == PermissionStatus.Granted
             ) {
@@ -395,35 +392,6 @@ class SplashActivity : AVDActivity() {
                 finish()
             }
         }
-
-        AnimatedVisibility(
-            visible = !isTargetHandleRunning
-                    && (notificationPermissionState_0 == PermissionStatus.Granted || notificationPermissionState_1 == PermissionStatus.Granted)
-                    && overlayPermissionState == PermissionStatus.Granted
-                    && mediaProjectionState == PermissionStatus.Granted,
-            enter = fadeIn(animationSpec = tween(dialogAnimDuration)) + scaleIn(animationSpec = tween(dialogAnimDuration)),
-            exit = fadeOut(animationSpec = tween(dialogAnimDuration)) + scaleOut(animationSpec = tween(dialogAnimDuration)),
-            content = {
-                MyDialog(
-                    painterResource = R.drawable.img_launch,
-                    dialogTitle = stringResource(id = R.string.title_start_foreground_service),
-                    dialogText = stringResource(id = R.string.message_start_foreground_service),
-                    onConfirmLabel = stringResource(id = R.string.label_confirm_start_foreground_service),
-                    onConfirm = {
-                        coroutineScope.launch {
-                            delay(200)
-//                            TargetHandleView.INSTANCE.cast(applicationContext)
-                            SettingsActivity.start(context)
-                            finish()
-                        }
-                    },
-                    onDismissLabel = stringResource(id = R.string.label_dismiss_start_foreground_service),
-                    onDismiss = {
-                        finish()
-                    },
-                )
-            }
-        )
     }
 }
 

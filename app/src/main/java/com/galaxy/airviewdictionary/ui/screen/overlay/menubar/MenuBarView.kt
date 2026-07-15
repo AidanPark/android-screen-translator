@@ -84,6 +84,7 @@ import com.galaxy.airviewdictionary.data.local.screen.ScreenInfoHolder
 import com.galaxy.airviewdictionary.data.local.vision.TextDetectMode
 import com.galaxy.airviewdictionary.data.remote.translation.Language
 import com.galaxy.airviewdictionary.data.remote.translation.TranslationKitType
+import com.galaxy.airviewdictionary.data.remote.translation.claude.ClaudeKit
 import com.galaxy.airviewdictionary.data.remote.translation.deepl.DeepLKit
 import com.galaxy.airviewdictionary.data.remote.translation.gemini.GeminiKit
 import com.galaxy.airviewdictionary.data.remote.translation.openai.OpenAiKit
@@ -1160,10 +1161,12 @@ fun TranslationKitIconButton(
     val deepLActivated by DeepLKit.keyActivatedStateFlow.collectAsStateWithLifecycle()
     val openAIActivated by OpenAiKit.keyActivatedStateFlow.collectAsStateWithLifecycle()
     val geminiActivated by GeminiKit.keyActivatedStateFlow.collectAsStateWithLifecycle()
+    val claudeActivated by ClaudeKit.keyActivatedStateFlow.collectAsStateWithLifecycle()
     LaunchedEffect(Unit) {
         DeepLKit.refreshAvailability(context)
         OpenAiKit.refreshAvailability(context)
         GeminiKit.refreshAvailability(context)
+        ClaudeKit.refreshAvailability(context)
     }
 
     LaunchedEffect(translationKitType) {
@@ -1204,7 +1207,7 @@ fun TranslationKitIconButton(
 
     var nextKitType by remember { mutableStateOf<TranslationKitType?>(null) }
 
-    LaunchedEffect(sourceLanguage, targetLanguage, translationKitType, deepLActivated, openAIActivated, geminiActivated) {
+    LaunchedEffect(sourceLanguage, targetLanguage, translationKitType, deepLActivated, openAIActivated, geminiActivated, claudeActivated) {
         // 키 기반 엔진은 활성화된 경우에만 후보에 포함한다 (GOOGLE 은 항상 사용 가능)
         val activated: (TranslationKitType) -> Boolean = { kit ->
             when (kit) {
@@ -1212,6 +1215,7 @@ fun TranslationKitIconButton(
                 TranslationKitType.DEEPL -> deepLActivated
                 TranslationKitType.OPENAI -> openAIActivated
                 TranslationKitType.GEMINI -> geminiActivated
+                TranslationKitType.CLAUDE -> claudeActivated
             }
         }
         // 언어쌍을 아직 모르면 활성 엔진 전체, 알면 두 언어가 공통으로 지원하는 엔진으로 후보를 좁힌다
@@ -1221,7 +1225,7 @@ fun TranslationKitIconButton(
             sourceLanguage.supportKitTypes.toSet()
                 .intersect(targetLanguage.supportKitTypes.toSet())
                 .filter { activated(it) }
-        }.sortedBy { it.name }
+        }.sortedBy { it.ordinal } // enum 선언 순서: GOOGLE, DEEPL, OPENAI, GEMINI, CLAUDE
 
         nextKitType = if (candidates.size > 1) {
             val index = candidates.indexOf(translationKitType)

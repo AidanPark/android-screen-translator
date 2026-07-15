@@ -15,10 +15,6 @@
 
     <!-- Foreground Service 시작 알림 -->
     <string name="notification_foreground_service">La funció de captura de pantalla s’està utilitzant per a la traducció.</string>
-    <string name="title_start_foreground_service">Servei en primer pla iniciat</string>
-    <string name="message_start_foreground_service">L\'aplicació inicia un servei en primer pla per capturar i traduir el contingut de la pantalla.\n\nLes imatges capturades no es guarden ni es transfereixen.</string>
-    <string name="label_confirm_start_foreground_service">Inicia</string>
-    <string name="label_dismiss_start_foreground_service">Finalitza</string>
 
     <!-- OverlayService -->
     <string name="service_menu_finish">Finalitza</string>
@@ -48,6 +44,7 @@
     <string name="settings_menu_pointer_docking_delay">Retard d\'acoblament</string>
     <string name="settings_menu_haptic_feedback_to_detection">Resposta hàptica en detectar</string>
     <string name="settings_menu_cat_menubar">Barra de menú</string>
+    <string name="settings_menu_menubar_visible">Mostra la barra de menús</string>
     <string name="settings_menu_menubar_transparency">Transparència del menú</string>
     <string name="settings_menu_menubar_composition">Funcions del menú</string>
     <string name="settings_menu_cat_translation">Traducció</string>
@@ -95,4 +92,7 @@
   <string name="gemini_key_guide">Introduïu la vostra clau API d’Gemini per traduir amb els models d’Gemini.</string>
   <string name="help_text_gemini_own_key">Utilitza la teva clau API personal de Gemini</string>
   <string name="gemini_key_signup_guide">Crea una clau API a Google AI Studio. Hi ha disponible un nivell gratuït.</string>
+  <string name="claude_key_guide">Introduïu la vostra clau API d’Claude per traduir amb els models d’Claude.</string>
+  <string name="help_text_claude_own_key">Utilitza la teva clau API personal de Claude</string>
+  <string name="claude_key_signup_guide">Crea una clau API a l’Anthropic Console. L’ús es factura al teu compte d’Anthropic.</string>
 </resources>
