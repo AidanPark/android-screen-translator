@@ -158,12 +158,10 @@ dependencies {
     // firebase
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.analytics)
-    implementation(libs.firebase.auth)
     implementation(libs.firebase.appcheck)
     implementation(libs.firebase.appcheck.playintegrity)
     implementation(libs.firebase.crashlytics)
     implementation(libs.firebase.config)
-    implementation(libs.firebase.database)
 
     implementation(libs.gson)
     implementation(libs.kotlinx.serialization.json)

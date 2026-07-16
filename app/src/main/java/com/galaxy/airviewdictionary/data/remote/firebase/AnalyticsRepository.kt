@@ -60,7 +60,6 @@ class AnalyticsRepository @Inject constructor(@ApplicationContext val context: C
         firebaseAnalytics.logEvent(Event.SECURE) {
             param(Param.SECURE_DETAIL, eventDetail)
         }
-        FireDatabase.secureReport(eventDetail)
     }
 
     fun screenViewReport(className: String) {
@@ -69,7 +68,6 @@ class AnalyticsRepository @Inject constructor(@ApplicationContext val context: C
         firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW) {
             param(FirebaseAnalytics.Param.SCREEN_CLASS, className)
         }
-        FireDatabase.screenViewReport(className)
     }
 
     fun settingsReport(
@@ -98,17 +96,6 @@ class AnalyticsRepository @Inject constructor(@ApplicationContext val context: C
             param(Param.TTS_VOICE, TTSVoice)
             param(Param.TTS_SPEECH_RATE, TTSRate)
         }
-        FireDatabase.settingsReport(
-            dockDelay,
-            haptic,
-            menuTransparency,
-            menuComposition,
-            transTransparency,
-            closeDelay,
-            replyTransparency,
-            autoTTS,
-            TTSRate
-        )
     }
 
     fun translationReport(
@@ -124,10 +111,6 @@ class AnalyticsRepository @Inject constructor(@ApplicationContext val context: C
             param(Param.TEXT_DETECT_MODE, textDetectMode?.name ?: "unknown")
             param(Param.DETECTED_LANGUAGE_CODE, transaction.detectedLanguageCode ?: "unknown")
         }
-        FireDatabase.translationReport(
-            transaction,
-            textDetectMode,
-        )
     }
 
     fun replyReport(transaction: Transaction) {
@@ -138,7 +121,6 @@ class AnalyticsRepository @Inject constructor(@ApplicationContext val context: C
             param(Param.TARGET_LANGUAGE_CODE, transaction.targetLanguageCode ?: "unknown")
             param(Param.TRANSLATION_KIT_TYPE, transaction.translationKitType?.name ?: "unknown")
         }
-        FireDatabase.replyReport(transaction)
     }
 
     fun hoursTakenReport(trialCount: Int, hour: Int) {
@@ -147,7 +129,6 @@ class AnalyticsRepository @Inject constructor(@ApplicationContext val context: C
         firebaseAnalytics.logEvent(Event.TIME_TAKEN) {
             param("${Param.HOURS_TAKEN}$trialCount", hour.toLong())
         }
-        FireDatabase.hoursTakenReport(trialCount, hour)
     }
 
     fun daysTakenReport(trialCount: Int, day: Int) {
@@ -156,7 +137,6 @@ class AnalyticsRepository @Inject constructor(@ApplicationContext val context: C
         firebaseAnalytics.logEvent(Event.TIME_TAKEN) {
             param("${Param.DAYS_TAKEN}$trialCount", day.toLong())
         }
-        FireDatabase.daysTakenReport(trialCount, day)
     }
 
 }
