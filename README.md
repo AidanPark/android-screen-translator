@@ -129,6 +129,8 @@ Not all translation engines are created equal. Screen Translate lets you switch 
 
 > Google works out of the box. **DeepL, OpenAI, Gemini and Claude run on your own API key** — enter it under *Settings → API Key*. For the three LLM engines you can also choose which model to use.
 
+> **A note on the screenshots:** some still show the older engine line-up, which included **Azure Translator** and **Papago**. Those two ran on API keys the app handed out to paid installs — when the paid features were removed, the keys went away and those engines went with them. DeepL and OpenAI stayed on by switching to keys you supply yourself.
+
 ---
 
 ## 130+ Languages
